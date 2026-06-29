@@ -179,6 +179,25 @@ class JsonParseAdapter:
         return ParseOutput(output_dir=session.full_output_dir, parsed_df=None)
 
 
+@dataclass(frozen=True)
+class CsvParseAdapter:
+    """Adapter that parses .csv files through the markdown pipeline.
+    CSV content is read with pandas and converted into structured
+    text representation (pipe-delimited rows), then routed through parse_md()."""
+    document_format: object
+
+    def parse(self, session: ParseSession) -> ParseOutput:
+        from app.services.document_parser.formats.csv.parser import parse_csv
+        parsed_df = parse_csv(
+            session.full_output_dir,
+            source_type="csv",
+            file_path=session.file_full_path,
+            base_llm_paras=session.base_llm_paras,
+            relative_root=session.relative_root,
+        )
+        return ParseOutput(output_dir=session.full_output_dir, parsed_df=parsed_df)
+
+
 def _parse_docx_path(
     docx_path: str,
     session: ParseSession,
