@@ -97,6 +97,87 @@ async def retrieve(question: dict[str, Any], manifest: dict[str, Any], enabled: 
         return await project_public_retrieval_response(outcome.response)
 
 
+def production_budget_within_bounds(
+    episode: dict[str, Any], review: dict[str, Any], *, review_enabled: bool,
+) -> bool:
+    """Check the frozen initial limits and the production correction policy.
+
+    A correction may tighten the original 15-step cap to the charged steps at
+    that decision plus four. Reconstruct that boundary from the observed trace:
+    multiple tools in one explorer round cost one step, picks cost no steps,
+    and reviewer attempts share the same budget. This never changes an episode.
+    """
+    initial = episode.get("initial_max_steps")
+    final = episode.get("final_max_steps")
+    used = episode.get("steps_used")
+    if (
+        type(initial) is not int or type(final) is not int or type(used) is not int
+        or initial != 15
+        or episode.get("initial_wall_clock_seconds") != 180
+        or not 1 <= final <= initial
+        or used < 0
+    ):
+        return False
+    if not review_enabled:
+        # The unchanged baseline can make one final forced-finish call.
+        return final == initial and used <= initial + 1
+    repairs = review.get("repairs", 0)
+    attempts = review.get("attempts", 0)
+    if (
+        used > final
+        or type(repairs) is not int or repairs not in (0, 1)
+        or type(attempts) is not int or not 0 <= attempts <= 2
+    ):
+        return False
+    if repairs == 0:
+        return final == initial
+
+    steps = episode.get("steps")
+    if not isinstance(steps, list):
+        return False
+    rounds: set[int] = set()
+    for step in steps:
+        if not isinstance(step, dict):
+            return False
+        name = step.get("tool_name")
+        if name == "corpus.pick":
+            continue
+        if name != "evidence_review":
+            round_index = step.get("round_index")
+            if type(round_index) is not int or round_index < 1:
+                return False
+            rounds.add(round_index)
+            continue
+        try:
+            assessment = json.loads(step["observation_text"])
+        except (KeyError, TypeError, ValueError):
+            return False
+        if not isinstance(assessment, dict):
+            return False
+        if assessment.get("repairs") != 1:
+            continue
+        prior_attempts = assessment.get("attempts")
+        if (
+            assessment.get("status") != "insufficient"
+            or type(prior_attempts) is not int
+            or not 0 <= prior_attempts <= min(1, attempts)
+        ):
+            return False
+        # Production can request correction without an LLM call when the first
+        # snapshot is empty. No requirements have been frozen on that path.
+        if prior_attempts == 0 and (
+            assessment.get("reason") != "No final-visible evidence was selected."
+            or assessment.get("coverage") != []
+        ):
+            return False
+        boundary = len(rounds) + prior_attempts
+        return (
+            0 < boundary < initial and boundary <= used
+            and final == min(initial, boundary + 4)
+        )
+    return False
+
+
 async def run_trial(question: dict[str, Any], manifest: dict[str, Any], scheduled: dict[str, Any],
                     arm: str, provider: ProviderObserver, protocol_digest: str) -> dict[str, Any]:
     trial_id = f"{question['id']}:{scheduled['repeat']}:{arm}"
@@ -125,8 +206,9 @@ async def run_trial(question: dict[str, Any], manifest: dict[str, Any], schedule
     review = response.get("evidence_review", {})
     episode = result["episode"]
     result["gates"] = {
-        "production_limits_unchanged": episode.get("initial_max_steps") == episode.get("final_max_steps") == 15
-            and episode.get("initial_wall_clock_seconds") == 180,
+        "production_limits_unchanged": production_budget_within_bounds(
+            episode, review, review_enabled=arm == "review",
+        ),
         "real_requested_model": all(call["requested_model"] == MODEL for call in result["provider_calls"]),
         "returned_model_matches": all(call.get("returned_model", MODEL) == MODEL for call in result["provider_calls"]),
         "agentic_route": result["error"] is not None or response.get("router_used") == "agent_explore",

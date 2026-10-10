@@ -1,0 +1,146 @@
+{
+  "schema_version": "knowhere-benchmark-gate-fix/1",
+  "recorded_at_utc": "2026-10-10T03:58:53.287007+00:00",
+  "timing": "Postmeasurement benchmark-only fix, applied after all 300 original held-out retrieval episodes and the requested offline assessments were completed. It did not govern or alter the collected episodes.",
+  "original_frozen_experiment_revision": "2ccb9e80e1612595bca248d32b0ea33939347f9d",
+  "production_feature_revision": "f68cee2d2793dc4d6fa5cb9281f3d6d357826b1b",
+  "gate_name": "production_limits_unchanged",
+  "problem": "The original gate required initial_max_steps == final_max_steps == 15. Production intentionally tightens the existing episode budget to min(15, charged_steps_at_correction + 4) for a single corrective retrieval. Four legitimate tightened episodes therefore stopped their benchmark workers after their complete records were saved.",
+  "change": {
+    "helper": "scripts/evidence_review_benchmark/run.py:production_budget_within_bounds",
+    "initial_limits": "Require integer initial_max_steps == 15 and initial_wall_clock_seconds == 180; reject invalid counters and increased caps.",
+    "baseline": "Require final_max_steps == 15 and steps_used <= 16, preserving the unchanged baseline forced-finish behavior.",
+    "review": "Require steps_used <= final_max_steps <= 15, at most two review attempts, and at most one correction. Without a correction the final cap must remain 15.",
+    "correction_proof": "A correction requires an observed insufficient assessment authorizing exactly one repair. Count unique non-pick explorer rounds up to that decision and add reviewer attempts; enforce final_max_steps == min(15, that boundary + 4). Multiple tools in one round count once. An empty-evidence correction can occur before any reviewer request; for a zero-attempt boundary, require the production empty-evidence reason and empty coverage.",
+    "limits": "The helper consumes captured budget metadata and trace records; it never changes a budget, production code, model request, outcome, or score. It does not prove server-side cancellation from elapsed time."
+  },
+  "source_changes": [
+    {
+      "path": "scripts/evidence_review_benchmark/run.py",
+      "before_sha256": "db7df2e06589af6b255afa0508634b6ab40b59240f56d0308b84331078f2ab04",
+      "after_sha256": "0ba895b492c234b8b478ac52ba92c58abff8be67c4808bceaaa0d343560cba32"
+    },
+    {
+      "path": "scripts/evidence_review_benchmark/test_runtime.py",
+      "before_sha256": "15bae5d98994c7245c4b9b9abd2a379d2ee3c5b64c0c43381fbe046bca7b5121",
+      "after_sha256": "5850a7b5320673fc0b9ae4f386ba296a848e0367231bf8c4656ca5f4ca3c0526"
+    }
+  ],
+  "frozen_source_inventory_count": 397,
+  "production_prompts_retrieval_scorer_and_gold_unchanged": true,
+  "original_raw_records_and_gate_values_unchanged": true,
+  "new_provider_requests": 0,
+  "original_false_gate_values_retained": 4,
+  "new_reproduction_protocol_created": false,
+  "reproduction_note": "The original frozen commit and protocol remain the provenance of the collected data. A separate future protocol must freeze the corrected benchmark sources; this change must not be presented as the code that generated the original measurements.",
+  "regression_coverage": {
+    "new_budget_cases": 33,
+    "recorded_trace_cases": [
+      "held-028:0:review",
+      "held-028:1:review",
+      "held-028:2:review",
+      "held-050:1:review"
+    ],
+    "adversarial_cases": [
+      "changed initial step or wall-clock limits",
+      "expanded or unexplained final caps",
+      "actual review steps beyond final cap",
+      "negative or boolean counters",
+      "missing or malformed correction trace",
+      "multiple or absent repairs",
+      "sufficient assessment falsely claiming a correction",
+      "invalid correction review count",
+      "invented zero-call correction with a nonempty-evidence reason or frozen coverage"
+    ],
+    "compatibility_cases": [
+      "original observer tests retained",
+      "baseline forced finish at step 16",
+      "same-round multiple tool calls",
+      "free pick phases",
+      "zero-review empty-evidence correction",
+      "late correction retaining the original cap",
+      "input observations remain unchanged",
+      "real production EvidenceReviewSession empty-snapshot branch requests one correction, makes zero model calls, and tightens the already charged one-step episode to five steps"
+    ]
+  },
+  "verification": [
+    {
+      "command": ".venv/bin/python -m pytest scripts/evidence_review_benchmark/test_runtime.py scripts/evidence_review_benchmark/test_score.py -q",
+      "exit_code": 0,
+      "result": "74 passed in 0.76s"
+    },
+    {
+      "command": ".venv/bin/ruff check scripts/evidence_review_benchmark/run.py scripts/evidence_review_benchmark/test_runtime.py",
+      "exit_code": 0,
+      "result": "All checks passed"
+    },
+    {
+      "command": ".venv/bin/pyright scripts/evidence_review_benchmark/run.py scripts/evidence_review_benchmark/test_runtime.py",
+      "exit_code": 0,
+      "result": "0 errors, 0 warnings"
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0,
+      "result": "passed"
+    }
+  ],
+  "offline_original_record_replay": {
+    "trial_count": 300,
+    "raw_file_hash_mismatches": [],
+    "fixed_gate_rejections": [],
+    "changed_gate_interpretations": [
+      {
+        "id": "held-050:1:review",
+        "original_recorded_gate": false,
+        "fixed_gate_offline_result": true,
+        "original_semantic_status": "unverified"
+      },
+      {
+        "id": "held-028:0:review",
+        "original_recorded_gate": false,
+        "fixed_gate_offline_result": true,
+        "original_semantic_status": "unverified"
+      },
+      {
+        "id": "held-028:1:review",
+        "original_recorded_gate": false,
+        "fixed_gate_offline_result": true,
+        "original_semantic_status": "unverified"
+      },
+      {
+        "id": "held-028:2:review",
+        "original_recorded_gate": false,
+        "fixed_gate_offline_result": true,
+        "original_semantic_status": "unverified"
+      }
+    ],
+    "changed_frozen_sources": [
+      {
+        "path": "scripts/evidence_review_benchmark/run.py",
+        "before_sha256": "db7df2e06589af6b255afa0508634b6ab40b59240f56d0308b84331078f2ab04",
+        "after_sha256": "0ba895b492c234b8b478ac52ba92c58abff8be67c4808bceaaa0d343560cba32"
+      },
+      {
+        "path": "scripts/evidence_review_benchmark/test_runtime.py",
+        "before_sha256": "15bae5d98994c7245c4b9b9abd2a379d2ee3c5b64c0c43381fbe046bca7b5121",
+        "after_sha256": "5850a7b5320673fc0b9ae4f386ba296a848e0367231bf8c4656ca5f4ca3c0526"
+      }
+    ]
+  },
+  "offline_replay_expression": "production_budget_within_bounds(trial[\"episode\"], (trial[\"response\"] or {}).get(\"evidence_review\", {}), review_enabled=trial[\"arm\"] == \"review\")",
+  "interpretation": "Only the budget-policy gate interpretation changes for the four original false alarms. Their recorded false gate values and unverified outcomes remain unchanged. No measured performance or semantic result was promoted by this fix.",
+  "production_empty_snapshot_check": {
+    "source": "packages/shared-python/shared/services/retrieval/agent_explore/evidence_review.py:EvidenceReviewSession.on_finish",
+    "finding": "The empty-snapshot branch sets insufficient status and invokes _maybe_correct before incrementing attempts or charging a reviewer step. Therefore an unconditional requirement for one reviewer attempt per correction would reject a valid production path.",
+    "observed_regression_result": {
+      "reviewer_model_calls": 0,
+      "attempts": 0,
+      "repairs": 1,
+      "steps_used": 1,
+      "final_max_steps": 5,
+      "corrected_gate": true
+    },
+    "guard": "At a zero-attempt correction boundary the reason must be No final-visible evidence was selected. and coverage must be empty, because no requirements have yet been frozen."
+  }
+}
