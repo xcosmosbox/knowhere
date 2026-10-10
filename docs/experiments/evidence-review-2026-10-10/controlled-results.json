@@ -1,0 +1,5662 @@
+{
+  "schema_version": "evidence-review-experiment/1",
+  "mode": "scripted",
+  "claim_scope": "Production finish-review integration; frozen synthetic corpus and scripted explorer. Scripted reviewer outputs and token usage are predetermined, not model-quality evidence. Live mode measures only the real reviewer, with a scripted explorer and corpus backend.",
+  "token_interpretation": "All tokens simulated",
+  "fixture_digest": "df441ad2ed68cb61771d925d6aa2fc58f4cf2af2f24d8cc510846525ad0507c2",
+  "experiment_script_digest": "bd3c142e3c6205e2583c8147c2e5c8d4b8f5226299d1b2dda8f4b125fec56cea",
+  "git_revision": "3422d1fe79fdc1674a128ad305467c96a206d15b",
+  "runtime_source_digests": {
+    "packages/shared-python/shared/services/retrieval/agent_explore/evidence_review.py": "1dbd05a8b112f612ec8a60ed90844b94cae2f6fa619a5a324804040e0f66cf6d",
+    "packages/shared-python/shared/services/retrieval/agent_explore/harness/openai_harness.py": "8e8efdc1bc9bc50b2d617214ed860694b87e57bb7152a00efe88acb499a00869",
+    "packages/shared-python/shared/services/retrieval/execution/evidence_review.py": "e9a27e72ce963a22402ef4bee8f40b202a29759b525edd599c0d9f363d806974"
+  },
+  "python_version": "3.11.17",
+  "explorer_model": "scripted-explorer-v1",
+  "reviewer_model": "scripted-reviewer-v1",
+  "repeats": 3,
+  "summary": {
+    "baseline": {
+      "runs": 42,
+      "mean_answerable_gold_coverage": 0.3611111111111111,
+      "answerable_gold_sufficient_runs": 3,
+      "answerable_runs": 36,
+      "completed_without_sufficient_gold": 39,
+      "answerable_finished_without_sufficient_gold": 30,
+      "sufficient_claims": 0,
+      "false_sufficient_claims": 0,
+      "negative_control_runs": 3,
+      "negative_control_false_sufficient_claims": 0,
+      "false_sufficient_rate_on_insufficient_packets": null,
+      "false_sufficient_share_of_sufficient_claims": null,
+      "nonanswerable_rejected": 0,
+      "nonanswerable_runs": 6,
+      "review_calls": 0,
+      "total_tokens": 1989,
+      "reviewer_tokens": 0,
+      "unknown_usage_runs": 0,
+      "mean_duration_ms": 0.9714047619047619,
+      "failed_gates": 0
+    },
+    "review": {
+      "runs": 42,
+      "mean_answerable_gold_coverage": 0.7222222222222222,
+      "answerable_gold_sufficient_runs": 18,
+      "answerable_runs": 36,
+      "completed_without_sufficient_gold": 24,
+      "answerable_finished_without_sufficient_gold": 12,
+      "sufficient_claims": 21,
+      "false_sufficient_claims": 3,
+      "negative_control_runs": 3,
+      "negative_control_false_sufficient_claims": 3,
+      "false_sufficient_rate_on_insufficient_packets": 0.125,
+      "false_sufficient_share_of_sufficient_claims": 0.14285714285714285,
+      "nonanswerable_rejected": 6,
+      "nonanswerable_runs": 6,
+      "review_calls": 57,
+      "total_tokens": 5580,
+      "reviewer_tokens": 2538,
+      "unknown_usage_runs": 3,
+      "mean_duration_ms": 2.136309523809524,
+      "failed_gates": 0
+    },
+    "paired_mean_coverage_delta": 0.3611111111111111
+  },
+  "trials": [
+    {
+      "case_id": "complete_control",
+      "repeat": 0,
+      "answerable": true,
+      "negative_control": false,
+      "order": [
+        "baseline",
+        "review"
+      ],
+      "baseline": {
+        "variant": "baseline",
+        "selected_chunk_ids": [
+          "harbor-owner",
+          "harbor-retention"
+        ],
+        "gold_evidence_coverage": 1.0,
+        "gold_sufficient": true,
+        "review_status": "disabled",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": false,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 3,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 0,
+        "total_tokens": 52,
+        "usage_complete": true,
+        "duration_ms": 2.263,
+        "finish_review_duration_ms": 0,
+        "review_report": {},
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true
+        }
+      },
+      "review": {
+        "variant": "review",
+        "selected_chunk_ids": [
+          "harbor-owner",
+          "harbor-retention"
+        ],
+        "gold_evidence_coverage": 1.0,
+        "gold_sufficient": true,
+        "review_status": "sufficient",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": false,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 1,
+        "corrective_retrievals": 0,
+        "steps_used": 4,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 47,
+        "total_tokens": 99,
+        "usage_complete": true,
+        "duration_ms": 2.475,
+        "finish_review_duration_ms": 0,
+        "review_report": {
+          "version": "evidence-review-v1",
+          "status": "sufficient",
+          "reason": "Both requirements have source evidence.",
+          "coverage": [
+            {
+              "facet_id": "F1",
+              "requirement": "Who signs Harbor pilot approval?",
+              "status": "supported",
+              "citations": [
+                {
+                  "evidence_id": "C31d8f0649cf4d5f4",
+                  "quote": "Harbor pilot approval is signed by Operations."
+                }
+              ]
+            },
+            {
+              "facet_id": "F2",
+              "requirement": "What is the export retention limit?",
+              "status": "supported",
+              "citations": [
+                {
+                  "evidence_id": "Ce6c3a397230e164e",
+                  "quote": "Harbor export files are retained for 30 days."
+                }
+              ]
+            }
+          ],
+          "attempts": 1,
+          "repairs": 0,
+          "reviewer_tokens": 47,
+          "usage_complete": true,
+          "evidence_fingerprint": "26320a0906f85077bbc15b46bb1971c06b5a36e4ce3cd1c5f4514663c31fd4cc"
+        },
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review"
+        ],
+        "snapshot_chunk_ids": [
+          [
+            "harbor-owner",
+            "harbor-retention"
+          ]
+        ],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true,
+          "expected_review_calls": true,
+          "expected_repairs": true,
+          "expected_status": true,
+          "false_sufficiency_negative_control": true
+        }
+      }
+    },
+    {
+      "case_id": "multi_dimension",
+      "repeat": 0,
+      "answerable": true,
+      "negative_control": false,
+      "order": [
+        "review",
+        "baseline"
+      ],
+      "review": {
+        "variant": "review",
+        "selected_chunk_ids": [
+          "harbor-owner",
+          "harbor-retention"
+        ],
+        "gold_evidence_coverage": 1.0,
+        "gold_sufficient": true,
+        "review_status": "sufficient",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": false,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 2,
+        "corrective_retrievals": 1,
+        "steps_used": 8,
+        "initial_max_steps": 15,
+        "final_max_steps": 8,
+        "explorer_tokens": 104,
+        "reviewer_tokens": 94,
+        "total_tokens": 198,
+        "usage_complete": true,
+        "duration_ms": 3.242,
+        "finish_review_duration_ms": 0,
+        "review_report": {
+          "version": "evidence-review-v1",
+          "status": "sufficient",
+          "reason": "Both requirements have source evidence.",
+          "coverage": [
+            {
+              "facet_id": "F1",
+              "requirement": "Who signs Harbor pilot approval?",
+              "status": "supported",
+              "citations": [
+                {
+                  "evidence_id": "C2f547b49f08ae555",
+                  "quote": "Harbor pilot approval is signed by Operations."
+                }
+              ]
+            },
+            {
+              "facet_id": "F2",
+              "requirement": "What is the export retention limit?",
+              "status": "supported",
+              "citations": [
+                {
+                  "evidence_id": "C79e8b846072abb82",
+                  "quote": "Harbor export files are retained for 30 days."
+                }
+              ]
+            }
+          ],
+          "attempts": 2,
+          "repairs": 1,
+          "reviewer_tokens": 94,
+          "usage_complete": true,
+          "evidence_fingerprint": "765da5ba6903fd7ce657ce268b4fb7d6f0fd9dbd77f253cf3229a35bc179324c"
+        },
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review",
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review"
+        ],
+        "snapshot_chunk_ids": [
+          [
+            "harbor-owner"
+          ],
+          [
+            "harbor-owner",
+            "harbor-retention"
+          ]
+        ],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true,
+          "expected_review_calls": true,
+          "expected_repairs": true,
+          "expected_status": true,
+          "false_sufficiency_negative_control": true
+        }
+      },
+      "baseline": {
+        "variant": "baseline",
+        "selected_chunk_ids": [
+          "harbor-owner"
+        ],
+        "gold_evidence_coverage": 0.5,
+        "gold_sufficient": false,
+        "review_status": "disabled",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": true,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 3,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 0,
+        "total_tokens": 52,
+        "usage_complete": true,
+        "duration_ms": 1.062,
+        "finish_review_duration_ms": 0,
+        "review_report": {},
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true
+        }
+      }
+    },
+    {
+      "case_id": "missing_comparison_side",
+      "repeat": 0,
+      "answerable": true,
+      "negative_control": false,
+      "order": [
+        "baseline",
+        "review"
+      ],
+      "baseline": {
+        "variant": "baseline",
+        "selected_chunk_ids": [
+          "orion-price"
+        ],
+        "gold_evidence_coverage": 0.5,
+        "gold_sufficient": false,
+        "review_status": "disabled",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": true,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 3,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 0,
+        "total_tokens": 52,
+        "usage_complete": true,
+        "duration_ms": 0.991,
+        "finish_review_duration_ms": 0,
+        "review_report": {},
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true
+        }
+      },
+      "review": {
+        "variant": "review",
+        "selected_chunk_ids": [
+          "lyra-price",
+          "orion-price"
+        ],
+        "gold_evidence_coverage": 1.0,
+        "gold_sufficient": true,
+        "review_status": "sufficient",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": false,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 2,
+        "corrective_retrievals": 1,
+        "steps_used": 8,
+        "initial_max_steps": 15,
+        "final_max_steps": 8,
+        "explorer_tokens": 104,
+        "reviewer_tokens": 94,
+        "total_tokens": 198,
+        "usage_complete": true,
+        "duration_ms": 3.188,
+        "finish_review_duration_ms": 0,
+        "review_report": {
+          "version": "evidence-review-v1",
+          "status": "sufficient",
+          "reason": "Both prices have evidence.",
+          "coverage": [
+            {
+              "facet_id": "F1",
+              "requirement": "What is the monthly Orion price?",
+              "status": "supported",
+              "citations": [
+                {
+                  "evidence_id": "C1a810790e2b803e9",
+                  "quote": "Orion costs EUR 4 per active seat each month."
+                }
+              ]
+            },
+            {
+              "facet_id": "F2",
+              "requirement": "What is the monthly Lyra price?",
+              "status": "supported",
+              "citations": [
+                {
+                  "evidence_id": "C8791bf2eb8d0297f",
+                  "quote": "Lyra costs EUR 7 per active seat each month."
+                }
+              ]
+            }
+          ],
+          "attempts": 2,
+          "repairs": 1,
+          "reviewer_tokens": 94,
+          "usage_complete": true,
+          "evidence_fingerprint": "35af805a86609547453bd7cd5c97bf6cde69aceea274c9daabd37230218265d4"
+        },
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review",
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review"
+        ],
+        "snapshot_chunk_ids": [
+          [
+            "orion-price"
+          ],
+          [
+            "orion-price",
+            "lyra-price"
+          ]
+        ],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true,
+          "expected_review_calls": true,
+          "expected_repairs": true,
+          "expected_status": true,
+          "false_sufficiency_negative_control": true
+        }
+      }
+    },
+    {
+      "case_id": "missing_table",
+      "repeat": 0,
+      "answerable": true,
+      "negative_control": false,
+      "order": [
+        "review",
+        "baseline"
+      ],
+      "review": {
+        "variant": "review",
+        "selected_chunk_ids": [
+          "tariff-intro",
+          "tariff-table"
+        ],
+        "gold_evidence_coverage": 1.0,
+        "gold_sufficient": true,
+        "review_status": "sufficient",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": false,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 2,
+        "corrective_retrievals": 1,
+        "steps_used": 8,
+        "initial_max_steps": 15,
+        "final_max_steps": 8,
+        "explorer_tokens": 104,
+        "reviewer_tokens": 94,
+        "total_tokens": 198,
+        "usage_complete": true,
+        "duration_ms": 2.903,
+        "finish_review_duration_ms": 0,
+        "review_report": {
+          "version": "evidence-review-v1",
+          "status": "sufficient",
+          "reason": "The table provides both values.",
+          "coverage": [
+            {
+              "facet_id": "F1",
+              "requirement": "What is the West region fee?",
+              "status": "supported",
+              "citations": [
+                {
+                  "evidence_id": "C83ab5bb35b9777de",
+                  "quote": "<td>West</td><td>12</td>"
+                }
+              ]
+            },
+            {
+              "facet_id": "F2",
+              "requirement": "What is the East region fee?",
+              "status": "supported",
+              "citations": [
+                {
+                  "evidence_id": "C83ab5bb35b9777de",
+                  "quote": "<td>East</td><td>18</td>"
+                }
+              ]
+            }
+          ],
+          "attempts": 2,
+          "repairs": 1,
+          "reviewer_tokens": 94,
+          "usage_complete": true,
+          "evidence_fingerprint": "27366cd316e480de3511954fb4f2023aa8655be9cfaf9033f9ef9063f2013799"
+        },
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review",
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review"
+        ],
+        "snapshot_chunk_ids": [
+          [
+            "tariff-intro"
+          ],
+          [
+            "tariff-intro",
+            "tariff-table"
+          ]
+        ],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true,
+          "expected_review_calls": true,
+          "expected_repairs": true,
+          "expected_status": true,
+          "false_sufficiency_negative_control": true
+        }
+      },
+      "baseline": {
+        "variant": "baseline",
+        "selected_chunk_ids": [
+          "tariff-intro"
+        ],
+        "gold_evidence_coverage": 0.0,
+        "gold_sufficient": false,
+        "review_status": "disabled",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": true,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 3,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 0,
+        "total_tokens": 52,
+        "usage_complete": true,
+        "duration_ms": 0.996,
+        "finish_review_duration_ms": 0,
+        "review_report": {},
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true
+        }
+      }
+    },
+    {
+      "case_id": "unresolved_conflict",
+      "repeat": 0,
+      "answerable": false,
+      "negative_control": false,
+      "order": [
+        "baseline",
+        "review"
+      ],
+      "baseline": {
+        "variant": "baseline",
+        "selected_chunk_ids": [
+          "bulletin-a",
+          "bulletin-b"
+        ],
+        "gold_evidence_coverage": 1.0,
+        "gold_sufficient": false,
+        "review_status": "disabled",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": false,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 3,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 0,
+        "total_tokens": 52,
+        "usage_complete": true,
+        "duration_ms": 0.934,
+        "finish_review_duration_ms": 0,
+        "review_report": {},
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true
+        }
+      },
+      "review": {
+        "variant": "review",
+        "selected_chunk_ids": [
+          "bulletin-a",
+          "bulletin-b"
+        ],
+        "gold_evidence_coverage": 1.0,
+        "gold_sufficient": false,
+        "review_status": "insufficient",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": false,
+        "nonanswerable_rejected": true,
+        "stop_reason": "finished",
+        "review_calls": 2,
+        "corrective_retrievals": 1,
+        "steps_used": 7,
+        "initial_max_steps": 15,
+        "final_max_steps": 8,
+        "explorer_tokens": 78,
+        "reviewer_tokens": 94,
+        "total_tokens": 172,
+        "usage_complete": true,
+        "duration_ms": 2.639,
+        "finish_review_duration_ms": 0,
+        "review_report": {
+          "version": "evidence-review-v1",
+          "status": "insufficient",
+          "reason": "The equally dated bulletins conflict and neither supersedes the other.",
+          "coverage": [
+            {
+              "facet_id": "F1",
+              "requirement": "What is the authoritative shuttle departure time?",
+              "status": "conflicting",
+              "citations": [
+                {
+                  "evidence_id": "Cb6513b952c12580b",
+                  "quote": "Bulletin A, issued 8 October 2026: the shuttle departs at 09:00."
+                },
+                {
+                  "evidence_id": "C45f25222989bb81f",
+                  "quote": "Bulletin B, issued 8 October 2026: the shuttle departs at 10:00."
+                }
+              ]
+            }
+          ],
+          "attempts": 2,
+          "repairs": 1,
+          "reviewer_tokens": 94,
+          "usage_complete": true,
+          "evidence_fingerprint": "20f3b9a9dbe905a4dc978587ec227b8dc8c217063cad8b1c5b8f2a7a4921632c"
+        },
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review",
+          "corpus.grep",
+          "finish",
+          "evidence_review"
+        ],
+        "snapshot_chunk_ids": [
+          [
+            "bulletin-a",
+            "bulletin-b"
+          ],
+          [
+            "bulletin-a",
+            "bulletin-b"
+          ]
+        ],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true,
+          "expected_review_calls": true,
+          "expected_repairs": true,
+          "expected_status": true,
+          "false_sufficiency_negative_control": true
+        }
+      }
+    },
+    {
+      "case_id": "outdated_evidence",
+      "repeat": 0,
+      "answerable": true,
+      "negative_control": false,
+      "order": [
+        "review",
+        "baseline"
+      ],
+      "review": {
+        "variant": "review",
+        "selected_chunk_ids": [
+          "policy-2024",
+          "policy-2026"
+        ],
+        "gold_evidence_coverage": 1.0,
+        "gold_sufficient": true,
+        "review_status": "sufficient",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": false,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 2,
+        "corrective_retrievals": 1,
+        "steps_used": 8,
+        "initial_max_steps": 15,
+        "final_max_steps": 8,
+        "explorer_tokens": 104,
+        "reviewer_tokens": 94,
+        "total_tokens": 198,
+        "usage_complete": true,
+        "duration_ms": 2.793,
+        "finish_review_duration_ms": 0,
+        "review_report": {
+          "version": "evidence-review-v1",
+          "status": "sufficient",
+          "reason": "The current policy states the limit and supersession.",
+          "coverage": [
+            {
+              "facet_id": "F1",
+              "requirement": "What retention limit is effective on 9 October 2026?",
+              "status": "supported",
+              "citations": [
+                {
+                  "evidence_id": "C345845f25cf2264d",
+                  "quote": "Policy effective 1 January 2026, superseding the 2024 policy: trial exports are retained for 30 days."
+                }
+              ]
+            }
+          ],
+          "attempts": 2,
+          "repairs": 1,
+          "reviewer_tokens": 94,
+          "usage_complete": true,
+          "evidence_fingerprint": "4eb2a218a7219a81bcb98d8ff808fbba6bc846dffca04348ae2e796d7c241661"
+        },
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review",
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review"
+        ],
+        "snapshot_chunk_ids": [
+          [
+            "policy-2024"
+          ],
+          [
+            "policy-2024",
+            "policy-2026"
+          ]
+        ],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true,
+          "expected_review_calls": true,
+          "expected_repairs": true,
+          "expected_status": true,
+          "false_sufficiency_negative_control": true
+        }
+      },
+      "baseline": {
+        "variant": "baseline",
+        "selected_chunk_ids": [
+          "policy-2024"
+        ],
+        "gold_evidence_coverage": 0.0,
+        "gold_sufficient": false,
+        "review_status": "disabled",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": true,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 3,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 0,
+        "total_tokens": 52,
+        "usage_complete": true,
+        "duration_ms": 0.989,
+        "finish_review_duration_ms": 0,
+        "review_report": {},
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true
+        }
+      }
+    },
+    {
+      "case_id": "no_answer",
+      "repeat": 0,
+      "answerable": false,
+      "negative_control": false,
+      "order": [
+        "baseline",
+        "review"
+      ],
+      "baseline": {
+        "variant": "baseline",
+        "selected_chunk_ids": [
+          "harbor-overview"
+        ],
+        "gold_evidence_coverage": null,
+        "gold_sufficient": false,
+        "review_status": "disabled",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": false,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 3,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 0,
+        "total_tokens": 52,
+        "usage_complete": true,
+        "duration_ms": 0.925,
+        "finish_review_duration_ms": 0,
+        "review_report": {},
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true
+        }
+      },
+      "review": {
+        "variant": "review",
+        "selected_chunk_ids": [
+          "harbor-overview"
+        ],
+        "gold_evidence_coverage": null,
+        "gold_sufficient": false,
+        "review_status": "insufficient",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": false,
+        "nonanswerable_rejected": true,
+        "stop_reason": "finished",
+        "review_calls": 2,
+        "corrective_retrievals": 1,
+        "steps_used": 7,
+        "initial_max_steps": 15,
+        "final_max_steps": 8,
+        "explorer_tokens": 78,
+        "reviewer_tokens": 94,
+        "total_tokens": 172,
+        "usage_complete": true,
+        "duration_ms": 2.225,
+        "finish_review_duration_ms": 0,
+        "review_report": {
+          "version": "evidence-review-v1",
+          "status": "insufficient",
+          "reason": "The corpus supplies no registration number.",
+          "coverage": [
+            {
+              "facet_id": "F1",
+              "requirement": "What is the Harbor patent registration number?",
+              "status": "missing",
+              "citations": []
+            }
+          ],
+          "attempts": 2,
+          "repairs": 1,
+          "reviewer_tokens": 94,
+          "usage_complete": true,
+          "evidence_fingerprint": "bd6f1b22c98fdde2fb61487183ed089e64684885700c9398e53e85e80c97be35"
+        },
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review",
+          "corpus.grep",
+          "finish",
+          "evidence_review"
+        ],
+        "snapshot_chunk_ids": [
+          [
+            "harbor-overview"
+          ],
+          [
+            "harbor-overview"
+          ]
+        ],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true,
+          "expected_review_calls": true,
+          "expected_repairs": true,
+          "expected_status": true,
+          "false_sufficiency_negative_control": true
+        }
+      }
+    },
+    {
+      "case_id": "empty_pool",
+      "repeat": 0,
+      "answerable": true,
+      "negative_control": false,
+      "order": [
+        "review",
+        "baseline"
+      ],
+      "review": {
+        "variant": "review",
+        "selected_chunk_ids": [
+          "harbor-owner"
+        ],
+        "gold_evidence_coverage": 1.0,
+        "gold_sufficient": true,
+        "review_status": "sufficient",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": false,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 1,
+        "corrective_retrievals": 1,
+        "steps_used": 6,
+        "initial_max_steps": 15,
+        "final_max_steps": 6,
+        "explorer_tokens": 78,
+        "reviewer_tokens": 47,
+        "total_tokens": 125,
+        "usage_complete": true,
+        "duration_ms": 2.133,
+        "finish_review_duration_ms": 0,
+        "review_report": {
+          "version": "evidence-review-v1",
+          "status": "sufficient",
+          "reason": "The source names the approval owner.",
+          "coverage": [
+            {
+              "facet_id": "F1",
+              "requirement": "Who signs Harbor pilot approval?",
+              "status": "supported",
+              "citations": [
+                {
+                  "evidence_id": "Cfba7f8d2ccd0ea1f",
+                  "quote": "Harbor pilot approval is signed by Operations."
+                }
+              ]
+            }
+          ],
+          "attempts": 1,
+          "repairs": 1,
+          "reviewer_tokens": 47,
+          "usage_complete": true,
+          "evidence_fingerprint": "dc25427cc8a070a9cf22f464d3eb71edcd467dbde3c21ad587c5cc8bee214eda"
+        },
+        "trace_actions": [
+          "corpus.grep",
+          "finish",
+          "evidence_review",
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review"
+        ],
+        "snapshot_chunk_ids": [
+          [],
+          [
+            "harbor-owner"
+          ]
+        ],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true,
+          "expected_review_calls": true,
+          "expected_repairs": true,
+          "expected_status": true,
+          "false_sufficiency_negative_control": true
+        }
+      },
+      "baseline": {
+        "variant": "baseline",
+        "selected_chunk_ids": [],
+        "gold_evidence_coverage": 0.0,
+        "gold_sufficient": false,
+        "review_status": "disabled",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": true,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 2,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 26,
+        "reviewer_tokens": 0,
+        "total_tokens": 26,
+        "usage_complete": true,
+        "duration_ms": 0.571,
+        "finish_review_duration_ms": 0,
+        "review_report": {},
+        "trace_actions": [
+          "corpus.grep",
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true
+        }
+      }
+    },
+    {
+      "case_id": "reviewer_outage",
+      "repeat": 0,
+      "answerable": true,
+      "negative_control": false,
+      "order": [
+        "baseline",
+        "review"
+      ],
+      "baseline": {
+        "variant": "baseline",
+        "selected_chunk_ids": [
+          "harbor-owner"
+        ],
+        "gold_evidence_coverage": 0.5,
+        "gold_sufficient": false,
+        "review_status": "disabled",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": true,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 3,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 0,
+        "total_tokens": 52,
+        "usage_complete": true,
+        "duration_ms": 0.972,
+        "finish_review_duration_ms": 0,
+        "review_report": {},
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true
+        }
+      },
+      "review": {
+        "variant": "review",
+        "selected_chunk_ids": [
+          "harbor-owner"
+        ],
+        "gold_evidence_coverage": 0.5,
+        "gold_sufficient": false,
+        "review_status": "unverified",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": true,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 1,
+        "corrective_retrievals": 0,
+        "steps_used": 4,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 0,
+        "total_tokens": 52,
+        "usage_complete": false,
+        "duration_ms": 1.437,
+        "finish_review_duration_ms": 0,
+        "review_report": {
+          "version": "evidence-review-v1",
+          "status": "unverified",
+          "reason": "Evidence review could not be completed.",
+          "coverage": [],
+          "attempts": 1,
+          "repairs": 0,
+          "reviewer_tokens": 0,
+          "usage_complete": false,
+          "evidence_fingerprint": "0c2915f2a5d44bd13c51090f33bb9cf078eae70316e85f1ee49df811ec8346f0"
+        },
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review"
+        ],
+        "snapshot_chunk_ids": [
+          [
+            "harbor-owner"
+          ]
+        ],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true,
+          "expected_review_calls": true,
+          "expected_repairs": true,
+          "expected_status": true,
+          "false_sufficiency_negative_control": true
+        }
+      }
+    },
+    {
+      "case_id": "malformed_verdict",
+      "repeat": 0,
+      "answerable": true,
+      "negative_control": false,
+      "order": [
+        "review",
+        "baseline"
+      ],
+      "review": {
+        "variant": "review",
+        "selected_chunk_ids": [
+          "harbor-owner"
+        ],
+        "gold_evidence_coverage": 0.5,
+        "gold_sufficient": false,
+        "review_status": "unverified",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": true,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 1,
+        "corrective_retrievals": 0,
+        "steps_used": 4,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 47,
+        "total_tokens": 99,
+        "usage_complete": true,
+        "duration_ms": 1.631,
+        "finish_review_duration_ms": 0,
+        "review_report": {
+          "version": "evidence-review-v1",
+          "status": "unverified",
+          "reason": "The reviewer assessment or evidence citations were invalid.",
+          "coverage": [],
+          "attempts": 1,
+          "repairs": 0,
+          "reviewer_tokens": 47,
+          "usage_complete": true,
+          "evidence_fingerprint": "271bdf092177fc4878ed34c4c746bf54a831a82f2a3811198a5d56b1b616ef25"
+        },
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review"
+        ],
+        "snapshot_chunk_ids": [
+          [
+            "harbor-owner"
+          ]
+        ],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true,
+          "expected_review_calls": true,
+          "expected_repairs": true,
+          "expected_status": true,
+          "false_sufficiency_negative_control": true
+        }
+      },
+      "baseline": {
+        "variant": "baseline",
+        "selected_chunk_ids": [
+          "harbor-owner"
+        ],
+        "gold_evidence_coverage": 0.5,
+        "gold_sufficient": false,
+        "review_status": "disabled",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": true,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 3,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 0,
+        "total_tokens": 52,
+        "usage_complete": true,
+        "duration_ms": 0.939,
+        "finish_review_duration_ms": 0,
+        "review_report": {},
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true
+        }
+      }
+    },
+    {
+      "case_id": "exhausted_steps",
+      "repeat": 0,
+      "answerable": true,
+      "negative_control": false,
+      "order": [
+        "baseline",
+        "review"
+      ],
+      "baseline": {
+        "variant": "baseline",
+        "selected_chunk_ids": [
+          "harbor-owner"
+        ],
+        "gold_evidence_coverage": 0.5,
+        "gold_sufficient": false,
+        "review_status": "disabled",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": true,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 3,
+        "initial_max_steps": 3,
+        "final_max_steps": 3,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 0,
+        "total_tokens": 52,
+        "usage_complete": true,
+        "duration_ms": 0.919,
+        "finish_review_duration_ms": 0,
+        "review_report": {},
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true
+        }
+      },
+      "review": {
+        "variant": "review",
+        "selected_chunk_ids": [
+          "harbor-owner"
+        ],
+        "gold_evidence_coverage": 0.5,
+        "gold_sufficient": false,
+        "review_status": "unverified",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": false,
+        "nonanswerable_rejected": false,
+        "stop_reason": "budget_max_steps",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 3,
+        "initial_max_steps": 3,
+        "final_max_steps": 3,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 0,
+        "total_tokens": 52,
+        "usage_complete": true,
+        "duration_ms": 1.107,
+        "finish_review_duration_ms": 0,
+        "review_report": {
+          "version": "evidence-review-v1",
+          "status": "unverified",
+          "reason": "Exploration ended before final evidence was verified.",
+          "coverage": [],
+          "attempts": 0,
+          "repairs": 0,
+          "reviewer_tokens": 0,
+          "usage_complete": true,
+          "evidence_fingerprint": "8eff986889b1e138fd2c08598973627b89503a4770589eae5ab7cabba9178aa8"
+        },
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true,
+          "expected_review_calls": true,
+          "expected_repairs": true,
+          "expected_status": true,
+          "false_sufficiency_negative_control": true
+        }
+      }
+    },
+    {
+      "case_id": "exhausted_wall_clock",
+      "repeat": 0,
+      "answerable": true,
+      "negative_control": false,
+      "order": [
+        "review",
+        "baseline"
+      ],
+      "review": {
+        "variant": "review",
+        "selected_chunk_ids": [],
+        "gold_evidence_coverage": 0.0,
+        "gold_sufficient": false,
+        "review_status": "unverified",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": false,
+        "nonanswerable_rejected": false,
+        "stop_reason": "budget_wall_clock",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 0,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 0,
+        "reviewer_tokens": 0,
+        "total_tokens": 0,
+        "usage_complete": true,
+        "duration_ms": 0.237,
+        "finish_review_duration_ms": 0,
+        "review_report": {
+          "version": "evidence-review-v1",
+          "status": "unverified",
+          "reason": "Exploration ended before final evidence was verified.",
+          "coverage": [],
+          "attempts": 0,
+          "repairs": 0,
+          "reviewer_tokens": 0,
+          "usage_complete": true,
+          "evidence_fingerprint": "126a1de77b7cfde3697c8f313bbe59cd5c3e63709058a5544198223b85d17ba5"
+        },
+        "trace_actions": [],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true,
+          "expected_review_calls": true,
+          "expected_repairs": true,
+          "expected_status": true,
+          "false_sufficiency_negative_control": true
+        }
+      },
+      "baseline": {
+        "variant": "baseline",
+        "selected_chunk_ids": [],
+        "gold_evidence_coverage": 0.0,
+        "gold_sufficient": false,
+        "review_status": "disabled",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": false,
+        "nonanswerable_rejected": false,
+        "stop_reason": "budget_wall_clock",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 1,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 13,
+        "reviewer_tokens": 0,
+        "total_tokens": 13,
+        "usage_complete": true,
+        "duration_ms": 0.369,
+        "finish_review_duration_ms": 0,
+        "review_report": {},
+        "trace_actions": [
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true
+        }
+      }
+    },
+    {
+      "case_id": "one_repair_still_incomplete",
+      "repeat": 0,
+      "answerable": true,
+      "negative_control": false,
+      "order": [
+        "baseline",
+        "review"
+      ],
+      "baseline": {
+        "variant": "baseline",
+        "selected_chunk_ids": [
+          "harbor-owner"
+        ],
+        "gold_evidence_coverage": 0.3333333333333333,
+        "gold_sufficient": false,
+        "review_status": "disabled",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": true,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 3,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 0,
+        "total_tokens": 52,
+        "usage_complete": true,
+        "duration_ms": 2.035,
+        "finish_review_duration_ms": 0,
+        "review_report": {},
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true
+        }
+      },
+      "review": {
+        "variant": "review",
+        "selected_chunk_ids": [
+          "harbor-owner",
+          "harbor-retention"
+        ],
+        "gold_evidence_coverage": 0.6666666666666666,
+        "gold_sufficient": false,
+        "review_status": "insufficient",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": true,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 2,
+        "corrective_retrievals": 1,
+        "steps_used": 8,
+        "initial_max_steps": 15,
+        "final_max_steps": 8,
+        "explorer_tokens": 104,
+        "reviewer_tokens": 94,
+        "total_tokens": 198,
+        "usage_complete": true,
+        "duration_ms": 3.007,
+        "finish_review_duration_ms": 0,
+        "review_report": {
+          "version": "evidence-review-v1",
+          "status": "insufficient",
+          "reason": "The archive destination is still missing.",
+          "coverage": [
+            {
+              "facet_id": "F1",
+              "requirement": "Who signs Harbor pilot approval?",
+              "status": "supported",
+              "citations": [
+                {
+                  "evidence_id": "C3074ebbbace3b24f",
+                  "quote": "Harbor pilot approval is signed by Operations."
+                }
+              ]
+            },
+            {
+              "facet_id": "F2",
+              "requirement": "What is the export retention limit?",
+              "status": "supported",
+              "citations": [
+                {
+                  "evidence_id": "C2214d6132e058d84",
+                  "quote": "Harbor export files are retained for 30 days."
+                }
+              ]
+            },
+            {
+              "facet_id": "F3",
+              "requirement": "Where are archived exports stored?",
+              "status": "missing",
+              "citations": []
+            }
+          ],
+          "attempts": 2,
+          "repairs": 1,
+          "reviewer_tokens": 94,
+          "usage_complete": true,
+          "evidence_fingerprint": "c37dede446b1182e0b018cc640bcc685f227e6b754553654c6366188da9efa86"
+        },
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review",
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review"
+        ],
+        "snapshot_chunk_ids": [
+          [
+            "harbor-owner"
+          ],
+          [
+            "harbor-owner",
+            "harbor-retention"
+          ]
+        ],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true,
+          "expected_review_calls": true,
+          "expected_repairs": true,
+          "expected_status": true,
+          "false_sufficiency_negative_control": true
+        }
+      }
+    },
+    {
+      "case_id": "false_sufficiency_negative_control",
+      "repeat": 0,
+      "answerable": true,
+      "negative_control": true,
+      "order": [
+        "review",
+        "baseline"
+      ],
+      "review": {
+        "variant": "review",
+        "selected_chunk_ids": [
+          "harbor-owner"
+        ],
+        "gold_evidence_coverage": 0.5,
+        "gold_sufficient": false,
+        "review_status": "sufficient",
+        "false_sufficient": true,
+        "answerable_finished_without_sufficient_gold": true,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 1,
+        "corrective_retrievals": 0,
+        "steps_used": 4,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 47,
+        "total_tokens": 99,
+        "usage_complete": true,
+        "duration_ms": 1.519,
+        "finish_review_duration_ms": 0,
+        "review_report": {
+          "version": "evidence-review-v1",
+          "status": "sufficient",
+          "reason": "Intentionally flawed fixture reviewer omits the retention requirement.",
+          "coverage": [
+            {
+              "facet_id": "F1",
+              "requirement": "Who signs Harbor pilot approval?",
+              "status": "supported",
+              "citations": [
+                {
+                  "evidence_id": "C9d2ee384e8a1a657",
+                  "quote": "Harbor pilot approval is signed by Operations."
+                }
+              ]
+            }
+          ],
+          "attempts": 1,
+          "repairs": 0,
+          "reviewer_tokens": 47,
+          "usage_complete": true,
+          "evidence_fingerprint": "a4c8ba620cc99ba3bc1ab86a22f415b39777fa88aa3f123cbd06c41b6eac4b35"
+        },
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review"
+        ],
+        "snapshot_chunk_ids": [
+          [
+            "harbor-owner"
+          ]
+        ],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true,
+          "expected_review_calls": true,
+          "expected_repairs": true,
+          "expected_status": true,
+          "false_sufficiency_negative_control": true
+        }
+      },
+      "baseline": {
+        "variant": "baseline",
+        "selected_chunk_ids": [
+          "harbor-owner"
+        ],
+        "gold_evidence_coverage": 0.5,
+        "gold_sufficient": false,
+        "review_status": "disabled",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": true,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 3,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 0,
+        "total_tokens": 52,
+        "usage_complete": true,
+        "duration_ms": 1.201,
+        "finish_review_duration_ms": 0,
+        "review_report": {},
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true
+        }
+      }
+    },
+    {
+      "case_id": "complete_control",
+      "repeat": 1,
+      "answerable": true,
+      "negative_control": false,
+      "order": [
+        "review",
+        "baseline"
+      ],
+      "review": {
+        "variant": "review",
+        "selected_chunk_ids": [
+          "harbor-owner",
+          "harbor-retention"
+        ],
+        "gold_evidence_coverage": 1.0,
+        "gold_sufficient": true,
+        "review_status": "sufficient",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": false,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 1,
+        "corrective_retrievals": 0,
+        "steps_used": 4,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 47,
+        "total_tokens": 99,
+        "usage_complete": true,
+        "duration_ms": 1.793,
+        "finish_review_duration_ms": 0,
+        "review_report": {
+          "version": "evidence-review-v1",
+          "status": "sufficient",
+          "reason": "Both requirements have source evidence.",
+          "coverage": [
+            {
+              "facet_id": "F1",
+              "requirement": "Who signs Harbor pilot approval?",
+              "status": "supported",
+              "citations": [
+                {
+                  "evidence_id": "C31d8f0649cf4d5f4",
+                  "quote": "Harbor pilot approval is signed by Operations."
+                }
+              ]
+            },
+            {
+              "facet_id": "F2",
+              "requirement": "What is the export retention limit?",
+              "status": "supported",
+              "citations": [
+                {
+                  "evidence_id": "Ce6c3a397230e164e",
+                  "quote": "Harbor export files are retained for 30 days."
+                }
+              ]
+            }
+          ],
+          "attempts": 1,
+          "repairs": 0,
+          "reviewer_tokens": 47,
+          "usage_complete": true,
+          "evidence_fingerprint": "26320a0906f85077bbc15b46bb1971c06b5a36e4ce3cd1c5f4514663c31fd4cc"
+        },
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review"
+        ],
+        "snapshot_chunk_ids": [
+          [
+            "harbor-owner",
+            "harbor-retention"
+          ]
+        ],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true,
+          "expected_review_calls": true,
+          "expected_repairs": true,
+          "expected_status": true,
+          "false_sufficiency_negative_control": true
+        }
+      },
+      "baseline": {
+        "variant": "baseline",
+        "selected_chunk_ids": [
+          "harbor-owner",
+          "harbor-retention"
+        ],
+        "gold_evidence_coverage": 1.0,
+        "gold_sufficient": true,
+        "review_status": "disabled",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": false,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 3,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 0,
+        "total_tokens": 52,
+        "usage_complete": true,
+        "duration_ms": 1.015,
+        "finish_review_duration_ms": 0,
+        "review_report": {},
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true
+        }
+      }
+    },
+    {
+      "case_id": "multi_dimension",
+      "repeat": 1,
+      "answerable": true,
+      "negative_control": false,
+      "order": [
+        "baseline",
+        "review"
+      ],
+      "baseline": {
+        "variant": "baseline",
+        "selected_chunk_ids": [
+          "harbor-owner"
+        ],
+        "gold_evidence_coverage": 0.5,
+        "gold_sufficient": false,
+        "review_status": "disabled",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": true,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 3,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 0,
+        "total_tokens": 52,
+        "usage_complete": true,
+        "duration_ms": 0.921,
+        "finish_review_duration_ms": 0,
+        "review_report": {},
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true
+        }
+      },
+      "review": {
+        "variant": "review",
+        "selected_chunk_ids": [
+          "harbor-owner",
+          "harbor-retention"
+        ],
+        "gold_evidence_coverage": 1.0,
+        "gold_sufficient": true,
+        "review_status": "sufficient",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": false,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 2,
+        "corrective_retrievals": 1,
+        "steps_used": 8,
+        "initial_max_steps": 15,
+        "final_max_steps": 8,
+        "explorer_tokens": 104,
+        "reviewer_tokens": 94,
+        "total_tokens": 198,
+        "usage_complete": true,
+        "duration_ms": 2.918,
+        "finish_review_duration_ms": 0,
+        "review_report": {
+          "version": "evidence-review-v1",
+          "status": "sufficient",
+          "reason": "Both requirements have source evidence.",
+          "coverage": [
+            {
+              "facet_id": "F1",
+              "requirement": "Who signs Harbor pilot approval?",
+              "status": "supported",
+              "citations": [
+                {
+                  "evidence_id": "C2f547b49f08ae555",
+                  "quote": "Harbor pilot approval is signed by Operations."
+                }
+              ]
+            },
+            {
+              "facet_id": "F2",
+              "requirement": "What is the export retention limit?",
+              "status": "supported",
+              "citations": [
+                {
+                  "evidence_id": "C79e8b846072abb82",
+                  "quote": "Harbor export files are retained for 30 days."
+                }
+              ]
+            }
+          ],
+          "attempts": 2,
+          "repairs": 1,
+          "reviewer_tokens": 94,
+          "usage_complete": true,
+          "evidence_fingerprint": "765da5ba6903fd7ce657ce268b4fb7d6f0fd9dbd77f253cf3229a35bc179324c"
+        },
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review",
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review"
+        ],
+        "snapshot_chunk_ids": [
+          [
+            "harbor-owner"
+          ],
+          [
+            "harbor-owner",
+            "harbor-retention"
+          ]
+        ],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true,
+          "expected_review_calls": true,
+          "expected_repairs": true,
+          "expected_status": true,
+          "false_sufficiency_negative_control": true
+        }
+      }
+    },
+    {
+      "case_id": "missing_comparison_side",
+      "repeat": 1,
+      "answerable": true,
+      "negative_control": false,
+      "order": [
+        "review",
+        "baseline"
+      ],
+      "review": {
+        "variant": "review",
+        "selected_chunk_ids": [
+          "lyra-price",
+          "orion-price"
+        ],
+        "gold_evidence_coverage": 1.0,
+        "gold_sufficient": true,
+        "review_status": "sufficient",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": false,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 2,
+        "corrective_retrievals": 1,
+        "steps_used": 8,
+        "initial_max_steps": 15,
+        "final_max_steps": 8,
+        "explorer_tokens": 104,
+        "reviewer_tokens": 94,
+        "total_tokens": 198,
+        "usage_complete": true,
+        "duration_ms": 3.101,
+        "finish_review_duration_ms": 0,
+        "review_report": {
+          "version": "evidence-review-v1",
+          "status": "sufficient",
+          "reason": "Both prices have evidence.",
+          "coverage": [
+            {
+              "facet_id": "F1",
+              "requirement": "What is the monthly Orion price?",
+              "status": "supported",
+              "citations": [
+                {
+                  "evidence_id": "C1a810790e2b803e9",
+                  "quote": "Orion costs EUR 4 per active seat each month."
+                }
+              ]
+            },
+            {
+              "facet_id": "F2",
+              "requirement": "What is the monthly Lyra price?",
+              "status": "supported",
+              "citations": [
+                {
+                  "evidence_id": "C8791bf2eb8d0297f",
+                  "quote": "Lyra costs EUR 7 per active seat each month."
+                }
+              ]
+            }
+          ],
+          "attempts": 2,
+          "repairs": 1,
+          "reviewer_tokens": 94,
+          "usage_complete": true,
+          "evidence_fingerprint": "35af805a86609547453bd7cd5c97bf6cde69aceea274c9daabd37230218265d4"
+        },
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review",
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review"
+        ],
+        "snapshot_chunk_ids": [
+          [
+            "orion-price"
+          ],
+          [
+            "orion-price",
+            "lyra-price"
+          ]
+        ],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true,
+          "expected_review_calls": true,
+          "expected_repairs": true,
+          "expected_status": true,
+          "false_sufficiency_negative_control": true
+        }
+      },
+      "baseline": {
+        "variant": "baseline",
+        "selected_chunk_ids": [
+          "orion-price"
+        ],
+        "gold_evidence_coverage": 0.5,
+        "gold_sufficient": false,
+        "review_status": "disabled",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": true,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 3,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 0,
+        "total_tokens": 52,
+        "usage_complete": true,
+        "duration_ms": 0.968,
+        "finish_review_duration_ms": 0,
+        "review_report": {},
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true
+        }
+      }
+    },
+    {
+      "case_id": "missing_table",
+      "repeat": 1,
+      "answerable": true,
+      "negative_control": false,
+      "order": [
+        "baseline",
+        "review"
+      ],
+      "baseline": {
+        "variant": "baseline",
+        "selected_chunk_ids": [
+          "tariff-intro"
+        ],
+        "gold_evidence_coverage": 0.0,
+        "gold_sufficient": false,
+        "review_status": "disabled",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": true,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 3,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 0,
+        "total_tokens": 52,
+        "usage_complete": true,
+        "duration_ms": 0.917,
+        "finish_review_duration_ms": 0,
+        "review_report": {},
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true
+        }
+      },
+      "review": {
+        "variant": "review",
+        "selected_chunk_ids": [
+          "tariff-intro",
+          "tariff-table"
+        ],
+        "gold_evidence_coverage": 1.0,
+        "gold_sufficient": true,
+        "review_status": "sufficient",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": false,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 2,
+        "corrective_retrievals": 1,
+        "steps_used": 8,
+        "initial_max_steps": 15,
+        "final_max_steps": 8,
+        "explorer_tokens": 104,
+        "reviewer_tokens": 94,
+        "total_tokens": 198,
+        "usage_complete": true,
+        "duration_ms": 2.895,
+        "finish_review_duration_ms": 0,
+        "review_report": {
+          "version": "evidence-review-v1",
+          "status": "sufficient",
+          "reason": "The table provides both values.",
+          "coverage": [
+            {
+              "facet_id": "F1",
+              "requirement": "What is the West region fee?",
+              "status": "supported",
+              "citations": [
+                {
+                  "evidence_id": "C83ab5bb35b9777de",
+                  "quote": "<td>West</td><td>12</td>"
+                }
+              ]
+            },
+            {
+              "facet_id": "F2",
+              "requirement": "What is the East region fee?",
+              "status": "supported",
+              "citations": [
+                {
+                  "evidence_id": "C83ab5bb35b9777de",
+                  "quote": "<td>East</td><td>18</td>"
+                }
+              ]
+            }
+          ],
+          "attempts": 2,
+          "repairs": 1,
+          "reviewer_tokens": 94,
+          "usage_complete": true,
+          "evidence_fingerprint": "27366cd316e480de3511954fb4f2023aa8655be9cfaf9033f9ef9063f2013799"
+        },
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review",
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review"
+        ],
+        "snapshot_chunk_ids": [
+          [
+            "tariff-intro"
+          ],
+          [
+            "tariff-intro",
+            "tariff-table"
+          ]
+        ],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true,
+          "expected_review_calls": true,
+          "expected_repairs": true,
+          "expected_status": true,
+          "false_sufficiency_negative_control": true
+        }
+      }
+    },
+    {
+      "case_id": "unresolved_conflict",
+      "repeat": 1,
+      "answerable": false,
+      "negative_control": false,
+      "order": [
+        "review",
+        "baseline"
+      ],
+      "review": {
+        "variant": "review",
+        "selected_chunk_ids": [
+          "bulletin-a",
+          "bulletin-b"
+        ],
+        "gold_evidence_coverage": 1.0,
+        "gold_sufficient": false,
+        "review_status": "insufficient",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": false,
+        "nonanswerable_rejected": true,
+        "stop_reason": "finished",
+        "review_calls": 2,
+        "corrective_retrievals": 1,
+        "steps_used": 7,
+        "initial_max_steps": 15,
+        "final_max_steps": 8,
+        "explorer_tokens": 78,
+        "reviewer_tokens": 94,
+        "total_tokens": 172,
+        "usage_complete": true,
+        "duration_ms": 2.681,
+        "finish_review_duration_ms": 0,
+        "review_report": {
+          "version": "evidence-review-v1",
+          "status": "insufficient",
+          "reason": "The equally dated bulletins conflict and neither supersedes the other.",
+          "coverage": [
+            {
+              "facet_id": "F1",
+              "requirement": "What is the authoritative shuttle departure time?",
+              "status": "conflicting",
+              "citations": [
+                {
+                  "evidence_id": "Cb6513b952c12580b",
+                  "quote": "Bulletin A, issued 8 October 2026: the shuttle departs at 09:00."
+                },
+                {
+                  "evidence_id": "C45f25222989bb81f",
+                  "quote": "Bulletin B, issued 8 October 2026: the shuttle departs at 10:00."
+                }
+              ]
+            }
+          ],
+          "attempts": 2,
+          "repairs": 1,
+          "reviewer_tokens": 94,
+          "usage_complete": true,
+          "evidence_fingerprint": "20f3b9a9dbe905a4dc978587ec227b8dc8c217063cad8b1c5b8f2a7a4921632c"
+        },
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review",
+          "corpus.grep",
+          "finish",
+          "evidence_review"
+        ],
+        "snapshot_chunk_ids": [
+          [
+            "bulletin-a",
+            "bulletin-b"
+          ],
+          [
+            "bulletin-a",
+            "bulletin-b"
+          ]
+        ],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true,
+          "expected_review_calls": true,
+          "expected_repairs": true,
+          "expected_status": true,
+          "false_sufficiency_negative_control": true
+        }
+      },
+      "baseline": {
+        "variant": "baseline",
+        "selected_chunk_ids": [
+          "bulletin-a",
+          "bulletin-b"
+        ],
+        "gold_evidence_coverage": 1.0,
+        "gold_sufficient": false,
+        "review_status": "disabled",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": false,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 3,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 0,
+        "total_tokens": 52,
+        "usage_complete": true,
+        "duration_ms": 1.022,
+        "finish_review_duration_ms": 0,
+        "review_report": {},
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true
+        }
+      }
+    },
+    {
+      "case_id": "outdated_evidence",
+      "repeat": 1,
+      "answerable": true,
+      "negative_control": false,
+      "order": [
+        "baseline",
+        "review"
+      ],
+      "baseline": {
+        "variant": "baseline",
+        "selected_chunk_ids": [
+          "policy-2024"
+        ],
+        "gold_evidence_coverage": 0.0,
+        "gold_sufficient": false,
+        "review_status": "disabled",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": true,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 3,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 0,
+        "total_tokens": 52,
+        "usage_complete": true,
+        "duration_ms": 0.958,
+        "finish_review_duration_ms": 0,
+        "review_report": {},
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true
+        }
+      },
+      "review": {
+        "variant": "review",
+        "selected_chunk_ids": [
+          "policy-2024",
+          "policy-2026"
+        ],
+        "gold_evidence_coverage": 1.0,
+        "gold_sufficient": true,
+        "review_status": "sufficient",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": false,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 2,
+        "corrective_retrievals": 1,
+        "steps_used": 8,
+        "initial_max_steps": 15,
+        "final_max_steps": 8,
+        "explorer_tokens": 104,
+        "reviewer_tokens": 94,
+        "total_tokens": 198,
+        "usage_complete": true,
+        "duration_ms": 2.884,
+        "finish_review_duration_ms": 0,
+        "review_report": {
+          "version": "evidence-review-v1",
+          "status": "sufficient",
+          "reason": "The current policy states the limit and supersession.",
+          "coverage": [
+            {
+              "facet_id": "F1",
+              "requirement": "What retention limit is effective on 9 October 2026?",
+              "status": "supported",
+              "citations": [
+                {
+                  "evidence_id": "C345845f25cf2264d",
+                  "quote": "Policy effective 1 January 2026, superseding the 2024 policy: trial exports are retained for 30 days."
+                }
+              ]
+            }
+          ],
+          "attempts": 2,
+          "repairs": 1,
+          "reviewer_tokens": 94,
+          "usage_complete": true,
+          "evidence_fingerprint": "4eb2a218a7219a81bcb98d8ff808fbba6bc846dffca04348ae2e796d7c241661"
+        },
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review",
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review"
+        ],
+        "snapshot_chunk_ids": [
+          [
+            "policy-2024"
+          ],
+          [
+            "policy-2024",
+            "policy-2026"
+          ]
+        ],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true,
+          "expected_review_calls": true,
+          "expected_repairs": true,
+          "expected_status": true,
+          "false_sufficiency_negative_control": true
+        }
+      }
+    },
+    {
+      "case_id": "no_answer",
+      "repeat": 1,
+      "answerable": false,
+      "negative_control": false,
+      "order": [
+        "review",
+        "baseline"
+      ],
+      "review": {
+        "variant": "review",
+        "selected_chunk_ids": [
+          "harbor-overview"
+        ],
+        "gold_evidence_coverage": null,
+        "gold_sufficient": false,
+        "review_status": "insufficient",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": false,
+        "nonanswerable_rejected": true,
+        "stop_reason": "finished",
+        "review_calls": 2,
+        "corrective_retrievals": 1,
+        "steps_used": 7,
+        "initial_max_steps": 15,
+        "final_max_steps": 8,
+        "explorer_tokens": 78,
+        "reviewer_tokens": 94,
+        "total_tokens": 172,
+        "usage_complete": true,
+        "duration_ms": 2.351,
+        "finish_review_duration_ms": 0,
+        "review_report": {
+          "version": "evidence-review-v1",
+          "status": "insufficient",
+          "reason": "The corpus supplies no registration number.",
+          "coverage": [
+            {
+              "facet_id": "F1",
+              "requirement": "What is the Harbor patent registration number?",
+              "status": "missing",
+              "citations": []
+            }
+          ],
+          "attempts": 2,
+          "repairs": 1,
+          "reviewer_tokens": 94,
+          "usage_complete": true,
+          "evidence_fingerprint": "bd6f1b22c98fdde2fb61487183ed089e64684885700c9398e53e85e80c97be35"
+        },
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review",
+          "corpus.grep",
+          "finish",
+          "evidence_review"
+        ],
+        "snapshot_chunk_ids": [
+          [
+            "harbor-overview"
+          ],
+          [
+            "harbor-overview"
+          ]
+        ],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true,
+          "expected_review_calls": true,
+          "expected_repairs": true,
+          "expected_status": true,
+          "false_sufficiency_negative_control": true
+        }
+      },
+      "baseline": {
+        "variant": "baseline",
+        "selected_chunk_ids": [
+          "harbor-overview"
+        ],
+        "gold_evidence_coverage": null,
+        "gold_sufficient": false,
+        "review_status": "disabled",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": false,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 3,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 0,
+        "total_tokens": 52,
+        "usage_complete": true,
+        "duration_ms": 1.144,
+        "finish_review_duration_ms": 0,
+        "review_report": {},
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true
+        }
+      }
+    },
+    {
+      "case_id": "empty_pool",
+      "repeat": 1,
+      "answerable": true,
+      "negative_control": false,
+      "order": [
+        "baseline",
+        "review"
+      ],
+      "baseline": {
+        "variant": "baseline",
+        "selected_chunk_ids": [],
+        "gold_evidence_coverage": 0.0,
+        "gold_sufficient": false,
+        "review_status": "disabled",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": true,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 2,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 26,
+        "reviewer_tokens": 0,
+        "total_tokens": 26,
+        "usage_complete": true,
+        "duration_ms": 0.574,
+        "finish_review_duration_ms": 0,
+        "review_report": {},
+        "trace_actions": [
+          "corpus.grep",
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true
+        }
+      },
+      "review": {
+        "variant": "review",
+        "selected_chunk_ids": [
+          "harbor-owner"
+        ],
+        "gold_evidence_coverage": 1.0,
+        "gold_sufficient": true,
+        "review_status": "sufficient",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": false,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 1,
+        "corrective_retrievals": 1,
+        "steps_used": 6,
+        "initial_max_steps": 15,
+        "final_max_steps": 6,
+        "explorer_tokens": 78,
+        "reviewer_tokens": 47,
+        "total_tokens": 125,
+        "usage_complete": true,
+        "duration_ms": 2.129,
+        "finish_review_duration_ms": 0,
+        "review_report": {
+          "version": "evidence-review-v1",
+          "status": "sufficient",
+          "reason": "The source names the approval owner.",
+          "coverage": [
+            {
+              "facet_id": "F1",
+              "requirement": "Who signs Harbor pilot approval?",
+              "status": "supported",
+              "citations": [
+                {
+                  "evidence_id": "Cfba7f8d2ccd0ea1f",
+                  "quote": "Harbor pilot approval is signed by Operations."
+                }
+              ]
+            }
+          ],
+          "attempts": 1,
+          "repairs": 1,
+          "reviewer_tokens": 47,
+          "usage_complete": true,
+          "evidence_fingerprint": "dc25427cc8a070a9cf22f464d3eb71edcd467dbde3c21ad587c5cc8bee214eda"
+        },
+        "trace_actions": [
+          "corpus.grep",
+          "finish",
+          "evidence_review",
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review"
+        ],
+        "snapshot_chunk_ids": [
+          [],
+          [
+            "harbor-owner"
+          ]
+        ],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true,
+          "expected_review_calls": true,
+          "expected_repairs": true,
+          "expected_status": true,
+          "false_sufficiency_negative_control": true
+        }
+      }
+    },
+    {
+      "case_id": "reviewer_outage",
+      "repeat": 1,
+      "answerable": true,
+      "negative_control": false,
+      "order": [
+        "review",
+        "baseline"
+      ],
+      "review": {
+        "variant": "review",
+        "selected_chunk_ids": [
+          "harbor-owner"
+        ],
+        "gold_evidence_coverage": 0.5,
+        "gold_sufficient": false,
+        "review_status": "unverified",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": true,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 1,
+        "corrective_retrievals": 0,
+        "steps_used": 4,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 0,
+        "total_tokens": 52,
+        "usage_complete": false,
+        "duration_ms": 1.418,
+        "finish_review_duration_ms": 0,
+        "review_report": {
+          "version": "evidence-review-v1",
+          "status": "unverified",
+          "reason": "Evidence review could not be completed.",
+          "coverage": [],
+          "attempts": 1,
+          "repairs": 0,
+          "reviewer_tokens": 0,
+          "usage_complete": false,
+          "evidence_fingerprint": "0c2915f2a5d44bd13c51090f33bb9cf078eae70316e85f1ee49df811ec8346f0"
+        },
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review"
+        ],
+        "snapshot_chunk_ids": [
+          [
+            "harbor-owner"
+          ]
+        ],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true,
+          "expected_review_calls": true,
+          "expected_repairs": true,
+          "expected_status": true,
+          "false_sufficiency_negative_control": true
+        }
+      },
+      "baseline": {
+        "variant": "baseline",
+        "selected_chunk_ids": [
+          "harbor-owner"
+        ],
+        "gold_evidence_coverage": 0.5,
+        "gold_sufficient": false,
+        "review_status": "disabled",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": true,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 3,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 0,
+        "total_tokens": 52,
+        "usage_complete": true,
+        "duration_ms": 0.937,
+        "finish_review_duration_ms": 0,
+        "review_report": {},
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true
+        }
+      }
+    },
+    {
+      "case_id": "malformed_verdict",
+      "repeat": 1,
+      "answerable": true,
+      "negative_control": false,
+      "order": [
+        "baseline",
+        "review"
+      ],
+      "baseline": {
+        "variant": "baseline",
+        "selected_chunk_ids": [
+          "harbor-owner"
+        ],
+        "gold_evidence_coverage": 0.5,
+        "gold_sufficient": false,
+        "review_status": "disabled",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": true,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 3,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 0,
+        "total_tokens": 52,
+        "usage_complete": true,
+        "duration_ms": 1.041,
+        "finish_review_duration_ms": 0,
+        "review_report": {},
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true
+        }
+      },
+      "review": {
+        "variant": "review",
+        "selected_chunk_ids": [
+          "harbor-owner"
+        ],
+        "gold_evidence_coverage": 0.5,
+        "gold_sufficient": false,
+        "review_status": "unverified",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": true,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 1,
+        "corrective_retrievals": 0,
+        "steps_used": 4,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 47,
+        "total_tokens": 99,
+        "usage_complete": true,
+        "duration_ms": 1.415,
+        "finish_review_duration_ms": 0,
+        "review_report": {
+          "version": "evidence-review-v1",
+          "status": "unverified",
+          "reason": "The reviewer assessment or evidence citations were invalid.",
+          "coverage": [],
+          "attempts": 1,
+          "repairs": 0,
+          "reviewer_tokens": 47,
+          "usage_complete": true,
+          "evidence_fingerprint": "271bdf092177fc4878ed34c4c746bf54a831a82f2a3811198a5d56b1b616ef25"
+        },
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review"
+        ],
+        "snapshot_chunk_ids": [
+          [
+            "harbor-owner"
+          ]
+        ],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true,
+          "expected_review_calls": true,
+          "expected_repairs": true,
+          "expected_status": true,
+          "false_sufficiency_negative_control": true
+        }
+      }
+    },
+    {
+      "case_id": "exhausted_steps",
+      "repeat": 1,
+      "answerable": true,
+      "negative_control": false,
+      "order": [
+        "review",
+        "baseline"
+      ],
+      "review": {
+        "variant": "review",
+        "selected_chunk_ids": [
+          "harbor-owner"
+        ],
+        "gold_evidence_coverage": 0.5,
+        "gold_sufficient": false,
+        "review_status": "unverified",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": false,
+        "nonanswerable_rejected": false,
+        "stop_reason": "budget_max_steps",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 3,
+        "initial_max_steps": 3,
+        "final_max_steps": 3,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 0,
+        "total_tokens": 52,
+        "usage_complete": true,
+        "duration_ms": 1.125,
+        "finish_review_duration_ms": 0,
+        "review_report": {
+          "version": "evidence-review-v1",
+          "status": "unverified",
+          "reason": "Exploration ended before final evidence was verified.",
+          "coverage": [],
+          "attempts": 0,
+          "repairs": 0,
+          "reviewer_tokens": 0,
+          "usage_complete": true,
+          "evidence_fingerprint": "8eff986889b1e138fd2c08598973627b89503a4770589eae5ab7cabba9178aa8"
+        },
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true,
+          "expected_review_calls": true,
+          "expected_repairs": true,
+          "expected_status": true,
+          "false_sufficiency_negative_control": true
+        }
+      },
+      "baseline": {
+        "variant": "baseline",
+        "selected_chunk_ids": [
+          "harbor-owner"
+        ],
+        "gold_evidence_coverage": 0.5,
+        "gold_sufficient": false,
+        "review_status": "disabled",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": true,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 3,
+        "initial_max_steps": 3,
+        "final_max_steps": 3,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 0,
+        "total_tokens": 52,
+        "usage_complete": true,
+        "duration_ms": 0.902,
+        "finish_review_duration_ms": 0,
+        "review_report": {},
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true
+        }
+      }
+    },
+    {
+      "case_id": "exhausted_wall_clock",
+      "repeat": 1,
+      "answerable": true,
+      "negative_control": false,
+      "order": [
+        "baseline",
+        "review"
+      ],
+      "baseline": {
+        "variant": "baseline",
+        "selected_chunk_ids": [],
+        "gold_evidence_coverage": 0.0,
+        "gold_sufficient": false,
+        "review_status": "disabled",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": false,
+        "nonanswerable_rejected": false,
+        "stop_reason": "budget_wall_clock",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 1,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 13,
+        "reviewer_tokens": 0,
+        "total_tokens": 13,
+        "usage_complete": true,
+        "duration_ms": 0.36,
+        "finish_review_duration_ms": 0,
+        "review_report": {},
+        "trace_actions": [
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true
+        }
+      },
+      "review": {
+        "variant": "review",
+        "selected_chunk_ids": [],
+        "gold_evidence_coverage": 0.0,
+        "gold_sufficient": false,
+        "review_status": "unverified",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": false,
+        "nonanswerable_rejected": false,
+        "stop_reason": "budget_wall_clock",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 0,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 0,
+        "reviewer_tokens": 0,
+        "total_tokens": 0,
+        "usage_complete": true,
+        "duration_ms": 0.196,
+        "finish_review_duration_ms": 0,
+        "review_report": {
+          "version": "evidence-review-v1",
+          "status": "unverified",
+          "reason": "Exploration ended before final evidence was verified.",
+          "coverage": [],
+          "attempts": 0,
+          "repairs": 0,
+          "reviewer_tokens": 0,
+          "usage_complete": true,
+          "evidence_fingerprint": "126a1de77b7cfde3697c8f313bbe59cd5c3e63709058a5544198223b85d17ba5"
+        },
+        "trace_actions": [],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true,
+          "expected_review_calls": true,
+          "expected_repairs": true,
+          "expected_status": true,
+          "false_sufficiency_negative_control": true
+        }
+      }
+    },
+    {
+      "case_id": "one_repair_still_incomplete",
+      "repeat": 1,
+      "answerable": true,
+      "negative_control": false,
+      "order": [
+        "review",
+        "baseline"
+      ],
+      "review": {
+        "variant": "review",
+        "selected_chunk_ids": [
+          "harbor-owner",
+          "harbor-retention"
+        ],
+        "gold_evidence_coverage": 0.6666666666666666,
+        "gold_sufficient": false,
+        "review_status": "insufficient",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": true,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 2,
+        "corrective_retrievals": 1,
+        "steps_used": 8,
+        "initial_max_steps": 15,
+        "final_max_steps": 8,
+        "explorer_tokens": 104,
+        "reviewer_tokens": 94,
+        "total_tokens": 198,
+        "usage_complete": true,
+        "duration_ms": 3.074,
+        "finish_review_duration_ms": 0,
+        "review_report": {
+          "version": "evidence-review-v1",
+          "status": "insufficient",
+          "reason": "The archive destination is still missing.",
+          "coverage": [
+            {
+              "facet_id": "F1",
+              "requirement": "Who signs Harbor pilot approval?",
+              "status": "supported",
+              "citations": [
+                {
+                  "evidence_id": "C3074ebbbace3b24f",
+                  "quote": "Harbor pilot approval is signed by Operations."
+                }
+              ]
+            },
+            {
+              "facet_id": "F2",
+              "requirement": "What is the export retention limit?",
+              "status": "supported",
+              "citations": [
+                {
+                  "evidence_id": "C2214d6132e058d84",
+                  "quote": "Harbor export files are retained for 30 days."
+                }
+              ]
+            },
+            {
+              "facet_id": "F3",
+              "requirement": "Where are archived exports stored?",
+              "status": "missing",
+              "citations": []
+            }
+          ],
+          "attempts": 2,
+          "repairs": 1,
+          "reviewer_tokens": 94,
+          "usage_complete": true,
+          "evidence_fingerprint": "c37dede446b1182e0b018cc640bcc685f227e6b754553654c6366188da9efa86"
+        },
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review",
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review"
+        ],
+        "snapshot_chunk_ids": [
+          [
+            "harbor-owner"
+          ],
+          [
+            "harbor-owner",
+            "harbor-retention"
+          ]
+        ],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true,
+          "expected_review_calls": true,
+          "expected_repairs": true,
+          "expected_status": true,
+          "false_sufficiency_negative_control": true
+        }
+      },
+      "baseline": {
+        "variant": "baseline",
+        "selected_chunk_ids": [
+          "harbor-owner"
+        ],
+        "gold_evidence_coverage": 0.3333333333333333,
+        "gold_sufficient": false,
+        "review_status": "disabled",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": true,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 3,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 0,
+        "total_tokens": 52,
+        "usage_complete": true,
+        "duration_ms": 0.947,
+        "finish_review_duration_ms": 0,
+        "review_report": {},
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true
+        }
+      }
+    },
+    {
+      "case_id": "false_sufficiency_negative_control",
+      "repeat": 1,
+      "answerable": true,
+      "negative_control": true,
+      "order": [
+        "baseline",
+        "review"
+      ],
+      "baseline": {
+        "variant": "baseline",
+        "selected_chunk_ids": [
+          "harbor-owner"
+        ],
+        "gold_evidence_coverage": 0.5,
+        "gold_sufficient": false,
+        "review_status": "disabled",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": true,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 3,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 0,
+        "total_tokens": 52,
+        "usage_complete": true,
+        "duration_ms": 0.937,
+        "finish_review_duration_ms": 0,
+        "review_report": {},
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true
+        }
+      },
+      "review": {
+        "variant": "review",
+        "selected_chunk_ids": [
+          "harbor-owner"
+        ],
+        "gold_evidence_coverage": 0.5,
+        "gold_sufficient": false,
+        "review_status": "sufficient",
+        "false_sufficient": true,
+        "answerable_finished_without_sufficient_gold": true,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 1,
+        "corrective_retrievals": 0,
+        "steps_used": 4,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 47,
+        "total_tokens": 99,
+        "usage_complete": true,
+        "duration_ms": 1.49,
+        "finish_review_duration_ms": 0,
+        "review_report": {
+          "version": "evidence-review-v1",
+          "status": "sufficient",
+          "reason": "Intentionally flawed fixture reviewer omits the retention requirement.",
+          "coverage": [
+            {
+              "facet_id": "F1",
+              "requirement": "Who signs Harbor pilot approval?",
+              "status": "supported",
+              "citations": [
+                {
+                  "evidence_id": "C9d2ee384e8a1a657",
+                  "quote": "Harbor pilot approval is signed by Operations."
+                }
+              ]
+            }
+          ],
+          "attempts": 1,
+          "repairs": 0,
+          "reviewer_tokens": 47,
+          "usage_complete": true,
+          "evidence_fingerprint": "a4c8ba620cc99ba3bc1ab86a22f415b39777fa88aa3f123cbd06c41b6eac4b35"
+        },
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review"
+        ],
+        "snapshot_chunk_ids": [
+          [
+            "harbor-owner"
+          ]
+        ],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true,
+          "expected_review_calls": true,
+          "expected_repairs": true,
+          "expected_status": true,
+          "false_sufficiency_negative_control": true
+        }
+      }
+    },
+    {
+      "case_id": "complete_control",
+      "repeat": 2,
+      "answerable": true,
+      "negative_control": false,
+      "order": [
+        "baseline",
+        "review"
+      ],
+      "baseline": {
+        "variant": "baseline",
+        "selected_chunk_ids": [
+          "harbor-owner",
+          "harbor-retention"
+        ],
+        "gold_evidence_coverage": 1.0,
+        "gold_sufficient": true,
+        "review_status": "disabled",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": false,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 3,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 0,
+        "total_tokens": 52,
+        "usage_complete": true,
+        "duration_ms": 0.933,
+        "finish_review_duration_ms": 0,
+        "review_report": {},
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true
+        }
+      },
+      "review": {
+        "variant": "review",
+        "selected_chunk_ids": [
+          "harbor-owner",
+          "harbor-retention"
+        ],
+        "gold_evidence_coverage": 1.0,
+        "gold_sufficient": true,
+        "review_status": "sufficient",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": false,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 1,
+        "corrective_retrievals": 0,
+        "steps_used": 4,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 47,
+        "total_tokens": 99,
+        "usage_complete": true,
+        "duration_ms": 1.761,
+        "finish_review_duration_ms": 0,
+        "review_report": {
+          "version": "evidence-review-v1",
+          "status": "sufficient",
+          "reason": "Both requirements have source evidence.",
+          "coverage": [
+            {
+              "facet_id": "F1",
+              "requirement": "Who signs Harbor pilot approval?",
+              "status": "supported",
+              "citations": [
+                {
+                  "evidence_id": "C31d8f0649cf4d5f4",
+                  "quote": "Harbor pilot approval is signed by Operations."
+                }
+              ]
+            },
+            {
+              "facet_id": "F2",
+              "requirement": "What is the export retention limit?",
+              "status": "supported",
+              "citations": [
+                {
+                  "evidence_id": "Ce6c3a397230e164e",
+                  "quote": "Harbor export files are retained for 30 days."
+                }
+              ]
+            }
+          ],
+          "attempts": 1,
+          "repairs": 0,
+          "reviewer_tokens": 47,
+          "usage_complete": true,
+          "evidence_fingerprint": "26320a0906f85077bbc15b46bb1971c06b5a36e4ce3cd1c5f4514663c31fd4cc"
+        },
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review"
+        ],
+        "snapshot_chunk_ids": [
+          [
+            "harbor-owner",
+            "harbor-retention"
+          ]
+        ],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true,
+          "expected_review_calls": true,
+          "expected_repairs": true,
+          "expected_status": true,
+          "false_sufficiency_negative_control": true
+        }
+      }
+    },
+    {
+      "case_id": "multi_dimension",
+      "repeat": 2,
+      "answerable": true,
+      "negative_control": false,
+      "order": [
+        "review",
+        "baseline"
+      ],
+      "review": {
+        "variant": "review",
+        "selected_chunk_ids": [
+          "harbor-owner",
+          "harbor-retention"
+        ],
+        "gold_evidence_coverage": 1.0,
+        "gold_sufficient": true,
+        "review_status": "sufficient",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": false,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 2,
+        "corrective_retrievals": 1,
+        "steps_used": 8,
+        "initial_max_steps": 15,
+        "final_max_steps": 8,
+        "explorer_tokens": 104,
+        "reviewer_tokens": 94,
+        "total_tokens": 198,
+        "usage_complete": true,
+        "duration_ms": 2.892,
+        "finish_review_duration_ms": 0,
+        "review_report": {
+          "version": "evidence-review-v1",
+          "status": "sufficient",
+          "reason": "Both requirements have source evidence.",
+          "coverage": [
+            {
+              "facet_id": "F1",
+              "requirement": "Who signs Harbor pilot approval?",
+              "status": "supported",
+              "citations": [
+                {
+                  "evidence_id": "C2f547b49f08ae555",
+                  "quote": "Harbor pilot approval is signed by Operations."
+                }
+              ]
+            },
+            {
+              "facet_id": "F2",
+              "requirement": "What is the export retention limit?",
+              "status": "supported",
+              "citations": [
+                {
+                  "evidence_id": "C79e8b846072abb82",
+                  "quote": "Harbor export files are retained for 30 days."
+                }
+              ]
+            }
+          ],
+          "attempts": 2,
+          "repairs": 1,
+          "reviewer_tokens": 94,
+          "usage_complete": true,
+          "evidence_fingerprint": "765da5ba6903fd7ce657ce268b4fb7d6f0fd9dbd77f253cf3229a35bc179324c"
+        },
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review",
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review"
+        ],
+        "snapshot_chunk_ids": [
+          [
+            "harbor-owner"
+          ],
+          [
+            "harbor-owner",
+            "harbor-retention"
+          ]
+        ],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true,
+          "expected_review_calls": true,
+          "expected_repairs": true,
+          "expected_status": true,
+          "false_sufficiency_negative_control": true
+        }
+      },
+      "baseline": {
+        "variant": "baseline",
+        "selected_chunk_ids": [
+          "harbor-owner"
+        ],
+        "gold_evidence_coverage": 0.5,
+        "gold_sufficient": false,
+        "review_status": "disabled",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": true,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 3,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 0,
+        "total_tokens": 52,
+        "usage_complete": true,
+        "duration_ms": 0.981,
+        "finish_review_duration_ms": 0,
+        "review_report": {},
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true
+        }
+      }
+    },
+    {
+      "case_id": "missing_comparison_side",
+      "repeat": 2,
+      "answerable": true,
+      "negative_control": false,
+      "order": [
+        "baseline",
+        "review"
+      ],
+      "baseline": {
+        "variant": "baseline",
+        "selected_chunk_ids": [
+          "orion-price"
+        ],
+        "gold_evidence_coverage": 0.5,
+        "gold_sufficient": false,
+        "review_status": "disabled",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": true,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 3,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 0,
+        "total_tokens": 52,
+        "usage_complete": true,
+        "duration_ms": 0.949,
+        "finish_review_duration_ms": 0,
+        "review_report": {},
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true
+        }
+      },
+      "review": {
+        "variant": "review",
+        "selected_chunk_ids": [
+          "lyra-price",
+          "orion-price"
+        ],
+        "gold_evidence_coverage": 1.0,
+        "gold_sufficient": true,
+        "review_status": "sufficient",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": false,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 2,
+        "corrective_retrievals": 1,
+        "steps_used": 8,
+        "initial_max_steps": 15,
+        "final_max_steps": 8,
+        "explorer_tokens": 104,
+        "reviewer_tokens": 94,
+        "total_tokens": 198,
+        "usage_complete": true,
+        "duration_ms": 3.045,
+        "finish_review_duration_ms": 0,
+        "review_report": {
+          "version": "evidence-review-v1",
+          "status": "sufficient",
+          "reason": "Both prices have evidence.",
+          "coverage": [
+            {
+              "facet_id": "F1",
+              "requirement": "What is the monthly Orion price?",
+              "status": "supported",
+              "citations": [
+                {
+                  "evidence_id": "C1a810790e2b803e9",
+                  "quote": "Orion costs EUR 4 per active seat each month."
+                }
+              ]
+            },
+            {
+              "facet_id": "F2",
+              "requirement": "What is the monthly Lyra price?",
+              "status": "supported",
+              "citations": [
+                {
+                  "evidence_id": "C8791bf2eb8d0297f",
+                  "quote": "Lyra costs EUR 7 per active seat each month."
+                }
+              ]
+            }
+          ],
+          "attempts": 2,
+          "repairs": 1,
+          "reviewer_tokens": 94,
+          "usage_complete": true,
+          "evidence_fingerprint": "35af805a86609547453bd7cd5c97bf6cde69aceea274c9daabd37230218265d4"
+        },
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review",
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review"
+        ],
+        "snapshot_chunk_ids": [
+          [
+            "orion-price"
+          ],
+          [
+            "orion-price",
+            "lyra-price"
+          ]
+        ],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true,
+          "expected_review_calls": true,
+          "expected_repairs": true,
+          "expected_status": true,
+          "false_sufficiency_negative_control": true
+        }
+      }
+    },
+    {
+      "case_id": "missing_table",
+      "repeat": 2,
+      "answerable": true,
+      "negative_control": false,
+      "order": [
+        "review",
+        "baseline"
+      ],
+      "review": {
+        "variant": "review",
+        "selected_chunk_ids": [
+          "tariff-intro",
+          "tariff-table"
+        ],
+        "gold_evidence_coverage": 1.0,
+        "gold_sufficient": true,
+        "review_status": "sufficient",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": false,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 2,
+        "corrective_retrievals": 1,
+        "steps_used": 8,
+        "initial_max_steps": 15,
+        "final_max_steps": 8,
+        "explorer_tokens": 104,
+        "reviewer_tokens": 94,
+        "total_tokens": 198,
+        "usage_complete": true,
+        "duration_ms": 2.863,
+        "finish_review_duration_ms": 0,
+        "review_report": {
+          "version": "evidence-review-v1",
+          "status": "sufficient",
+          "reason": "The table provides both values.",
+          "coverage": [
+            {
+              "facet_id": "F1",
+              "requirement": "What is the West region fee?",
+              "status": "supported",
+              "citations": [
+                {
+                  "evidence_id": "C83ab5bb35b9777de",
+                  "quote": "<td>West</td><td>12</td>"
+                }
+              ]
+            },
+            {
+              "facet_id": "F2",
+              "requirement": "What is the East region fee?",
+              "status": "supported",
+              "citations": [
+                {
+                  "evidence_id": "C83ab5bb35b9777de",
+                  "quote": "<td>East</td><td>18</td>"
+                }
+              ]
+            }
+          ],
+          "attempts": 2,
+          "repairs": 1,
+          "reviewer_tokens": 94,
+          "usage_complete": true,
+          "evidence_fingerprint": "27366cd316e480de3511954fb4f2023aa8655be9cfaf9033f9ef9063f2013799"
+        },
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review",
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review"
+        ],
+        "snapshot_chunk_ids": [
+          [
+            "tariff-intro"
+          ],
+          [
+            "tariff-intro",
+            "tariff-table"
+          ]
+        ],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true,
+          "expected_review_calls": true,
+          "expected_repairs": true,
+          "expected_status": true,
+          "false_sufficiency_negative_control": true
+        }
+      },
+      "baseline": {
+        "variant": "baseline",
+        "selected_chunk_ids": [
+          "tariff-intro"
+        ],
+        "gold_evidence_coverage": 0.0,
+        "gold_sufficient": false,
+        "review_status": "disabled",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": true,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 3,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 0,
+        "total_tokens": 52,
+        "usage_complete": true,
+        "duration_ms": 0.976,
+        "finish_review_duration_ms": 0,
+        "review_report": {},
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true
+        }
+      }
+    },
+    {
+      "case_id": "unresolved_conflict",
+      "repeat": 2,
+      "answerable": false,
+      "negative_control": false,
+      "order": [
+        "baseline",
+        "review"
+      ],
+      "baseline": {
+        "variant": "baseline",
+        "selected_chunk_ids": [
+          "bulletin-a",
+          "bulletin-b"
+        ],
+        "gold_evidence_coverage": 1.0,
+        "gold_sufficient": false,
+        "review_status": "disabled",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": false,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 3,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 0,
+        "total_tokens": 52,
+        "usage_complete": true,
+        "duration_ms": 1.034,
+        "finish_review_duration_ms": 0,
+        "review_report": {},
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true
+        }
+      },
+      "review": {
+        "variant": "review",
+        "selected_chunk_ids": [
+          "bulletin-a",
+          "bulletin-b"
+        ],
+        "gold_evidence_coverage": 1.0,
+        "gold_sufficient": false,
+        "review_status": "insufficient",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": false,
+        "nonanswerable_rejected": true,
+        "stop_reason": "finished",
+        "review_calls": 2,
+        "corrective_retrievals": 1,
+        "steps_used": 7,
+        "initial_max_steps": 15,
+        "final_max_steps": 8,
+        "explorer_tokens": 78,
+        "reviewer_tokens": 94,
+        "total_tokens": 172,
+        "usage_complete": true,
+        "duration_ms": 2.712,
+        "finish_review_duration_ms": 0,
+        "review_report": {
+          "version": "evidence-review-v1",
+          "status": "insufficient",
+          "reason": "The equally dated bulletins conflict and neither supersedes the other.",
+          "coverage": [
+            {
+              "facet_id": "F1",
+              "requirement": "What is the authoritative shuttle departure time?",
+              "status": "conflicting",
+              "citations": [
+                {
+                  "evidence_id": "Cb6513b952c12580b",
+                  "quote": "Bulletin A, issued 8 October 2026: the shuttle departs at 09:00."
+                },
+                {
+                  "evidence_id": "C45f25222989bb81f",
+                  "quote": "Bulletin B, issued 8 October 2026: the shuttle departs at 10:00."
+                }
+              ]
+            }
+          ],
+          "attempts": 2,
+          "repairs": 1,
+          "reviewer_tokens": 94,
+          "usage_complete": true,
+          "evidence_fingerprint": "20f3b9a9dbe905a4dc978587ec227b8dc8c217063cad8b1c5b8f2a7a4921632c"
+        },
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review",
+          "corpus.grep",
+          "finish",
+          "evidence_review"
+        ],
+        "snapshot_chunk_ids": [
+          [
+            "bulletin-a",
+            "bulletin-b"
+          ],
+          [
+            "bulletin-a",
+            "bulletin-b"
+          ]
+        ],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true,
+          "expected_review_calls": true,
+          "expected_repairs": true,
+          "expected_status": true,
+          "false_sufficiency_negative_control": true
+        }
+      }
+    },
+    {
+      "case_id": "outdated_evidence",
+      "repeat": 2,
+      "answerable": true,
+      "negative_control": false,
+      "order": [
+        "review",
+        "baseline"
+      ],
+      "review": {
+        "variant": "review",
+        "selected_chunk_ids": [
+          "policy-2024",
+          "policy-2026"
+        ],
+        "gold_evidence_coverage": 1.0,
+        "gold_sufficient": true,
+        "review_status": "sufficient",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": false,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 2,
+        "corrective_retrievals": 1,
+        "steps_used": 8,
+        "initial_max_steps": 15,
+        "final_max_steps": 8,
+        "explorer_tokens": 104,
+        "reviewer_tokens": 94,
+        "total_tokens": 198,
+        "usage_complete": true,
+        "duration_ms": 2.864,
+        "finish_review_duration_ms": 0,
+        "review_report": {
+          "version": "evidence-review-v1",
+          "status": "sufficient",
+          "reason": "The current policy states the limit and supersession.",
+          "coverage": [
+            {
+              "facet_id": "F1",
+              "requirement": "What retention limit is effective on 9 October 2026?",
+              "status": "supported",
+              "citations": [
+                {
+                  "evidence_id": "C345845f25cf2264d",
+                  "quote": "Policy effective 1 January 2026, superseding the 2024 policy: trial exports are retained for 30 days."
+                }
+              ]
+            }
+          ],
+          "attempts": 2,
+          "repairs": 1,
+          "reviewer_tokens": 94,
+          "usage_complete": true,
+          "evidence_fingerprint": "4eb2a218a7219a81bcb98d8ff808fbba6bc846dffca04348ae2e796d7c241661"
+        },
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review",
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review"
+        ],
+        "snapshot_chunk_ids": [
+          [
+            "policy-2024"
+          ],
+          [
+            "policy-2024",
+            "policy-2026"
+          ]
+        ],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true,
+          "expected_review_calls": true,
+          "expected_repairs": true,
+          "expected_status": true,
+          "false_sufficiency_negative_control": true
+        }
+      },
+      "baseline": {
+        "variant": "baseline",
+        "selected_chunk_ids": [
+          "policy-2024"
+        ],
+        "gold_evidence_coverage": 0.0,
+        "gold_sufficient": false,
+        "review_status": "disabled",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": true,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 3,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 0,
+        "total_tokens": 52,
+        "usage_complete": true,
+        "duration_ms": 0.978,
+        "finish_review_duration_ms": 0,
+        "review_report": {},
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true
+        }
+      }
+    },
+    {
+      "case_id": "no_answer",
+      "repeat": 2,
+      "answerable": false,
+      "negative_control": false,
+      "order": [
+        "baseline",
+        "review"
+      ],
+      "baseline": {
+        "variant": "baseline",
+        "selected_chunk_ids": [
+          "harbor-overview"
+        ],
+        "gold_evidence_coverage": null,
+        "gold_sufficient": false,
+        "review_status": "disabled",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": false,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 3,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 0,
+        "total_tokens": 52,
+        "usage_complete": true,
+        "duration_ms": 0.921,
+        "finish_review_duration_ms": 0,
+        "review_report": {},
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true
+        }
+      },
+      "review": {
+        "variant": "review",
+        "selected_chunk_ids": [
+          "harbor-overview"
+        ],
+        "gold_evidence_coverage": null,
+        "gold_sufficient": false,
+        "review_status": "insufficient",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": false,
+        "nonanswerable_rejected": true,
+        "stop_reason": "finished",
+        "review_calls": 2,
+        "corrective_retrievals": 1,
+        "steps_used": 7,
+        "initial_max_steps": 15,
+        "final_max_steps": 8,
+        "explorer_tokens": 78,
+        "reviewer_tokens": 94,
+        "total_tokens": 172,
+        "usage_complete": true,
+        "duration_ms": 2.293,
+        "finish_review_duration_ms": 0,
+        "review_report": {
+          "version": "evidence-review-v1",
+          "status": "insufficient",
+          "reason": "The corpus supplies no registration number.",
+          "coverage": [
+            {
+              "facet_id": "F1",
+              "requirement": "What is the Harbor patent registration number?",
+              "status": "missing",
+              "citations": []
+            }
+          ],
+          "attempts": 2,
+          "repairs": 1,
+          "reviewer_tokens": 94,
+          "usage_complete": true,
+          "evidence_fingerprint": "bd6f1b22c98fdde2fb61487183ed089e64684885700c9398e53e85e80c97be35"
+        },
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review",
+          "corpus.grep",
+          "finish",
+          "evidence_review"
+        ],
+        "snapshot_chunk_ids": [
+          [
+            "harbor-overview"
+          ],
+          [
+            "harbor-overview"
+          ]
+        ],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true,
+          "expected_review_calls": true,
+          "expected_repairs": true,
+          "expected_status": true,
+          "false_sufficiency_negative_control": true
+        }
+      }
+    },
+    {
+      "case_id": "empty_pool",
+      "repeat": 2,
+      "answerable": true,
+      "negative_control": false,
+      "order": [
+        "review",
+        "baseline"
+      ],
+      "review": {
+        "variant": "review",
+        "selected_chunk_ids": [
+          "harbor-owner"
+        ],
+        "gold_evidence_coverage": 1.0,
+        "gold_sufficient": true,
+        "review_status": "sufficient",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": false,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 1,
+        "corrective_retrievals": 1,
+        "steps_used": 6,
+        "initial_max_steps": 15,
+        "final_max_steps": 6,
+        "explorer_tokens": 78,
+        "reviewer_tokens": 47,
+        "total_tokens": 125,
+        "usage_complete": true,
+        "duration_ms": 2.294,
+        "finish_review_duration_ms": 0,
+        "review_report": {
+          "version": "evidence-review-v1",
+          "status": "sufficient",
+          "reason": "The source names the approval owner.",
+          "coverage": [
+            {
+              "facet_id": "F1",
+              "requirement": "Who signs Harbor pilot approval?",
+              "status": "supported",
+              "citations": [
+                {
+                  "evidence_id": "Cfba7f8d2ccd0ea1f",
+                  "quote": "Harbor pilot approval is signed by Operations."
+                }
+              ]
+            }
+          ],
+          "attempts": 1,
+          "repairs": 1,
+          "reviewer_tokens": 47,
+          "usage_complete": true,
+          "evidence_fingerprint": "dc25427cc8a070a9cf22f464d3eb71edcd467dbde3c21ad587c5cc8bee214eda"
+        },
+        "trace_actions": [
+          "corpus.grep",
+          "finish",
+          "evidence_review",
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review"
+        ],
+        "snapshot_chunk_ids": [
+          [],
+          [
+            "harbor-owner"
+          ]
+        ],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true,
+          "expected_review_calls": true,
+          "expected_repairs": true,
+          "expected_status": true,
+          "false_sufficiency_negative_control": true
+        }
+      },
+      "baseline": {
+        "variant": "baseline",
+        "selected_chunk_ids": [],
+        "gold_evidence_coverage": 0.0,
+        "gold_sufficient": false,
+        "review_status": "disabled",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": true,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 2,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 26,
+        "reviewer_tokens": 0,
+        "total_tokens": 26,
+        "usage_complete": true,
+        "duration_ms": 0.558,
+        "finish_review_duration_ms": 0,
+        "review_report": {},
+        "trace_actions": [
+          "corpus.grep",
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true
+        }
+      }
+    },
+    {
+      "case_id": "reviewer_outage",
+      "repeat": 2,
+      "answerable": true,
+      "negative_control": false,
+      "order": [
+        "baseline",
+        "review"
+      ],
+      "baseline": {
+        "variant": "baseline",
+        "selected_chunk_ids": [
+          "harbor-owner"
+        ],
+        "gold_evidence_coverage": 0.5,
+        "gold_sufficient": false,
+        "review_status": "disabled",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": true,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 3,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 0,
+        "total_tokens": 52,
+        "usage_complete": true,
+        "duration_ms": 0.986,
+        "finish_review_duration_ms": 0,
+        "review_report": {},
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true
+        }
+      },
+      "review": {
+        "variant": "review",
+        "selected_chunk_ids": [
+          "harbor-owner"
+        ],
+        "gold_evidence_coverage": 0.5,
+        "gold_sufficient": false,
+        "review_status": "unverified",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": true,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 1,
+        "corrective_retrievals": 0,
+        "steps_used": 4,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 0,
+        "total_tokens": 52,
+        "usage_complete": false,
+        "duration_ms": 1.445,
+        "finish_review_duration_ms": 0,
+        "review_report": {
+          "version": "evidence-review-v1",
+          "status": "unverified",
+          "reason": "Evidence review could not be completed.",
+          "coverage": [],
+          "attempts": 1,
+          "repairs": 0,
+          "reviewer_tokens": 0,
+          "usage_complete": false,
+          "evidence_fingerprint": "0c2915f2a5d44bd13c51090f33bb9cf078eae70316e85f1ee49df811ec8346f0"
+        },
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review"
+        ],
+        "snapshot_chunk_ids": [
+          [
+            "harbor-owner"
+          ]
+        ],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true,
+          "expected_review_calls": true,
+          "expected_repairs": true,
+          "expected_status": true,
+          "false_sufficiency_negative_control": true
+        }
+      }
+    },
+    {
+      "case_id": "malformed_verdict",
+      "repeat": 2,
+      "answerable": true,
+      "negative_control": false,
+      "order": [
+        "review",
+        "baseline"
+      ],
+      "review": {
+        "variant": "review",
+        "selected_chunk_ids": [
+          "harbor-owner"
+        ],
+        "gold_evidence_coverage": 0.5,
+        "gold_sufficient": false,
+        "review_status": "unverified",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": true,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 1,
+        "corrective_retrievals": 0,
+        "steps_used": 4,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 47,
+        "total_tokens": 99,
+        "usage_complete": true,
+        "duration_ms": 1.668,
+        "finish_review_duration_ms": 0,
+        "review_report": {
+          "version": "evidence-review-v1",
+          "status": "unverified",
+          "reason": "The reviewer assessment or evidence citations were invalid.",
+          "coverage": [],
+          "attempts": 1,
+          "repairs": 0,
+          "reviewer_tokens": 47,
+          "usage_complete": true,
+          "evidence_fingerprint": "271bdf092177fc4878ed34c4c746bf54a831a82f2a3811198a5d56b1b616ef25"
+        },
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review"
+        ],
+        "snapshot_chunk_ids": [
+          [
+            "harbor-owner"
+          ]
+        ],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true,
+          "expected_review_calls": true,
+          "expected_repairs": true,
+          "expected_status": true,
+          "false_sufficiency_negative_control": true
+        }
+      },
+      "baseline": {
+        "variant": "baseline",
+        "selected_chunk_ids": [
+          "harbor-owner"
+        ],
+        "gold_evidence_coverage": 0.5,
+        "gold_sufficient": false,
+        "review_status": "disabled",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": true,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 3,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 0,
+        "total_tokens": 52,
+        "usage_complete": true,
+        "duration_ms": 0.954,
+        "finish_review_duration_ms": 0,
+        "review_report": {},
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true
+        }
+      }
+    },
+    {
+      "case_id": "exhausted_steps",
+      "repeat": 2,
+      "answerable": true,
+      "negative_control": false,
+      "order": [
+        "baseline",
+        "review"
+      ],
+      "baseline": {
+        "variant": "baseline",
+        "selected_chunk_ids": [
+          "harbor-owner"
+        ],
+        "gold_evidence_coverage": 0.5,
+        "gold_sufficient": false,
+        "review_status": "disabled",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": true,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 3,
+        "initial_max_steps": 3,
+        "final_max_steps": 3,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 0,
+        "total_tokens": 52,
+        "usage_complete": true,
+        "duration_ms": 0.915,
+        "finish_review_duration_ms": 0,
+        "review_report": {},
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true
+        }
+      },
+      "review": {
+        "variant": "review",
+        "selected_chunk_ids": [
+          "harbor-owner"
+        ],
+        "gold_evidence_coverage": 0.5,
+        "gold_sufficient": false,
+        "review_status": "unverified",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": false,
+        "nonanswerable_rejected": false,
+        "stop_reason": "budget_max_steps",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 3,
+        "initial_max_steps": 3,
+        "final_max_steps": 3,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 0,
+        "total_tokens": 52,
+        "usage_complete": true,
+        "duration_ms": 1.163,
+        "finish_review_duration_ms": 0,
+        "review_report": {
+          "version": "evidence-review-v1",
+          "status": "unverified",
+          "reason": "Exploration ended before final evidence was verified.",
+          "coverage": [],
+          "attempts": 0,
+          "repairs": 0,
+          "reviewer_tokens": 0,
+          "usage_complete": true,
+          "evidence_fingerprint": "8eff986889b1e138fd2c08598973627b89503a4770589eae5ab7cabba9178aa8"
+        },
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true,
+          "expected_review_calls": true,
+          "expected_repairs": true,
+          "expected_status": true,
+          "false_sufficiency_negative_control": true
+        }
+      }
+    },
+    {
+      "case_id": "exhausted_wall_clock",
+      "repeat": 2,
+      "answerable": true,
+      "negative_control": false,
+      "order": [
+        "review",
+        "baseline"
+      ],
+      "review": {
+        "variant": "review",
+        "selected_chunk_ids": [],
+        "gold_evidence_coverage": 0.0,
+        "gold_sufficient": false,
+        "review_status": "unverified",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": false,
+        "nonanswerable_rejected": false,
+        "stop_reason": "budget_wall_clock",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 0,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 0,
+        "reviewer_tokens": 0,
+        "total_tokens": 0,
+        "usage_complete": true,
+        "duration_ms": 0.249,
+        "finish_review_duration_ms": 0,
+        "review_report": {
+          "version": "evidence-review-v1",
+          "status": "unverified",
+          "reason": "Exploration ended before final evidence was verified.",
+          "coverage": [],
+          "attempts": 0,
+          "repairs": 0,
+          "reviewer_tokens": 0,
+          "usage_complete": true,
+          "evidence_fingerprint": "126a1de77b7cfde3697c8f313bbe59cd5c3e63709058a5544198223b85d17ba5"
+        },
+        "trace_actions": [],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true,
+          "expected_review_calls": true,
+          "expected_repairs": true,
+          "expected_status": true,
+          "false_sufficiency_negative_control": true
+        }
+      },
+      "baseline": {
+        "variant": "baseline",
+        "selected_chunk_ids": [],
+        "gold_evidence_coverage": 0.0,
+        "gold_sufficient": false,
+        "review_status": "disabled",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": false,
+        "nonanswerable_rejected": false,
+        "stop_reason": "budget_wall_clock",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 1,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 13,
+        "reviewer_tokens": 0,
+        "total_tokens": 13,
+        "usage_complete": true,
+        "duration_ms": 0.42,
+        "finish_review_duration_ms": 0,
+        "review_report": {},
+        "trace_actions": [
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true
+        }
+      }
+    },
+    {
+      "case_id": "one_repair_still_incomplete",
+      "repeat": 2,
+      "answerable": true,
+      "negative_control": false,
+      "order": [
+        "baseline",
+        "review"
+      ],
+      "baseline": {
+        "variant": "baseline",
+        "selected_chunk_ids": [
+          "harbor-owner"
+        ],
+        "gold_evidence_coverage": 0.3333333333333333,
+        "gold_sufficient": false,
+        "review_status": "disabled",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": true,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 3,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 0,
+        "total_tokens": 52,
+        "usage_complete": true,
+        "duration_ms": 1.427,
+        "finish_review_duration_ms": 0,
+        "review_report": {},
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true
+        }
+      },
+      "review": {
+        "variant": "review",
+        "selected_chunk_ids": [
+          "harbor-owner",
+          "harbor-retention"
+        ],
+        "gold_evidence_coverage": 0.6666666666666666,
+        "gold_sufficient": false,
+        "review_status": "insufficient",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": true,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 2,
+        "corrective_retrievals": 1,
+        "steps_used": 8,
+        "initial_max_steps": 15,
+        "final_max_steps": 8,
+        "explorer_tokens": 104,
+        "reviewer_tokens": 94,
+        "total_tokens": 198,
+        "usage_complete": true,
+        "duration_ms": 2.975,
+        "finish_review_duration_ms": 0,
+        "review_report": {
+          "version": "evidence-review-v1",
+          "status": "insufficient",
+          "reason": "The archive destination is still missing.",
+          "coverage": [
+            {
+              "facet_id": "F1",
+              "requirement": "Who signs Harbor pilot approval?",
+              "status": "supported",
+              "citations": [
+                {
+                  "evidence_id": "C3074ebbbace3b24f",
+                  "quote": "Harbor pilot approval is signed by Operations."
+                }
+              ]
+            },
+            {
+              "facet_id": "F2",
+              "requirement": "What is the export retention limit?",
+              "status": "supported",
+              "citations": [
+                {
+                  "evidence_id": "C2214d6132e058d84",
+                  "quote": "Harbor export files are retained for 30 days."
+                }
+              ]
+            },
+            {
+              "facet_id": "F3",
+              "requirement": "Where are archived exports stored?",
+              "status": "missing",
+              "citations": []
+            }
+          ],
+          "attempts": 2,
+          "repairs": 1,
+          "reviewer_tokens": 94,
+          "usage_complete": true,
+          "evidence_fingerprint": "c37dede446b1182e0b018cc640bcc685f227e6b754553654c6366188da9efa86"
+        },
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review",
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review"
+        ],
+        "snapshot_chunk_ids": [
+          [
+            "harbor-owner"
+          ],
+          [
+            "harbor-owner",
+            "harbor-retention"
+          ]
+        ],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true,
+          "expected_review_calls": true,
+          "expected_repairs": true,
+          "expected_status": true,
+          "false_sufficiency_negative_control": true
+        }
+      }
+    },
+    {
+      "case_id": "false_sufficiency_negative_control",
+      "repeat": 2,
+      "answerable": true,
+      "negative_control": true,
+      "order": [
+        "review",
+        "baseline"
+      ],
+      "review": {
+        "variant": "review",
+        "selected_chunk_ids": [
+          "harbor-owner"
+        ],
+        "gold_evidence_coverage": 0.5,
+        "gold_sufficient": false,
+        "review_status": "sufficient",
+        "false_sufficient": true,
+        "answerable_finished_without_sufficient_gold": true,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 1,
+        "corrective_retrievals": 0,
+        "steps_used": 4,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 47,
+        "total_tokens": 99,
+        "usage_complete": true,
+        "duration_ms": 1.495,
+        "finish_review_duration_ms": 0,
+        "review_report": {
+          "version": "evidence-review-v1",
+          "status": "sufficient",
+          "reason": "Intentionally flawed fixture reviewer omits the retention requirement.",
+          "coverage": [
+            {
+              "facet_id": "F1",
+              "requirement": "Who signs Harbor pilot approval?",
+              "status": "supported",
+              "citations": [
+                {
+                  "evidence_id": "C9d2ee384e8a1a657",
+                  "quote": "Harbor pilot approval is signed by Operations."
+                }
+              ]
+            }
+          ],
+          "attempts": 1,
+          "repairs": 0,
+          "reviewer_tokens": 47,
+          "usage_complete": true,
+          "evidence_fingerprint": "a4c8ba620cc99ba3bc1ab86a22f415b39777fa88aa3f123cbd06c41b6eac4b35"
+        },
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish",
+          "evidence_review"
+        ],
+        "snapshot_chunk_ids": [
+          [
+            "harbor-owner"
+          ]
+        ],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true,
+          "expected_review_calls": true,
+          "expected_repairs": true,
+          "expected_status": true,
+          "false_sufficiency_negative_control": true
+        }
+      },
+      "baseline": {
+        "variant": "baseline",
+        "selected_chunk_ids": [
+          "harbor-owner"
+        ],
+        "gold_evidence_coverage": 0.5,
+        "gold_sufficient": false,
+        "review_status": "disabled",
+        "false_sufficient": false,
+        "answerable_finished_without_sufficient_gold": true,
+        "nonanswerable_rejected": false,
+        "stop_reason": "finished",
+        "review_calls": 0,
+        "corrective_retrievals": 0,
+        "steps_used": 3,
+        "initial_max_steps": 15,
+        "final_max_steps": 15,
+        "explorer_tokens": 52,
+        "reviewer_tokens": 0,
+        "total_tokens": 52,
+        "usage_complete": true,
+        "duration_ms": 0.958,
+        "finish_review_duration_ms": 0,
+        "review_report": {},
+        "trace_actions": [
+          "corpus.grep",
+          "corpus.read",
+          "corpus.pick",
+          "finish"
+        ],
+        "snapshot_chunk_ids": [],
+        "gates": {
+          "evidence_only": true,
+          "at_most_one_correction": true,
+          "at_most_two_reviews": true,
+          "token_accounting": true,
+          "disabled_has_no_review_calls": true,
+          "disabled_has_no_snapshot_loads": true,
+          "enabled_total_step_cap": true,
+          "source_only_reviewer_input": true,
+          "review_call_accounting": true,
+          "review_token_accounting": true
+        }
+      }
+    }
+  ]
+}

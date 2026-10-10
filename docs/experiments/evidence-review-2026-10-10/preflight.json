@@ -1,0 +1,59 @@
+{
+  "schema_version": "evidence-review-benefit-preflight/1",
+  "recorded_date": "2026-10-10",
+  "feature_revision": "f68cee2d2793dc4d6fa5cb9281f3d6d357826b1b",
+  "ci_merge_revision": "3422d1fe79fdc1674a128ad305467c96a206d15b",
+  "upstream_ci_run": 38016425661,
+  "codeql_check": 114107860033,
+  "codeql_annotations": 0,
+  "tests_passed": {
+    "shared": 131,
+    "api": 488,
+    "worker_contract": 342,
+    "total": 961
+  },
+  "controlled_artifact": {
+    "artifact_id": 11655902721,
+    "zip_sha256": "f87487603a0127b870917b11cbfba6a4939ba79b280519a321d84c3c3decf9f2",
+    "json_sha256": "69c81c103e8c077ad3fb0432d1d05ce5ca5717a2bccd4c12309d2e70d787f8ab",
+    "episodes": 84,
+    "failed_runtime_gates": 0,
+    "negative_control_detected_repeats": 3
+  },
+  "live_reviewer_preflight": {
+    "status": "blocked",
+    "reason": "missing_DS_KEY",
+    "command": ".venv/bin/python scripts/experiment_evidence_review.py --mode live-reviewer --case complete_control --repeats 1 --output /tmp/knowhere-live-reviewer-preflight.json",
+    "exit_code": 2,
+    "sanitized_error": {
+      "status": "error",
+      "error_type": "ValueError"
+    },
+    "provider_key_configured": false,
+    "provider_url_configured": true,
+    "mock_enabled": false,
+    "real_model_requests_sent": 0
+  },
+  "end_to_end_evaluation": {
+    "status": "not_started",
+    "prerequisites_pending": [
+      "configured_real_provider",
+      "frozen_representative_corpus_and_gold_query_split",
+      "real_explorer_and_real_index_runner"
+    ],
+    "planned_development_questions": 10,
+    "planned_held_out_questions": 50,
+    "planned_repeats_per_arm": 3,
+    "planned_held_out_episodes": 300
+  },
+  "live_benefit": {
+    "sufficiency_delta": null,
+    "coverage_delta": null,
+    "false_sufficient_rate": null,
+    "rescue_rate": null,
+    "incremental_tokens": null,
+    "incremental_monetary_cost": null,
+    "latency_p50_delta_ms": null,
+    "latency_p95_delta_ms": null
+  }
+}
