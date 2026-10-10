@@ -1,0 +1,158 @@
+[
+  {
+    "packet_sha256": "0f44f7dd4db45caac627724fd6ab98eb8700fe21dc75a30599d1209aa3c07385",
+    "requirements": [
+      {
+        "id": "held-050.r1",
+        "status": "missing",
+        "reason": "Neither audited actual full-year 2027 consolidated revenue nor audited actual full-year 2027 net income appears in the visible evidence. The audit opinion and annual operations tables cover 2025 and earlier, while the interim tables cover the first quarters of 2026 and 2025. Those dated historical figures, and revenue backlog disclosures, do not supply either requested 2027 amount. Different reporting periods are not conflicting figures for 2027.",
+        "citations": []
+      }
+    ],
+    "all_supported": false,
+    "limitations": [
+      "Cross-model agent audit, not human adjudication.",
+      "Assessment uses only caller-visible evidence in this packet. Gold facts were not treated as evidence; underlying factual accuracy and omitted source material were not independently verified."
+    ]
+  },
+  {
+    "packet_sha256": "10d04b5f78e883331c879d5c26b69a3762d7fcc2212cb5f9df7fd4c9f8ae5d3a",
+    "requirements": [
+      {
+        "id": "held-032.r1",
+        "status": "supported",
+        "reason": "The quoted revenue-recognition sentence explicitly requires both an asset with no alternative use and an enforceable right to payment for performance to date.",
+        "citations": [
+          {
+            "evidence_id": "B25d5720a9b0ba0f753f1e8f8",
+            "quote": "The Company recognizes revenue over time when the Company’s performance on the contract creates an asset with \nno alternative use and when the Company has an enforceable right to payment for performance to date."
+          }
+        ]
+      },
+      {
+        "id": "held-032.r2",
+        "status": "supported",
+        "reason": "The quoted sentence explicitly describes the cost-to-cost input method as costs incurred to date, including materials and labor hours, relative to total estimated cost at completion.",
+        "citations": [
+          {
+            "evidence_id": "B25d5720a9b0ba0f753f1e8f8",
+            "quote": "Under the cost-to-cost \ninput method, the Company records revenue based upon costs (such as materials and labor hours) incurred to date \nrelative to the total estimated cost at completion."
+          }
+        ]
+      }
+    ],
+    "all_supported": true,
+    "limitations": [
+      "Cross-model agent audit, not human adjudication.",
+      "Assessment uses only caller-visible evidence in this packet. Gold facts were not treated as evidence; underlying factual accuracy and omitted source material were not independently verified."
+    ]
+  },
+  {
+    "packet_sha256": "151dc0d5f690c8a04afe62672184724aafc2c6eb677196b0a8bf3760e5301110",
+    "requirements": [
+      {
+        "id": "held-032.r1",
+        "status": "supported",
+        "reason": "The quoted revenue-recognition sentence explicitly requires both an asset with no alternative use and an enforceable right to payment for performance to date.",
+        "citations": [
+          {
+            "evidence_id": "B25d5720a9b0ba0f753f1e8f8",
+            "quote": "The Company recognizes revenue over time when the Company’s performance on the contract creates an asset with \nno alternative use and when the Company has an enforceable right to payment for performance to date."
+          }
+        ]
+      },
+      {
+        "id": "held-032.r2",
+        "status": "supported",
+        "reason": "The quoted sentence explicitly describes the cost-to-cost input method as costs incurred to date, including materials and labor hours, relative to total estimated cost at completion.",
+        "citations": [
+          {
+            "evidence_id": "B25d5720a9b0ba0f753f1e8f8",
+            "quote": "Under the cost-to-cost \ninput method, the Company records revenue based upon costs (such as materials and labor hours) incurred to date \nrelative to the total estimated cost at completion."
+          }
+        ]
+      }
+    ],
+    "all_supported": true,
+    "limitations": [
+      "Cross-model agent audit, not human adjudication.",
+      "Assessment uses only caller-visible evidence in this packet. Gold facts were not treated as evidence; underlying factual accuracy and omitted source material were not independently verified."
+    ]
+  },
+  {
+    "packet_sha256": "1cc55865903b0f534d925b2aa0c7ebed9753b36c2d02b2040f3f1748f3381da0",
+    "requirements": [
+      {
+        "id": "held-027.r1",
+        "status": "supported",
+        "reason": "The filing says it applied to list Class A shares under SPCX on both named Nasdaq venues, directly supporting the proposed symbol and venues.",
+        "citations": [
+          {
+            "evidence_id": "Be921fe79bd0672b67aeb14d8",
+            "quote": "We have applied to list our Class A common stock on The Nasdaq Stock Market LLC (“Nasdaq”) and Nasdaq Texas, \nInc. (“Nasdaq Texas”) under the symbol “SPCX.”"
+          }
+        ]
+      },
+      {
+        "id": "held-027.r2",
+        "status": "supported",
+        "reason": "The quoted passage gives one vote per Class A share, ten per Class B share, and Class B shareholders the right to elect a majority of the board.",
+        "citations": [
+          {
+            "evidence_id": "Be921fe79bd0672b67aeb14d8",
+            "quote": "Each share of Class A common stock will entitle its holder to one vote per share. Each share of Class B \ncommon stock will entitle its holder to 10 votes per share. Class A shareholders and Class B shareholders will vote together as a \nsingle class on all matters to be voted on by shareholders, except Class B shareholders will be entitled to elect a majority of our board \nof directors in addition to having certain other class votes as described under “Description of Capital Stock.”"
+          }
+        ]
+      }
+    ],
+    "all_supported": true,
+    "limitations": [
+      "Cross-model agent audit, not human adjudication.",
+      "Assessment uses only caller-visible evidence in this packet. Gold facts were not treated as evidence; underlying factual accuracy and omitted source material were not independently verified."
+    ]
+  },
+  {
+    "packet_sha256": "1ef030203452ef457a731fefa3141ba2fcbe0171f4e06e42ac2078dc20e42653",
+    "requirements": [
+      {
+        "id": "held-028.r1",
+        "status": "supported",
+        "reason": "The visible sentence identifies a five-step process and lists all five requested steps in the stated order, including necessary processes or parts and acceleration of cycle time.",
+        "citations": [
+          {
+            "evidence_id": "Bad50c80d9f3e529b93fbc95f",
+            "quote": "“The Algorithm,” as it is known internally, is a five-step iterative process that emphasizes making the \nrequirements less dumb, deleting unnecessary processes or parts (embracing the principle that the best part is no \npart), only then optimizing the necessary processes or parts, accelerating cycle time, and automating only proven \nprocesses."
+          }
+        ]
+      },
+      {
+        "id": "held-028.r2",
+        "status": "missing",
+        "reason": "The visible evidence explicitly limits automation to proven processes, so that facet is present. It lists automation fifth and says optimization follows deletion, but does not state the stronger necessary prerequisite that all of the first four steps must be completed before automation. Treating list position as that categorical completion rule would require an unsupported additional inference; this requirement is therefore only partially supported.",
+        "citations": []
+      }
+    ],
+    "all_supported": false,
+    "limitations": [
+      "Cross-model agent audit, not human adjudication.",
+      "Assessment uses only caller-visible evidence in this packet. Gold facts were not treated as evidence; underlying factual accuracy and omitted source material were not independently verified.",
+      "The automation prerequisite was assessed strictly: its fifth position in a listed iterative process was not treated as an explicit requirement that all four earlier steps be completed before automation."
+    ]
+  },
+  {
+    "packet_sha256": "36695114ca78241e796e5acb7b6443843b3c46ef90eda087f1aa960ca0d781d0",
+    "requirements": [
+      {
+        "id": "held-047.r1",
+        "status": "missing",
+        "reason": "Neither a final IPO price per Class A share nor total IPO proceeds is provided in the visible evidence. The cover leaves the offering price range and assumed price blank; the Per Share/Total table and Use of Proceeds passage likewise show dollar placeholders without amounts. The $0.001 par value and $1.00 sensitivity increments are not a final offering price, and no disclosed share count permits calculation of total proceeds.",
+        "citations": []
+      }
+    ],
+    "all_supported": false,
+    "limitations": [
+      "Cross-model agent audit, not human adjudication.",
+      "Assessment uses only caller-visible evidence in this packet. Gold facts were not treated as evidence; underlying factual accuracy and omitted source material were not independently verified."
+    ]
+  }
+]

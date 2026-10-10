@@ -1,0 +1,15 @@
+# Full generated records are preserved in deterministic archives with manifests.
+/live-calibration/
+/development/
+/development-v2/
+/development-evaluation/
+/development-v2-evaluation/
+/heldout/
+/heldout-evaluation/
+/corpus-manifest.json
+/cross-model-audit/packet-*.json
+/cross-model-audit/packet-*.txt
+/extended-blind-audit/packet-*.json
+/extended-blind-audit/packet-*.txt
+/paired-difference-audit/packet-*.json
+/paired-difference-audit/packet-*.txt

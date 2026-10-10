@@ -1,0 +1,18 @@
+{
+  "status_code": 200,
+  "elapsed_s": 11.832,
+  "requested_model": "deepseek-flash",
+  "returned_model": "deepseek-flash",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 5,
+    "total_tokens": 45,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 40
+  },
+  "finish_reason": "stop",
+  "content": "{\"ready\": true}"
+}

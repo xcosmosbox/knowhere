@@ -1,0 +1,102 @@
+{
+  "archive": "calibration-development-records.tar.gz",
+  "bytes": 313778,
+  "sha256": "6105aba150e0cfb2aeae9b07573039de79cf044d643e8beb5b9076460bb3d535",
+  "entries": [
+    {
+      "path": "development/index-verification.json",
+      "bytes": 2314,
+      "sha256": "4c018197f64d8458971097b909c3e12cc4308a4cd9a70ada396e31a024322afc"
+    },
+    {
+      "path": "development/interruption.json",
+      "bytes": 291,
+      "sha256": "c47c32845d5a0e7bae041872e4bb48b5f0eb78f6e23f6c66e5e2114fc899836c"
+    },
+    {
+      "path": "development/trials.jsonl",
+      "bytes": 2418,
+      "sha256": "77c6641aa176f39c2d65fa3cb21c74526832269192363c790966a3415a2666ab"
+    },
+    {
+      "path": "development-evaluation/assessments.jsonl",
+      "bytes": 14212,
+      "sha256": "c88fb91153426a4e4330adebe07e816f8041ece999336d2dd7f67b2c0be6c75d"
+    },
+    {
+      "path": "development-evaluation/blind-packets.jsonl",
+      "bytes": 1239,
+      "sha256": "53a4e85171f30f47647c184a0356d63a7d973e7abf7b12bcdb28858890019eb4"
+    },
+    {
+      "path": "development-evaluation/started.jsonl",
+      "bytes": 803,
+      "sha256": "efc5a21e0c7cb97f8a2ffadef5a006a1d1f72b33b2987c0f961b9ddc50d806f4"
+    },
+    {
+      "path": "development-evaluation/summary.json",
+      "bytes": 894,
+      "sha256": "a0b39d9b78fd96cf826f322a8904e8321c702ce55be666784e2f81273a60e4b3"
+    },
+    {
+      "path": "development-evaluation/trial-packets.jsonl",
+      "bytes": 220,
+      "sha256": "440750e521527c88b70ee82a1f3865059fe0dd370f251ff40ba5c23b54bfdd74"
+    },
+    {
+      "path": "development-v2/index-verification.json",
+      "bytes": 2314,
+      "sha256": "4c018197f64d8458971097b909c3e12cc4308a4cd9a70ada396e31a024322afc"
+    },
+    {
+      "path": "development-v2/provider-events.jsonl",
+      "bytes": 311077,
+      "sha256": "20316993f0a435327e2bf78e116cb83b5eac058f971c0e1f7ba4960fb82b7b33"
+    },
+    {
+      "path": "development-v2/started.jsonl",
+      "bytes": 4428,
+      "sha256": "4a64c14e2f3f2839389368a87470d23459d7f0a85cf755d4a3022659266861f8"
+    },
+    {
+      "path": "development-v2/trials.jsonl",
+      "bytes": 1840630,
+      "sha256": "8b5b92a40e4c102a45e311eac8545b7c7f2bb57df6dff098ca67f37aeb6cf282"
+    },
+    {
+      "path": "development-v2-evaluation/assessments.jsonl",
+      "bytes": 99599,
+      "sha256": "a921a2dfc6601e94fd58afc5c5f7477f3929f196f5517bb0c1c944c9bdca4b20"
+    },
+    {
+      "path": "development-v2-evaluation/blind-packets.jsonl",
+      "bytes": 120952,
+      "sha256": "304d45aab41d49866e27e537e319731f4ad6ca52fa69acac1b1f4d29d44e0066"
+    },
+    {
+      "path": "development-v2-evaluation/started.jsonl",
+      "bytes": 5051,
+      "sha256": "c11e654b1327b41dc6661265591c96182551d921373252cbbdafa5c6db64de6a"
+    },
+    {
+      "path": "development-v2-evaluation/summary.json",
+      "bytes": 909,
+      "sha256": "44e7a46c3b54538a335569a685d92a1cffc160b69ce10b893ed5a807d793ce0a"
+    },
+    {
+      "path": "development-v2-evaluation/trial-packets.jsonl",
+      "bytes": 3324,
+      "sha256": "0be1eb300947695b3e0b2e03d3ea12bc72399aadab34278cc5ab084b41c9f959"
+    },
+    {
+      "path": "live-calibration/reviewer-calibration-trials.jsonl",
+      "bytes": 190488,
+      "sha256": "ba99cf798b4ce42a0a37d59aa001a74c6a0d6011603ea82883cbe4791852dbd7"
+    },
+    {
+      "path": "live-calibration/reviewer-calibration.json",
+      "bytes": 269750,
+      "sha256": "08bfd6d0a1b8ba1412a3f4d41c6a5d2a6ff24b89f4c11326e1483bf6ea011ad1"
+    }
+  ]
+}

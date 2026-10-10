@@ -1,0 +1,27 @@
+{
+  "selection": "All final packets from every completely scored question with a nonzero paired sufficiency difference, symmetrically covering both improvement and regression; packets already audited are not rejudged.",
+  "question_ids": [
+    "held-028",
+    "held-042"
+  ],
+  "all_packet_ids": [
+    "0694b5d1cad7453724c203503113a0db0d4ff7efd274a7f0633817017d40ae38",
+    "456247075fabadfd953b0a0a1d2ca842c1404bb945cccb487b70559b513c4c63",
+    "4e12026799f41758a9e789b8bf1bd886c43cf0e5097b32d7b303e21a98d6516a",
+    "7a1a78f4f399c1daae8f93054a5cc53fcb6765f3bb96f2ce1dadd290fe6d8a23",
+    "a64eb646a532134dfa56d21883199bfa8963e7e0792c34cd23b030d1f921fb9f",
+    "e1ebe545de0fcf0a5d4bfe0970665ae002118c2365f7aadb61f435678be57c85",
+    "e1ef6e5984f1509a04b8366a0dab2ad06f0061958bd1812867fa50e73792700b",
+    "e2efa8b70423f7b63258e08f455c98fa964c329b87005c82457c4abef826947d",
+    "fa5d570c2f46373953fc36f792c052555c2055fe7409272829fdba8ac80b07ff"
+  ],
+  "additional_packet_ids": [
+    "0694b5d1cad7453724c203503113a0db0d4ff7efd274a7f0633817017d40ae38",
+    "4e12026799f41758a9e789b8bf1bd886c43cf0e5097b32d7b303e21a98d6516a",
+    "7a1a78f4f399c1daae8f93054a5cc53fcb6765f3bb96f2ce1dadd290fe6d8a23",
+    "e1ebe545de0fcf0a5d4bfe0970665ae002118c2365f7aadb61f435678be57c85",
+    "e1ef6e5984f1509a04b8366a0dab2ad06f0061958bd1812867fa50e73792700b",
+    "e2efa8b70423f7b63258e08f455c98fa964c329b87005c82457c4abef826947d",
+    "fa5d570c2f46373953fc36f792c052555c2055fe7409272829fdba8ac80b07ff"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "schema_version": "knowhere-runtime-gate-interpretation/1",
+  "created_at": "2026-10-10T03:33:42.313956+00:00",
+  "frozen_experiment_commit": "2ccb9e80e1612595bca248d32b0ea33939347f9d",
+  "kind": "observational_gate_false_positive",
+  "affected_gate": "production_limits_unchanged",
+  "trigger_trial": "held-028:0:review",
+  "original_gate_result": false,
+  "finding": "The production corrective retrieval intentionally tightens max_steps to min(current max_steps, steps_used + 4). Requiring final_max_steps to equal 15 incorrectly rejects a smaller bound.",
+  "verified_trigger": {
+    "initial_max_steps": 15,
+    "steps_at_correction": 6,
+    "final_max_steps": 10,
+    "steps_used": 10,
+    "review_attempts": 1,
+    "repairs": 1,
+    "stop_reason": "budget_max_steps",
+    "review_status": "unverified"
+  },
+  "independent_review": "A separate code reviewer verified actual charged steps, non-charged pick calls, token totals and production budget tightening before resumption.",
+  "decision": "Resume the unchanged frozen runner only for unstarted trial IDs. Keep every completed trial, original failed gate, output and judgment unchanged. No model retry or quality-based replacement.",
+  "audit_invariant": "Initial max_steps = 15 and wall clock = 180; final max_steps <= initial max_steps; reviewed actual steps <= final bound; any smaller final bound must follow exactly one permitted correction with final max_steps = min(15, charged steps at correction + 4). Other runtime gates remain mandatory.",
+  "raw_trigger_sha256": "42b958f2ffa58e00d9fdaa863303054cf4a01e3be3f96e3f7a52b14c4220dde6",
+  "changes_to_production_models_prompts_sources_gold_schedule_or_frozen_runner": false,
+  "reporting": "List original gate failures separately from true budget violations; report the measured costs and unchanged quality outcomes."
+}

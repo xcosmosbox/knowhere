@@ -1,0 +1,215 @@
+[
+  {
+    "packet_sha256": "3bdfe8cc809e0cf30a4ac2ea01242cceb9c1f1340b162b2dd593a5dbebdbeb75",
+    "requirements": [
+      {
+        "id": "held-039.r1",
+        "status": "supported",
+        "reason": "The visible definition explicitly requires at least one interaction in the 30-day period ending at measurement and separately restricts inclusion to registered X or Grok accounts.",
+        "citations": [
+          {
+            "evidence_id": "B4d779978cd08b13a19442aa1",
+            "quote": "“MAU” (or monthly active users) refers to the total number of users who have interacted with Grok or X \nthrough web browsers or mobile applications at least once during the 30-day period ending on the date of \nmeasurement (“active users”)."
+          },
+          {
+            "evidence_id": "B4d779978cd08b13a19442aa1",
+            "quote": "Furthermore, only users who have registered for an X or Grok account are included."
+          }
+        ]
+      },
+      {
+        "id": "held-039.r2",
+        "status": "supported",
+        "reason": "The visible text identifies sign-in traffic as the cross-platform deduplication method and explicitly cautions that some duplicate users may remain, making MAU an estimate.",
+        "citations": [
+          {
+            "evidence_id": "B4d779978cd08b13a19442aa1",
+            "quote": "In presenting combined MAUs across the two platforms, we seek to identify and \naccount for users who access both Grok and X based on sign-in traffic so that such users are not double-counted\n\nvii\nTable of Contents\nwhen measuring MAU."
+          },
+          {
+            "evidence_id": "B4d779978cd08b13a19442aa1",
+            "quote": "While we believe our methodologies provide a reasonable approximation of MAU based on the number of \nunique users, they may not fully capture all instances of duplication, and our reported MAU should be viewed \nas an estimate of unique users across our Grok and X platforms for the applicable period."
+          }
+        ]
+      },
+      {
+        "id": "held-039.r3",
+        "status": "supported",
+        "reason": "The paid-subscriber passage explicitly supplies the March 31, 2026 date, approximately 6.3 million total, and the 4.4 million X Premium/Premium+ and 1.9 million SuperGrok/Heavy/Lite breakdown. No inference from MAU counts is needed.",
+        "citations": [
+          {
+            "evidence_id": "B25838b4c9008e581cfbd9f2a",
+            "quote": "As of March 31, 2026, we reached approximately 6.3 million active paid subscribers, which was \ncomprised of approximately 4.4 million X Premium and Premium+ paid subscribers and approximately 1.9 \nmillion SuperGrok, SuperGrok Heavy and SuperGrok Lite paid subscribers."
+          }
+        ]
+      }
+    ],
+    "all_supported": true,
+    "limitations": [
+      "Cross-model agent audit, not human adjudication.",
+      "Support was assessed only from caller-visible evidence in this packet. Gold facts were not treated as evidence; underlying factual accuracy and omitted source material were not independently verified."
+    ]
+  },
+  {
+    "packet_sha256": "75f8a21312a0607fba633d1b395669a1b4eec69ee1642cf24fdee16983bb4ff6",
+    "requirements": [
+      {
+        "id": "held-015.r1",
+        "status": "supported",
+        "reason": "The visible table labels units as millions and its first revenue/share pair as FQ2-26. The DRAM row places $18,768 and 79% in that pair.",
+        "citations": [
+          {
+            "evidence_id": "B355846071b8d49b7c5fe4076",
+            "quote": "March 18, 2026\n34\n34\nAmounts in millions\nFQ2-26\n% of \nrevenue\nFQ1-26\n% of \nrevenue\nFQ2-25\n% of \nrevenue\nDRAM\n$18,768\n79%\n$10,812\n79%\n$6,123\n76%"
+          }
+        ]
+      },
+      {
+        "id": "held-015.r2",
+        "status": "supported",
+        "reason": "With the visible FQ2-26 column headings and million-unit label, the NAND row gives 4,997 and 21%; Other (primarily NOR) gives 95 and the literal displayed share —%. The dash is preserved rather than interpreted as a numeric zero.",
+        "citations": [
+          {
+            "evidence_id": "B355846071b8d49b7c5fe4076",
+            "quote": "Amounts in millions\nFQ2-26\n% of \nrevenue\nFQ1-26\n% of \nrevenue\nFQ2-25\n% of \nrevenue\nDRAM\n$18,768\n79%\n$10,812\n79%\n$6,123\n76%\nNAND\n4,997\n21%\n2,743\n20%\n1,855\n23%\nOther (primarily NOR)\n95\n—%\n88\n1%\n75\n1%"
+          }
+        ]
+      },
+      {
+        "id": "held-015.r3",
+        "status": "supported",
+        "reason": "The visible footnote expressly attributes possible failure to total 100% to rounding.",
+        "citations": [
+          {
+            "evidence_id": "B355846071b8d49b7c5fe4076",
+            "quote": "Percentages of total revenue may not total 100% due to rounding."
+          }
+        ]
+      }
+    ],
+    "all_supported": true,
+    "limitations": [
+      "Cross-model agent audit, not human adjudication.",
+      "Support was assessed only from caller-visible evidence in this packet. Gold facts were not treated as evidence; underlying factual accuracy and omitted source material were not independently verified."
+    ]
+  },
+  {
+    "packet_sha256": "8c7a4885c68b250cb3c90b8ed41f1e16a8abee2996e32dfce67d8530a107a138",
+    "requirements": [
+      {
+        "id": "held-021.r1",
+        "status": "supported",
+        "reason": "The visible December 17, 2025 PC slide explicitly forecasts high-single-digit calendar-2025 growth and contrasts it with the prior mid-single-digit expectation.",
+        "citations": [
+          {
+            "evidence_id": "B4ed1ba902373f3a1f8702b8a",
+            "quote": "December 17, 2025\n12\nPC\n• PC demand continues to be driven by Windows 10 end of life and \nAI PCs.\n• We forecast PC unit sales to grow high-single-digit percentage \nrange in calendar 2025, above our prior expectations provided in \nour last earnings call of mid-single digits."
+          }
+        ]
+      },
+      {
+        "id": "held-021.r2",
+        "status": "supported",
+        "reason": "Both named demand drivers are explicit, and the same visible slide states that memory supply constraints may affect PC shipments when looking ahead to 2026.",
+        "citations": [
+          {
+            "evidence_id": "B4ed1ba902373f3a1f8702b8a",
+            "quote": "PC demand continues to be driven by Windows 10 end of life and \nAI PCs."
+          },
+          {
+            "evidence_id": "B4ed1ba902373f3a1f8702b8a",
+            "quote": "As we look ahead into 2026, we expect these demand drivers to \ncontinue, while memory supply constraints may affect some PC \nunit shipments."
+          }
+        ]
+      }
+    ],
+    "all_supported": true,
+    "limitations": [
+      "Cross-model agent audit, not human adjudication.",
+      "Support was assessed only from caller-visible evidence in this packet. Gold facts were not treated as evidence; underlying factual accuracy and omitted source material were not independently verified."
+    ]
+  },
+  {
+    "packet_sha256": "91d027b750c1d6eb09464d5a64df10c02e4015460a52b5b806a70368cdd8b22b",
+    "requirements": [
+      {
+        "id": "held-039.r1",
+        "status": "supported",
+        "reason": "The visible definition explicitly requires at least one interaction in the 30-day period ending at measurement and separately restricts inclusion to registered X or Grok accounts.",
+        "citations": [
+          {
+            "evidence_id": "B4d779978cd08b13a19442aa1",
+            "quote": "“MAU” (or monthly active users) refers to the total number of users who have interacted with Grok or X \nthrough web browsers or mobile applications at least once during the 30-day period ending on the date of \nmeasurement (“active users”)."
+          },
+          {
+            "evidence_id": "B4d779978cd08b13a19442aa1",
+            "quote": "Furthermore, only users who have registered for an X or Grok account are included."
+          }
+        ]
+      },
+      {
+        "id": "held-039.r2",
+        "status": "supported",
+        "reason": "The visible text identifies sign-in traffic as the cross-platform deduplication method and explicitly cautions that some duplicate users may remain, making MAU an estimate.",
+        "citations": [
+          {
+            "evidence_id": "B4d779978cd08b13a19442aa1",
+            "quote": "In presenting combined MAUs across the two platforms, we seek to identify and \naccount for users who access both Grok and X based on sign-in traffic so that such users are not double-counted\n\nvii\nTable of Contents\nwhen measuring MAU."
+          },
+          {
+            "evidence_id": "B4d779978cd08b13a19442aa1",
+            "quote": "While we believe our methodologies provide a reasonable approximation of MAU based on the number of \nunique users, they may not fully capture all instances of duplication, and our reported MAU should be viewed \nas an estimate of unique users across our Grok and X platforms for the applicable period."
+          }
+        ]
+      },
+      {
+        "id": "held-039.r3",
+        "status": "supported",
+        "reason": "The paid-subscriber passage explicitly supplies the March 31, 2026 date, approximately 6.3 million total, and the 4.4 million X Premium/Premium+ and 1.9 million SuperGrok/Heavy/Lite breakdown. No inference from MAU counts is needed.",
+        "citations": [
+          {
+            "evidence_id": "B25838b4c9008e581cfbd9f2a",
+            "quote": "As of March 31, 2026, we reached approximately 6.3 million active paid subscribers, which was \ncomprised of approximately 4.4 million X Premium and Premium+ paid subscribers and approximately 1.9 \nmillion SuperGrok, SuperGrok Heavy and SuperGrok Lite paid subscribers."
+          }
+        ]
+      }
+    ],
+    "all_supported": true,
+    "limitations": [
+      "Cross-model agent audit, not human adjudication.",
+      "Support was assessed only from caller-visible evidence in this packet. Gold facts were not treated as evidence; underlying factual accuracy and omitted source material were not independently verified."
+    ]
+  },
+  {
+    "packet_sha256": "9f7ff8768104470d4d6abcacea1733e8012f698a6b71d2bdfe8c7291c523fba1",
+    "requirements": [
+      {
+        "id": "held-045.r1",
+        "status": "supported",
+        "reason": "Although the surrounding section concerns Falcon Heavy, this visible sentence explicitly names Falcon 9 boosters and states both the demonstrated 40-flight capability and forecast-utilization-based 25-flight accounting maximum. The separate accounting range elsewhere in the packet does not contradict that maximum.",
+        "citations": [
+          {
+            "evidence_id": "B706a2e584e2a4361ae136d59",
+            "quote": "Although our Falcon 9 boosters have been engineered and demonstrated to support up to 40 flights, we \nhave established a maximum accounting useful life of 25 flights as an estimate based on forecasted utilization."
+          }
+        ]
+      },
+      {
+        "id": "held-045.r2",
+        "status": "supported",
+        "reason": "The immediately following visible sentence explicitly links the accounting estimate to reduced Falcon 9 demand from the Starship transition and to certain government contracts prohibiting boosters flown more than five times.",
+        "citations": [
+          {
+            "evidence_id": "B706a2e584e2a4361ae136d59",
+            "quote": "This estimate reflects: (i) our strategic transition to Starship, which is expected to materially reduce future \nFalcon 9 flight demand; and (ii) restrictions under certain government contracts that prohibit the use of boosters \nflown more than five times on their missions."
+          }
+        ]
+      }
+    ],
+    "all_supported": true,
+    "limitations": [
+      "Cross-model agent audit, not human adjudication.",
+      "Support was assessed only from caller-visible evidence in this packet. Gold facts were not treated as evidence; underlying factual accuracy and omitted source material were not independently verified."
+    ]
+  }
+]

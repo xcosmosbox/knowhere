@@ -1,0 +1,193 @@
+[
+  {
+    "packet_sha256": "375874d1f1c2125df41b32d0bd419283a7d10f5593d44b47ecba529a958eb6ef",
+    "requirements": [
+      {
+        "id": "held-047.r1",
+        "status": "missing",
+        "reason": "Neither requested final offering amount is supplied. The cover leaves the IPO range and assumed price blank, and the Per Share/Total table leaves both the initial public offering price and proceeds blank. The $0.001 par value, $1.00 price-change sensitivity, and amounts for other contracts are not the final IPO price or total IPO proceeds. Evidence of non-disclosure supports an honest unavailable answer but does not supply the required numbers.",
+        "citations": [
+          {
+            "evidence_id": "Be921fe79bd0672b67aeb14d8",
+            "quote": "This is the initial public offering of shares of Class A common stock, par value $0.001 per share, of Space Exploration Technologies \nCorp., a Texas corporation. We are offering                shares of our Class A common stock.\nCurrently, no public market exists for our Class A common stock. We expect the initial public offering price to be between $    and \n$    per share. We have applied to list our Class A common stock on The Nasdaq Stock Market LLC (“Nasdaq”) and Nasdaq Texas, \nInc. (“Nasdaq Texas”) under the symbol “SPCX.”"
+          },
+          {
+            "evidence_id": "Ba28d364f3275bf30debbff41",
+            "quote": "Per Share\nTotal\nInitial public offering price   \n  ...................................................................................................... $\n$\nUnderwriting discounts and commissions(1)   \n  ............................................................................ $\n$\nProceeds, before expenses, to Space Exploration Technologies Corp.   \n \n ................................... $\n$\n________________"
+          }
+        ]
+      }
+    ],
+    "all_supported": false,
+    "limitations": [
+      "Cross-model agent assessment of supplied final-visible text; not human ground truth."
+    ]
+  },
+  {
+    "packet_sha256": "456247075fabadfd953b0a0a1d2ca842c1404bb945cccb487b70559b513c4c63",
+    "requirements": [
+      {
+        "id": "held-028.r1",
+        "status": "supported",
+        "reason": "The visible glossary explicitly calls the Algorithm a five-step process and lists the required sequence: make requirements less dumb, delete unnecessary processes or parts, optimize necessary processes or parts, accelerate cycle timesteps, and automate. The surrounding seven business-model principles are a different list and do not change these five steps.",
+        "citations": [
+          {
+            "evidence_id": "Beb3bc568f9fd014cd88d3bfa",
+            "quote": "“The Algorithm” refers to our five-step iterative process that we use to rapidly innovate and optimize, \nemphasizing making the requirements less dumb, deleting unnecessary processes or parts, optimizing the \nnecessary processes or parts, accelerating cycle timesteps, and automating only proven processes after the first \nfour steps are completed."
+          }
+        ]
+      },
+      {
+        "id": "held-028.r2",
+        "status": "supported",
+        "reason": "The visible definition directly imposes both restrictions: automation concerns only proven processes and follows completion of the first four steps. Both necessary conditions are present, not merely a general statement that automation is used.",
+        "citations": [
+          {
+            "evidence_id": "Beb3bc568f9fd014cd88d3bfa",
+            "quote": "automating only proven processes after the first \nfour steps are completed."
+          }
+        ]
+      }
+    ],
+    "all_supported": true,
+    "limitations": [
+      "Cross-model agent assessment of supplied final-visible text; not human ground truth."
+    ]
+  },
+  {
+    "packet_sha256": "5226eb6be88cd665a2e7d66a74be7776be9f9d22ab5e8e001c4badf6d867132e",
+    "requirements": [
+      {
+        "id": "held-047.r1",
+        "status": "missing",
+        "reason": "The additional visible offering, use-of-proceeds, capitalization and underwriting text still contains blank dollar placeholders rather than a final Class A IPO price and total IPO proceeds. The underwriting table labels per-share and both total exercise scenarios but fills none of their amounts. Historical balance-sheet amounts and hypothetical price adjustments do not establish the requested final offering terms.",
+        "citations": [
+          {
+            "evidence_id": "Ba28d364f3275bf30debbff41",
+            "quote": "Per Share\nTotal\nInitial public offering price   \n  ...................................................................................................... $\n$\nUnderwriting discounts and commissions(1)   \n  ............................................................................ $\n$\nProceeds, before expenses, to Space Exploration Technologies Corp.   \n \n ................................... $\n$\n________________"
+          },
+          {
+            "evidence_id": "B2026816f6f49a13d1ad1d308",
+            "quote": "We expect to receive approximately $           of net proceeds from this offering (or $           if the underwriters \nexercise their option to purchase additional shares of Class A common stock in full), based upon the assumed initial \npublic offering price of $           per share (which is the midpoint of the price range set forth on the cover page of this \nprospectus) after deducting underwriting discounts and commissions and estimated offering expenses payable by us."
+          },
+          {
+            "evidence_id": "B1cc8c055bffefe4cdb661514",
+            "quote": "The following table shows the per share and total public offering price, underwriting discounts and commissions, \nand proceeds before expenses to us. These amounts are shown assuming both no exercise and full exercise of the \nunderwriters’ option to purchase up to an additional                 shares of Class A common stock.\nTotal\nPer Share\nNo Exercise\nFull Exercise\nPublic offering price  \n ....................................................................... $                     \n$                     \n$                     \nUnderwriting discounts and commissions to be paid by us  \n ........... $                     \n$                     \n$                     \nProceeds, before expenses, to us  \n   .................................................... $                     \n$                     \n$                     \nThe estimated offering expenses payable by us"
+          }
+        ]
+      }
+    ],
+    "all_supported": false,
+    "limitations": [
+      "Cross-model agent assessment of supplied final-visible text; not human ground truth."
+    ]
+  },
+  {
+    "packet_sha256": "5995be9f9568c094ab11718ec0415eace687c3e37a1d47ccfcf86a23f45b0378",
+    "requirements": [
+      {
+        "id": "held-050.r1",
+        "status": "missing",
+        "reason": "The packet provides consolidated audited historical years 2025, 2024 and 2023 and unaudited interim March 2026/2025 results. It supplies no audited revenue or net-income figures for the full year ended December 31, 2027. References to a transaction expected to close in 2027 or debt due in 2027 concern future transactions and maturities, not audited 2027 operating results. Correctly recognizing that the requested data are absent does not satisfy the requirement for those numerical results.",
+        "citations": [
+          {
+            "evidence_id": "B1701a10ba13048ece65aecae",
+            "quote": "The summary historical consolidated financial data as of March 31, 2026 and for the three \nmonths ended March 31, 2026 and 2025 (except for pro forma basic and diluted net loss per share of common stock \nattributable to common shareholders and weighted average shares used in computing pro forma basic and diluted net \nloss per share of common stock attributable to common shareholders) has been derived from our unaudited \nconsolidated financial statements included elsewhere in this prospectus. The summary historical consolidated \nfinancial data as of December 31, 2025 and 2024 and for the years ended December 31, 2025, 2024, and 2023 \n(except for pro forma basic and diluted net loss per share of common stock attributable to common shareholders and \nweighted average shares used in computing pro forma basic and diluted net loss per share of common stock \nattributable to common shareholders) has been derived from our audited consolidated financial statements included \nelsewhere in this prospectus.  The summary historical consolidated financial and operating data presented below is \nnot indicative of the results to be expected for any future period, and the results for any interim period are not \nnecessarily indicative of the results to be expected for the full fiscal period."
+          },
+          {
+            "evidence_id": "Bceb31382f62f5afa7b1609f9",
+            "quote": "The Spectrum Transaction was approved by the FCC on \nMay 12, 2026 and is expected to close on or about November 30, 2027 subject to other closing conditions."
+          }
+        ]
+      }
+    ],
+    "all_supported": false,
+    "limitations": [
+      "Cross-model agent assessment of supplied final-visible text; not human ground truth."
+    ]
+  },
+  {
+    "packet_sha256": "5a7b97be9a3637101932e4f3e77306bf890d883b0f37e4dbd92bb4251fbfb677",
+    "requirements": [
+      {
+        "id": "held-037.r1",
+        "status": "supported",
+        "reason": "The Space segment table and immediately following revenue paragraph explicitly give the 2025-versus-2024 increase of $290 million (7.6%), relatively flat Launch Services revenue, and the $298 million increase in Launch and Development. The same paragraph identifies both principal drivers: an extended NASA contract for additional CRS missions and a U.S. Department of War contract.",
+        "citations": [
+          {
+            "evidence_id": "Bd848e9db25466e179d002515",
+            "quote": "Revenue for the year ended December 31, 2025 increased by $290 million, or 7.6%, compared to the prior year \nended December 31, 2024.  Launch Services revenue remained relatively flat year over year, while Launch and \nDevelopment revenue increased by $298 million.  The Launch and Development revenue increase was primarily \ndriven by increased revenue for an extended contract with NASA for additional Cargo Resupply Services (CRS) \nmissions to the International Space Station and increased revenue from a U.S. Department of War contract."
+          }
+        ]
+      },
+      {
+        "id": "held-037.r2",
+        "status": "supported",
+        "reason": "The Cost of Revenue paragraph directly states the $189 million (12.2%) decrease for 2025 versus 2024 and links it to greater Falcon reusability, a $240 million reduction in the expense described by the source as “deprecation,” and $11 million lower overhead. Direction, amounts, comparison period and the causal links are explicit; the source spelling is retained in the quote.",
+        "citations": [
+          {
+            "evidence_id": "B7cc3d280d31ce44167d8ec0c",
+            "quote": "Cost of revenue for the year ended December 31, 2025 decreased by $189 million, or 12.2%, compared to the prior \nyear ended December 31, 2024. This decrease was primarily due increased reusability of our Falcon launch vehicles \nresulting in lower deprecation of $240 million, lowering the cost of each launch, and lower overhead costs of $11 \nmillion."
+          }
+        ]
+      },
+      {
+        "id": "held-037.r3",
+        "status": "supported",
+        "reason": "The continuation explicitly reports Starlink launches rising from 89 in 2024 to 122 in 2025, $14 million more launch-operation and overhead costs capitalized in the company’s Connectivity segment, and a $51 million increase in excess/obsolescence inventory reserves partly offsetting the decrease. It connects the launch shift to capitalization and distinguishes the offset from the cost-reducing drivers.",
+        "citations": [
+          {
+            "evidence_id": "B7cc3d280d31ce44167d8ec0c",
+            "quote": "The decrease is also due to the relative increase in Starlink satellite launches from 89 launches in 2024 to \n122 launches in 2025, resulting in relatively more of our launch operations and overhead costs capitalized in our \nConnectivity segment of $14 million.  This decrease was partially offset by an increase in inventory excess and \nobsolescence reserves of $51 million mainly due to less demand on rocket vehicle and spacecraft parts as reusability \nhas increased."
+          }
+        ]
+      }
+    ],
+    "all_supported": true,
+    "limitations": [
+      "Cross-model agent assessment of supplied final-visible text; not human ground truth."
+    ]
+  },
+  {
+    "packet_sha256": "709ac5faeaa3e7fb2451e3f0d91dad3ad9b774c89324ca57e591b7d65c0da3d7",
+    "requirements": [
+      {
+        "id": "held-037.r1",
+        "status": "supported",
+        "reason": "The Space segment table and immediately following revenue paragraph explicitly give the 2025-versus-2024 increase of $290 million (7.6%), relatively flat Launch Services revenue, and the $298 million increase in Launch and Development. The same paragraph identifies both principal drivers: an extended NASA contract for additional CRS missions and a U.S. Department of War contract.",
+        "citations": [
+          {
+            "evidence_id": "Bd848e9db25466e179d002515",
+            "quote": "Revenue for the year ended December 31, 2025 increased by $290 million, or 7.6%, compared to the prior year \nended December 31, 2024.  Launch Services revenue remained relatively flat year over year, while Launch and \nDevelopment revenue increased by $298 million.  The Launch and Development revenue increase was primarily \ndriven by increased revenue for an extended contract with NASA for additional Cargo Resupply Services (CRS) \nmissions to the International Space Station and increased revenue from a U.S. Department of War contract."
+          }
+        ]
+      },
+      {
+        "id": "held-037.r2",
+        "status": "supported",
+        "reason": "The Cost of Revenue paragraph directly states the $189 million (12.2%) decrease for 2025 versus 2024 and links it to greater Falcon reusability, a $240 million reduction in the expense described by the source as “deprecation,” and $11 million lower overhead. Direction, amounts, comparison period and the causal links are explicit; the source spelling is retained in the quote.",
+        "citations": [
+          {
+            "evidence_id": "B7cc3d280d31ce44167d8ec0c",
+            "quote": "Cost of revenue for the year ended December 31, 2025 decreased by $189 million, or 12.2%, compared to the prior \nyear ended December 31, 2024. This decrease was primarily due increased reusability of our Falcon launch vehicles \nresulting in lower deprecation of $240 million, lowering the cost of each launch, and lower overhead costs of $11 \nmillion."
+          }
+        ]
+      },
+      {
+        "id": "held-037.r3",
+        "status": "supported",
+        "reason": "The continuation explicitly reports Starlink launches rising from 89 in 2024 to 122 in 2025, $14 million more launch-operation and overhead costs capitalized in the company’s Connectivity segment, and a $51 million increase in excess/obsolescence inventory reserves partly offsetting the decrease. It connects the launch shift to capitalization and distinguishes the offset from the cost-reducing drivers.",
+        "citations": [
+          {
+            "evidence_id": "B7cc3d280d31ce44167d8ec0c",
+            "quote": "The decrease is also due to the relative increase in Starlink satellite launches from 89 launches in 2024 to \n122 launches in 2025, resulting in relatively more of our launch operations and overhead costs capitalized in our \nConnectivity segment of $14 million.  This decrease was partially offset by an increase in inventory excess and \nobsolescence reserves of $51 million mainly due to less demand on rocket vehicle and spacecraft parts as reusability \nhas increased."
+          }
+        ]
+      }
+    ],
+    "all_supported": true,
+    "limitations": [
+      "Cross-model agent assessment of supplied final-visible text; not human ground truth."
+    ]
+  }
+]

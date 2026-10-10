@@ -1,0 +1,186 @@
+[
+  {
+    "packet_sha256": "75a92008ccc8c99e1b3c5c68a837999bab118cf59f317ce1773532f04119e6e6",
+    "requirements": [
+      {
+        "id": "held-047.r1",
+        "status": "missing",
+        "reason": "The requested final IPO price per Class A share and total IPO proceeds are absent. The cover gives blank price-range placeholders, and the Per Share/Total table leaves both the offering price and proceeds blank. This supports non-disclosure, but does not supply the required numerical offering terms.",
+        "citations": [
+          {
+            "evidence_id": "Be921fe79bd0672b67aeb14d8",
+            "quote": "This is the initial public offering of shares of Class A common stock, par value $0.001 per share, of Space Exploration Technologies \nCorp., a Texas corporation. We are offering                shares of our Class A common stock.\nCurrently, no public market exists for our Class A common stock. We expect the initial public offering price to be between $    and \n$    per share. We have applied to list our Class A common stock on The Nasdaq Stock Market LLC (“Nasdaq”) and Nasdaq Texas, \nInc. (“Nasdaq Texas”) under the symbol “SPCX.”"
+          },
+          {
+            "evidence_id": "Ba28d364f3275bf30debbff41",
+            "quote": "Per Share\nTotal\nInitial public offering price   \n  ...................................................................................................... $\n$\nUnderwriting discounts and commissions(1)   \n  ............................................................................ $\n$\nProceeds, before expenses, to Space Exploration Technologies Corp.   \n \n ................................... $\n$"
+          }
+        ]
+      }
+    ],
+    "all_supported": false,
+    "limitations": [
+      "Cross-model agent audit, not human adjudication."
+    ]
+  },
+  {
+    "packet_sha256": "79cc75c6a38ab59b4e6ef8d5d362323552cc710c638df9fb0aab17be7011be69",
+    "requirements": [
+      {
+        "id": "held-037.r1",
+        "status": "supported",
+        "reason": "The visible Space segment section explicitly compares 2025 with 2024, states the $290 million (7.6%) revenue increase, says Launch Services remained relatively flat, and identifies the $298 million Launch and Development increase and both the additional NASA CRS and U.S. Department of War contract drivers.",
+        "citations": [
+          {
+            "evidence_id": "Bd848e9db25466e179d002515",
+            "quote": "Segment Results\nSpace\nYear Ended December 31,\n2025 vs. 2024 Change\n(in millions)\n2025\n2024\n$ Change\n% Change\nRevenue\n \n   ............................................................... $\n4,086\n$\n3,796\n$\n290\n7.6 %\nCosts and expenses\nCost of revenue    \n   ..............................................\n1,352\n1,541\n(189)\n(12.2)%"
+          },
+          {
+            "evidence_id": "Bd848e9db25466e179d002515",
+            "quote": "Revenue for the year ended December 31, 2025 increased by $290 million, or 7.6%, compared to the prior year \nended December 31, 2024.  Launch Services revenue remained relatively flat year over year, while Launch and \nDevelopment revenue increased by $298 million.  The Launch and Development revenue increase was primarily \ndriven by increased revenue for an extended contract with NASA for additional Cargo Resupply Services (CRS) \nmissions to the International Space Station and increased revenue from a U.S. Department of War contract."
+          }
+        ]
+      },
+      {
+        "id": "held-037.r2",
+        "status": "supported",
+        "reason": "The Space segment table and its continuing Cost of Revenue discussion explicitly state the 2025 versus 2024 decrease of $189 million (12.2%), increased Falcon reusability, $240 million lower depreciation (spelled “deprecation” in the evidence), and $11 million lower overhead.",
+        "citations": [
+          {
+            "evidence_id": "Bd848e9db25466e179d002515",
+            "quote": "Segment Results\nSpace\nYear Ended December 31,\n2025 vs. 2024 Change\n(in millions)\n2025\n2024\n$ Change\n% Change\nRevenue\n \n   ............................................................... $\n4,086\n$\n3,796\n$\n290\n7.6 %\nCosts and expenses\nCost of revenue    \n   ..............................................\n1,352\n1,541\n(189)\n(12.2)%"
+          },
+          {
+            "evidence_id": "B7cc3d280d31ce44167d8ec0c",
+            "quote": "Cost of Revenue\nCost of revenue for the year ended December 31, 2025 decreased by $189 million, or 12.2%, compared to the prior \nyear ended December 31, 2024. This decrease was primarily due increased reusability of our Falcon launch vehicles \nresulting in lower deprecation of $240 million, lowering the cost of each launch, and lower overhead costs of $11 \nmillion."
+          }
+        ]
+      },
+      {
+        "id": "held-037.r3",
+        "status": "supported",
+        "reason": "Within the Space cost-of-revenue discussion, the evidence explicitly gives Starlink launches increasing from 89 in 2024 to 122 in 2025, $14 million more launch operations and overhead capitalized in the company’s Connectivity segment, and a $51 million increase in excess and obsolescence reserves partially offsetting the cost decrease.",
+        "citations": [
+          {
+            "evidence_id": "Bd848e9db25466e179d002515",
+            "quote": "Segment Results\nSpace\nYear Ended December 31,\n2025 vs. 2024 Change\n(in millions)\n2025\n2024\n$ Change\n% Change\nRevenue\n \n   ............................................................... $\n4,086\n$\n3,796\n$\n290\n7.6 %\nCosts and expenses\nCost of revenue    \n   ..............................................\n1,352\n1,541\n(189)\n(12.2)%"
+          },
+          {
+            "evidence_id": "B7cc3d280d31ce44167d8ec0c",
+            "quote": "Cost of Revenue\nCost of revenue for the year ended December 31, 2025 decreased by $189 million, or 12.2%, compared to the prior \nyear ended December 31, 2024. This decrease was primarily due increased reusability of our Falcon launch vehicles \nresulting in lower deprecation of $240 million, lowering the cost of each launch, and lower overhead costs of $11 \nmillion. The decrease is also due to the relative increase in Starlink satellite launches from 89 launches in 2024 to \n122 launches in 2025, resulting in relatively more of our launch operations and overhead costs capitalized in our \nConnectivity segment of $14 million.  This decrease was partially offset by an increase in inventory excess and \nobsolescence reserves of $51 million mainly due to less demand on rocket vehicle and spacecraft parts as reusability \nhas increased."
+          }
+        ]
+      }
+    ],
+    "all_supported": true,
+    "limitations": [
+      "Cross-model agent audit, not human adjudication."
+    ]
+  },
+  {
+    "packet_sha256": "7e487006cad829f133da163277ae630c98136dfeb749e79acfef3eaf7f1cb678",
+    "requirements": [
+      {
+        "id": "held-047.r1",
+        "status": "missing",
+        "reason": "Neither the final Class A per-share IPO price nor total IPO proceeds is supplied. Both the cover price range and Per Share/Total offering table contain blank dollar placeholders; the additional use-of-proceeds passages likewise contain blanks rather than final offering amounts.",
+        "citations": [
+          {
+            "evidence_id": "Be921fe79bd0672b67aeb14d8",
+            "quote": "This is the initial public offering of shares of Class A common stock, par value $0.001 per share, of Space Exploration Technologies \nCorp., a Texas corporation. We are offering                shares of our Class A common stock.\nCurrently, no public market exists for our Class A common stock. We expect the initial public offering price to be between $    and \n$    per share. We have applied to list our Class A common stock on The Nasdaq Stock Market LLC (“Nasdaq”) and Nasdaq Texas, \nInc. (“Nasdaq Texas”) under the symbol “SPCX.”"
+          },
+          {
+            "evidence_id": "Ba28d364f3275bf30debbff41",
+            "quote": "Per Share\nTotal\nInitial public offering price   \n  ...................................................................................................... $\n$\nUnderwriting discounts and commissions(1)   \n  ............................................................................ $\n$\nProceeds, before expenses, to Space Exploration Technologies Corp.   \n \n ................................... $\n$"
+          }
+        ]
+      }
+    ],
+    "all_supported": false,
+    "limitations": [
+      "Cross-model agent audit, not human adjudication."
+    ]
+  },
+  {
+    "packet_sha256": "8a0bde1646d172517f5ea3ec128d9e40d2f6a664a9d13cce1e10ebb23f5aa30a",
+    "requirements": [
+      {
+        "id": "held-027.r1",
+        "status": "supported",
+        "reason": "The visible prospectus cover explicitly says the company applied to list Class A common stock on Nasdaq and Nasdaq Texas under SPCX. The wording establishes proposed listing venues and symbol, rather than completed trading.",
+        "citations": [
+          {
+            "evidence_id": "Be921fe79bd0672b67aeb14d8",
+            "quote": "We have applied to list our Class A common stock on The Nasdaq Stock Market LLC (“Nasdaq”) and Nasdaq Texas, \nInc. (“Nasdaq Texas”) under the symbol “SPCX.”"
+          }
+        ]
+      },
+      {
+        "id": "held-027.r2",
+        "status": "supported",
+        "reason": "The visible prospectus cover explicitly gives Class A one vote per share, Class B ten votes per share, and Class B shareholders the right to elect a majority of the board.",
+        "citations": [
+          {
+            "evidence_id": "Be921fe79bd0672b67aeb14d8",
+            "quote": "Following the completion of this offering, we will have two classes of common stock issued and outstanding: Class A common stock \nand Class B common stock. Each share of Class A common stock will entitle its holder to one vote per share. Each share of Class B \ncommon stock will entitle its holder to 10 votes per share. Class A shareholders and Class B shareholders will vote together as a \nsingle class on all matters to be voted on by shareholders, except Class B shareholders will be entitled to elect a majority of our board \nof directors in addition to having certain other class votes as described under “Description of Capital Stock.”"
+          }
+        ]
+      }
+    ],
+    "all_supported": true,
+    "limitations": [
+      "Cross-model agent audit, not human adjudication."
+    ]
+  },
+  {
+    "packet_sha256": "91ca8fd5cc7a6a25ca84a4be0358925dfadf671b3d3041383274c2dbfa296060",
+    "requirements": [
+      {
+        "id": "held-027.r1",
+        "status": "supported",
+        "reason": "The visible prospectus cover explicitly says the company applied to list Class A common stock on Nasdaq and Nasdaq Texas under SPCX. The wording establishes proposed listing venues and symbol, rather than completed trading.",
+        "citations": [
+          {
+            "evidence_id": "Be921fe79bd0672b67aeb14d8",
+            "quote": "We have applied to list our Class A common stock on The Nasdaq Stock Market LLC (“Nasdaq”) and Nasdaq Texas, \nInc. (“Nasdaq Texas”) under the symbol “SPCX.”"
+          }
+        ]
+      },
+      {
+        "id": "held-027.r2",
+        "status": "supported",
+        "reason": "The visible prospectus cover explicitly gives Class A one vote per share, Class B ten votes per share, and Class B shareholders the right to elect a majority of the board.",
+        "citations": [
+          {
+            "evidence_id": "Be921fe79bd0672b67aeb14d8",
+            "quote": "Following the completion of this offering, we will have two classes of common stock issued and outstanding: Class A common stock \nand Class B common stock. Each share of Class A common stock will entitle its holder to one vote per share. Each share of Class B \ncommon stock will entitle its holder to 10 votes per share. Class A shareholders and Class B shareholders will vote together as a \nsingle class on all matters to be voted on by shareholders, except Class B shareholders will be entitled to elect a majority of our board \nof directors in addition to having certain other class votes as described under “Description of Capital Stock.”"
+          }
+        ]
+      }
+    ],
+    "all_supported": true,
+    "limitations": [
+      "Cross-model agent audit, not human adjudication."
+    ]
+  },
+  {
+    "packet_sha256": "9bcfa0201205d2f80257655f7ec31301ebb3be4a3ebeecd13762ca1e5616eb46",
+    "requirements": [
+      {
+        "id": "held-050.r1",
+        "status": "missing",
+        "reason": "The required audited actual revenue and net income for the full year ended December 31, 2027 are absent. The visible summary explicitly identifies audited annual financial data for 2023–2025 and unaudited March 2026/2025 interim data, and cautions that these are not indicative of future or full-year results. Other visible statements also cover earlier periods; the 2027 accounting-standard effective date supplies no 2027 financial results.",
+        "citations": [
+          {
+            "evidence_id": "B1701a10ba13048ece65aecae",
+            "quote": "The following table sets forth the summary historical consolidated financial and operating data for the periods and as \nof the dates presented. The summary historical consolidated financial data as of March 31, 2026 and for the three \nmonths ended March 31, 2026 and 2025 (except for pro forma basic and diluted net loss per share of common stock \nattributable to common shareholders and weighted average shares used in computing pro forma basic and diluted net \nloss per share of common stock attributable to common shareholders) has been derived from our unaudited \nconsolidated financial statements included elsewhere in this prospectus. The summary historical consolidated \nfinancial data as of December 31, 2025 and 2024 and for the years ended December 31, 2025, 2024, and 2023 \n(except for pro forma basic and diluted net loss per share of common stock attributable to common shareholders and \nweighted average shares used in computing pro forma basic and diluted net loss per share of common stock \nattributable to common shareholders) has been derived from our audited consolidated financial statements included \nelsewhere in this prospectus.  The summary historical consolidated financial and operating data presented below is \nnot indicative of the results to be expected for any future period, and the results for any interim period are not \nnecessarily indicative of the results to be expected for the full fiscal period."
+          }
+        ]
+      }
+    ],
+    "all_supported": false,
+    "limitations": [
+      "Cross-model agent audit, not human adjudication."
+    ]
+  }
+]

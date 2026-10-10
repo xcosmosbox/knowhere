@@ -1,0 +1,33 @@
+{
+  "created_at": "2026-10-10T03:26:58.575110+00:00",
+  "selection": "Fixed question indices chosen before inspecting held-out outcomes; repeat 0 in both arms, blinded to arm and feature/semantic verdicts. All independently flagged false-sufficient cases will receive a separate discrepancy audit.",
+  "question_indices": [
+    2,
+    8,
+    14,
+    20,
+    26,
+    32,
+    38,
+    44
+  ],
+  "trial_ids": [
+    "held-003:0:baseline",
+    "held-003:0:review",
+    "held-009:0:baseline",
+    "held-009:0:review",
+    "held-015:0:baseline",
+    "held-015:0:review",
+    "held-021:0:baseline",
+    "held-021:0:review",
+    "held-027:0:baseline",
+    "held-027:0:review",
+    "held-033:0:baseline",
+    "held-033:0:review",
+    "held-039:0:baseline",
+    "held-039:0:review",
+    "held-045:0:baseline",
+    "held-045:0:review"
+  ],
+  "interpretation": "Cross-model agent audit, not human adjudication; does not silently rewrite frozen automated scores."
+}

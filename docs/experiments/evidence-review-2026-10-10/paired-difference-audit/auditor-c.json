@@ -1,0 +1,99 @@
+[
+  {
+    "packet_sha256": "0694b5d1cad7453724c203503113a0db0d4ff7efd274a7f0633817017d40ae38",
+    "requirements": [
+      {
+        "id": "held-042.r1",
+        "status": "supported",
+        "reason": "The visible acquisition note explicitly states that the company completed its acquisition of X.AI Holdings Corp. on February 2, 2026 and that xAI became its wholly-owned subsidiary.",
+        "citations": [
+          {
+            "evidence_id": "Bea3820c3c867fb207bf1ef8d",
+            "quote": "On February 2, 2026, the Company completed its acquisition of X.AI Holdings Corp. (“xAI”), pursuant to which \nxAI became a wholly-owned subsidiary of the Company (“xAI Merger”)."
+          }
+        ]
+      },
+      {
+        "id": "held-042.r2",
+        "status": "supported",
+        "reason": "The visible accounting note explicitly identifies both mergers as common-control reorganizations because Elon Musk held controlling financial interests through majority voting interests in the company, xAI and X. It states that net assets were retrospectively combined at historical carrying amounts for all periods presented and that no new goodwill or other intangible assets were recorded.",
+        "citations": [
+          {
+            "evidence_id": "Bea3820c3c867fb207bf1ef8d",
+            "quote": "The Mergers have been accounted for as reorganizations of entities under common control as Mr. Elon Musk had a \ncontrolling financial interest in the Company, xAI and X through his majority voting interest in each such entity \nduring the years presented in these consolidated financial statements. The Company’s consolidated financial \nstatements have been prepared to reflect the retrospective combination of the net assets of the entities at their \nhistorical carrying amounts for all periods presented. No new goodwill or other intangible assets have been recorded \nand all historical related party transactions between the entities have been eliminated in consolidation."
+          }
+        ]
+      }
+    ],
+    "all_supported": true,
+    "limitations": [
+      "Cross-model agent audit, not human adjudication."
+    ]
+  },
+  {
+    "packet_sha256": "4e12026799f41758a9e789b8bf1bd886c43cf0e5097b32d7b303e21a98d6516a",
+    "requirements": [
+      {
+        "id": "held-042.r1",
+        "status": "supported",
+        "reason": "The visible acquisition note explicitly states that the company completed its acquisition of X.AI Holdings Corp. on February 2, 2026 and that xAI became its wholly-owned subsidiary.",
+        "citations": [
+          {
+            "evidence_id": "Bea3820c3c867fb207bf1ef8d",
+            "quote": "On February 2, 2026, the Company completed its acquisition of X.AI Holdings Corp. (“xAI”), pursuant to which \nxAI became a wholly-owned subsidiary of the Company (“xAI Merger”)."
+          }
+        ]
+      },
+      {
+        "id": "held-042.r2",
+        "status": "supported",
+        "reason": "The visible accounting note explicitly identifies both mergers as common-control reorganizations because Elon Musk held controlling financial interests through majority voting interests in the company, xAI and X. It states that net assets were retrospectively combined at historical carrying amounts for all periods presented and that no new goodwill or other intangible assets were recorded.",
+        "citations": [
+          {
+            "evidence_id": "Bea3820c3c867fb207bf1ef8d",
+            "quote": "The Mergers have been accounted for as reorganizations of entities under common control as Mr. Elon Musk had a \ncontrolling financial interest in the Company, xAI and X through his majority voting interest in each such entity \nduring the years presented in these consolidated financial statements. The Company’s consolidated financial \nstatements have been prepared to reflect the retrospective combination of the net assets of the entities at their \nhistorical carrying amounts for all periods presented. No new goodwill or other intangible assets have been recorded \nand all historical related party transactions between the entities have been eliminated in consolidation."
+          }
+        ]
+      }
+    ],
+    "all_supported": true,
+    "limitations": [
+      "Cross-model agent audit, not human adjudication."
+    ]
+  },
+  {
+    "packet_sha256": "7a1a78f4f399c1daae8f93054a5cc53fcb6765f3bb96f2ce1dadd290fe6d8a23",
+    "requirements": [
+      {
+        "id": "held-028.r1",
+        "status": "supported",
+        "reason": "The visible definition names a five-step iterative process and lists the required steps in order: making requirements less dumb, deleting unnecessary processes or parts, optimizing necessary processes or parts, accelerating cycle time, and automating.",
+        "citations": [
+          {
+            "evidence_id": "Bad50c80d9f3e529b93fbc95f",
+            "quote": "“The Algorithm,” as it is known internally, is a five-step iterative process that emphasizes making the \nrequirements less dumb, deleting unnecessary processes or parts (embracing the principle that the best part is no \npart), only then optimizing the necessary processes or parts, accelerating cycle time, and automating only proven \nprocesses."
+          }
+        ]
+      },
+      {
+        "id": "held-028.r2",
+        "status": "missing",
+        "reason": "Both visible descriptions explicitly limit automation to proven processes, but neither explicitly states that the first four steps must be completed before automation. Listing automation last and saying optimization follows deletion do not establish that separate completion prerequisite. The missing facet is the requirement to complete all four earlier steps first.",
+        "citations": [
+          {
+            "evidence_id": "Bad50c80d9f3e529b93fbc95f",
+            "quote": "“The Algorithm,” as it is known internally, is a five-step iterative process that emphasizes making the \nrequirements less dumb, deleting unnecessary processes or parts (embracing the principle that the best part is no \npart), only then optimizing the necessary processes or parts, accelerating cycle time, and automating only proven \nprocesses."
+          },
+          {
+            "evidence_id": "Bfc9862ec7eec772740eb1e8c",
+            "quote": "We reinforce \nthis culture through “The Algorithm,” a five-step iterative process that emphasizes making the requirements less \ndumb, deleting unnecessary processes or parts (embracing the principle that the best part is no part), only then \noptimizing what remains, accelerating cycle time, and automating only proven processes."
+          }
+        ]
+      }
+    ],
+    "all_supported": false,
+    "limitations": [
+      "Cross-model agent audit, not human adjudication."
+    ]
+  }
+]

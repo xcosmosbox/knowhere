@@ -1,0 +1,164 @@
+{
+  "schema_version": "knowhere-cross-model-sensitivity/1",
+  "scope": "Posthoc, non-human cross-model evidence audit. Primary frozen automated scores remain unchanged. Filling unknown scores and replacing audited judgments are separate sensitivity analyses, not a new held-out replication or proof of generalization.",
+  "auditor_files_sha256": {
+    "cross-model-audit/auditor-a.json": "c5c0d3f147b3fc87c18aa75e6dcdf1743823209757ccd8cc209d712bca0edcfc",
+    "cross-model-audit/auditor-b.json": "7e6e9b2ff72856452d02f8e83c0c811f5365769c65a9bce9543f985c685597b4",
+    "extended-blind-audit/auditor-a.json": "0c394a06f4abd63349a16c88f057673c03189fae84cbe355130c29aef48fa535",
+    "extended-blind-audit/auditor-b.json": "a0dff48c6abb186ae32db3f987d66beed6a2108fd10fb6b00913cf2ee924fea8",
+    "extended-blind-audit/auditor-c.json": "4b2f1d3b3f90000bf3e56e54e38750214522b55ad9ec7bf4b8d915010de71d43",
+    "extended-blind-audit/auditor-d.json": "5ee1a49c91ab26fc10d418dc8c3c98eaac8419826bfedc0b2696eb011d2441b8",
+    "paired-difference-audit/auditor-c.json": "3a6edc7823998828bbb3ce259ac4d7244c2fc31cab0c5eb0cd56d07005b0918b",
+    "paired-difference-audit/auditor-d.json": "cf62be7fd021caa932f944b852c1099ef377c2d11546612717a556240935dabc"
+  },
+  "auditor_records": 42,
+  "unique_audited_packets": 42,
+  "invalid_automated_packets": 21,
+  "unresolved_invalid_packets": [],
+  "inter_auditor_disagreements": [],
+  "model_audit_disagreements": [],
+  "sensitivity_modes": {
+    "fill_unknown_only": {
+      "overall": {
+        "arms": {
+          "baseline": {
+            "episodes": 150,
+            "sufficient": 124,
+            "insufficient": 26,
+            "unknown": 0,
+            "rate": 0.8266666666666667
+          },
+          "review": {
+            "episodes": 150,
+            "sufficient": 124,
+            "insufficient": 26,
+            "unknown": 0,
+            "rate": 0.8266666666666667
+          }
+        },
+        "question_count": 50,
+        "complete_question_pairs": 50,
+        "paired_delta": 0.0
+      },
+      "families": {
+        "micron": {
+          "arms": {
+            "baseline": {
+              "episodes": 75,
+              "sufficient": 63,
+              "insufficient": 12,
+              "unknown": 0,
+              "rate": 0.84
+            },
+            "review": {
+              "episodes": 75,
+              "sufficient": 63,
+              "insufficient": 12,
+              "unknown": 0,
+              "rate": 0.84
+            }
+          },
+          "question_count": 25,
+          "complete_question_pairs": 25,
+          "paired_delta": 0
+        },
+        "spacex": {
+          "arms": {
+            "baseline": {
+              "episodes": 75,
+              "sufficient": 61,
+              "insufficient": 14,
+              "unknown": 0,
+              "rate": 0.8133333333333334
+            },
+            "review": {
+              "episodes": 75,
+              "sufficient": 61,
+              "insufficient": 14,
+              "unknown": 0,
+              "rate": 0.8133333333333334
+            }
+          },
+          "question_count": 25,
+          "complete_question_pairs": 25,
+          "paired_delta": 0.0
+        }
+      },
+      "changed_evidence_rescues": [
+        "held-028:1:review",
+        "held-028:2:review"
+      ]
+    },
+    "apply_all_audited_judgments": {
+      "overall": {
+        "arms": {
+          "baseline": {
+            "episodes": 150,
+            "sufficient": 124,
+            "insufficient": 26,
+            "unknown": 0,
+            "rate": 0.8266666666666667
+          },
+          "review": {
+            "episodes": 150,
+            "sufficient": 124,
+            "insufficient": 26,
+            "unknown": 0,
+            "rate": 0.8266666666666667
+          }
+        },
+        "question_count": 50,
+        "complete_question_pairs": 50,
+        "paired_delta": 0.0
+      },
+      "families": {
+        "micron": {
+          "arms": {
+            "baseline": {
+              "episodes": 75,
+              "sufficient": 63,
+              "insufficient": 12,
+              "unknown": 0,
+              "rate": 0.84
+            },
+            "review": {
+              "episodes": 75,
+              "sufficient": 63,
+              "insufficient": 12,
+              "unknown": 0,
+              "rate": 0.84
+            }
+          },
+          "question_count": 25,
+          "complete_question_pairs": 25,
+          "paired_delta": 0
+        },
+        "spacex": {
+          "arms": {
+            "baseline": {
+              "episodes": 75,
+              "sufficient": 61,
+              "insufficient": 14,
+              "unknown": 0,
+              "rate": 0.8133333333333334
+            },
+            "review": {
+              "episodes": 75,
+              "sufficient": 61,
+              "insufficient": 14,
+              "unknown": 0,
+              "rate": 0.8133333333333334
+            }
+          },
+          "question_count": 25,
+          "complete_question_pairs": 25,
+          "paired_delta": 0.0
+        }
+      },
+      "changed_evidence_rescues": [
+        "held-028:1:review",
+        "held-028:2:review"
+      ]
+    }
+  }
+}

@@ -1,0 +1,201 @@
+[
+  {
+    "packet_sha256": "a64eb646a532134dfa56d21883199bfa8963e7e0792c34cd23b030d1f921fb9f",
+    "requirements": [
+      {
+        "id": "held-028.r1",
+        "status": "supported",
+        "reason": "The visible glossary defines a five-step process and explicitly lists all five required actions in the stated order.",
+        "citations": [
+          {
+            "evidence_id": "Beb3bc568f9fd014cd88d3bfa",
+            "quote": "“The Algorithm” refers to our five-step iterative process that we use to rapidly innovate and optimize, \nemphasizing making the requirements less dumb, deleting unnecessary processes or parts, optimizing the \nnecessary processes or parts, accelerating cycle timesteps, and automating only proven processes after the first \nfour steps are completed."
+          }
+        ]
+      },
+      {
+        "id": "held-028.r2",
+        "status": "supported",
+        "reason": "The same visible definition expressly limits automation to proven processes after completion of the first four steps.",
+        "citations": [
+          {
+            "evidence_id": "Beb3bc568f9fd014cd88d3bfa",
+            "quote": "automating only proven processes after the first \nfour steps are completed."
+          }
+        ]
+      }
+    ],
+    "all_supported": true,
+    "limitations": [
+      "Cross-model agent audit, not human adjudication."
+    ]
+  },
+  {
+    "packet_sha256": "c295731f98cd42e2e887bb85bbfb67c9b60e5a4daaa5151bbdf851fda58de5eb",
+    "requirements": [
+      {
+        "id": "held-050.r1",
+        "status": "missing",
+        "reason": "No audited actual revenue or net income for the full year ended December 31, 2027 is present. The visible annual financial statements cover 2025, 2024, and 2023, and the later results cover unaudited three-month periods ended March 31, 2026 and 2025. Those periods do not supply either requested 2027 annual amount.",
+        "citations": [
+          {
+            "evidence_id": "B1701a10ba13048ece65aecae",
+            "quote": "The summary historical consolidated financial data as of March 31, 2026 and for the three \nmonths ended March 31, 2026 and 2025 (except for pro forma basic and diluted net loss per share of common stock \nattributable to common shareholders and weighted average shares used in computing pro forma basic and diluted net \nloss per share of common stock attributable to common shareholders) has been derived from our unaudited \nconsolidated financial statements included elsewhere in this prospectus. The summary historical consolidated \nfinancial data as of December 31, 2025 and 2024 and for the years ended December 31, 2025, 2024, and 2023 \n(except for pro forma basic and diluted net loss per share of common stock attributable to common shareholders and \nweighted average shares used in computing pro forma basic and diluted net loss per share of common stock \nattributable to common shareholders) has been derived from our audited consolidated financial statements included \nelsewhere in this prospectus.  The summary historical consolidated financial and operating data presented below is \nnot indicative of the results to be expected for any future period, and the results for any interim period are not \nnecessarily indicative of the results to be expected for the full fiscal period."
+          }
+        ]
+      }
+    ],
+    "all_supported": false,
+    "limitations": [
+      "Cross-model agent audit, not human adjudication."
+    ]
+  },
+  {
+    "packet_sha256": "d1bdb7cbe3d26ce6ad2f991bdb99892c6089d10c0cca85b5eeb0e18207aa4ee9",
+    "requirements": [
+      {
+        "id": "held-013.r1",
+        "status": "supported",
+        "reason": "The March 18, 2026 business-unit table explicitly labels the figures as millions, orders the columns FQ2-26 then FQ1-26, and gives CMBU revenue of $7,749 and $5,284 and operating margins of 66% and 55%. The FQ2-25 column is separately labeled.",
+        "citations": [
+          {
+            "evidence_id": "Ba467389ca73b32670e199fd5",
+            "quote": "March 18, 2026\n24\n24\nAmounts in millions\nFQ2-26\nFQ1-26\nFQ2-25\nCloud Memory (CMBU)\nRevenue\n$7,749\n$5,284\n$2,947\nGross margin\n74 %\n66 %\n55 %\nOperating margin\n66 %\n55 %\n45 %"
+          }
+        ]
+      },
+      {
+        "id": "held-013.r2",
+        "status": "supported",
+        "reason": "The same table supplies the millions unit and FQ2-26/FQ1-26 column order. The CDBU row explicitly gives revenue of $5,687 and $2,379 and operating margins of 67% and 37%, with the third-period figures distinct.",
+        "citations": [
+          {
+            "evidence_id": "Ba467389ca73b32670e199fd5",
+            "quote": "March 18, 2026\n24\n24\nAmounts in millions\nFQ2-26\nFQ1-26\nFQ2-25"
+          },
+          {
+            "evidence_id": "Ba467389ca73b32670e199fd5",
+            "quote": "Core Data Center (CDBU)\nRevenue\n$5,687\n$2,379\n$1,830\nGross margin\n74 %\n51 %\n47 %\nOperating margin\n67 %\n37 %\n33 %"
+          }
+        ]
+      }
+    ],
+    "all_supported": true,
+    "limitations": [
+      "Cross-model agent audit, not human adjudication."
+    ]
+  },
+  {
+    "packet_sha256": "d8878d3b1f79f13d54cec78e2a0d07ceccca11163ee5af9a7d969d9d2daba203",
+    "requirements": [
+      {
+        "id": "held-027.r1",
+        "status": "supported",
+        "reason": "The visible prospectus says the company applied to list Class A common stock on both Nasdaq and Nasdaq Texas under SPCX, explicitly establishing the proposed symbol and both venues.",
+        "citations": [
+          {
+            "evidence_id": "Be921fe79bd0672b67aeb14d8",
+            "quote": "We have applied to list our Class A common stock on The Nasdaq Stock Market LLC (“Nasdaq”) and Nasdaq Texas, \nInc. (“Nasdaq Texas”) under the symbol “SPCX.”"
+          }
+        ]
+      },
+      {
+        "id": "held-027.r2",
+        "status": "supported",
+        "reason": "The visible offering description explicitly assigns one vote per Class A share, 10 votes per Class B share, and the right for Class B shareholders to elect a majority of the board.",
+        "citations": [
+          {
+            "evidence_id": "Be921fe79bd0672b67aeb14d8",
+            "quote": "Each share of Class A common stock will entitle its holder to one vote per share. Each share of Class B \ncommon stock will entitle its holder to 10 votes per share. Class A shareholders and Class B shareholders will vote together as a \nsingle class on all matters to be voted on by shareholders, except Class B shareholders will be entitled to elect a majority of our board \nof directors in addition to having certain other class votes as described under “Description of Capital Stock.”"
+          }
+        ]
+      }
+    ],
+    "all_supported": true,
+    "limitations": [
+      "Cross-model agent audit, not human adjudication."
+    ]
+  },
+  {
+    "packet_sha256": "dac2dd83fecc2955c04886c3bd7052eadff125fcebcff015e0da0e614c4ae611",
+    "requirements": [
+      {
+        "id": "held-028.r1",
+        "status": "supported",
+        "reason": "The visible five-step description lists making requirements less dumb, deleting unnecessary processes or parts, then optimizing necessary processes or parts, accelerating cycle time, and automating in the required order.",
+        "citations": [
+          {
+            "evidence_id": "Bad50c80d9f3e529b93fbc95f",
+            "quote": "“The Algorithm,” as it is known internally, is a five-step iterative process that emphasizes making the \nrequirements less dumb, deleting unnecessary processes or parts (embracing the principle that the best part is no \npart), only then optimizing the necessary processes or parts, accelerating cycle time, and automating only proven \nprocesses."
+          }
+        ]
+      },
+      {
+        "id": "held-028.r2",
+        "status": "missing",
+        "reason": "The evidence expressly says to automate only proven processes, but neither visible excerpt explicitly requires completion of all four preceding steps before automation. Listing automation fifth does not supply the missing completion prerequisite under the stated audit standard.",
+        "citations": [
+          {
+            "evidence_id": "Bad50c80d9f3e529b93fbc95f",
+            "quote": "accelerating cycle time, and automating only proven \nprocesses."
+          }
+        ]
+      }
+    ],
+    "all_supported": false,
+    "limitations": [
+      "Cross-model agent audit, not human adjudication."
+    ]
+  },
+  {
+    "packet_sha256": "f1efaebd6136be446cbddde859c4ca5034e7c56a57f034477edfb5ad7b369568",
+    "requirements": [
+      {
+        "id": "held-047.r1",
+        "status": "missing",
+        "reason": "No final IPO price per Class A share or total IPO proceeds amount is filled in. The visible cover table leaves both the per-share and total offering-price fields and the proceeds fields as blank dollar placeholders; those placeholders do not supply the required final values.",
+        "citations": [
+          {
+            "evidence_id": "Ba28d364f3275bf30debbff41",
+            "quote": "Per Share\nTotal\nInitial public offering price   \n  ...................................................................................................... $\n$"
+          }
+        ]
+      }
+    ],
+    "all_supported": false,
+    "limitations": [
+      "Cross-model agent audit, not human adjudication."
+    ]
+  },
+  {
+    "packet_sha256": "f43ced2d114dc41e8ed87a62385b3c1a6bb601e46a0cadf57282b59399290215",
+    "requirements": [
+      {
+        "id": "held-027.r1",
+        "status": "supported",
+        "reason": "The visible prospectus explicitly states an application to list Class A common stock on Nasdaq and Nasdaq Texas under SPCX.",
+        "citations": [
+          {
+            "evidence_id": "Be921fe79bd0672b67aeb14d8",
+            "quote": "We have applied to list our Class A common stock on The Nasdaq Stock Market LLC (“Nasdaq”) and Nasdaq Texas, \nInc. (“Nasdaq Texas”) under the symbol “SPCX.”"
+          }
+        ]
+      },
+      {
+        "id": "held-027.r2",
+        "status": "supported",
+        "reason": "The visible prospectus explicitly gives one vote for each Class A share, 10 votes for each Class B share, and Class B shareholders the right to elect a majority of the board.",
+        "citations": [
+          {
+            "evidence_id": "Be921fe79bd0672b67aeb14d8",
+            "quote": "Each share of Class A common stock will entitle its holder to one vote per share. Each share of Class B \ncommon stock will entitle its holder to 10 votes per share. Class A shareholders and Class B shareholders will vote together as a \nsingle class on all matters to be voted on by shareholders, except Class B shareholders will be entitled to elect a majority of our board \nof directors in addition to having certain other class votes as described under “Description of Capital Stock.”"
+          }
+        ]
+      }
+    ],
+    "all_supported": true,
+    "limitations": [
+      "Cross-model agent audit, not human adjudication."
+    ]
+  }
+]

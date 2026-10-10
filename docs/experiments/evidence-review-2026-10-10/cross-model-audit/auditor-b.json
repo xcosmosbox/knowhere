@@ -1,0 +1,176 @@
+[
+  {
+    "packet_sha256": "a85ace20828eb162a41ad4c81607255dc5a3e41e4db29fcba96ef3710a9bd709",
+    "requirements": [
+      {
+        "id": "held-003.r1",
+        "status": "supported",
+        "reason": "The dated March 18, 2026 evidence explicitly identifies volume shipments of HBM4 36GB 12H as beginning in calendar Q1 2026 and identifies NVIDIA Vera Rubin as the intended platform. Both timing and product/platform facets are present.",
+        "citations": [
+          {
+            "evidence_id": "Bcf0192d1e3402d40366d7e73",
+            "quote": "At NVIDIA’s GTC (GPU Technology Conference), we announced that Micron \nhas begun volume shipments of its HBM4 36GB 12H in the first quarter of \ncalendar year 2026 and is designed for the NVIDIA Vera Rubin."
+          }
+        ]
+      },
+      {
+        "id": "held-003.r2",
+        "status": "supported",
+        "reason": "The source explicitly describes a sampled 16-high HBM4 product, 48GB capacity per HBM cube, and a 33% capacity increase compared with HBM4 12H. It does not confuse sampling with volume shipment.",
+        "citations": [
+          {
+            "evidence_id": "Bcf0192d1e3402d40366d7e73",
+            "quote": "We have also sampled our HBM4 16-high product, which provides 48GB of \nHBM capacity in each HBM cube, a 33% increase in HBM capacity compared \nto HBM4 12H."
+          }
+        ]
+      },
+      {
+        "id": "held-003.r3",
+        "status": "supported",
+        "reason": "The source labels the 2027 HBM4E volume ramp as an expectation and states that HBM4E will use the 1-gamma DRAM technology node. It supplies the forecast year and process technology without treating the future ramp as completed.",
+        "citations": [
+          {
+            "evidence_id": "Bcf0192d1e3402d40366d7e73",
+            "quote": "Development of HBM4E, our next-generation HBM product, is well underway, \nand we expect to ramp volume in calendar 2027. Our HBM4E will leverage \nMicron's production-proven, industry-leading 1γ DRAM technology node"
+          }
+        ]
+      }
+    ],
+    "all_supported": true,
+    "limitations": [
+      "Cross-model agent assessment of supplied final-visible text; not human ground truth."
+    ]
+  },
+  {
+    "packet_sha256": "b14696988314f9e2059a2e9306bf8cfb9c6d532a5b005d1f8404301b67e12066",
+    "requirements": [
+      {
+        "id": "held-009.r1",
+        "status": "supported",
+        "reason": "The March 18 market outlook explicitly forecasts low-20s percentage DRAM bit-shipment growth for calendar 2026 and lists cleanroom constraints, long construction lead times, higher HBM trade ratio, higher HBM growth, and declining node-migration bits-per-wafer growth as supply constraints.",
+        "citations": [
+          {
+            "evidence_id": "B0609a3a0b9aee87aa0aab314",
+            "quote": "We expect industry DRAM bit shipments in calendar 2026 to grow in the \nlow-20s percentage range, slightly above our prior outlook.\n• In DRAM, cleanroom constraints and long construction lead times, higher \nHBM trade ratio, higher HBM growth rates and declining bits per wafer \ngrowth from node migrations constrain bit supply growth."
+          }
+        ]
+      },
+      {
+        "id": "held-009.r2",
+        "status": "supported",
+        "reason": "The same dated outlook explicitly forecasts approximately 20% calendar-2026 NAND bit-shipment growth and attributes supply constraints to suppliers redirecting cleanrooms to DRAM and limited overall cleanroom space.",
+        "citations": [
+          {
+            "evidence_id": "B0609a3a0b9aee87aa0aab314",
+            "quote": "We expect industry NAND bit shipments in calendar 2026 to grow \napproximately 20%.\n• In NAND, some industry suppliers redirecting cleanroom space for DRAM \nand overall limited cleanroom space constrain bit supply growth."
+          }
+        ]
+      }
+    ],
+    "all_supported": true,
+    "limitations": [
+      "Cross-model agent assessment of supplied final-visible text; not human ground truth."
+    ]
+  },
+  {
+    "packet_sha256": "c4afeebf30a75c9956a23cb4f395a88c0a463e62c50dcb6bebe7e4fd648479aa",
+    "requirements": [
+      {
+        "id": "held-027.r1",
+        "status": "supported",
+        "reason": "The visible offering text says the issuer applied for listing on The Nasdaq Stock Market LLC and Nasdaq Texas under SPCX. This establishes proposed listing venues and symbol, rather than claiming that trading had already begun.",
+        "citations": [
+          {
+            "evidence_id": "Be921fe79bd0672b67aeb14d8",
+            "quote": "We have applied to list our Class A common stock on The Nasdaq Stock Market LLC (“Nasdaq”) and Nasdaq Texas, \nInc. (“Nasdaq Texas”) under the symbol “SPCX.”"
+          }
+        ]
+      },
+      {
+        "id": "held-027.r2",
+        "status": "supported",
+        "reason": "The offering passage directly states one vote per Class A share, ten votes per Class B share, and the Class B shareholders’ right to elect a majority of the board. The shared voting class and additional Class B rights do not contradict these distinctions.",
+        "citations": [
+          {
+            "evidence_id": "Be921fe79bd0672b67aeb14d8",
+            "quote": "Each share of Class A common stock will entitle its holder to one vote per share. Each share of Class B \ncommon stock will entitle its holder to 10 votes per share. Class A shareholders and Class B shareholders will vote together as a \nsingle class on all matters to be voted on by shareholders, except Class B shareholders will be entitled to elect a majority of our board \nof directors in addition to having certain other class votes as described under “Description of Capital Stock.”"
+          }
+        ]
+      }
+    ],
+    "all_supported": true,
+    "limitations": [
+      "Cross-model agent assessment of supplied final-visible text; not human ground truth."
+    ]
+  },
+  {
+    "packet_sha256": "c7e413630795a2fcc37a203b0db512814634b98dd766f9063c9acc6777c118f3",
+    "requirements": [
+      {
+        "id": "held-045.r1",
+        "status": "supported",
+        "reason": "The source expressly distinguishes an engineered and demonstrated capability of up to 40 flights from a maximum accounting useful life of 25 flights based on forecast utilization. These are different measures, not conflicting statements about one flight limit.",
+        "citations": [
+          {
+            "evidence_id": "B706a2e584e2a4361ae136d59",
+            "quote": "Although our Falcon 9 boosters have been engineered and demonstrated to support up to 40 flights, we \nhave established a maximum accounting useful life of 25 flights as an estimate based on forecasted utilization."
+          }
+        ]
+      },
+      {
+        "id": "held-045.r2",
+        "status": "supported",
+        "reason": "The next sentences identify both reasons for the accounting estimate: the expected Starship transition reducing Falcon 9 demand, and certain government contracts disallowing boosters flown more than five times on their missions. The five-flight restriction is correctly limited to those contracts.",
+        "citations": [
+          {
+            "evidence_id": "B706a2e584e2a4361ae136d59",
+            "quote": "This estimate reflects: (i) our strategic transition to Starship, which is expected to materially reduce future \nFalcon 9 flight demand; and (ii) restrictions under certain government contracts that prohibit the use of boosters \nflown more than five times on their missions."
+          }
+        ]
+      }
+    ],
+    "all_supported": true,
+    "limitations": [
+      "Cross-model agent assessment of supplied final-visible text; not human ground truth."
+    ]
+  },
+  {
+    "packet_sha256": "dc6ddef85b337e1ff7c3564abc7cd02ee52157c5a479a6e6e219df44c56cf514",
+    "requirements": [
+      {
+        "id": "held-033.r1",
+        "status": "supported",
+        "reason": "The Connectivity table includes its five period headings and the labeled subscribers row. In that stated order, its first three columns are Q1 2026, Q1 2025 and full-year 2025, with 10.3, 5.0 and 8.9 million subscribers. This uses the table’s period and metric labels, not isolated numeric matches.",
+        "citations": [
+          {
+            "evidence_id": "B5552ff2534d1101a4e9cbd41",
+            "quote": "Connectivity: \nThree Months Ended March 31,\nYear Ended December 31,\n2026\n2025\n2025\n2024\n2023\nStarlink Subscribers (in millions) (1)\n \n ...\n10.3\n5.0\n8.9\n4.4\n2.3"
+          }
+        ]
+      },
+      {
+        "id": "held-033.r2",
+        "status": "supported",
+        "reason": "The labeled ARPU row under the same Connectivity period headings gives monthly values of $66, $86 and $81 for the first three periods. A separate visible narrative independently anchors $86 to Q1 2025, $66 to Q1 2026 and $81 to 2025, confirming the period-to-value interpretation.",
+        "citations": [
+          {
+            "evidence_id": "B5552ff2534d1101a4e9cbd41",
+            "quote": "Connectivity: \nThree Months Ended March 31,\nYear Ended December 31,\n2026\n2025\n2025\n2024\n2023"
+          },
+          {
+            "evidence_id": "B5552ff2534d1101a4e9cbd41",
+            "quote": "Starlink ARPU (dollars per month) (1)\n \n   $\n66\n$\n86\n$\n81\n$\n91\n$\n99"
+          },
+          {
+            "evidence_id": "B7b3779b8126d9f29b7108495",
+            "quote": "Our Starlink Subscriber monthly ARPU decreased from $86 per month for the \nthree months ended March 31, 2025 to $66 per month for the three months ended March 31, 2026 and from $91 per\n\n89\nTable of Contents\nmonth in 2024 to $81 per month in 2025."
+          }
+        ]
+      }
+    ],
+    "all_supported": true,
+    "limitations": [
+      "Cross-model agent assessment of supplied final-visible text; not human ground truth."
+    ]
+  }
+]

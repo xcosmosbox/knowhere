@@ -1,0 +1,156 @@
+{
+  "stage": "Post-experiment sensitivity audit of every invalid model assessment and all claimed changed-evidence rescues; no raw automated score overwritten.",
+  "false_sufficient_cases": 0,
+  "selected": [
+    {
+      "packet_sha256": "0f44f7dd4db45caac627724fd6ab98eb8700fe21dc75a30599d1209aa3c07385",
+      "reasons": [
+        "invalid_assessment"
+      ]
+    },
+    {
+      "packet_sha256": "10d04b5f78e883331c879d5c26b69a3762d7fcc2212cb5f9df7fd4c9f8ae5d3a",
+      "reasons": [
+        "invalid_assessment"
+      ]
+    },
+    {
+      "packet_sha256": "151dc0d5f690c8a04afe62672184724aafc2c6eb677196b0a8bf3760e5301110",
+      "reasons": [
+        "invalid_assessment"
+      ]
+    },
+    {
+      "packet_sha256": "1cc55865903b0f534d925b2aa0c7ebed9753b36c2d02b2040f3f1748f3381da0",
+      "reasons": [
+        "invalid_assessment"
+      ]
+    },
+    {
+      "packet_sha256": "1ef030203452ef457a731fefa3141ba2fcbe0171f4e06e42ac2078dc20e42653",
+      "reasons": [
+        "claimed_rescue"
+      ]
+    },
+    {
+      "packet_sha256": "36695114ca78241e796e5acb7b6443843b3c46ef90eda087f1aa960ca0d781d0",
+      "reasons": [
+        "invalid_assessment"
+      ]
+    },
+    {
+      "packet_sha256": "375874d1f1c2125df41b32d0bd419283a7d10f5593d44b47ecba529a958eb6ef",
+      "reasons": [
+        "invalid_assessment"
+      ]
+    },
+    {
+      "packet_sha256": "456247075fabadfd953b0a0a1d2ca842c1404bb945cccb487b70559b513c4c63",
+      "reasons": [
+        "claimed_rescue"
+      ]
+    },
+    {
+      "packet_sha256": "5226eb6be88cd665a2e7d66a74be7776be9f9d22ab5e8e001c4badf6d867132e",
+      "reasons": [
+        "invalid_assessment"
+      ]
+    },
+    {
+      "packet_sha256": "5995be9f9568c094ab11718ec0415eace687c3e37a1d47ccfcf86a23f45b0378",
+      "reasons": [
+        "invalid_assessment"
+      ]
+    },
+    {
+      "packet_sha256": "5a7b97be9a3637101932e4f3e77306bf890d883b0f37e4dbd92bb4251fbfb677",
+      "reasons": [
+        "invalid_assessment"
+      ]
+    },
+    {
+      "packet_sha256": "709ac5faeaa3e7fb2451e3f0d91dad3ad9b774c89324ca57e591b7d65c0da3d7",
+      "reasons": [
+        "invalid_assessment"
+      ]
+    },
+    {
+      "packet_sha256": "75a92008ccc8c99e1b3c5c68a837999bab118cf59f317ce1773532f04119e6e6",
+      "reasons": [
+        "invalid_assessment"
+      ]
+    },
+    {
+      "packet_sha256": "79cc75c6a38ab59b4e6ef8d5d362323552cc710c638df9fb0aab17be7011be69",
+      "reasons": [
+        "invalid_assessment"
+      ]
+    },
+    {
+      "packet_sha256": "7e487006cad829f133da163277ae630c98136dfeb749e79acfef3eaf7f1cb678",
+      "reasons": [
+        "invalid_assessment"
+      ]
+    },
+    {
+      "packet_sha256": "8a0bde1646d172517f5ea3ec128d9e40d2f6a664a9d13cce1e10ebb23f5aa30a",
+      "reasons": [
+        "invalid_assessment"
+      ]
+    },
+    {
+      "packet_sha256": "91ca8fd5cc7a6a25ca84a4be0358925dfadf671b3d3041383274c2dbfa296060",
+      "reasons": [
+        "invalid_assessment"
+      ]
+    },
+    {
+      "packet_sha256": "9bcfa0201205d2f80257655f7ec31301ebb3be4a3ebeecd13762ca1e5616eb46",
+      "reasons": [
+        "invalid_assessment"
+      ]
+    },
+    {
+      "packet_sha256": "a64eb646a532134dfa56d21883199bfa8963e7e0792c34cd23b030d1f921fb9f",
+      "reasons": [
+        "claimed_rescue"
+      ]
+    },
+    {
+      "packet_sha256": "c295731f98cd42e2e887bb85bbfb67c9b60e5a4daaa5151bbdf851fda58de5eb",
+      "reasons": [
+        "invalid_assessment"
+      ]
+    },
+    {
+      "packet_sha256": "d1bdb7cbe3d26ce6ad2f991bdb99892c6089d10c0cca85b5eeb0e18207aa4ee9",
+      "reasons": [
+        "invalid_assessment"
+      ]
+    },
+    {
+      "packet_sha256": "d8878d3b1f79f13d54cec78e2a0d07ceccca11163ee5af9a7d969d9d2daba203",
+      "reasons": [
+        "invalid_assessment"
+      ]
+    },
+    {
+      "packet_sha256": "dac2dd83fecc2955c04886c3bd7052eadff125fcebcff015e0da0e614c4ae611",
+      "reasons": [
+        "claimed_rescue"
+      ]
+    },
+    {
+      "packet_sha256": "f1efaebd6136be446cbddde859c4ca5034e7c56a57f034477edfb5ad7b369568",
+      "reasons": [
+        "invalid_assessment"
+      ]
+    },
+    {
+      "packet_sha256": "f43ced2d114dc41e8ed87a62385b3c1a6bb601e46a0cadf57282b59399290215",
+      "reasons": [
+        "invalid_assessment"
+      ]
+    }
+  ]
+}

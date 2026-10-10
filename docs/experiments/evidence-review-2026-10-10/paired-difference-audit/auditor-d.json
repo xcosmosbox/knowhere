@@ -1,0 +1,126 @@
+[
+  {
+    "packet_sha256": "e1ebe545de0fcf0a5d4bfe0970665ae002118c2365f7aadb61f435678be57c85",
+    "requirements": [
+      {
+        "id": "held-042.r1",
+        "status": "supported",
+        "reason": "The visible Note 1 expressly states that the Company completed the xAI acquisition on February 2, 2026 and that xAI became a wholly-owned subsidiary. The same evidence identifies the Company as SpaceX.",
+        "citations": [
+          {
+            "evidence_id": "B23be51ad4b1154a03b3094dc",
+            "quote": "On February 2, 2026, the Company completed its acquisition of X.AI Holdings Corp. (“xAI”), pursuant to which \nxAI became a wholly-owned subsidiary of the Company (“xAI Merger”)."
+          }
+        ]
+      },
+      {
+        "id": "held-042.r2",
+        "status": "supported",
+        "reason": "The visible accounting note explicitly identifies both mergers as common-control reorganizations because Elon Musk held controlling financial interests through majority voting interests, and states that net assets are retrospectively combined at historical carrying amounts for all periods with no new goodwill or other intangible assets recorded.",
+        "citations": [
+          {
+            "evidence_id": "Bea3820c3c867fb207bf1ef8d",
+            "quote": "The Mergers have been accounted for as reorganizations of entities under common control as Mr. Elon Musk had a \ncontrolling financial interest in the Company, xAI and X through his majority voting interest in each such entity \nduring the years presented in these consolidated financial statements. The Company’s consolidated financial \nstatements have been prepared to reflect the retrospective combination of the net assets of the entities at their \nhistorical carrying amounts for all periods presented. No new goodwill or other intangible assets have been recorded \nand all historical related party transactions between the entities have been eliminated in consolidation."
+          }
+        ]
+      }
+    ],
+    "all_supported": true,
+    "limitations": [
+      "Cross-model agent audit, not human adjudication."
+    ]
+  },
+  {
+    "packet_sha256": "e1ef6e5984f1509a04b8366a0dab2ad06f0061958bd1812867fa50e73792700b",
+    "requirements": [
+      {
+        "id": "held-042.r1",
+        "status": "supported",
+        "reason": "The visible Note 1 expressly states that the Company completed the xAI acquisition on February 2, 2026 and that xAI became a wholly-owned subsidiary. The same evidence identifies the Company as SpaceX.",
+        "citations": [
+          {
+            "evidence_id": "B23be51ad4b1154a03b3094dc",
+            "quote": "On February 2, 2026, the Company completed its acquisition of X.AI Holdings Corp. (“xAI”), pursuant to which \nxAI became a wholly-owned subsidiary of the Company (“xAI Merger”)."
+          }
+        ]
+      },
+      {
+        "id": "held-042.r2",
+        "status": "missing",
+        "reason": "The entire visible packet establishes retrospective presentation for all periods and says the acquisitions were between entities under common control. It does not identify Elon Musk as the common controller, specify retrospective combination of net assets at historical carrying amounts, or state that no new goodwill or other intangible assets were recorded. Those required accounting facets remain absent.",
+        "citations": [
+          {
+            "evidence_id": "Bfe08d0574263802ae30e8bef",
+            "quote": "Our audited consolidated financial statements and related notes have been prepared to \nreflect the retrospective combination of the companies for all periods presented as the acquisitions of xAI and X \nHoldings were accounted for as transactions between entities under common control."
+          }
+        ]
+      }
+    ],
+    "all_supported": false,
+    "limitations": [
+      "Cross-model agent audit, not human adjudication."
+    ]
+  },
+  {
+    "packet_sha256": "e2efa8b70423f7b63258e08f455c98fa964c329b87005c82457c4abef826947d",
+    "requirements": [
+      {
+        "id": "held-042.r1",
+        "status": "supported",
+        "reason": "The visible Note 1 expressly states that the Company completed the xAI acquisition on February 2, 2026 and that xAI became a wholly-owned subsidiary. The same evidence identifies the Company as SpaceX.",
+        "citations": [
+          {
+            "evidence_id": "B23be51ad4b1154a03b3094dc",
+            "quote": "On February 2, 2026, the Company completed its acquisition of X.AI Holdings Corp. (“xAI”), pursuant to which \nxAI became a wholly-owned subsidiary of the Company (“xAI Merger”)."
+          }
+        ]
+      },
+      {
+        "id": "held-042.r2",
+        "status": "supported",
+        "reason": "The visible accounting note explicitly identifies both mergers as common-control reorganizations because Elon Musk held controlling financial interests through majority voting interests, and states that net assets are retrospectively combined at historical carrying amounts for all periods with no new goodwill or other intangible assets recorded.",
+        "citations": [
+          {
+            "evidence_id": "Bea3820c3c867fb207bf1ef8d",
+            "quote": "The Mergers have been accounted for as reorganizations of entities under common control as Mr. Elon Musk had a \ncontrolling financial interest in the Company, xAI and X through his majority voting interest in each such entity \nduring the years presented in these consolidated financial statements. The Company’s consolidated financial \nstatements have been prepared to reflect the retrospective combination of the net assets of the entities at their \nhistorical carrying amounts for all periods presented. No new goodwill or other intangible assets have been recorded \nand all historical related party transactions between the entities have been eliminated in consolidation."
+          }
+        ]
+      }
+    ],
+    "all_supported": true,
+    "limitations": [
+      "Cross-model agent audit, not human adjudication."
+    ]
+  },
+  {
+    "packet_sha256": "fa5d570c2f46373953fc36f792c052555c2055fe7409272829fdba8ac80b07ff",
+    "requirements": [
+      {
+        "id": "held-028.r1",
+        "status": "supported",
+        "reason": "The visible glossary explicitly defines The Algorithm as a five-step process and lists making requirements less dumb, deleting unnecessary processes or parts, optimizing necessary processes or parts, accelerating cycle timesteps, and automating in that order.",
+        "citations": [
+          {
+            "evidence_id": "Beb3bc568f9fd014cd88d3bfa",
+            "quote": "“The Algorithm” refers to our five-step iterative process that we use to rapidly innovate and optimize, \nemphasizing making the requirements less dumb, deleting unnecessary processes or parts, optimizing the \nnecessary processes or parts, accelerating cycle timesteps, and automating only proven processes after the first \nfour steps are completed."
+          }
+        ]
+      },
+      {
+        "id": "held-028.r2",
+        "status": "supported",
+        "reason": "The visible definition expressly restricts automation to proven processes after the first four steps have been completed.",
+        "citations": [
+          {
+            "evidence_id": "Beb3bc568f9fd014cd88d3bfa",
+            "quote": "automating only proven processes after the first \nfour steps are completed."
+          }
+        ]
+      }
+    ],
+    "all_supported": true,
+    "limitations": [
+      "Cross-model agent audit, not human adjudication."
+    ]
+  }
+]

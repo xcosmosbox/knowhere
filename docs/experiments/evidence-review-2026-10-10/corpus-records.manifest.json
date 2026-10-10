@@ -1,0 +1,12 @@
+{
+  "archive": "corpus-records.tar.gz",
+  "bytes": 91904,
+  "sha256": "dae6a09b828fbcf3e18a63288af9329ebeb765bb04b12ad40ed7191b968ae6ce",
+  "entries": [
+    {
+      "path": "corpus-manifest.json",
+      "bytes": 4143428,
+      "sha256": "e6e00bbdcf3512f685af4f6f66add038036402ba6f1f1a22df7b0be012580060"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "verified_at": "2026-10-10T03:40:50.753557+00:00",
+  "source": "DeepSeek official Models & Pricing documentation, accessed 2026-10-10",
+  "requested_and_returned_model": "deepseek-flash",
+  "documented_alias_version": "DeepSeek-V4.1-Flash",
+  "benchmark_thinking": "disabled",
+  "benchmark_temperature": 0,
+  "benchmark_max_completion_tokens": 1024,
+  "offline_semantic_assessor_max_completion_tokens": 2048,
+  "pricing_date_utc": "2026-10-10",
+  "pricing_period": "Saturday, all-day off-peak",
+  "usd_per_million_tokens": {
+    "prompt_cache_hit_tokens": 0.003,
+    "prompt_cache_miss_tokens": 0.15,
+    "completion_tokens": 0.6
+  },
+  "cost_scope": "List-rate estimate from actual provider-reported cached/uncached input and output tokens; not an invoice. Retrieval, calibration and offline judging reported separately.",
+  "documented_context_length": "1M",
+  "documented_maximum_output": "384K"
+}

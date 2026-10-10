@@ -1,0 +1,147 @@
+{
+  "archive": "heldout-traces.tar.gz",
+  "bytes": 5761873,
+  "sha256": "9c9632a31dabd4a91efd8594ee5a25257ec6e32512b9cf608d867d93563fed02",
+  "entries": [
+    {
+      "path": "heldout/shard-0/index-verification.json",
+      "bytes": 2314,
+      "sha256": "4c018197f64d8458971097b909c3e12cc4308a4cd9a70ada396e31a024322afc"
+    },
+    {
+      "path": "heldout/shard-0/provider-events.jsonl",
+      "bytes": 699061,
+      "sha256": "b0a9739d5213996f7c30c53daf36730686d4cb8504514885623eb64b56e8df52"
+    },
+    {
+      "path": "heldout/shard-0/started.jsonl",
+      "bytes": 11760,
+      "sha256": "9a1dfebd3de404f4c7f43038f155988d44469aab3db85bb1f2f56038e1181a0c"
+    },
+    {
+      "path": "heldout/shard-0/trials.jsonl",
+      "bytes": 7270473,
+      "sha256": "84594996eacc6f7427df730b332cbe6460e034f03f3883ffb0923c7b7d172131"
+    },
+    {
+      "path": "heldout/shard-1/index-verification.json",
+      "bytes": 2314,
+      "sha256": "4c018197f64d8458971097b909c3e12cc4308a4cd9a70ada396e31a024322afc"
+    },
+    {
+      "path": "heldout/shard-1/provider-events.jsonl",
+      "bytes": 476768,
+      "sha256": "9e9a6fff170a201b0d43a984a1d965817e312eae4d569d277086fe68c42f0f60"
+    },
+    {
+      "path": "heldout/shard-1/started.jsonl",
+      "bytes": 10290,
+      "sha256": "e99cc21c01e50c072d53621404c0f4508afb87d7701e4af5cbf6d02ced57373e"
+    },
+    {
+      "path": "heldout/shard-1/trials.jsonl",
+      "bytes": 4441137,
+      "sha256": "277a2e9290a9d16ec8a0f2724642e1bfcb8a078e170d849b60ba8412a40d36c2"
+    },
+    {
+      "path": "heldout/shard-2/index-verification.json",
+      "bytes": 2314,
+      "sha256": "4c018197f64d8458971097b909c3e12cc4308a4cd9a70ada396e31a024322afc"
+    },
+    {
+      "path": "heldout/shard-2/provider-events.jsonl",
+      "bytes": 688066,
+      "sha256": "ca500c3902e8ea2950d1e31b304722e701c73105d9aca5788396bf33b05825b6"
+    },
+    {
+      "path": "heldout/shard-2/started.jsonl",
+      "bytes": 10290,
+      "sha256": "b9e540fba2df4ce72afbe19f6674d2b4fff5ff2fb1d49233d1ac73bfacbf6763"
+    },
+    {
+      "path": "heldout/shard-2/trials.jsonl",
+      "bytes": 6214660,
+      "sha256": "e5ce66093b2acb48e451cbf08ea5235c2cf1d567ab6488eb28a88eac9cded981"
+    },
+    {
+      "path": "heldout/shard-3/index-verification.json",
+      "bytes": 2314,
+      "sha256": "4c018197f64d8458971097b909c3e12cc4308a4cd9a70ada396e31a024322afc"
+    },
+    {
+      "path": "heldout/shard-3/provider-events.jsonl",
+      "bytes": 585078,
+      "sha256": "4c9959d6f002c350cf79b456714664b8133f031a1e7d1b1752dd05a377e82826"
+    },
+    {
+      "path": "heldout/shard-3/started.jsonl",
+      "bytes": 10290,
+      "sha256": "c69404b2638afd0306e8d28e3130bbd40bdd68ccf58dcc1121b1a68c80cbdd20"
+    },
+    {
+      "path": "heldout/shard-3/trials.jsonl",
+      "bytes": 4731530,
+      "sha256": "e68d29b2254105bcbc2bf06463008ea4810aa447886ac92244ceb91005235687"
+    },
+    {
+      "path": "heldout/shard-4/index-verification.json",
+      "bytes": 2314,
+      "sha256": "4c018197f64d8458971097b909c3e12cc4308a4cd9a70ada396e31a024322afc"
+    },
+    {
+      "path": "heldout/shard-4/provider-events.jsonl",
+      "bytes": 471618,
+      "sha256": "9091f7c7e7261c4cc782ad481128989f5d372c669b429a941280d976b0ed6188"
+    },
+    {
+      "path": "heldout/shard-4/started.jsonl",
+      "bytes": 10290,
+      "sha256": "b1af8d183196ea17ab5b071319bd466092e5605abd3f54d5f55f0c3255c61b68"
+    },
+    {
+      "path": "heldout/shard-4/trials.jsonl",
+      "bytes": 5134418,
+      "sha256": "d8d857d11536ec44d10de7bea0038b2c4e580e1105fd365ad99d91fc9c4523e5"
+    },
+    {
+      "path": "heldout/shard-5/index-verification.json",
+      "bytes": 2314,
+      "sha256": "4c018197f64d8458971097b909c3e12cc4308a4cd9a70ada396e31a024322afc"
+    },
+    {
+      "path": "heldout/shard-5/provider-events.jsonl",
+      "bytes": 550562,
+      "sha256": "731e21feaca9f9cd67f053aadcc050562989a464e1397f37fa19e3621935741c"
+    },
+    {
+      "path": "heldout/shard-5/started.jsonl",
+      "bytes": 10290,
+      "sha256": "7eda0adeeb24fd80fc08b2568c8b92527c48aa9f879b8d53729d54b63b7ba2a7"
+    },
+    {
+      "path": "heldout/shard-5/trials.jsonl",
+      "bytes": 6398809,
+      "sha256": "23a6f227f79cc7cf8f4207687bdc75e95ad6d0afb3a116a1ecf2e07e02ec7e6a"
+    },
+    {
+      "path": "heldout/shard-6/index-verification.json",
+      "bytes": 2314,
+      "sha256": "4c018197f64d8458971097b909c3e12cc4308a4cd9a70ada396e31a024322afc"
+    },
+    {
+      "path": "heldout/shard-6/provider-events.jsonl",
+      "bytes": 509636,
+      "sha256": "ad77e27574e99e3dc073d84dc96b5831bdae997d93e0dacb20c41bc13a0b555d"
+    },
+    {
+      "path": "heldout/shard-6/started.jsonl",
+      "bytes": 10290,
+      "sha256": "1e60b8e42cf3a99c236dbc934d71d40f789077bf0dad94d80e984ec919e9c2bf"
+    },
+    {
+      "path": "heldout/shard-6/trials.jsonl",
+      "bytes": 5268246,
+      "sha256": "c0d460549d7e13673a1686bea68f8ef86e2f9ce0fcbedd54c93090b079abcf11"
+    }
+  ]
+}

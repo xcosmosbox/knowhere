@@ -1,6 +1,24 @@
 # Evidence-review benefit evaluation
 
-Recorded on 2026-10-10. Status: **live calibration complete; real retrieval evaluation in progress**.
+Recorded on 2026-10-10. Status: **real retrieval evaluation complete**.
+
+All 300 scheduled `deepseek-flash` episodes completed. The primary blind semantic
+judge confirmed 121/150 sufficient baseline episodes and 118/150 reviewed
+episodes, with 9 and 10 unknown scores respectively. A separate cross-model
+audit of every unknown packet yields 124/150 in each arm: no net gain on this
+corpus. Tokens increased 9.77%, estimated retrieval cost 19.22%, and median
+latency from 6.135 to 9.320 seconds. Review returned `unverified` in 84/150
+episodes, predominantly because exact citations or explanation lengths failed
+validation. Keep the feature optional; these results do not justify an overall
+quality-improvement claim or enabling it by default.
+
+`BENEFIT_REPORT.md` gives the full interpretation and limitations.
+`REPRODUCE.md` gives replay and new-run commands. Primary automated scores,
+posthoc cross-model sensitivity analysis, all raw episodes, diagnostic records
+and the four original benchmark-gate false alarms remain separate. The benchmark
+guard was repaired only after measurement; production feature code was unchanged.
+
+The following sections retain the setup and historical preflight record.
 The original missing-provider preflight below is retained as a historical record.
 It was unblocked by an execution-environment credential and the explicit model
 `deepseek-flash`, without changing the production model default.

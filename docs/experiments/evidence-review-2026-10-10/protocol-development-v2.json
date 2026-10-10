@@ -1,0 +1,2031 @@
+{
+  "schema_version": "knowhere-live-protocol/1",
+  "created_at": "2026-10-10T03:16:27.933520+00:00",
+  "feature_revision": "f68cee2d2793dc4d6fa5cb9281f3d6d357826b1b",
+  "git_revision": "23d2d615454822506af01e1d0e375443c91decc7",
+  "model": "deepseek-flash",
+  "thinking": "disabled",
+  "temperature": 0,
+  "max_completion_tokens": 1024,
+  "episode_max_steps": 15,
+  "episode_wall_clock_seconds": 180,
+  "common_outer_deadline_seconds": 210,
+  "review_calls_max": 2,
+  "corrections_max": 1,
+  "gold_sha256": "0e46c7357877c3d72788b1913846c07ab798225a509619ecec146f98c266880c",
+  "corpus_digest": "fea9fa39958ae5cc03b9b3559a563f008abd60a052ee8894dd3c4f13d7420e43",
+  "index_input_digest": "872e1c5ffc736c41dff91d5f8a8c39454fcd21cd67f2c4f2b11f9f667dcb2062",
+  "runtime_source_sha256": {
+    "apps/api/alembic/env.py": "d76fc1855dc728433d9ead2cc4c964b9b561dae0821d49b7d31461ef33905302",
+    "apps/api/alembic/versions/0a1b2c3d4e5f_add_content_trigram_index.py": "da3ac1eb300f64b54e05f63760d22b507cf63b447484270c88998a3249b05dd8",
+    "apps/api/alembic/versions/0b1c2d3e4f5a_add_demo_materialization_claim_state.py": "c2c83c3700a3eb444160919fb2f9eb3bdea7aecbb0c2589c1cf839d7809a4a90",
+    "apps/api/alembic/versions/0c1d2e3f4a5b_add_chunk_revision_section_order_index.py": "153417694f81b474ea78c126c2b45df9198a47abec807c61dbc8dfd09bd47c9a",
+    "apps/api/alembic/versions/1a2b3c4d5e6f_drop_content_trigram_index.py": "0fa97b1ba936ffa6c1d1b1952893428196c02425b9b9ed4d9ca6ca8695d84056",
+    "apps/api/alembic/versions/1d2e3f4a5b6c_add_document_map_units.py": "7253665b3f3ea8fbb3c2d785f3787b265dee99c3bd221ef6de209d7dd1a41f72",
+    "apps/api/alembic/versions/2b3c4d5e6f70_compact_token_lookup_index.py": "4bd2f0152b0167190c34fdf897c2919fc3fc977d27ad5fc56da0812111ad812b",
+    "apps/api/alembic/versions/2b3c4d5e6f7a_drop_map_unit_term_search_text.py": "bea1713661835dffacb4af2faf9cb5480d24980c12c07b80990ce18dfc22cbb9",
+    "apps/api/alembic/versions/2c3d4e5f6a71_defer_map_unit_token_foreign_key.py": "dd4234fe5131175501dded3eac01991e7bd39cda2e0528672b1739cb148e94b4",
+    "apps/api/alembic/versions/2d3e4f5a6b72_add_graph_node_term_indexes.py": "0a6cb9e500dc85cd3c02988e11f2280d8d62e53aef609d30af39fedb8edba470",
+    "apps/api/alembic/versions/2e3f4a5b6c73_compact_token_hash_expression_index.py": "f553391dec2a0e5b1fbf4df6fa9d2198ffdd4167e4f5007f23b015b63842e34f",
+    "apps/api/alembic/versions/2e3f4a5b6c7d_add_map_unit_token_covering_index.py": "1d39f17bd22f028a53a002cf9417401542f0c0f033f16c2fe948062cc9891617",
+    "apps/api/alembic/versions/2f3g4h5i6j7_retire_redundant_token_indexes.py": "e999b5cf29adf6ff692ec54369101b4ff7f9b749e1c4eee9b81311e73b5c944a",
+    "apps/api/alembic/versions/33eff537939b_baseline_20260305.py": "7761d733b709fd22a8fbd49a65453ec003f8dfa7ed373f89c2b94ff68c1e37fa",
+    "apps/api/alembic/versions/3c4d5e6f7a8b_gate_legacy_token_lookup_retirement.py": "40f852a6d7911617cb30b080a6fbf6f5db693d98287e738b0b3fdffc41aaf44f",
+    "apps/api/alembic/versions/3f4a5b6c7d8e_add_section_snapshot_order_index.py": "96210738ebd1708219a6e12ca6c2543eaccfbb3d4489c0ff5c5574f5bc3a084e",
+    "apps/api/alembic/versions/4a5b6c7d8e9f_add_retrieval_serving_generations.py": "a03940f8822fd496a324a4a8d445e354c404dae9372d54e785a78b57a5dd0dc8",
+    "apps/api/alembic/versions/4d5e6f7a8b9c_add_shared_demo_corpus.py": "5e5a29c6114ae62bbfafb8b1d0b812f1120ca53ca39e8c2822cb0a82eb1c92e3",
+    "apps/api/alembic/versions/5b6c7d8e9f0a_add_term_trigram_indexes.py": "f4cf589b5667cd55da3cf82ce0e6864cd69f012f4691c2ce5d21cac34ab77103",
+    "apps/api/alembic/versions/6c7d8e9f0a1b_add_retrieval_namespace_map_snapshots.py": "cac8a0acf73e922e3736a8bffe2f128e7f5ece813bc369feaba8ad71fe211469",
+    "apps/api/alembic/versions/7d8e9f0a1b2c_add_map_unit_asset_presence.py": "22b2c9360c883c4f274472b1f61f593c1253a65443e7494d87b3ac7697c67ad0",
+    "apps/api/alembic/versions/8e9f0a1b2c3d_add_map_unit_index_average_idf.py": "c90198fd65188b8fdcfbe3882f1b4316b32c266434602998e056923289418adb",
+    "apps/api/alembic/versions/8ffba9132ff0_add_partial_index_for_active_job_.py": "d7bab43aa419076796591909120c6f02965f444a2996c1f2a5e8b0635e52867d",
+    "apps/api/alembic/versions/9f0a1b2c3d4e_drop_retrieval_namespace_statistics.py": "8ce6238e86d9def944b1eef1f3e6fc2160d7c05b7fd4905677c02e0379879446",
+    "apps/api/alembic/versions/a0b1c2d3e4f5_add_token_leading_map_unit_covering_index.py": "fd721885d5714005d8ff699cc3dea97a50b31c137b7b19a9ca327373d0d33cbf",
+    "apps/api/alembic/versions/a1b2c3d4e5f6_add_qstash_tracking_columns.py": "d29a2ed172c9e639a35d80a276535e0a7c53354442b90b01c4f2b2d31b04d4a5",
+    "apps/api/alembic/versions/b1c2d3e4f5a6_add_channel_bm25_statistics.py": "8bc3155d262cebf07feeaaf67cecc74605dd16a36cc2e158a3793eeeaf167dba",
+    "apps/api/alembic/versions/b2c3d4e5f6a7_add_guest_registration.py": "ce08c6cbdc17930aa8df4fdb6f07791140a07ab3ada544a73f8b19a8171d0a87",
+    "apps/api/alembic/versions/c2d3e4f5a6b7_repair_token_leading_map_unit_covering_index.py": "9449754cba316acb2f1bc632cca78fccaeab52a8048a01f5ed5a58e4ec0c8eff",
+    "apps/api/alembic/versions/c3d4e5f6a7b8_add_retrieval_service_v1.py": "07c678aded97e9bb4c982ca17103ee206f9e14fe2726abb9cd7e8707f0adf1cf",
+    "apps/api/alembic/versions/d3e4f5a6b7c8_merge_retrieval_index_heads.py": "97ac5bf62a3c11a0383d260e57b6098cf6982e2280e71c816013a3d43a593c4b",
+    "apps/api/alembic/versions/d4e5f6a7b8c9_add_checkerboard_search_fields.py": "65e3e39e85e00dc6708c26ec9fc3c72b33c2f08acb808ead86015eb2c4a236dd",
+    "apps/api/alembic/versions/e4f5a6b7c8d9_drop_chunk_search_tsv_columns.py": "06107c0f3041525a9fe1bab2feb692c21a7d1a45cb6757aa6640613f3ff9c950",
+    "apps/api/alembic/versions/e5f6a7b8c9d0_add_agentic_retrieval_tables.py": "da8363cfdd4434a1d910c64bebbcd09b7884bed5bc8e457ed20d52b1c89c5a72",
+    "apps/api/alembic/versions/f0d85d209e68_replace_data_type_with_chunk_types.py": "e07b5ebaae84345429157299082e956c7915003a90c4d1dd77b495f62a6356f9",
+    "apps/api/alembic/versions/f6a7b8c9d0e1_add_demo_materializations.py": "18939d49f3e43fe86e025af11c486375e0a977439aa90fbaaebff553625dfb1b",
+    "apps/api/alembic/versions/f7a8b9c0d1e2_add_agentic_workflow_trace_columns.py": "6db3ebeee92df9a6501aa35de9eb96f1b444f5a29d5bba714fa50669118e5348",
+    "apps/api/alembic/versions/f8a9b0c1d2e3_add_parse_agent_tables.py": "bdaf16481c6fc4aa72415c4fadf5fc83b4526361bd9570445abf8f2ce504298c",
+    "apps/api/alembic/versions/f9a0b1c2d3e4_add_doc_profile_to_document_page_plan.py": "2bb5aefda60cfe3803f42ae96417ac09105efd7c8d8d8ecda371abbaddd58d70",
+    "apps/api/alembic/versions/f9b0c1d2e3f4_add_parse_track_to_documents.py": "a89ac997c27217981cac16b73a91c71b0fd657708b94ec24f3aaaaa71a556761",
+    "apps/api/alembic/versions/f9c0d1e2f3a4_add_retrieval_steps_created_index.py": "06eccbbdcc91ca3580c121549d53c41ea7e99bd0a54c9b05a08b262f02bf38b2",
+    "apps/api/alembic/versions/f9d0e1f2a3b4_add_document_metadata_to_documents.py": "2fd5b61cf30d09e2b8ca3d842e35f0dab3d946d1765e1839dc0062e00c596615",
+    "apps/api/alembic/versions/fae1b2c3d4e5_add_document_list_order_index.py": "7d0201a82b13c958d1744b8cec1d96409db0200c047f066929024f9791a8a26d",
+    "apps/api/alembic/versions/fbe1c2d3e4f5_add_v2_job_polling_system_limit.py": "1d7bc2e3259d93f927bcac1b221ae2405bc870ab0307738cdcf63117698c5843",
+    "apps/api/alembic/versions/fbf0c1d2e3f4_add_chunk_snapshot_order_index.py": "80ac19522db758bd6707e226b58b5de4671f65849e83db170859620354bda7ba",
+    "packages/shared-python/pyproject.toml": "ad644044c81aeeb1fd24f30a885c5ad8ad0e14d7e29afc2adcdd4be613954494",
+    "packages/shared-python/shared/__init__.py": "c7638a679646b0da4c498a0d16841801857e2b8cc40c8bc6cb2f99ad8dbc38aa",
+    "packages/shared-python/shared/core/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "packages/shared-python/shared/core/billing/__init__.py": "e1108d665e1f5dc88431c6825d5cfd1df1a0f12c28917761cb2b06b686761b09",
+    "packages/shared-python/shared/core/billing/calculator.py": "f59055510cda6f8aecde08c8cf014822a4da88941d91391fb38ec0ece478ac3f",
+    "packages/shared-python/shared/core/billing/micro_dollar.py": "9a7956ac9099b053abaaa571676860f9b98ca5231e9b1320635f7554128e1aef",
+    "packages/shared-python/shared/core/celery_app.py": "b7abb5d312b15a291eeb179736903ba52fae5862640bdc6874d1e4be0790e984",
+    "packages/shared-python/shared/core/celery_router.py": "5e47c3af7acd43e2a0dce6354ad095a1add81e3d8ee36d6aac54b4beabac3f65",
+    "packages/shared-python/shared/core/config/__init__.py": "0ed41a16e667b8beefeaa1e16cce5654fccf8ba724698c6495a9793e8af5d6fd",
+    "packages/shared-python/shared/core/config/ai.py": "2996d05e96ef8eb87f1f9252a6f3e86d6023200955a0ece5f555af212c030089",
+    "packages/shared-python/shared/core/config/app.py": "d6240dcd8ab76748678325575cde9a36364c69410470e3328223fb6cc35d0386",
+    "packages/shared-python/shared/core/config/base.py": "752aaa0d195bef156f328d6964949207d8be5b3e846171863191497097c79ed8",
+    "packages/shared-python/shared/core/config/billing.py": "0c3d4b614f0136ff984b495056c2cbe531e9dd0f143901d0d483b7495fbee789",
+    "packages/shared-python/shared/core/config/celery.py": "121442f7b9577ca59da54fdc398210655b7b7431bfebbbe825aabc0550255697",
+    "packages/shared-python/shared/core/config/database.py": "c4d6a68f9bd7527f18d47e68af0c29346bac5a3c97dc5bdc318afa58b2aa3533",
+    "packages/shared-python/shared/core/config/demo.py": "c35fc758fe923c6a72ec535c9e80bd42c0f164d607f5b8de3ca1e9a87f7255d7",
+    "packages/shared-python/shared/core/config/job.py": "5d3b63f288dc5b74df6bee4ceb36f3196ae33236b55accc7b18079b6cd33195c",
+    "packages/shared-python/shared/core/config/mineru.py": "b703deff3c40a5b5d61f85579c3c337429dfec91ddcbf560527472ed775a8566",
+    "packages/shared-python/shared/core/config/publication.py": "9e4d08cca09de1f21735238353e1b74fbaf1568ea048238007b7547a23aa9eea",
+    "packages/shared-python/shared/core/config/qstash.py": "d61a41d76dc0ed3713b63438c3b4bc9a763246241639cb6444c60f6b32d2e66b",
+    "packages/shared-python/shared/core/config/redis.py": "1d7e70cb508a522818f5faadb3063388ed6ca9950a8d1cd7e591b7328688b7ea",
+    "packages/shared-python/shared/core/config/retrieval.py": "afa31a7ec6de898353ee99f82765cd0a563eb743b905d6bf52c93c5c69aa4253",
+    "packages/shared-python/shared/core/config/storage.py": "4385f59d60d588f041e9faed75404e9ee9d51fa14e8c2c665e00af0dcd1f6564",
+    "packages/shared-python/shared/core/constants/__init__.py": "f39aa6705c91d8dd69ba8922dcc76b97696a8a923db8a89e4d0dbf217561f30a",
+    "packages/shared-python/shared/core/constants/api.py": "16ee38751d00ff2e88c01395d98cdcc8b65dff0ab3c5c9c7527f82751f3ae0fd",
+    "packages/shared-python/shared/core/constants/business.py": "b03773c1a832f2aeda356c18f9738a2c790753cd0466bdc6153e1a2db060188e",
+    "packages/shared-python/shared/core/constants/processing.py": "2e4ad370b05fcab8735abd915dfdb98ab034727d42ae5a7d588a0cdeceae32bb",
+    "packages/shared-python/shared/core/constants/stopwords.py": "5b53d7500fe4c4b2ce8b4e71258ac4d0b5c534a3dbcc076f943fed36235060b8",
+    "packages/shared-python/shared/core/constants/system.py": "e63430dd24f10ddf629b44076d86388c29ae04dcdd1819565a0b6ffd00d8f748",
+    "packages/shared-python/shared/core/database.py": "49980e91ae406139a4e874e082ee78db743306cfd5b8034e99144aa92fa02549",
+    "packages/shared-python/shared/core/database_sync.py": "99c0aca19709fba4780444b4854340d7a6e44ffb56e60e93c41faa4c17c3c00a",
+    "packages/shared-python/shared/core/exceptions/__init__.py": "a8cff64e409f9948ebf889d5de20c2150a8d45c66fe7a7bc0a4bcc3438b4cf37",
+    "packages/shared-python/shared/core/exceptions/demo_materialization_removed.py": "e3293c61f246b419aacbe456df26788c5d565db12c6c0213870cb18bc0b7eb71",
+    "packages/shared-python/shared/core/exceptions/demo_not_ready.py": "5b8e9f676c8336833f2d72d2530a9c4faeb2367f3fd1d67ef30b07cffb547d03",
+    "packages/shared-python/shared/core/exceptions/domain_exceptions.py": "a676a8469a9a7d32268edb50954887fd0734834ee90fd036a479075de13b703e",
+    "packages/shared-python/shared/core/exceptions/knowhere_exception.py": "fa9bf84d3738f7778310fb26445bf8742acd2407966e76bb2f36b4e48024cdcd",
+    "packages/shared-python/shared/core/exceptions/redis_exceptions.py": "f135476f878122efa506fb8af125bc161d796496d80f940ba98b1b91d2b163c5",
+    "packages/shared-python/shared/core/exceptions/retryable_exceptions.py": "cf0bec0f8428d1562562b5cbc102e9b6d00a0cb03b5bd822743948c2c052f5ab",
+    "packages/shared-python/shared/core/exceptions/webhook_exceptions.py": "4889c20036863dcdff100b2ec163d723ebf3b9041dfd9857da3a00c10c4f7401",
+    "packages/shared-python/shared/core/logging.py": "16b4cbba14107120dd4fa4e948aa7cb91a730505ba6245020a361aa800672f16",
+    "packages/shared-python/shared/core/otel_gevent_compat.py": "36c3305a7df0d454879850cece98a083fbb32c9511010cd397702b82a48922f2",
+    "packages/shared-python/shared/core/response/ErrorCode.py": "d6fb4fd7a1a1c2c1d2de464c64a13b88c6b4951cb85eb30dea7fd39daad51eba",
+    "packages/shared-python/shared/core/response/__init__.py": "be81f68428e61ece256dfe7172ca200062dadcf7a95fab398294f942fc4534ce",
+    "packages/shared-python/shared/core/response/error_response_builder.py": "49dd6c45fc1cd5488847e8a0cfddbe39ebb02404d81e7a0d3fb596b1e9cf763e",
+    "packages/shared-python/shared/core/security.py": "a6508a169cf7e917f348f67bbd0bf4566c861d4ee11f017ba1684777c4fe5fe9",
+    "packages/shared-python/shared/core/state_machine/__init__.py": "17056191be51b042ce07bcf4fcadc58defa5ab514a6eb319524a2139f1bcf9c4",
+    "packages/shared-python/shared/core/state_machine/service.py": "5ef26e1d5dfdeada88dbe0e97300c0058a9784361c67bd9281adcd39cf3532ae",
+    "packages/shared-python/shared/core/state_machine/service_sync.py": "7de25daaaf36875dc35158645166b3c8bf2b12ef680447e73be95218fb41b62d",
+    "packages/shared-python/shared/core/state_machine/states.py": "df02913e5768785f4f7741727856f3c06c6112a8904e8d982823e199e821470a",
+    "packages/shared-python/shared/core/state_machine/transition_outcome.py": "460d2b0391b1e3f55504201ace45d7d7387abb72ef9c0e449c106d48c35c3d1e",
+    "packages/shared-python/shared/core/state_machine/transition_payloads.py": "3d209935fa5ceadac97dfcb1f06dff09309bb3865dbedca0dfcfa0e7504da410",
+    "packages/shared-python/shared/core/state_machine/transition_runner.py": "5a1556d58c87b5a9f1e19fb6a5fbf7f10b81f724d55ddf962b09948dc46b55cb",
+    "packages/shared-python/shared/core/tasks/__init__.py": "4fec7aa48324eed21834e53170e8cddc4c974faea2f3a3d0800a9996e97e2e82",
+    "packages/shared-python/shared/core/tasks/celery_tasks.py": "0fa98ec1a963e8869bdfb1b04eab50eb7233e161ed38d656df4aea98f36b6064",
+    "packages/shared-python/shared/models/__init__.py": "ce24b27a93f8ac75665b2453ffb504128a18d13bbb78f34597465d99dd36e8f7",
+    "packages/shared-python/shared/models/database/__init__.py": "c149a2a8c0d875791ff6dcaec35ac470012c7932094f4fcf49d903e19c6b1f84",
+    "packages/shared-python/shared/models/database/api_key.py": "b92393f7d045197e847d014fdb1ec5d46c4619124f2ccd5a3d8a127651dedf19",
+    "packages/shared-python/shared/models/database/credits_transaction.py": "c43dbd6904d7006dee89a12e08aaf172b95b50826a2fc07a4112cb64044e7833",
+    "packages/shared-python/shared/models/database/demo_corpus.py": "446f9039a11f89e8f569f449400f8277384d255e1fd457fa7de34620659bb209",
+    "packages/shared-python/shared/models/database/demo_materialization.py": "d8c81ba52d052e662bdb1a091071bb04e6a84f7965582c091708ad9c854f4e1b",
+    "packages/shared-python/shared/models/database/document.py": "a932e70b8d003eb9ac299319136fbb2d3e467f04374408c26938f5e1bdb71593",
+    "packages/shared-python/shared/models/database/document_page_plan.py": "971ddd12b5e5054bcca68e67a5b5df35c56b307b4b941c3811208b492199c882",
+    "packages/shared-python/shared/models/database/guest_device.py": "a405d5497b51b7b133373d2ccc733936583f408d22da3726a9b5b87fc91d1e42",
+    "packages/shared-python/shared/models/database/job.py": "501feb55cacc54490c3dd370fabc7c0a618cc4d516d0736050552709774daa7a",
+    "packages/shared-python/shared/models/database/job_result.py": "9a92170930d4ec786d27fc2ae8832ae75e882ce5c62cd3b15c81043db5262793",
+    "packages/shared-python/shared/models/database/job_state_audit_log.py": "779d338801b0c5f89fa09efde183101e5f80126beec33f09afb01f925162f1c9",
+    "packages/shared-python/shared/models/database/job_state_history.py": "7e86203524cb78795d287fdab8c5f1166f6931eb530391be73fb2837b1f7270f",
+    "packages/shared-python/shared/models/database/parse_agent.py": "668da213ae232b5bb108af00b76449709f90bd891f2341991ac957f79c96d799",
+    "packages/shared-python/shared/models/database/payment_record.py": "1068752b80754d23967228208a251278de68afe625545b5bfbb8c8f5eb96ffea",
+    "packages/shared-python/shared/models/database/stripe_price_config.py": "bbc54656b885c24f94651c31e0d4f432c3b7f2ef3f83843a7ca7d270ebbaecad",
+    "packages/shared-python/shared/models/database/system_limit.py": "ae0630599c1b51272e32151947a9bb552df6672159d2ed15354b34b9feb8ac5f",
+    "packages/shared-python/shared/models/database/tier_limit.py": "f3d5fb1e3e4f2834974cbefe02222db9d2f807af35338250cd3b19aa91bd22cc",
+    "packages/shared-python/shared/models/database/user.py": "84a1443e8f53d77cb7282c641a8d0f9544ab3d50b2f924578175fea1f7800579",
+    "packages/shared-python/shared/models/database/user_balance.py": "d7fdec9cf1a1c44cc39ff9109c47be1e1f7168b584a9129597ca73e2a1a0aa02",
+    "packages/shared-python/shared/models/database/webhook.py": "9da34f99cb648402ffb1a544cc1bf07d352ed6c4197a401ed54c719956ae002f",
+    "packages/shared-python/shared/models/database/webhook_log.py": "7420041f4b52d461e3eda4deb55240842607236cf1bb50dfa4b70768b2de614c",
+    "packages/shared-python/shared/models/database/webhook_secret.py": "7ff0932ca645434ced8bc37d2f874c21e433aa557c5dd3cd2a3d3996e03dea09",
+    "packages/shared-python/shared/models/schemas/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "packages/shared-python/shared/models/schemas/api_key.py": "3657200f7a341306092aca68c4ad07ee909721141aaa2594b5833aaaab2914cc",
+    "packages/shared-python/shared/models/schemas/billing.py": "234e6df1899c0465c24d29ee02835976b1119f6ed4495b48587023a8bf49b078",
+    "packages/shared-python/shared/models/schemas/common.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "packages/shared-python/shared/models/schemas/dashboard.py": "a2ebc051520780222ef3dc4a224ceb28f643ed9c8957eb9a0ad36b8df94520d5",
+    "packages/shared-python/shared/models/schemas/guest.py": "a2094a1d73e8b6589079e95edb8c2c2b538ce009e30e220b661ed84dac8fe866",
+    "packages/shared-python/shared/models/schemas/job.py": "647293db933c23c0d2747f0bac473934acf7ea38906b7900cd32346f95fbd85f",
+    "packages/shared-python/shared/models/schemas/job_metadata.py": "79b1cd92b95d3998da59c237b0b18c1ee96132bb0b741f8f52ddab7cc4a010e3",
+    "packages/shared-python/shared/models/schemas/llm_config.py": "b08ba55782a417918e4de3f4d4f2ddec77365eb3df1f316c9da8126870a45412",
+    "packages/shared-python/shared/models/schemas/oss_event.py": "d6b2cca0a59fbb6366a65f9b7dd77aa10fbd35aacf3f88b294c3f090b7ba70d1",
+    "packages/shared-python/shared/models/schemas/page_memory_config.py": "8de6f79032114aa0486d66c9f0ef9ff6f0ae7e4f8f7cd5fcbf2adcbdd1d29877",
+    "packages/shared-python/shared/models/schemas/retrieval_namespace.py": "14d4f87c9820a16e8bbc4cfcf2a69ab57d742439fd2de32db76180b6af5e086f",
+    "packages/shared-python/shared/models/schemas/s3_event.py": "9f287d2b4d48cd905c38dc9452b3674805e1c015b28aaecd325df83ab095e9f0",
+    "packages/shared-python/shared/models/schemas/webhook.py": "2217a864d1ebb8165795769cec2c7a3bd08d8ebc1f4af478b391cb6e7f2ad5fb",
+    "packages/shared-python/shared/models/schemas/word.py": "eacaf946d7cfbfc481ef942bfed9145e8c67361dc4da3cabc16d17087fb8f639",
+    "packages/shared-python/shared/repositories/__init__.py": "00fb7216b46622f77306254dd78384c4becfe767034aae88473e3800c3fe5ace",
+    "packages/shared-python/shared/repositories/credits_repository.py": "0f345092e21bc3b34b5c2d146d7e20537c079d85ff750605ac942d1f6492f4c7",
+    "packages/shared-python/shared/repositories/credits_sync_repository.py": "fbfb4ae1a21cf2c152884c0c1044ee72a283dabe703d27ef74b3f54cbe4a60fa",
+    "packages/shared-python/shared/repositories/webhook_secret_repository.py": "f77b0e0c67c518803d98e50ac90c1ba03e0cc39ba4463c825aad2dcd1714bfb9",
+    "packages/shared-python/shared/services/ai/__init__.py": "f54eb7a3a1dda8eb9bf807bc0a978c2610f8b623d918c7b65462d402c0161db2",
+    "packages/shared-python/shared/services/ai/ali_quota_manager.py": "26ada36f4fe335fabeb1931ca28decc82ce1a342790cb8e6951977d9490ae693",
+    "packages/shared-python/shared/services/ai/iloveapi_quota_manager.py": "429ca0cb8ae069609cb4499bfeaa3913e6a9cb26bfca918c806f200da6b576db",
+    "packages/shared-python/shared/services/ai/llm_mock.py": "460b5c44745fd017757a74d0235ed4f143c74be7cbb61220c29cb36762e1c654",
+    "packages/shared-python/shared/services/ai/llm_overrides.py": "5b6c1f1abffc50aed632c8bf02d842e44baf9c336f71367ea3fa2c08fff83235",
+    "packages/shared-python/shared/services/ai/openai_compatible_client_sync.py": "a56d701f4e9adf70254dfcb5461846bada629222aef9389d0c13d645a68c193d",
+    "packages/shared-python/shared/services/ai/page_memory_vlm_limiter.py": "cb8fde12ba3298a99b75d8e11df8d975a951b04d0398f11256c7c8b93f809bc2",
+    "packages/shared-python/shared/services/ai/prompt_service.py": "a805b5e5721e4785ffeff7c19c4504873aca7f3cb72ad0ad5f0bcd1eb8186e73",
+    "packages/shared-python/shared/services/ai/response_process_service.py": "0b2afdfec666002c9964abcb12bf53b861e56f36bb83de830ffd4dca64dc7454",
+    "packages/shared-python/shared/services/ai/summary/engine.py": "a0b2891849d9bd19cca893d353a2514af987b1931faa43b536ecdb1af9ea0335",
+    "packages/shared-python/shared/services/ai/summary/model.py": "d4aab75bdcd3ef14dcedcb9206a82c93ef5882ba302a46eb69ce67077ffbafd7",
+    "packages/shared-python/shared/services/ai/token_costing.py": "3a255726e3d596faae871079b5f120dcf09ab19115d3e3c832b68f02b4942939",
+    "packages/shared-python/shared/services/ai/token_tracking.py": "c525c64be35764e2b158f9e2501cb0bb0569f7e26e7a246858707b2496a51b78",
+    "packages/shared-python/shared/services/auth/__init__.py": "746a226e8d962b7957fd687055e4af97b8fccc4a9c9ad112e8cfd3c0e7838ca4",
+    "packages/shared-python/shared/services/auth/user_table_bootstrap.py": "ce75a5a575f9120110087702ddb557d2b54478b3c47a0a1c848e4d53691cab61",
+    "packages/shared-python/shared/services/billing/__init__.py": "cf1185de00cef2098708cb54c30bd1151352cd1ab2b9e3d9db2b9f678b412fa9",
+    "packages/shared-python/shared/services/billing/credits_service.py": "352bf86c209dc7deccd3872d7d403d6745537bdbf912d25274fe2f552c32f16e",
+    "packages/shared-python/shared/services/billing/credits_sync_service.py": "ec7160571e4ebc79dcd0feca6c30f2e3ff5b499ce593520b336647e5085ea0ed",
+    "packages/shared-python/shared/services/billing/work_billing_service.py": "d02f9441fd26635c00fdb733d9979ec89327be2be17063f40870f07a3c8dc8e9",
+    "packages/shared-python/shared/services/chunks/__init__.py": "c4691f8e89f1144ea5f9d973e0fa27a7154852a5bfb6c934fef5d2039979e164",
+    "packages/shared-python/shared/services/chunks/chunk_connections.py": "04aa7f380b804e5dab9f1328d7af3cf5723d66f78690c2ebdd9e94006ba594e9",
+    "packages/shared-python/shared/services/chunks/dataframe_chunk_converter.py": "71d07789c4ec62bc811e99a32c487dee2d81b69372308552f20aa3b821054b85",
+    "packages/shared-python/shared/services/chunks/document_path.py": "8a3b13d66bc23699d48581acc54b68d766a14d5398b1187eb11c60860da1148c",
+    "packages/shared-python/shared/services/chunks/path_segments.py": "3b47bb98a8f67e9935ac858c85d6e1e16bfa42970985d103854162850d2261c7",
+    "packages/shared-python/shared/services/encryption/__init__.py": "6ec6c0e0eb22be8dfaaf049588f9d7de548a4abb9cb89f1b68cd9e2fb75bcf1f",
+    "packages/shared-python/shared/services/encryption/fernet_service.py": "3005cb7ba658a1759e800c122aaabc599b330819ebf378ce0ecf0d8278abd99a",
+    "packages/shared-python/shared/services/http/__init__.py": "03e8dc2f6c01f66f4b2787000c924b6b87cbfab2c1202871fe7a8fcc720b4ab4",
+    "packages/shared-python/shared/services/http/client_pool.py": "a7fdd85c48b6fe80fc216735c84d74ac2e41febdc4d21c51dffc002b115108e4",
+    "packages/shared-python/shared/services/http/pinned_outbound.py": "def6215449fa12c9f1ca29d152af319c431e2a5a270eace6ca2a7403c1687dc5",
+    "packages/shared-python/shared/services/http/url_file_type.py": "fb355a34711cc5ed0e03a8c47a371bd686aee49e61cc6e004cc258ca11b0eb73",
+    "packages/shared-python/shared/services/http/url_security.py": "02a203059ebdd6af693c43c3f5a227f6a31e109ed8fb11202c9e25dc5720e871",
+    "packages/shared-python/shared/services/jobs/lifecycle/__init__.py": "dce1e4b4b60ad778b7ca471da5ffee6210246d3cff0f33bec69bdcb6d2fa209c",
+    "packages/shared-python/shared/services/jobs/lifecycle/failure_finalizer.py": "f8acaac5321e15e79b436204cc29e5e02b6ae582229ac3139acbd2f03c529c9e",
+    "packages/shared-python/shared/services/jobs/lifecycle/post_commit_effects.py": "8c1cdfbf9b1f6d3328fc97dbc417d424ca37cd14e41f1386078b9de8b4786018",
+    "packages/shared-python/shared/services/jobs/lifecycle/publication.py": "ffdb6da528062cacd8566e8abe9deb609d04ee59b05261ce24caf4e93a99b5da",
+    "packages/shared-python/shared/services/jobs/lifecycle/publication_trace.py": "81f6475ca6e1b0e05dcbdaaa5709cf8daf78ffe353b067566692acdc0ea6280b",
+    "packages/shared-python/shared/services/jobs/lifecycle/publication_trace_sql.py": "92edaf7d4e777b3581a541bf092edd47479b75a879fcf5850f0eab46d263e30f",
+    "packages/shared-python/shared/services/jobs/lifecycle/result_writer.py": "9e28475b09cec427b32ceb7b8f8ec9ae96c5797087eb9efd1062fc0d80e94cd1",
+    "packages/shared-python/shared/services/jobs/lifecycle/service.py": "e2d0c6aa40bd347e2380acfcf53a3ef83a76b61e7115ea4bc079969b46fbbee2",
+    "packages/shared-python/shared/services/jobs/lifecycle/success_finalizer.py": "ef6e5db71acdf0badde9bb6856dc45cd46121c7a63c4722cf3153da7d3de277d",
+    "packages/shared-python/shared/services/jobs/lifecycle/webhook_outbox.py": "01b6e0112a6ecd48af5988c4eb8395c5534ddac1a8f2f16a93a5abbbd25217e4",
+    "packages/shared-python/shared/services/jobs/result_delivery.py": "039174673faafdbda75543b044915799ad793867a3a64d8580bc9ac49ffcc16b",
+    "packages/shared-python/shared/services/quota/__init__.py": "dc909959b14f67c2ae7870dacf202b497c3558922e4698c2c71a571c95250726",
+    "packages/shared-python/shared/services/quota/token_pool.py": "55894288493d2c32c12665169fe2e48c4c042982948ae45aae610db7a0f5800e",
+    "packages/shared-python/shared/services/redis/__init__.py": "61c441c8feb72f40a0e67bec476dfe587e1552c26cfd04b06d5c34f87c1a7483",
+    "packages/shared-python/shared/services/redis/distributed_lock.py": "03504ec4a72d02e3a910be10080e6c1407cba7d06bf97e867c0fb933fa350137",
+    "packages/shared-python/shared/services/redis/job_info_redis_service.py": "3f533bb2b1efbe12675fa3e9acef8537edbf61ab23f2b68f9cba03988edb27f4",
+    "packages/shared-python/shared/services/redis/job_metadata_service.py": "ddc93b406b654eca3b0f6856fb63e514db9ea0c3835dfac57ca214e84e5306a0",
+    "packages/shared-python/shared/services/redis/key_builder.py": "e2660681be4fc5a128fac9e68ea392c862ae73ce2a0bf8b7e181e71e9cbea152",
+    "packages/shared-python/shared/services/redis/periodic_task_lock.py": "865db88759d45f594362ee56b7bd525ce23da9516dc75c87b11768e758d3d0e7",
+    "packages/shared-python/shared/services/redis/publication_semaphore.py": "1554394d668484d72e166802c322c6db6537b73050df39a6b0cec07c0b1c69dd",
+    "packages/shared-python/shared/services/redis/rate_limit_service.py": "9f2fecf0247d7bdb150c1b2efa6bcf229fbf79bc6f41bdc9ca1cc02c9c51a2d2",
+    "packages/shared-python/shared/services/redis/redis_alerts.py": "7d961e2229233c7e894e7052cb8c2b6baae0b48cf5621ff7c6ff1305fa0c95fe",
+    "packages/shared-python/shared/services/redis/redis_monitor.py": "59a7789216dab172169539ce64f3e50deecde644ec8c9b28becdaa278c0c4c9d",
+    "packages/shared-python/shared/services/redis/redis_service.py": "78cd8c7f533e54b8c959abf552aa5b6c857ca0155c4653295706674e4a51bf36",
+    "packages/shared-python/shared/services/redis/redis_service_factory.py": "cb406b97c54d5c9bee09419eb3048c20af60f3b0f602163b194dc29b43066519",
+    "packages/shared-python/shared/services/redis/redis_sync_service.py": "0fededa9cc715b3c2932b662c48e105fc7b4bc0cd7c9bf6de4d5fd6000af0c11",
+    "packages/shared-python/shared/services/redis/retry_policy.py": "abaa626802d87122ce2868c120d989cc1c23c8a3c481dbe0922fd54dcb752c58",
+    "packages/shared-python/shared/services/redis/task_redis_service.py": "bfa173304ecbfca1da640125cb8dd131c573239b9c340d0b2d9c8b974f4c6b56",
+    "packages/shared-python/shared/services/redis/user_redis_service.py": "d5572bd04cc76a934070e4bdedd556c92f71f944fe43e6699bd054657d5b1088",
+    "packages/shared-python/shared/services/retrieval/__init__.py": "30ed3b4e727fe12940c0f38ecf48afaedeb3a3c26c5408870c805e312e05fe03",
+    "packages/shared-python/shared/services/retrieval/agent_explore/__init__.py": "bd7bbd4f2c1cbb01a989e6af46020b61783c051e6a1df1cc643f8ab6d50e9229",
+    "packages/shared-python/shared/services/retrieval/agent_explore/bridge.py": "152c6cae8693f2a9b2168421e3d88f33f867bb03511b3b7dec07b99906f84c12",
+    "packages/shared-python/shared/services/retrieval/agent_explore/budget.py": "fd091dc1175c9113be38da5e4dfc88438c171f9d6716a8ffe001e4106b37ad78",
+    "packages/shared-python/shared/services/retrieval/agent_explore/config.py": "a0c398522ecc3881a37a74268d40cf2e860ea82b5bfadd89d1c20e05d3105dc5",
+    "packages/shared-python/shared/services/retrieval/agent_explore/dispatch.py": "49b391c9b7b285ae69077414e08b4b78705d8718e2473e57a03821ed136bf6c3",
+    "packages/shared-python/shared/services/retrieval/agent_explore/evidence_pool.py": "cc35e90e4aae7baed3eb0453f0b7963c2288ee1929d4fe8968d8d219b19be531",
+    "packages/shared-python/shared/services/retrieval/agent_explore/evidence_review.py": "1dbd05a8b112f612ec8a60ed90844b94cae2f6fa619a5a324804040e0f66cf6d",
+    "packages/shared-python/shared/services/retrieval/agent_explore/harness/__init__.py": "017504b338754167902788db6981bf741972ed756e138af8e2cb0f72b94c34fd",
+    "packages/shared-python/shared/services/retrieval/agent_explore/harness/base.py": "2f33bc34077a4ef08453e0418082bfc1d039a9c820f6ccd4a3bae80135a2c9f2",
+    "packages/shared-python/shared/services/retrieval/agent_explore/harness/cursor_harness.py": "abc03401253aa418fb8da28ad7850f06508acdf2f0740be2a7e400e5b25941a3",
+    "packages/shared-python/shared/services/retrieval/agent_explore/harness/openai_harness.py": "8e8efdc1bc9bc50b2d617214ed860694b87e57bb7152a00efe88acb499a00869",
+    "packages/shared-python/shared/services/retrieval/agent_explore/harness/resolve.py": "f672d49806816d44eb7dad27b30e7c1590f96f8b1039461c61f0ad9f883f6203",
+    "packages/shared-python/shared/services/retrieval/agent_explore/prompt.py": "c47e5399d9666e2079d649a0d1404db7762f3fe11c497a0407f51383a9aa8224",
+    "packages/shared-python/shared/services/retrieval/agent_explore/shared.py": "0bfb877d8033cc6b6c078a0aceaa56a8c386138d120cb4b4748fb060b7098bc0",
+    "packages/shared-python/shared/services/retrieval/agent_explore/types.py": "a208fa9dd1fa562f09a49031fc44d155b0c5583840fe023299043c3e9beced46",
+    "packages/shared-python/shared/services/retrieval/agent_tools/__init__.py": "960524784118d4ddd3eaed05da90814b5aecb610c679426eaaf5311d8d51d904",
+    "packages/shared-python/shared/services/retrieval/agent_tools/asset_hosts.py": "bbbdff7b2bc730a119d09f968b29f373c256cc25ede1f72398095da493e22b2b",
+    "packages/shared-python/shared/services/retrieval/agent_tools/explore_mount.py": "d121e37187b7b489253187961f9497fde7a2831680e7089ad5e6e28906e22dd6",
+    "packages/shared-python/shared/services/retrieval/agent_tools/map_render.py": "da93292735f090b92ba696791eaa5ba4a31c0b8a8641ce4cf3374e94df815d8b",
+    "packages/shared-python/shared/services/retrieval/agent_tools/registry.py": "f52339bcc84059ea46bb7adbc395bfbb4ffc02159b50c9c5a61644c1ed64dcca",
+    "packages/shared-python/shared/services/retrieval/agent_tools/schema_doc.py": "b0d8a34548038a7819b72641445b56dabbb6de434f42c7a27c5acda4fb3514a3",
+    "packages/shared-python/shared/services/retrieval/agent_tools/scope.py": "c66c618283238c2412bcec2312d0da96d5ebe72929bf2c79ddb561452734e340",
+    "packages/shared-python/shared/services/retrieval/agent_tools/section_path_lookup.py": "fdc5937fcf46620409c1967e742a494637bc7b9279c2eea9e019802c4ee22eb0",
+    "packages/shared-python/shared/services/retrieval/agent_tools/snippet.py": "b550fe8593c05f02cfdab7d06f7e5aa91e4a26df5f8dc8f4ff483f203414473a",
+    "packages/shared-python/shared/services/retrieval/agent_tools/tools/__init__.py": "dd4869d6e8f6b44a4ed03234dcacd97834cc02ae05b7745ffd36d43e278fddb9",
+    "packages/shared-python/shared/services/retrieval/agent_tools/tools/assets.py": "50bd4ba5d345af0eb8191461e22071098541330760d72677df493369a7dec784",
+    "packages/shared-python/shared/services/retrieval/agent_tools/tools/grep.py": "82ba9c4e13bccf7e7d5c6861406c0f2e73b6084b06e73262e2b5df4252a22881",
+    "packages/shared-python/shared/services/retrieval/agent_tools/tools/list_documents.py": "4eb76dd217bce45240503eb68780fbb496dca469dd5fae055f81c0b24d04bc35",
+    "packages/shared-python/shared/services/retrieval/agent_tools/tools/neighbors.py": "d96a4a5538361c5fb1a23b9b017a5bcd262c829148f0db6485c62ffbd40536ee",
+    "packages/shared-python/shared/services/retrieval/agent_tools/tools/node_filter.py": "78edc57cb406b412ec97896f026a9e91fa7773ae391909175190d0ccca1e3b7f",
+    "packages/shared-python/shared/services/retrieval/agent_tools/tools/outline.py": "62b44b2514510defa31519e1dc8cd1c1b545d9814961d9065ab91839e2d4a424",
+    "packages/shared-python/shared/services/retrieval/agent_tools/tools/query_table.py": "32b4dbc7246bf181c36d6d41b95693f4c3537b1f0c581fbc745056eb347a64ed",
+    "packages/shared-python/shared/services/retrieval/agent_tools/tools/read.py": "ab7106a6411e79f177bcb5b7e44d7c8a1c0d58cfd8d31b870e5f382625749181",
+    "packages/shared-python/shared/services/retrieval/agent_tools/tools/recall.py": "bfc7aa3d9ccd5d598a85b1a97683ed0f5f1235509508fb29ea14215919d24abb",
+    "packages/shared-python/shared/services/retrieval/app_service.py": "39a3d2570f89a00889e3efacef7e5634c6f2469166a7d50dccc07529538a5739",
+    "packages/shared-python/shared/services/retrieval/cache_service.py": "268e2b78c02fbbead845e8e3df43d91f2e0ab653e57fb63fc873245207cd21fd",
+    "packages/shared-python/shared/services/retrieval/corpus_revision_context.py": "3e4d1f1b5b9956f8204e46d20d57acf99efd65fb1d61c41858d3fb88a5e63509",
+    "packages/shared-python/shared/services/retrieval/corpus_storage.py": "bf77a6d9733bed29a84462529147df37d798f6f77316ad03df234a1afe5c6ef1",
+    "packages/shared-python/shared/services/retrieval/demo_authorization.py": "4eb38eef1b9f6c68597f9361f4282e4ba451c3c639932b12f33d3c1c212c8c47",
+    "packages/shared-python/shared/services/retrieval/demo_examples.py": "cb0b4825b92fadda135acff24e8149963ac703a8c0d2cc773aeb9b07a87ea399",
+    "packages/shared-python/shared/services/retrieval/demo_job_scope.py": "26bb83234335d353d67c8c2edd0e6d035e555da43e50240619adb23edb70bb48",
+    "packages/shared-python/shared/services/retrieval/demo_query_scope.py": "42030fd9bd99116e3fecf894d08f082f8a9bf6e3bc9c83464598a1824b8487d7",
+    "packages/shared-python/shared/services/retrieval/document_scope.py": "9940587ffea91c6805535faf82dc57ecb5dad638c7911c5cf0c4b32bdbde75b0",
+    "packages/shared-python/shared/services/retrieval/execution/__init__.py": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "packages/shared-python/shared/services/retrieval/execution/evidence_review.py": "e9a27e72ce963a22402ef4bee8f40b202a29759b525edd599c0d9f363d806974",
+    "packages/shared-python/shared/services/retrieval/execution/plan.py": "2f5d3a84b9b9fe65242f23e7cdc52ce3c44887a0e949efb7039567018d86dea2",
+    "packages/shared-python/shared/services/retrieval/execution/query_request.py": "a204efc3b9096a942942be080576c14e390e2fc24b892af99a310f54760c5ccd",
+    "packages/shared-python/shared/services/retrieval/execution/reference_resolver.py": "78e147f19669e580f2fa204e7bf9aac6308e1329d239573e34732ce09191ea6e",
+    "packages/shared-python/shared/services/retrieval/execution/response_projection.py": "6fb4c27088f0189925826fa58dd5b5b64d24b9efe5344b23c9261d4530bed728",
+    "packages/shared-python/shared/services/retrieval/execution/revision_pins.py": "eeac3379f5fe9d889fef904eac69e03ccb05ed5a24fe87a7ac031294510c95ce",
+    "packages/shared-python/shared/services/retrieval/execution/route_types.py": "b9d3c469f91ad30001b801d344a809569ac0fefb5fffb204a3f80735281f6a28",
+    "packages/shared-python/shared/services/retrieval/execution/routes.py": "20c81b936246f5dafcae199013056e6844cf6e05e86afb7b628e66efd3ae21be",
+    "packages/shared-python/shared/services/retrieval/graph/__init__.py": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "packages/shared-python/shared/services/retrieval/graph/keywords.py": "b83bbe4071fef18c13be4bdabffdd42d91b0b2683177bc6060ce8d42031f5782",
+    "packages/shared-python/shared/services/retrieval/graph/query_service.py": "c0a156f80866af865f13ce51d3442f21f4f9f68ec4294dfd7c8b38f221377193",
+    "packages/shared-python/shared/services/retrieval/graph/service.py": "ff41870d14ba109dc653c91cf007babf83604c2542b457a4cdc5ce7314bf6584",
+    "packages/shared-python/shared/services/retrieval/hydration/__init__.py": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "packages/shared-python/shared/services/retrieval/hydration/asset_inline.py": "83d8d91807396c7ece0a48161a9e250fa9c7292002a06d9d67837f168d87518e",
+    "packages/shared-python/shared/services/retrieval/hydration/assets.py": "0fc4885c5499aa412d24e1eccfef4d86dd4df11556e95f07d3b1bf99c85d82f5",
+    "packages/shared-python/shared/services/retrieval/hydration/connected.py": "9a497ded10543ae0466660fa3069e033418780e9fadf6883172de5c1beccc3c4",
+    "packages/shared-python/shared/services/retrieval/hydration/evidence_compose.py": "10b79e222dbbdd2e647580c59aba7fb8b0d553b13aaebe0d3577e69bf4b2683a",
+    "packages/shared-python/shared/services/retrieval/hydration/path.py": "e0552db4de28f8215daf02a4dac025a5d92f819106b374a2bd904f16cdedd770",
+    "packages/shared-python/shared/services/retrieval/hydration/reference.py": "e5f1a238b7a6d9915cde28ff098fcdd9dfd5b89c62b82ce71917de2edb48118e",
+    "packages/shared-python/shared/services/retrieval/hydration/result_assembly.py": "acb2f674993fde0028be2de434c91d684d2e97b53bb9f3a42874e04193abaa98",
+    "packages/shared-python/shared/services/retrieval/hydration/row_utils.py": "72f6e156c5d6f257351dec1b814b8d99f690ac626aaf254a8eadfa22af121987",
+    "packages/shared-python/shared/services/retrieval/hydration/table_grid.py": "35002c1d8733ec1460eeeabd1f24dd112bfb3b99f12ad5c51476cec8e45d76f8",
+    "packages/shared-python/shared/services/retrieval/maintenance/legacy_token_lookup.py": "dc7188dc72d64dbbdabe9e7511fecfef7d7693130bd0ff2641360d95d514a780",
+    "packages/shared-python/shared/services/retrieval/manifest_cache.py": "c10a24986599014481a2b8a5387504588f01a0601a53493bc3a67b7d8915809e",
+    "packages/shared-python/shared/services/retrieval/map_unit_index.py": "22ad89c92dfdf707d470793a4e1c0e72abb9525c63821ece33534a2655b38462",
+    "packages/shared-python/shared/services/retrieval/namespace_map_snapshot.py": "2f6e873adae0a2d704eeeea8f2b3535fca77b35413797443183a740784d0b965",
+    "packages/shared-python/shared/services/retrieval/namespace_map_snapshot_redis.py": "47b39016a4bee44a25953b6478658a5bbb8adf59dfd70697767bcb7449e0b6a7",
+    "packages/shared-python/shared/services/retrieval/publication_chunk_copy.py": "6b9960f45ce41b3bf52d2b6894175076613a98b42f9d1a4d269f1d5a363bc7d5",
+    "packages/shared-python/shared/services/retrieval/publication_content.py": "2c09916cc69b5bd7d4d3d96e911c6f5e2b7f02ec636c968f95b5bb0807745f9c",
+    "packages/shared-python/shared/services/retrieval/publication_models.py": "15ab8c506fac0939cb306224c17a156edb0ba5b80737bb79c48ef413d7c90b11",
+    "packages/shared-python/shared/services/retrieval/publication_preparation_cache.py": "828bdd23fd5f2f80c3bd4bd8174e43a9b14fc6069f6b249b4a4a39ea95a69573",
+    "packages/shared-python/shared/services/retrieval/publication_service.py": "1f7d1a76e0d2680ea3e22b6f53034c1797e20f0928683be3ba6f2868863bd6f7",
+    "packages/shared-python/shared/services/retrieval/publication_token_copy.py": "2963710c4205e7c457ced7167f788f7fcf6f3e4eefd5c3e31f34f020df4a8e2f",
+    "packages/shared-python/shared/services/retrieval/publication_trace_stage.py": "3e8f2da1156ccb47522ee84724b116984a8209a4c41900f280655fb3b899cc6c",
+    "packages/shared-python/shared/services/retrieval/scoring/__init__.py": "7809a0d6e77230695551a97a50c30d975bd6b5601d1decc3d4e109590d1b568a",
+    "packages/shared-python/shared/services/retrieval/scoring/hierarchy.py": "c80798ccc5c4acd4bf62ca7df973bdfab8f991937e8c5b1d3c92d85c80977ed1",
+    "packages/shared-python/shared/services/retrieval/scoring/knowhere_hybrid.py": "cfdbb2e66e4ab701176bf5c69663636b6e57387f46890222f4da46e8c9ff283c",
+    "packages/shared-python/shared/services/retrieval/scoring/knowhere_provider.py": "99d9a074fa2fe349783757262c23c9a1c601b105c3c295c22f680719b880cd7c",
+    "packages/shared-python/shared/services/retrieval/scoring/map_lighting.py": "49ff5390b384de7f7dd4cc64fcc50ba7972ae913cadcd7a3526616b0a3e407f4",
+    "packages/shared-python/shared/services/retrieval/scoring/node_filter_predicates.py": "6c7e0979c4bde9c7fa9edfbd988e13bbcf904931c1ba7bce077e00be6732e7f5",
+    "packages/shared-python/shared/services/retrieval/scoring/persisted_score_load.py": "fcea806751e7c00a0331313c6a9d98c4b814b23ae6855610128486593184725a",
+    "packages/shared-python/shared/services/retrieval/scoring/score_units.py": "ed6a46726cb7726f5bfe8673d2e3975ea61fa4b34246f35b95010301d5d6e683",
+    "packages/shared-python/shared/services/retrieval/search/__init__.py": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "packages/shared-python/shared/services/retrieval/search/lexical_text.py": "326f8a88fd6b6650868ebf45abdfc2257fc2aa7f7ba326452d6c5e181498322d",
+    "packages/shared-python/shared/services/retrieval/search/map_unit_discovery.py": "9963c49cf55dc572cd251582377ffead72ff44c2e197d8eca989b2a2a1dc4c29",
+    "packages/shared-python/shared/services/retrieval/search/ranking.py": "9ab13794b7f20f8ef55f01e3aa9cc4f2c674cd0ecfc3af9f77e4c6a08a6d67d1",
+    "packages/shared-python/shared/services/retrieval/search/scoped_corpus.py": "dc6ed428445b3ef04ab9082f9d8f2ccf0ce29737b2f75253e444329656358c3b",
+    "packages/shared-python/shared/services/retrieval/search/scoring.py": "891c3be8de347775587214f6ba83a0a96d1b06a395119db1c78dc2bbc28db5ab",
+    "packages/shared-python/shared/services/retrieval/search/section_filters.py": "4b87c05fd098840f9b1aba141c219d909d056f14601696d4d1fff7cd7cd4626e",
+    "packages/shared-python/shared/services/retrieval/serving_generation.py": "acac925e51711f2510bc11df69f9b07fbf1287da42759e0a3907177eba6e8a2b",
+    "packages/shared-python/shared/services/retrieval/serving_manifest.py": "51b7f05eb28ceb364588d7e0bcac09c0aafeadc03f239064940f183a71239ade",
+    "packages/shared-python/shared/services/retrieval/settings.py": "d22b15e9bf1983815becf122efa675eb9c0fef46581b188997cc02b3dc14242d",
+    "packages/shared-python/shared/services/retrieval/stats/__init__.py": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "packages/shared-python/shared/services/retrieval/stats/recorder.py": "b5e614a8a48004d62b97202a7e7fec3b55b27dca848c5786f3d21e27bf82bd73",
+    "packages/shared-python/shared/services/retrieval/stats/service.py": "b156f6ce04948b922816188c46f40a64949a3c230b58f97341d01e964484b0a0",
+    "packages/shared-python/shared/services/retrieval/trace/__init__.py": "4d635ccfcc411c6d5544b7faf96edc4c1dfeab406d74d32a549a0b0977bb96b1",
+    "packages/shared-python/shared/services/retrieval/trace/recorder.py": "835765901169dd7ab0438aea5cd672d3f3bfa072f6ec254fef0a7288e2cfb9dd",
+    "packages/shared-python/shared/services/retrieval/trace/types.py": "146bbd313af0ca672c31dee2dc078e022250b6eeb86765732ebf13a65f0ae7fe",
+    "packages/shared-python/shared/services/storage/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "packages/shared-python/shared/services/storage/adapters/__init__.py": "acd118d9c1b82df432a5c24fbcfd81d076def8e99e6708527bc32af50c7dd9a0",
+    "packages/shared-python/shared/services/storage/adapters/filesystem_adapter.py": "1f809c6fea7c1fdec104298ce60aba2bcb0826054a83f9d7cfcbe62e082b1d6c",
+    "packages/shared-python/shared/services/storage/adapters/oss_adapter.py": "ef5dfd748759b0c51e3a2b3962fcfae06f94ce88fbb98025d8c88a9bba8df91e",
+    "packages/shared-python/shared/services/storage/adapters/s3_adapter.py": "f68ac76243ec96a36e46da896f5e0a54c8d4a8623ae2c8e2faf1c1c879c2d7dd",
+    "packages/shared-python/shared/services/storage/demo_asset_signer.py": "d4bd97f3b2e442ff5ad1441872ac366847a6a9994f05701803b55766c4444c2b",
+    "packages/shared-python/shared/services/storage/file_upload_service.py": "913ceb7050bcb08b16bfb8a23cf6416b2088f099eae0c1ab0eb0bd046ad93423",
+    "packages/shared-python/shared/services/storage/job_file_storage.py": "ce0a7aa5f3fc42b71af97d9fd4ace92743352430a6f613cbde4ceeaf4d42700c",
+    "packages/shared-python/shared/services/storage/page_pdf_crop.py": "75d562d8c66e6fa04b91f9a494721dd826ccc632cbf29e4c26bd107f6f0e1f5b",
+    "packages/shared-python/shared/services/storage/raw_prefix_arguments.py": "f707dfcea88a6d5c95d90ba9f9f28cfc0d1a682983d98bc7719603e5b44f417b",
+    "packages/shared-python/shared/services/storage/result_storage.py": "75e2b556cb7d38b726c3a5cbfc397c1e4bbd51c8bda2c1908d4e3698e3040511",
+    "packages/shared-python/shared/services/storage/storage_adapter.py": "6d83da42add855af1cd187af2ca47e568e7b4d4cbbc920341349dfc2e9d9594d",
+    "packages/shared-python/shared/services/storage/zip_chunk_schema.py": "e7cbbd34e95e025e9b4f46c6a5a61e6e2793f3b10bf5e5f982b87a4a07b56e81",
+    "packages/shared-python/shared/services/storage/zip_doc_navigation.py": "28e61316d8e32a14ebed3a17b1b302ad422f40fc12fef05cbeebfc9f98f519b2",
+    "packages/shared-python/shared/services/storage/zip_manifest_schema.py": "d868feb65a632f27ad4ee50b03c0e5d979fb370307f77f90f75306a8790dae48",
+    "packages/shared-python/shared/services/storage/zip_package_writer.py": "d7ad2dd9dd6225fed4d638a240146b59a839caadb47ba27a09f9fc189808a07d",
+    "packages/shared-python/shared/services/storage/zip_result_resources.py": "a2773fc139edb9c8c5a385f4f5e17b2ef659c01c40847dc755afc04b5de14f1d",
+    "packages/shared-python/shared/services/storage/zip_result_schema.py": "98d0e02517f755aa995c1654df3a153160642b354463e4015fe8c9e16006a86b",
+    "packages/shared-python/shared/services/storage/zip_result_service.py": "b58e72dec9b84635b2a733b5abea8774c3b5b6ffc37b8466c76fcbe54693e862",
+    "packages/shared-python/shared/services/telemetry/__init__.py": "01abcfec10dbbb065ebc9082fc5a55823c50c5dae262d393ed245b62539f376d",
+    "packages/shared-python/shared/services/telemetry/aggregates.py": "a3a6150c62fb259e1318c9802f6ec363e664543dee95010cbec32a672a1dd156",
+    "packages/shared-python/shared/services/telemetry/api_metrics.py": "3c166e6e471508f20a36c0347e5535b46bbc10fd8c3fb14244c3eae762d3c637",
+    "packages/shared-python/shared/services/telemetry/client.py": "eeb4faeb9bc63c3ea197b4ca7fac6c8d65a6387d6ed333b5f1a5d66ec775cb7f",
+    "packages/shared-python/shared/services/telemetry/config.py": "45f798f5e8d187171f3234858a640a1ec52ea595153f3be79d55c4a2ea9115a2",
+    "packages/shared-python/shared/services/telemetry/events.py": "d7b20554cd6f45a6673226c5462d5cacf2ed61cb5b86a566ae733bee8fff44eb",
+    "packages/shared-python/shared/services/telemetry/identity.py": "9e88528ea1ff54c176bc5ef2bb9efb98b9176387375b45f672cd0860b6f2d8c8",
+    "packages/shared-python/shared/services/telemetry/runtime.py": "b9ec09bc57972861c39b854b005e5d2083773f5f1c2ec0ebaa2d5d85c483a97c",
+    "packages/shared-python/shared/services/webhook/__init__.py": "ecb3f0d422330ab784874238fa72c91f6d0fafda159e9fef1775c3a0e10d38d7",
+    "packages/shared-python/shared/services/webhook/delivery_client.py": "55b1f45af95aa59c02c7166fa12c62253c3f9d64c362e073d681a8a237ac9c78",
+    "packages/shared-python/shared/services/webhook/dispatcher.py": "e29b6197e4ac6425b82cc16e411a408e899a4899d962955645869be909a24902",
+    "packages/shared-python/shared/services/webhook/event_delivery.py": "0b4c047c4444c59006959ac6c64fae4e0b2a09e0c8a63a234ace696dfb3303b8",
+    "packages/shared-python/shared/services/webhook/payload_enrichment.py": "371d270d8c909ff8ea0e8b310e70f428ca7a45ad8215657d39f4dc22c04202d5",
+    "packages/shared-python/shared/services/webhook/qstash_client.py": "6d1ad6ec7ee0be5addc8b29c66742106600a3525a7efe68d8fe577ca29ef128d",
+    "packages/shared-python/shared/services/webhook/qstash_payload.py": "9e91e79b94a1d620545e9c7dee0a1bd701fd38c9791833965e363fee5f7f3573",
+    "packages/shared-python/shared/services/webhook/qstash_publisher.py": "7cddd7030381df1a2189f5d9cbfd1e752716edb45045ef79ce53fdc862f64ce3",
+    "packages/shared-python/shared/services/webhook/qstash_secret_resolver.py": "787447d34176b30040f14a88988fd1bbd9d8b9f120b60c91caf0bb364ce92529",
+    "packages/shared-python/shared/services/webhook/secret_resolver.py": "1a7d6a2f447b69e97d0e7b6485a5136bb1ce664caf1dcb443c7113e33daa712b",
+    "packages/shared-python/shared/services/webhook/signing.py": "d8867f50493200475f6f827b74240dfb02643a07372fb991de36ec9c8e08fbbe",
+    "packages/shared-python/shared/services/worker_health.py": "adefc339c2e9edfd3c21dedea9e1633ecbc8543bcb337c6129f9a9efeb804da2",
+    "packages/shared-python/shared/testing/__init__.py": "d5b86bbf4b595a416ed2870c86dd8a4ac0eb5455ea590f909006c02d0272a5a1",
+    "packages/shared-python/shared/testing/contract_runtime.py": "a107352bf2279b49dce12b2c6e5dd599c204e0bc2416743a1d25425784719b4e",
+    "packages/shared-python/shared/testing/postgresql_environment.py": "fcdd493a967ee8387c1fea3dfaef261df85f5e56729e5101c67c125a1d005015",
+    "packages/shared-python/shared/tests/test_agent_explore_evidence_pool.py": "0f373237cb605f8a6177498724780a8d05ce389ddd0996b91dfb09a607d32c2b",
+    "packages/shared-python/shared/tests/test_agent_explore_evidence_review.py": "e3cd8591c4cb66a304b99846c5d8984a61c04a1d06906d52b9cac04397c85bc3",
+    "packages/shared-python/shared/tests/test_agent_explore_harness.py": "bd95dccc806b66ed02bfe582c7f5342fbf12769f2e17cf6570981f6291b0e672",
+    "packages/shared-python/shared/tests/test_agent_explore_prompt.py": "269dea5ff60846c4cabf37be061f25cf69513a73330a37cfccf92f7500e8df3b",
+    "packages/shared-python/shared/tests/test_agent_tools_contract.py": "6cff0eeaec8f20c6dc2284c50ae6e007fb8df59183119a657a1922eb8a9f40f1",
+    "packages/shared-python/shared/tests/test_agent_tools_discovery_read_contract.py": "59408cc5532c6034a475dd356ecf29e39f988b438a71e7a152ff5d0660e7eb3c",
+    "packages/shared-python/shared/tests/test_agent_tools_explore_table_image.py": "0bca9b2d8aa4d3acdbe3d0e85a4d8f06c9c76df12b1af7964cedc25aeb5f8f2c",
+    "packages/shared-python/shared/tests/test_agent_tools_grep.py": "8052352ae689da649996c99ec374b57ccfd0d5ab4d0819d4a9c35e1ea3b96461",
+    "packages/shared-python/shared/tests/test_agent_tools_map_scope.py": "37fb8ebc20aebaac0f1a5e46474016758899071f40fe04d260416f4752964fd4",
+    "packages/shared-python/shared/tests/test_agent_tools_read.py": "948c5d5171699b0085e765126229c1ce6c02f82c7efa65e4e0660064a79dad3f",
+    "packages/shared-python/shared/tests/test_agent_tools_read_trace.py": "3a1d688cfa4283101050b52d4c96d3c86c4ec43b8437d0fbc9b94de95c83fc78",
+    "packages/shared-python/shared/tests/test_asset_inline.py": "5b2abe6a97156c6dbd070729b8c7eba2a81743a0e8ec1457a3bc8ffd349b4393",
+    "packages/shared-python/shared/tests/test_database_pool_config.py": "3612607432c6b419e4c5fc3f17ff200bb4dd75cf91843db8d19fd84cb38bbdd0",
+    "packages/shared-python/shared/tests/test_evidence_compose.py": "1af508a07581bbbee505337f9221a968deaf0d7c145592aa2a9f976a5d9fd2d1",
+    "packages/shared-python/shared/tests/test_evidence_review_projection.py": "f28c43fb6a02cc59c8634859f84ee52d29a6751e5d8b007ee30fd1ad70877ddf",
+    "packages/shared-python/shared/tests/test_knowhere_hybrid_tokenize.py": "9e86f8f43eb630dcf9c39f8d5a5611634cd46e4b93d9493e444d896f0ea8cf50",
+    "packages/shared-python/shared/tests/test_llm_config.py": "7fc8e9c9fe3a0e9442647f7d35b53a8ea82ee7c5baaa352b55d9c58366b96f34",
+    "packages/shared-python/shared/tests/test_map_unit_index_readiness.py": "efef3f1e1bb0924303f56be6aa3405356501040695ede23fdd88ce754331d589",
+    "packages/shared-python/shared/tests/test_map_unit_section_subtree.py": "441761790aa4130151758dbd587c1c5180d2114140ae4e31f8d044d2d918b3fa",
+    "packages/shared-python/shared/tests/test_page_memory_config.py": "6dbbbd09eb3001b090044d84aa4e3d7b458a1b924472d0eb7b0714468afba646",
+    "packages/shared-python/shared/tests/test_page_memory_vlm_limiter.py": "fb1cd351fac3376a61553697d327fbd018b5a51835ff6e20bfb96235a84cdbdd",
+    "packages/shared-python/shared/tests/test_path_segments.py": "5316723afc31e21d3d330ec1617c2fdf418963179928cd27c02f7e460174d160",
+    "packages/shared-python/shared/tests/test_publication_trace_sql_contract.py": "fd0eeab7f1ef30f498166b33f0b177fa497171c71cfb75179079c494b3deb81d",
+    "packages/shared-python/shared/tests/test_section_path_lookup.py": "278255a2334e6900f178b75968de5be0201e68cd846bf003d24fc7da3f4dd965",
+    "packages/shared-python/shared/tests/test_storage_config_contract.py": "93bdde00056946ae24dcf81fa716c8fa222fc8c6a9361f805383e9ea391294ec",
+    "packages/shared-python/shared/tests/test_token_tracking.py": "e370cd932d198eb11be29d049463b69028eb47845b12cf8bc4dc2a532343ee87",
+    "packages/shared-python/shared/tests/test_zip_manifest_schema.py": "dea66d388f1ea5a1782a9a57e8d0771e2d0532193ad86d55cd21fa960f2f80a7",
+    "packages/shared-python/shared/utils/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "packages/shared-python/shared/utils/api_keys.py": "fd385a98c5eae9ae152852c2befd4a11766147900aa6048bd081061d6ad270f1",
+    "packages/shared-python/shared/utils/chunk_refs.py": "7e2e4ec3d20c8484cbc76b097884a5b86fe57e0a42762145509b5d22e4b360d2",
+    "packages/shared-python/shared/utils/error_details.py": "cb2318001dcc63b43bfac903fec1a10448f1577a58827aaaa465e2edce9eb8f8",
+    "packages/shared-python/shared/utils/json_utils.py": "fb55bb2060b70ae715eac9d122453ce85ea422065f830adfcc37e430b5253e25",
+    "packages/shared-python/shared/utils/security_utils.py": "57a523a375198006f7f35d95bcdde70ace258668b90a123908368bdd9280efb4",
+    "packages/shared-python/shared/utils/text_utils.py": "09589ab38f3f5af86addc858d7762588eea520b774d8c85a1ad67d0a9455b157",
+    "packages/shared-python/shared/utils/token_estimate.py": "06771d16246ddfdf88f787d92c09ac66860546aa9e2860df67ed164c9a4d1c6f",
+    "packages/shared-python/shared/utils/utc_now.py": "2234bb8d17ffc55fe885912f04134a2cd4e9e939584c738d3851d967c4b66f31",
+    "packages/shared-python/shared/utils/zip_download.py": "d69aee9358da38994464d1e98cfbfb26bcf6b23de80d010c785d44de16d18db6",
+    "pyproject.toml": "33c270db9cbd444ab0202211a227292dea9b559386bbfe65356d15b5ab3f6999",
+    "scripts/evidence_review_benchmark/calibrate.py": "e7063ca403311eb4940bb85d03c8554ed41bc5f29dadc519a600699713b9de7f",
+    "scripts/evidence_review_benchmark/corpus.py": "e6385ae4c869777ad62953da46bdda32725e23a63e8136fcfa735aecce464c8d",
+    "scripts/evidence_review_benchmark/evaluate.py": "7fca930a60e3e5b24b2fbaac9564c11dcb53e8bb0a25ca66632a04be6087260f",
+    "scripts/evidence_review_benchmark/pglite/package-lock.json": "7205d767744565bf15d4212e0f80c5b801e2b307d4810e18a7da967b90e90d18",
+    "scripts/evidence_review_benchmark/pglite/package.json": "e0be5e9d90ed1880ed032e287e26310b5332210b39d04bc35f842d849ae156b4",
+    "scripts/evidence_review_benchmark/pglite/run-with-pglite.mjs": "a39129cada85ebd8bc8f90adfac7b4a4c290d63e88703248d1a64fb03af2169e",
+    "scripts/evidence_review_benchmark/run.py": "475f34281afdb2612413047297a53d3aedd27672cf648e11c8c07b93ff28f0fa",
+    "scripts/evidence_review_benchmark/runtime.py": "93e0c2b39eb506335d14cffaa4967789828187386727e3de4b7504d9d173a28b",
+    "scripts/evidence_review_benchmark/score.py": "5f4c7a924dc77b1ee7f0e3e41fe4cfda67e85e4fad3f24a35aabe82f951a9e3c",
+    "scripts/evidence_review_benchmark/test_runtime.py": "15bae5d98994c7245c4b9b9abd2a379d2ee3c5b64c0c43381fbe046bca7b5121",
+    "scripts/evidence_review_benchmark/test_score.py": "c0429e54a5cdc99033c55ecc35578a90321d4aa1c9e4cc4fc534205cd8639cfc",
+    "uv.lock": "19833d58aeb7e657caf0d5439dac3a7c7fe493dc7d081db6fed6e4bb07302c30"
+  },
+  "revision_pins": {
+    "231e7695-b76e-5b0d-8608-7d0ee536df37": "992f5dd9-6ac2-5527-80ca-0d2529bdc74b",
+    "8f5270cd-fdae-5e93-ac7a-d9fae8f961ad": "40aeb82e-90a7-5400-88b7-3f2fd26fca5a",
+    "2e24d2b3-5dc8-52d7-8003-9dd039ba77ad": "71e400d2-9237-5160-b4e2-744d05bd8964",
+    "c092f332-ccc5-5f5e-9248-59084cb60c6c": "10ea386d-b12c-5a2a-8772-696e0c775010"
+  },
+  "schedule": [
+    {
+      "question_id": "dev-001",
+      "split": "development",
+      "repeat": 0,
+      "question_index": 0,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "dev-002",
+      "split": "development",
+      "repeat": 0,
+      "question_index": 1,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "dev-003",
+      "split": "development",
+      "repeat": 0,
+      "question_index": 2,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "dev-004",
+      "split": "development",
+      "repeat": 0,
+      "question_index": 3,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "dev-005",
+      "split": "development",
+      "repeat": 0,
+      "question_index": 4,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "dev-006",
+      "split": "development",
+      "repeat": 0,
+      "question_index": 5,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "dev-007",
+      "split": "development",
+      "repeat": 0,
+      "question_index": 6,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "dev-008",
+      "split": "development",
+      "repeat": 0,
+      "question_index": 7,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "dev-009",
+      "split": "development",
+      "repeat": 0,
+      "question_index": 8,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "dev-010",
+      "split": "development",
+      "repeat": 0,
+      "question_index": 9,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-001",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 0,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-002",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 1,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-003",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 2,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-004",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 3,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-005",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 4,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-006",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 5,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-007",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 6,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-008",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 7,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-009",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 8,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-010",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 9,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-011",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 10,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-012",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 11,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-013",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 12,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-014",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 13,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-015",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 14,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-016",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 15,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-017",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 16,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-018",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 17,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-019",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 18,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-020",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 19,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-021",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 20,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-022",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 21,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-023",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 22,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-024",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 23,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-025",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 24,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-026",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 25,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-027",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 26,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-028",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 27,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-029",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 28,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-030",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 29,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-031",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 30,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-032",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 31,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-033",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 32,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-034",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 33,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-035",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 34,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-036",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 35,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-037",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 36,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-038",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 37,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-039",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 38,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-040",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 39,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-041",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 40,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-042",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 41,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-043",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 42,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-044",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 43,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-045",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 44,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-046",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 45,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-047",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 46,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-048",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 47,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-049",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 48,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-050",
+      "split": "held_out",
+      "repeat": 0,
+      "question_index": 49,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-001",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 0,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-002",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 1,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-003",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 2,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-004",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 3,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-005",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 4,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-006",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 5,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-007",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 6,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-008",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 7,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-009",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 8,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-010",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 9,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-011",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 10,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-012",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 11,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-013",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 12,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-014",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 13,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-015",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 14,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-016",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 15,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-017",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 16,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-018",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 17,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-019",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 18,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-020",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 19,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-021",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 20,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-022",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 21,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-023",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 22,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-024",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 23,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-025",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 24,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-026",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 25,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-027",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 26,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-028",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 27,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-029",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 28,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-030",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 29,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-031",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 30,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-032",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 31,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-033",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 32,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-034",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 33,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-035",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 34,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-036",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 35,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-037",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 36,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-038",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 37,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-039",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 38,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-040",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 39,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-041",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 40,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-042",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 41,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-043",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 42,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-044",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 43,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-045",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 44,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-046",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 45,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-047",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 46,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-048",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 47,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-049",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 48,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-050",
+      "split": "held_out",
+      "repeat": 1,
+      "question_index": 49,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-001",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 0,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-002",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 1,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-003",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 2,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-004",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 3,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-005",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 4,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-006",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 5,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-007",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 6,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-008",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 7,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-009",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 8,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-010",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 9,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-011",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 10,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-012",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 11,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-013",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 12,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-014",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 13,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-015",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 14,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-016",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 15,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-017",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 16,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-018",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 17,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-019",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 18,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-020",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 19,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-021",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 20,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-022",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 21,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-023",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 22,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-024",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 23,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-025",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 24,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-026",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 25,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-027",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 26,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-028",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 27,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-029",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 28,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-030",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 29,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-031",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 30,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-032",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 31,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-033",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 32,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-034",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 33,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-035",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 34,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-036",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 35,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-037",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 36,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-038",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 37,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-039",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 38,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-040",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 39,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-041",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 40,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-042",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 41,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-043",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 42,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-044",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 43,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-045",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 44,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-046",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 45,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-047",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 46,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-048",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 47,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    },
+    {
+      "question_id": "held-049",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 48,
+      "order": [
+        "baseline",
+        "review"
+      ]
+    },
+    {
+      "question_id": "held-050",
+      "split": "held_out",
+      "repeat": 2,
+      "question_index": 49,
+      "order": [
+        "review",
+        "baseline"
+      ]
+    }
+  ],
+  "scope": "Real published derived text corpus, real OpenAIHarness, production corpus tools and public evidence projection. PGlite SQL/index semantics; not HTTP, parser, image/PDF, native PostgreSQL concurrency or production traffic evaluation.",
+  "cache_policy": "Application response cache bypassed by calling production core route directly; no synthetic model/tool results. Provider prefix cache remains enabled and measured.",
+  "document_scope_policy": "Both arms receive the same known-document include_document_ids scope from the frozen question inventory. This measures retrieval within a selected document set, not document discovery across a whole account.",
+  "failure_policy": "Record every scheduled episode once, including provider errors and timeouts. Never replace poor outcomes. Resume only missing trial IDs against the exact frozen input digests.",
+  "interruption_policy": "Durable started journal precedes each request. Started episodes without final records become interrupted/unknown failures on resume and are never resent. Stop a worker after outer response timeout because cancelling a synchronous provider thread cannot prove server-side cancellation.",
+  "budget_caveat": "Equal initial production settings, not equal hard execution ceilings. Baseline may make a forced finish after step 15 and retries synchronous calls. Review shares the original budget and disables retries. The 210-second outer response timeout stops the worker; late provider resource use can remain unknown.",
+  "inference_policy": "Exploratory document-family benchmark; three repeats are not independent questions. Only two held-out document families; no population-wide significance claim."
+}

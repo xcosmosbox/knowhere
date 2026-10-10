@@ -1,0 +1,32 @@
+{
+  "archive": "heldout-assessments.tar.gz",
+  "bytes": 727954,
+  "sha256": "05b37c9567df915ad08ae4e4ce4314093909fcd392053ca527bafa77e391209a",
+  "entries": [
+    {
+      "path": "heldout-evaluation/assessments.jsonl",
+      "bytes": 1060973,
+      "sha256": "c3c4f0c81ecf4f1e4d0376dd36db9f622fb761a63fc1cc8cef7834865b256ef0"
+    },
+    {
+      "path": "heldout-evaluation/blind-packets.jsonl",
+      "bytes": 3027268,
+      "sha256": "67322b2a5f8bfb4ba23f6688995550b66ec31d73ef21193fc7cf4b038516e7a2"
+    },
+    {
+      "path": "heldout-evaluation/started.jsonl",
+      "bytes": 48475,
+      "sha256": "5980bc6f5604fdc662c26ec2039f23fe1d2a21d15013ef0b021c7be1de16b928"
+    },
+    {
+      "path": "heldout-evaluation/summary.json",
+      "bytes": 923,
+      "sha256": "8735aaade3e911b7ba02782a088c14ca3bda66e9b2da6ebfbb29286c063f58d4"
+    },
+    {
+      "path": "heldout-evaluation/trial-packets.jsonl",
+      "bytes": 57126,
+      "sha256": "95152dd4a9e51e90a61ca38bf7d35b22758ca5c7f11e0d06f79f2fb5c3459ec3"
+    }
+  ]
+}
