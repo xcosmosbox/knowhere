@@ -1,0 +1,13 @@
+{
+  "name": "knowhere-evidence-benchmark-pglite",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Isolated PostgreSQL WASM service for sequential evidence-review evaluation",
+  "engines": { "node": ">=22" },
+  "scripts": { "start": "node run-with-pglite.mjs" },
+  "dependencies": {
+    "@electric-sql/pglite": "0.5.8",
+    "@electric-sql/pglite-socket": "0.2.11"
+  }
+}

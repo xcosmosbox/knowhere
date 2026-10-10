@@ -1,7 +1,57 @@
 # Evidence-review benefit evaluation
 
-Recorded on 2026-10-10. Status: **live evaluation blocked at provider preflight**.
-No real-model benefit, latency, or monetary-cost estimate has been produced.
+Recorded on 2026-10-10. Status: **live calibration complete; real retrieval evaluation in progress**.
+The original missing-provider preflight below is retained as a historical record.
+It was unblocked by an execution-environment credential and the explicit model
+`deepseek-flash`, without changing the production model default.
+
+## Live calibration and evaluation setup
+
+The real API canary returned `deepseek-flash`, valid JSON and complete usage.
+`live-calibration/reviewer-calibration.json` contains 33 pairs (66 episodes)
+across 11 eligible cases: 48 actual reviewer calls, 37,960 provider-reported
+reviewer tokens, zero runtime-gate failures, and complete token/cache accounting.
+The explorer and corpus in this calibration remain scripted. Its engineered
+coverage improvement is not an end-to-end benefit estimate.
+
+The frozen independent inventory has 60 questions: 10 development questions
+about the Transformers tutorial and 50 held-out questions (25 Micron, 25 SpaceX).
+There are 130 requirements; all 120 requirements with available proofs were
+verified against the complete derived-text corpus before observing live results.
+The other ten requirements ask for unavailable facts. The inventory SHA-256 is
+`0e46c7357877c3d72788b1913846c07ab798225a509619ecec146f98c266880c`.
+
+All page text is deterministically sliced into 765 text chunks, without using
+question labels to select or split source content. The real publication path
+created 765 map units and 123,307 lexical token rows. Source slices, revisions
+and persisted index contents are checked before every worker starts.
+The benchmark runs production retrieval tools and the OpenAI harness against
+PostgreSQL 18.3 WASM (PGlite). Publication uses the production cooperative
+psycopg2 INSERT path because this socket implementation does not support the
+normal COPY transport. It is not a measurement of COPY or native PostgreSQL
+throughput. Every worker uses its own database and executes sequential episodes.
+
+The first development pair exposed a launcher SSL-handshake parsing defect:
+Terminate was not recognized and asyncpg connection cleanup waited for timeouts.
+The baseline timeout and interrupted review remain recorded in `development/`.
+They are not replaced by successful reruns and are excluded from held-out benefit
+estimates. The transport fix was verified with default SSL negotiation and
+explicitly disabled SSL, including real recall SQL. Remaining development
+questions use the corrected launcher and a separately recorded protocol.
+
+The independent scorer hides arm and production verdict. It checks final-visible
+source provenance and literal gold spans, then uses a separate model prompt to
+assess meaning. Literal quote coverage and semantic sufficiency are distinct.
+A related-but-non-supporting semantic control was rejected correctly in all three
+live checks. Forty-one scorer/observation tests pass. Same-model correlated errors
+remain possible; automated semantic assessment is not human ground truth.
+
+Application response caching is bypassed through the production core route.
+Local index caches can warm; Redis readiness notifications fail open through the
+existing handler. Provider prefix caching stays enabled and is measured.
+Known document scopes are supplied equally to both arms. The experiment does
+not test whole-account document discovery, PDF/image interpretation, API auth,
+billing, ingestion workers, or concurrent production writes.
 
 ## Verified starting point
 
@@ -28,7 +78,7 @@ all three repetitions. These are scripted runtime checks, not retrieval-quality
 measurements. Their engineered coverage improvement and simulated tokens are
 excluded from live-benefit estimates.
 
-## Preflight result
+## Original preflight result (before credential configuration)
 
 The following command was attempted after all upstream CI checks passed:
 
@@ -68,9 +118,10 @@ Record the actual resolved reviewer model before drawing model-specific claims.
 
 ## Protocol for end-to-end benefit measurement
 
-This protocol is fixed before live outputs are observed. The representative
-corpus, annotated held-out query set, and end-to-end runner are **not yet
-prepared**; the existing calibration script cannot substitute for them.
+The following plan was recorded before live outputs. The text-only corpus,
+independent held-out inventory and real-tool runner are now prepared; their exact
+settings, schedule, source hashes and failure policy are recorded in the frozen
+protocol files. The original calibration script cannot substitute for this runner.
 
 1. Prepare 60 questions over revision-pinned documents: 10 development questions
    and 50 held-out questions. Separate related documents/question families across
@@ -146,6 +197,6 @@ evaluator check outside the real-benefit aggregate.
 ## Current outcome
 
 CodeQL remediation and regression validation are complete. The controlled
-baseline is preserved. Real reviewer calibration is blocked by the absent
-provider key, and end-to-end quality/cost measurement has not run. All live
-benefit fields remain null in the preflight record.
+baseline and original failed preflight are preserved. Real reviewer calibration
+has passed; end-to-end benefit estimates will be reported only after the frozen
+held-out schedule and independent assessment are complete.

@@ -1,0 +1,2468 @@
+{
+  "schema_version": "knowhere-live-gold/1",
+  "scope": "Frozen, manually selected 60-query benchmark of the exact text contents of four checked-in Knowhere demo documents. Development uses only the Transformers tutorial document family; held-out queries use the two dated Micron investor presentations and the SpaceX S-1. This is a small diverse within-repository sample, not a sample representative of production traffic. Gold is prepared before model outputs. The live experiment derives a text-only corpus from existing page.content; original PDF interpretation, images, and visual table understanding are outside scope. Proof chunk IDs and SHA256 hashes refer to original source records; evaluation must follow any deterministic derived-chunk mapping and verify actual final-visible text, never count an original source ID alone as coverage. All quotes in one proof are jointly required; multiple proofs are alternatives. Questions classified unanswerable have at least one deliberately unavailable facet; related disclosed facts do not satisfy that facet. Dates distinguish historical facts, changed guidance, and forecasts.",
+  "documents": [
+    {
+      "doc_key": "stem-transformers-tutorial",
+      "source_path": "apps/api/app/data/demo_documents/stem-transformers-tutorial/chunks.json",
+      "source_sha256": "8a3be40c1d4057d1d05e97a2ff7866f900e59186d253bdaea9300e0a2ed270bf",
+      "source_file_name": "Transformers Tutorial.pdf"
+    },
+    {
+      "doc_key": "financial-micron-report-530bd7ed",
+      "source_path": "apps/api/app/data/demo_documents/financial-micron-report-530bd7ed/chunks.json",
+      "source_sha256": "768c66ac9301679fdca00755be121f29fa7e7a8066a2d0b6081fdb40fd6804ec",
+      "source_file_name": "Micron investor report 530bd7ed.pdf"
+    },
+    {
+      "doc_key": "financial-micron-report-9c0becf5",
+      "source_path": "apps/api/app/data/demo_documents/financial-micron-report-9c0becf5/chunks.json",
+      "source_sha256": "8dbae749d529c471bfddb1502641ac5ced6c8a7f9e17544b36be7d6c30472a3a",
+      "source_file_name": "Micron investor report 9c0becf5.pdf"
+    },
+    {
+      "doc_key": "spacex-s1",
+      "source_path": "apps/api/app/data/demo_documents/spacex-s1/chunks.json",
+      "source_sha256": "499142763158e50de955365759a0a1f27734dd084e57550c026d8995ccb658bf",
+      "source_file_name": "spacex-s1.pdf"
+    }
+  ],
+  "questions": [
+    {
+      "id": "dev-001",
+      "split": "development",
+      "cluster_id": "transformers/composites",
+      "doc_keys": [
+        "stem-transformers-tutorial"
+      ],
+      "query": "According to the Transformers Tutorial, what is a composite, and what three broad tasks can transformers perform on composites?",
+      "answerability": "answerable",
+      "gold_notes": "Two distinct source sections are required.",
+      "requirements": [
+        {
+          "id": "dev-001.r1",
+          "text": "Define a composite as something made up of distinct parts or elements.",
+          "proofs": [
+            {
+              "doc_key": "stem-transformers-tutorial",
+              "chunk_id": "node_7d144041-174f-56b3-b417-59b74acace86",
+              "quotes": [
+                "Composite: Something that is made up of distinct parts or elements."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dev-001.r2",
+          "text": "List classifying, completing, and transforming composites.",
+          "proofs": [
+            {
+              "doc_key": "stem-transformers-tutorial",
+              "chunk_id": "node_c6c823a0-880c-5011-a804-0753518cc4b0",
+              "quotes": [
+                "Classify composites\nComplete composites\nTransform composites"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dev-002",
+      "split": "development",
+      "cluster_id": "transformers/representation-and-context",
+      "doc_keys": [
+        "stem-transformers-tutorial"
+      ],
+      "query": "In the tutorial, how is an initial composite representation built, how does it become context-aware, and how do tokens exchange information through attention?",
+      "answerability": "answerable",
+      "gold_notes": "",
+      "requirements": [
+        {
+          "id": "dev-002.r1",
+          "text": "Tokenize the composite and embed each token as a vector.",
+          "proofs": [
+            {
+              "doc_key": "stem-transformers-tutorial",
+              "chunk_id": "node_99b88658-6c56-5016-8be3-543c122d2a2b",
+              "quotes": [
+                "Tokenize the composite (divide it into tokens).\n2.\nEmbed each of the token as a vector."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dev-002.r2",
+          "text": "Feed the representation through several transformer layers to obtain context-aware embeddings.",
+          "proofs": [
+            {
+              "doc_key": "stem-transformers-tutorial",
+              "chunk_id": "node_99b88658-6c56-5016-8be3-543c122d2a2b",
+              "quotes": [
+                "Feed the representation through several transformer layers to \nobtain “context-aware” embeddings."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dev-002.r3",
+          "text": "Each token sends messages to other tokens and uses attention to weight those messages when moving its embedding.",
+          "proofs": [
+            {
+              "doc_key": "stem-transformers-tutorial",
+              "chunk_id": "node_89a14df1-e7e5-5a61-b10a-cbdc81782858",
+              "quotes": [
+                "Each token sends a message to every other token.\n2.\nEach token computes how much does it want to take into account the \nmessages of each other token. This is the idea of attention.\n3.\nEach token moves away from his embedding in the direction signaled \nby the message of each other token weighted by the attention that he is \npaying to that token."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dev-003",
+      "split": "development",
+      "cluster_id": "transformers/bert-mlm",
+      "doc_keys": [
+        "stem-transformers-tutorial"
+      ],
+      "query": "What masking percentage and prediction objective does the tutorial give for BERT masked language modeling?",
+      "answerability": "answerable",
+      "gold_notes": "Control: one complete short source span contains all requirements.",
+      "requirements": [
+        {
+          "id": "dev-003.r1",
+          "text": "Usually around 15% of input tokens are randomly selected and masked.",
+          "proofs": [
+            {
+              "doc_key": "stem-transformers-tutorial",
+              "chunk_id": "node_348945a8-d1cf-5f7f-9b2e-cbff806319ac",
+              "quotes": [
+                "a certain percentage of the input tokens are randomly selected (usually around 15% of the tokens) and masked"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dev-003.r2",
+          "text": "Predict the original masked words using the surrounding context.",
+          "proofs": [
+            {
+              "doc_key": "stem-transformers-tutorial",
+              "chunk_id": "node_348945a8-d1cf-5f7f-9b2e-cbff806319ac",
+              "quotes": [
+                "The objective of the MLM is to predict the original masked \nwords based on the surrounding context."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dev-004",
+      "split": "development",
+      "cluster_id": "transformers/layer-mapping",
+      "doc_keys": [
+        "stem-transformers-tutorial"
+      ],
+      "query": "Which transformer-layer type does the tutorial map to encoders, decoders, and conditional decoders?",
+      "answerability": "answerable",
+      "gold_notes": "Control: all three mappings occur in one compact span.",
+      "requirements": [
+        {
+          "id": "dev-004.r1",
+          "text": "A transformer layer maps to encoders.",
+          "proofs": [
+            {
+              "doc_key": "stem-transformers-tutorial",
+              "chunk_id": "node_39a4f8ba-e111-5cd7-a9bd-deb2aab94d07",
+              "quotes": [
+                "Transformer layer -> Encoders"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dev-004.r2",
+          "text": "A masked transformer layer maps to decoders.",
+          "proofs": [
+            {
+              "doc_key": "stem-transformers-tutorial",
+              "chunk_id": "node_39a4f8ba-e111-5cd7-a9bd-deb2aab94d07",
+              "quotes": [
+                "Masked transformer layer -> Decoders"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dev-004.r3",
+          "text": "A cross-attention transformer layer maps to conditional decoders.",
+          "proofs": [
+            {
+              "doc_key": "stem-transformers-tutorial",
+              "chunk_id": "node_39a4f8ba-e111-5cd7-a9bd-deb2aab94d07",
+              "quotes": [
+                "Cross-attention transformer layer -> Conditional decoders"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dev-005",
+      "split": "development",
+      "cluster_id": "transformers/query-key-value",
+      "doc_keys": [
+        "stem-transformers-tutorial"
+      ],
+      "query": "In the tutorial’s attention explanation, what does each token’s query, key, and value encode?",
+      "answerability": "answerable",
+      "gold_notes": "",
+      "requirements": [
+        {
+          "id": "dev-005.r1",
+          "text": "The query encodes the kind of tokens from which the token is willing to receive messages.",
+          "proofs": [
+            {
+              "doc_key": "stem-transformers-tutorial",
+              "chunk_id": "node_96ec442b-d5b2-595f-8a01-4b4b2efc2612",
+              "quotes": [
+                "A query     . It encodes the kind of tokens that      is willing to receive \nmessages from."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dev-005.r2",
+          "text": "The key encodes the kind of tokens to which the token is willing to send messages.",
+          "proofs": [
+            {
+              "doc_key": "stem-transformers-tutorial",
+              "chunk_id": "node_96ec442b-d5b2-595f-8a01-4b4b2efc2612",
+              "quotes": [
+                "A key    . It encodes the kind of tokens that      is willing to send messages \nto."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dev-005.r3",
+          "text": "The value encodes the message the token is willing to distribute to whoever pays attention.",
+          "proofs": [
+            {
+              "doc_key": "stem-transformers-tutorial",
+              "chunk_id": "node_96ec442b-d5b2-595f-8a01-4b4b2efc2612",
+              "quotes": [
+                "A value     . It encodes the message that      is willing to distribute to \nwhomever wants to pay attention to it."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dev-006",
+      "split": "development",
+      "cluster_id": "transformers/rnn-comparison",
+      "doc_keys": [
+        "stem-transformers-tutorial"
+      ],
+      "query": "What does the tutorial say about parallelization and per-layer complexity for RNNs compared with transformers?",
+      "answerability": "answerable",
+      "gold_notes": "Preserve the source notation; this is a comparison in this tutorial, not a claim about every possible implementation.",
+      "requirements": [
+        {
+          "id": "dev-006.r1",
+          "text": "RNN recurrence cannot be parallelized and the displayed per-layer complexity is O(n*d2).",
+          "proofs": [
+            {
+              "doc_key": "stem-transformers-tutorial",
+              "chunk_id": "node_7cc8d276-0fff-55f3-a741-55c28e1a7542",
+              "quotes": [
+                "Sequential/recurrence → can’t parallelize\n●\nComplexity per layer: O(n*d2)"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dev-006.r2",
+          "text": "Transformers can parallelize computation and the displayed per-layer complexity is O(n2*d).",
+          "proofs": [
+            {
+              "doc_key": "stem-transformers-tutorial",
+              "chunk_id": "node_7cc8d276-0fff-55f3-a741-55c28e1a7542",
+              "quotes": [
+                "Can parallelize computation!\n●\nComplexity per layer: O(n2*d)"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dev-007",
+      "split": "development",
+      "cluster_id": "transformers/rlhf",
+      "doc_keys": [
+        "stem-transformers-tutorial"
+      ],
+      "query": "How does the tutorial describe the roles of human rankings and the reward model in RLHF?",
+      "answerability": "answerable",
+      "gold_notes": "",
+      "requirements": [
+        {
+          "id": "dev-007.r1",
+          "text": "Humans rank instances of agent behavior, such as deciding which response is better.",
+          "proofs": [
+            {
+              "doc_key": "stem-transformers-tutorial",
+              "chunk_id": "node_b66f8be7-cd78-54e1-b819-83651f2ccb36",
+              "quotes": [
+                "Ask humans to rank instances of the agent's behavior, e.g. which produced response is better"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dev-007.r2",
+          "text": "Train a reward model from human feedback and use it as the reward function to optimize the agent policy with reinforcement learning.",
+          "proofs": [
+            {
+              "doc_key": "stem-transformers-tutorial",
+              "chunk_id": "node_b66f8be7-cd78-54e1-b819-83651f2ccb36",
+              "quotes": [
+                "RLHF: technique that trains a \"reward model\" directly from human feedback\n►\nUses the model as a reward function to optimize an agent's policy using reinforcement learning \n(RL) through an optimization algorithm"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dev-008",
+      "split": "development",
+      "cluster_id": "transformers/future-agent-needs",
+      "doc_keys": [
+        "stem-transformers-tutorial"
+      ],
+      "query": "What three future needs for AI agents are listed on the tutorial’s final slide?",
+      "answerability": "answerable",
+      "gold_notes": "Control: all requested evidence is in one complete short span.",
+      "requirements": [
+        {
+          "id": "dev-008.r1",
+          "text": "Error correction mechanisms and better agent frameworks.",
+          "proofs": [
+            {
+              "doc_key": "stem-transformers-tutorial",
+              "chunk_id": "node_6738102f-3914-5cc0-a1c0-eb773a4cecfa",
+              "quotes": [
+                "Error correction mechanisms & better agent frameworks"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dev-008.r2",
+          "text": "Security and user permission models.",
+          "proofs": [
+            {
+              "doc_key": "stem-transformers-tutorial",
+              "chunk_id": "node_6738102f-3914-5cc0-a1c0-eb773a4cecfa",
+              "quotes": [
+                "Security & user permission models"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dev-008.r3",
+          "text": "Sandboxing and deployment in risky settings.",
+          "proofs": [
+            {
+              "doc_key": "stem-transformers-tutorial",
+              "chunk_id": "node_6738102f-3914-5cc0-a1c0-eb773a4cecfa",
+              "quotes": [
+                "Sandboxing & deployment in risky settings"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dev-009",
+      "split": "development",
+      "cluster_id": "transformers/gpt4-undisclosed-training",
+      "doc_keys": [
+        "stem-transformers-tutorial"
+      ],
+      "query": "According to the tutorial, what input modalities was GPT-4 trained on, and what exact GPU count and total dollar training cost did OpenAI use?",
+      "answerability": "unanswerable",
+      "gold_notes": "Partially answerable only. The GPT-4 slide states “Did not release technical details of GPT-4”; no exact GPU count or total dollar training cost is provided anywhere in the four source texts. General training descriptions cannot fill this gap.",
+      "requirements": [
+        {
+          "id": "dev-009.r1",
+          "text": "GPT-4 was trained on images and text.",
+          "proofs": [
+            {
+              "doc_key": "stem-transformers-tutorial",
+              "chunk_id": "node_c5d4078a-f4c4-5e54-aa1a-fe3f95f99ca0",
+              "quotes": [
+                "GPT-4 trained on both images and text, vision is also out!"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dev-009.r2",
+          "text": "The exact GPU count and total dollar cost of GPT-4 training are required; these values are not disclosed in the finite corpus.",
+          "proofs": []
+        }
+      ]
+    },
+    {
+      "id": "dev-010",
+      "split": "development",
+      "cluster_id": "transformers/dpo-undisclosed-settings",
+      "doc_keys": [
+        "stem-transformers-tutorial"
+      ],
+      "query": "For the DPO training run discussed in the Transformers Tutorial, what exact learning rate, batch size, and number of optimizer steps were used?",
+      "answerability": "unanswerable",
+      "gold_notes": "The Direct Preference Optimization slide contains a title and a link to a paper, not a reported training run or its hyperparameters. External linked-paper contents are not in this finite corpus.",
+      "requirements": [
+        {
+          "id": "dev-010.r1",
+          "text": "A concrete DPO run learning rate, batch size, and optimizer-step count are required; no such run configuration is present.",
+          "proofs": []
+        }
+      ]
+    },
+    {
+      "id": "held-001",
+      "split": "held_out",
+      "cluster_id": "micron/hbm-market",
+      "doc_keys": [
+        "financial-micron-report-530bd7ed"
+      ],
+      "query": "In Micron’s December 17, 2025 presentation, what HBM TAM values were forecast for 2025 and 2028, what CAGR was forecast, and how did the timing of the $100 billion milestone change?",
+      "answerability": "answerable",
+      "gold_notes": "",
+      "requirements": [
+        {
+          "id": "held-001.r1",
+          "text": "The forecast was approximately $35 billion in 2025, around $100 billion in 2028, and approximately 40% CAGR through 2028.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-530bd7ed",
+              "chunk_id": "node_50a2dbf0-9d16-5bf6-a1d4-9c7cc41c8c38",
+              "quotes": [
+                "We forecast an HBM TAM CAGR of approximately 40% through calendar \n2028, from approximately $35 billion in 2025 to around $100 billion in 2028."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-001.r2",
+          "text": "The $100 billion milestone was projected two years earlier than the prior outlook.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-530bd7ed",
+              "chunk_id": "node_50a2dbf0-9d16-5bf6-a1d4-9c7cc41c8c38",
+              "quotes": [
+                "This $100 billion HBM TAM milestone is now projected to arrive two years \nearlier than in our prior outlook."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "held-002",
+      "split": "held_out",
+      "cluster_id": "micron/node-roadmaps",
+      "doc_keys": [
+        "financial-micron-report-530bd7ed"
+      ],
+      "query": "As of December 17, 2025, which process nodes were expected to drive Micron’s 2026 DRAM and NAND bit growth, and when were those nodes expected to dominate output?",
+      "answerability": "answerable",
+      "gold_notes": "",
+      "requirements": [
+        {
+          "id": "held-002.r1",
+          "text": "1-gamma would drive DRAM bit growth in calendar 2026 and account for a majority of output in the second half of the calendar year.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-530bd7ed",
+              "chunk_id": "node_b2e43b84-6752-5748-b971-4eadedefe236",
+              "quotes": [
+                "Our 1-gamma DRAM node is ramping well. 1-gamma will be the \nprimary driver of our DRAM bit growth in calendar 2026, and will be \nthe majority of our bit output in the second half of the calendar year."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-002.r2",
+          "text": "G9 transitions would drive NAND bit growth in calendar 2026 and become the largest NAND node later in fiscal 2026.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-530bd7ed",
+              "chunk_id": "node_8c97f280-f11d-5b20-baad-f09575bb8af6",
+              "quotes": [
+                "Technology transitions to G9 will be the primary driver of our NAND \nbit growth in calendar 2026, and we expect it to become our largest \nNAND node later in fiscal 2026."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "held-003",
+      "split": "held_out",
+      "cluster_id": "micron/hbm-roadmap",
+      "doc_keys": [
+        "financial-micron-report-9c0becf5"
+      ],
+      "query": "What did Micron report on March 18, 2026 about HBM4 12H shipments, the sampled 16-high product’s capacity, and the expected HBM4E ramp?",
+      "answerability": "answerable",
+      "gold_notes": "",
+      "requirements": [
+        {
+          "id": "held-003.r1",
+          "text": "HBM4 36GB 12H volume shipments began in calendar Q1 2026, designed for NVIDIA Vera Rubin.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-9c0becf5",
+              "chunk_id": "node_e427c53a-0b53-5fe7-b346-23a0e9a7f423",
+              "quotes": [
+                "At NVIDIA’s GTC (GPU Technology Conference), we announced that Micron \nhas begun volume shipments of its HBM4 36GB 12H in the first quarter of \ncalendar year 2026 and is designed for the NVIDIA Vera Rubin."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-003.r2",
+          "text": "The sampled 16-high HBM4 provides 48GB per cube, a 33% increase over 12H.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-9c0becf5",
+              "chunk_id": "node_e427c53a-0b53-5fe7-b346-23a0e9a7f423",
+              "quotes": [
+                "We have also sampled our HBM4 16-high product, which provides 48GB of \nHBM capacity in each HBM cube, a 33% increase in HBM capacity compared \nto HBM4 12H."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-003.r3",
+          "text": "HBM4E was expected to ramp volume in calendar 2027 using 1-gamma DRAM technology.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-9c0becf5",
+              "chunk_id": "node_e427c53a-0b53-5fe7-b346-23a0e9a7f423",
+              "quotes": [
+                "Development of HBM4E, our next-generation HBM product, is well underway, \nand we expect to ramp volume in calendar 2027. Our HBM4E will leverage \nMicron's production-proven, industry-leading 1γ DRAM technology node"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "held-004",
+      "split": "held_out",
+      "cluster_id": "micron/hbm-roadmap",
+      "doc_keys": [
+        "financial-micron-report-530bd7ed",
+        "financial-micron-report-9c0becf5"
+      ],
+      "query": "Compare the HBM4 shipment/ramp timing stated by Micron in December 2025 with the status reported in March 2026; include the December speed specification and the March product configuration.",
+      "answerability": "answerable",
+      "gold_notes": "A dated update is not contradictory evidence; both source dates and their respective product statements are required.",
+      "requirements": [
+        {
+          "id": "held-004.r1",
+          "text": "December: HBM4 speed over 11 Gbps, with high-yield ramp planned for calendar Q2 2026.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-530bd7ed",
+              "chunk_id": "node_0dbd9581-d71c-5e09-9c14-c0567bc49019",
+              "quotes": [
+                "Micron’s HBM4, with industry leading speed over 11 Gbps, is on track to ramp \nwith high yields in the second calendar quarter of 2026, consistent with our \ncustomers’ product ramp plans."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-004.r2",
+          "text": "March: volume shipments of HBM4 36GB 12H had begun in calendar Q1 2026.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-9c0becf5",
+              "chunk_id": "node_e427c53a-0b53-5fe7-b346-23a0e9a7f423",
+              "quotes": [
+                "At NVIDIA’s GTC (GPU Technology Conference), we announced that Micron \nhas begun volume shipments of its HBM4 36GB 12H in the first quarter of \ncalendar year 2026 and is designed for the NVIDIA Vera Rubin."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "held-005",
+      "split": "held_out",
+      "cluster_id": "micron/lp-dram",
+      "doc_keys": [
+        "financial-micron-report-530bd7ed",
+        "financial-micron-report-9c0becf5"
+      ],
+      "query": "How did Micron’s sampled LP SOCAMM2 capacity change from the December 2025 report to the March 2026 report, and what power comparison with DDR DRAM did the reports make?",
+      "answerability": "answerable",
+      "gold_notes": "",
+      "requirements": [
+        {
+          "id": "held-005.r1",
+          "text": "December described a sampled 192GB LP SOCAMM2, 50% more capacity per module and over 50TB rack-scale LP DRAM density.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-530bd7ed",
+              "chunk_id": "node_0dbd9581-d71c-5e09-9c14-c0567bc49019",
+              "quotes": [
+                "Building on this leadership, we have sampled our 192GB LP SOCAMM2 \nproduct, which enables a 50% increase in capacity per module and a rack-\nscale LP DRAM density of over 50TB."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-005.r2",
+          "text": "March described a sampled 256GB LP SOCAMM2 using 1-gamma, enabling 2TB per CPU and quadrupling content from a year earlier.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-9c0becf5",
+              "chunk_id": "node_84dbbc1f-0192-5226-8039-9099aa1f106a",
+              "quotes": [
+                "Building on this leadership, we sampled the industry’s first 256GB LP SOCAMM2 \nproduct, which is built using our 1γ node and enables a massive 2TB of capacity \nper CPU, quadrupling the content from just a year ago."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-005.r3",
+          "text": "LP DRAM server modules consume one-third the power of DDR DRAM server modules.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-530bd7ed",
+              "chunk_id": "node_0dbd9581-d71c-5e09-9c14-c0567bc49019",
+              "quotes": [
+                "Micron’s Low \nPower (LP) DRAM server modules consume one-third the power of DDR \nDRAM server modules."
+              ]
+            },
+            {
+              "doc_key": "financial-micron-report-9c0becf5",
+              "chunk_id": "node_84dbbc1f-0192-5226-8039-9099aa1f106a",
+              "quotes": [
+                "Micron pioneered the development of LP DRAM for the data center, which \nconsumes one-third the power of DDR DRAM server modules."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "held-006",
+      "split": "held_out",
+      "cluster_id": "micron/capital-plan",
+      "doc_keys": [
+        "financial-micron-report-530bd7ed",
+        "financial-micron-report-9c0becf5"
+      ],
+      "query": "How did Micron’s fiscal 2026 capex outlook change between December 17, 2025 and March 18, 2026, and what did the March presentation say drove most of the increase?",
+      "answerability": "answerable",
+      "gold_notes": "",
+      "requirements": [
+        {
+          "id": "held-006.r1",
+          "text": "December: approximately $20 billion, up from the prior $18 billion estimate.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-530bd7ed",
+              "chunk_id": "node_eb1a25f4-722e-50e2-bc44-27b76326b05d",
+              "quotes": [
+                "Micron plans to increase our fiscal 2026 capex to approximately $20 billion, \nversus our prior estimate of $18 billion."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-006.r2",
+          "text": "March: above $25 billion.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-9c0becf5",
+              "chunk_id": "node_e424381f-412f-5d46-858c-12cf540a25f5",
+              "quotes": [
+                "We expect fiscal 2026 capex (capital expenditures) to be above $25 \nbillion."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-006.r3",
+          "text": "Most of the increase was cleanroom facility-related capex, led by Tongluo and then higher U.S. fab construction spend.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-9c0becf5",
+              "chunk_id": "node_e424381f-412f-5d46-858c-12cf540a25f5",
+              "quotes": [
+                "From our last earnings call estimate, the majority of the increase is \ndriven by cleanroom facility-related capex — of which the largest \nfactor is Tongluo, followed by construction spend increase on our U.S. \nfab projects."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "held-007",
+      "split": "held_out",
+      "cluster_id": "micron/manufacturing-timelines",
+      "doc_keys": [
+        "financial-micron-report-9c0becf5"
+      ],
+      "query": "In the March 2026 presentation, when did Micron expect meaningful shipments from Tongluo’s existing fab and first wafer output from its first Idaho fab, and when was Tongluo’s second cleanroom construction planned to begin?",
+      "answerability": "answerable",
+      "gold_notes": "",
+      "requirements": [
+        {
+          "id": "held-007.r1",
+          "text": "Tongluo existing-fab meaningful shipments were expected beginning fiscal 2028, after acquisition from Powerchip Semiconductor.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-9c0becf5",
+              "chunk_id": "node_45b5c85b-2d2f-5d49-be19-df936aedb73a",
+              "quotes": [
+                "In DRAM, earlier this week, we announced the successful closing of the \nacquisition of the Tongluo site from Powerchip Semiconductor, completing the \ntransaction ahead of schedule. We expect this site to support meaningful \nproduct shipments from the existing fab beginning in fiscal 2028."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-007.r2",
+          "text": "A similar-sized second Tongluo cleanroom was to begin construction by the end of fiscal 2026.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-9c0becf5",
+              "chunk_id": "node_45b5c85b-2d2f-5d49-be19-df936aedb73a",
+              "quotes": [
+                "Adding to the existing fab, we plan to begin construction of a similar-sized \nsecond cleanroom at this site by the end of fiscal 2026."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-007.r3",
+          "text": "First Idaho fab initial wafer output remained expected in mid-calendar 2027.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-9c0becf5",
+              "chunk_id": "node_45b5c85b-2d2f-5d49-be19-df936aedb73a",
+              "quotes": [
+                "We continue to expect initial wafer output at our first Idaho fab in mid-\ncalendar 2027, and ground preparation has begun for our second Idaho fab."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "held-008",
+      "split": "held_out",
+      "cluster_id": "micron/manufacturing-timelines",
+      "doc_keys": [
+        "financial-micron-report-9c0becf5"
+      ],
+      "query": "What March 2026 updates did Micron give on the new Singapore NAND fab, Singapore HBM packaging facility, and India assembly-and-test facility?",
+      "answerability": "answerable",
+      "gold_notes": "",
+      "requirements": [
+        {
+          "id": "held-008.r1",
+          "text": "The new Singapore NAND fab was expected to produce initial wafers in the second half of calendar 2028.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-9c0becf5",
+              "chunk_id": "node_38e51f6a-b1bb-5cf9-a608-a5d2fd26a37a",
+              "quotes": [
+                "In NAND, the combination of a higher demand outlook and our decision \nto co-locate R&D cleanroom in our manufacturing fab underpin our \ndecision to break ground for a new NAND fab at our Singapore site.\n• We expect initial wafer output from this fab in the second half of \ncalendar 2028."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-008.r2",
+          "text": "Singapore HBM advanced packaging remained on track to contribute meaningfully in calendar 2027.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-9c0becf5",
+              "chunk_id": "node_38e51f6a-b1bb-5cf9-a608-a5d2fd26a37a",
+              "quotes": [
+                "Our Singapore advanced packaging facility for HBM is on track to \ncontribute meaningfully to Micron’s HBM supply in calendar year 2027."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-008.r3",
+          "text": "Commercial shipments had commenced from the new India assembly-and-test facility.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-9c0becf5",
+              "chunk_id": "node_38e51f6a-b1bb-5cf9-a608-a5d2fd26a37a",
+              "quotes": [
+                "In assembly and test, we commenced commercial shipments from our \nnew facility in India."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "held-009",
+      "split": "held_out",
+      "cluster_id": "micron/market-outlook",
+      "doc_keys": [
+        "financial-micron-report-9c0becf5"
+      ],
+      "query": "According to Micron’s March 18, 2026 market outlook, what growth was expected for 2026 industry DRAM and NAND bit shipments, and what constrained each technology’s supply?",
+      "answerability": "answerable",
+      "gold_notes": "",
+      "requirements": [
+        {
+          "id": "held-009.r1",
+          "text": "DRAM growth was expected in the low-20s percent range; constraints included cleanrooms and construction lead times, HBM trade ratio and growth, and declining node-migration bits-per-wafer growth.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-9c0becf5",
+              "chunk_id": "node_3cd52ff5-71a8-5623-a86c-e954589f366d",
+              "quotes": [
+                "We expect industry DRAM bit shipments in calendar 2026 to grow in the \nlow-20s percentage range, slightly above our prior outlook.\n• In DRAM, cleanroom constraints and long construction lead times, higher \nHBM trade ratio, higher HBM growth rates and declining bits per wafer \ngrowth from node migrations constrain bit supply growth."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-009.r2",
+          "text": "NAND growth was approximately 20%; constraints included some suppliers redirecting cleanroom space to DRAM and limited overall cleanroom space.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-9c0becf5",
+              "chunk_id": "node_3cd52ff5-71a8-5623-a86c-e954589f366d",
+              "quotes": [
+                "We expect industry NAND bit shipments in calendar 2026 to grow \napproximately 20%.\n• In NAND, some industry suppliers redirecting cleanroom space for DRAM \nand overall limited cleanroom space constrain bit supply growth."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "held-010",
+      "split": "held_out",
+      "cluster_id": "micron/quarterly-results",
+      "doc_keys": [
+        "financial-micron-report-9c0becf5"
+      ],
+      "query": "For Micron FQ2-26, what were reported non-GAAP revenue, net income, and diluted earnings per share?",
+      "answerability": "answerable",
+      "gold_notes": "Control: all requirements fit within one short operating-results span.",
+      "requirements": [
+        {
+          "id": "held-010.r1",
+          "text": "Non-GAAP revenue was $23.86 billion.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-9c0becf5",
+              "chunk_id": "node_50776b1e-a0ae-5513-bf26-26e3c246d30b",
+              "quotes": [
+                "FQ2-26\nNon-GAAP operating results",
+                "Revenue: $23.86 billion"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-010.r2",
+          "text": "Non-GAAP net income was $14.02 billion and diluted EPS was $12.20.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-9c0becf5",
+              "chunk_id": "node_50776b1e-a0ae-5513-bf26-26e3c246d30b",
+              "quotes": [
+                "FQ2-26\nNon-GAAP operating results",
+                "Net income: $14.02 billion\nDiluted earnings per share: $12.20"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "held-011",
+      "split": "held_out",
+      "cluster_id": "micron/guidance-versus-actual",
+      "doc_keys": [
+        "financial-micron-report-530bd7ed",
+        "financial-micron-report-9c0becf5"
+      ],
+      "query": "Compare Micron’s December 2025 non-GAAP FQ2-26 revenue and EPS guidance with the actual non-GAAP FQ2-26 results reported in March 2026. Include the guidance ranges.",
+      "answerability": "answerable",
+      "gold_notes": "Both dates and guidance-versus-actual status are essential; the guidance numbers alone are incomplete evidence.",
+      "requirements": [
+        {
+          "id": "held-011.r1",
+          "text": "December FQ2-26 revenue guidance was $18.70 billion ± $400 million and diluted EPS guidance was $8.42 ± $0.20.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-530bd7ed",
+              "chunk_id": "node_76800e20-2890-52c4-9b6e-be6008c21017",
+              "quotes": [
+                "FQ2-26 guidance\nNon-GAAP",
+                "Revenue\n$18.70 billion ± \n$400 million",
+                "Diluted earnings per share*\n$8.42 ± $0.20"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-011.r2",
+          "text": "March actual FQ2-26 revenue was $23.86 billion and diluted EPS was $12.20.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-9c0becf5",
+              "chunk_id": "node_50776b1e-a0ae-5513-bf26-26e3c246d30b",
+              "quotes": [
+                "FQ2-26\nNon-GAAP operating results",
+                "Revenue: $23.86 billion",
+                "Diluted earnings per share: $12.20"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "held-012",
+      "split": "held_out",
+      "cluster_id": "micron/forward-guidance",
+      "doc_keys": [
+        "financial-micron-report-9c0becf5"
+      ],
+      "query": "What non-GAAP FQ3-26 guidance did Micron give on March 18, 2026 for revenue, gross margin, operating expenses, and diluted EPS, and what diluted share count underlies it?",
+      "answerability": "answerable",
+      "gold_notes": "",
+      "requirements": [
+        {
+          "id": "held-012.r1",
+          "text": "Revenue guidance was $33.5 billion ± $750 million.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-9c0becf5",
+              "chunk_id": "node_63f15bbb-f029-53cf-bdb3-a649047c7bee",
+              "quotes": [
+                "FQ3-26 guidance\nNon-GAAP",
+                "Revenue\n$33.5 billion ±\n$750 million"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-012.r2",
+          "text": "Gross margin guidance was approximately 81%, and operating expenses approximately $1.40 billion.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-9c0becf5",
+              "chunk_id": "node_63f15bbb-f029-53cf-bdb3-a649047c7bee",
+              "quotes": [
+                "FQ3-26 guidance\nNon-GAAP",
+                "Gross margin\nApproximately \n81%\nOperating expenses\nApproximately  \n$1.40 billion"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-012.r3",
+          "text": "Diluted EPS guidance was $19.15 ± $0.40, based on approximately 1.15 billion diluted shares.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-9c0becf5",
+              "chunk_id": "node_63f15bbb-f029-53cf-bdb3-a649047c7bee",
+              "quotes": [
+                "FQ3-26 guidance\nNon-GAAP",
+                "Diluted earnings per share*\n$19.15 ± $0.40\n*Based on ~1.15 billion diluted shares."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "held-013",
+      "split": "held_out",
+      "cluster_id": "micron/business-unit-tables",
+      "doc_keys": [
+        "financial-micron-report-9c0becf5"
+      ],
+      "query": "Using Micron’s March 2026 quarterly business unit table, compare CMBU and CDBU revenue and operating margin in FQ2-26 versus FQ1-26. State revenue in millions.",
+      "answerability": "answerable",
+      "gold_notes": "The table includes a third FQ2-25 column; evidence must retain column headings so the compared periods are unambiguous.",
+      "requirements": [
+        {
+          "id": "held-013.r1",
+          "text": "CMBU revenue was $7,749 million vs $5,284 million, and operating margin 66% vs 55%.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-9c0becf5",
+              "chunk_id": "node_0ffaefbd-d29e-58e3-8ea9-6719f664c151",
+              "quotes": [
+                "Amounts in millions\nFQ2-26\nFQ1-26\nFQ2-25",
+                "Cloud Memory (CMBU)\nRevenue\n$7,749\n$5,284\n$2,947\nGross margin\n74 %\n66 %\n55 %\nOperating margin\n66 %\n55 %\n45 %"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-013.r2",
+          "text": "CDBU revenue was $5,687 million vs $2,379 million, and operating margin 67% vs 37%.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-9c0becf5",
+              "chunk_id": "node_0ffaefbd-d29e-58e3-8ea9-6719f664c151",
+              "quotes": [
+                "Amounts in millions\nFQ2-26\nFQ1-26\nFQ2-25",
+                "Core Data Center (CDBU)\nRevenue\n$5,687\n$2,379\n$1,830\nGross margin\n74 %\n51 %\n47 %\nOperating margin\n67 %\n37 %\n33 %"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "held-014",
+      "split": "held_out",
+      "cluster_id": "micron/business-unit-tables",
+      "doc_keys": [
+        "financial-micron-report-9c0becf5"
+      ],
+      "query": "What FQ2-26 revenue, gross margin, and operating margin did Micron report for Mobile and Client and for Automotive and Embedded? Use the March quarterly table and state revenue in millions.",
+      "answerability": "answerable",
+      "gold_notes": "",
+      "requirements": [
+        {
+          "id": "held-014.r1",
+          "text": "MCBU: revenue $7,711 million, gross margin 79%, operating margin 76%.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-9c0becf5",
+              "chunk_id": "node_0ffaefbd-d29e-58e3-8ea9-6719f664c151",
+              "quotes": [
+                "Amounts in millions\nFQ2-26\nFQ1-26\nFQ2-25",
+                "Mobile and Client (MCBU)\nRevenue\n$7,711\n$4,255\n$2,236\nGross margin\n79 %\n54 %\n15 %\nOperating margin\n76 %\n47 %\n1 %"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-014.r2",
+          "text": "AEBU: revenue $2,708 million, gross margin 68%, operating margin 62%.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-9c0becf5",
+              "chunk_id": "node_0ffaefbd-d29e-58e3-8ea9-6719f664c151",
+              "quotes": [
+                "Amounts in millions\nFQ2-26\nFQ1-26\nFQ2-25",
+                "Automotive and Embedded (AEBU)\nRevenue\n$2,708\n$1,720\n$1,034\nGross margin\n68 %\n45 %\n21 %\nOperating margin\n62 %\n36 %\n6 %"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "held-015",
+      "split": "held_out",
+      "cluster_id": "micron/technology-tables",
+      "doc_keys": [
+        "financial-micron-report-9c0becf5"
+      ],
+      "query": "From Micron’s March revenue-by-technology table, what were FQ2-26 DRAM, NAND, and other revenue in millions and their shares of total revenue, and why might the displayed percentages not sum precisely to 100%?",
+      "answerability": "answerable",
+      "gold_notes": "",
+      "requirements": [
+        {
+          "id": "held-015.r1",
+          "text": "DRAM revenue was $18,768 million and 79% of total.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-9c0becf5",
+              "chunk_id": "node_29df1280-1a53-52c6-b766-42f3321c8cb2",
+              "quotes": [
+                "Amounts in millions\nFQ2-26\n% of \nrevenue\nFQ1-26\n% of \nrevenue\nFQ2-25\n% of \nrevenue",
+                "DRAM\n$18,768\n79%\n$10,812\n79%\n$6,123\n76%"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-015.r2",
+          "text": "NAND revenue was $4,997 million and 21%; other (primarily NOR) revenue was $95 million with displayed share —%.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-9c0becf5",
+              "chunk_id": "node_29df1280-1a53-52c6-b766-42f3321c8cb2",
+              "quotes": [
+                "Amounts in millions\nFQ2-26\n% of \nrevenue\nFQ1-26\n% of \nrevenue\nFQ2-25\n% of \nrevenue",
+                "NAND\n4,997\n21%\n2,743\n20%\n1,855\n23%\nOther (primarily NOR)\n95\n—%\n88\n1%\n75\n1%"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-015.r3",
+          "text": "The source says displayed percentages may not total 100% due to rounding.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-9c0becf5",
+              "chunk_id": "node_29df1280-1a53-52c6-b766-42f3321c8cb2",
+              "quotes": [
+                "Percentages of total revenue may not total 100% due to rounding."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "held-016",
+      "split": "held_out",
+      "cluster_id": "micron/cash-and-distributions",
+      "doc_keys": [
+        "financial-micron-report-9c0becf5"
+      ],
+      "query": "What FQ2-26 cash from operations, net capex, and adjusted free cash flow did Micron disclose, and what dividend amount and payment date did it announce?",
+      "answerability": "answerable",
+      "gold_notes": "",
+      "requirements": [
+        {
+          "id": "held-016.r1",
+          "text": "Cash from operations was $11.9 billion (50% of revenue) and net capex $5.0 billion.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-9c0becf5",
+              "chunk_id": "node_83b92385-d00f-57cb-87f1-214aef3f8024",
+              "quotes": [
+                "Cash flow \nfrom operations\nFQ2-26: $11.9 billion (50% of revenue)\nNet Capex1\nFQ2-26: $5.0 billion"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-016.r2",
+          "text": "Adjusted free cash flow was $6.9 billion.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-9c0becf5",
+              "chunk_id": "node_83b92385-d00f-57cb-87f1-214aef3f8024",
+              "quotes": [
+                "Adjusted free cash \nflow*\nFQ2-26: $6.9 billion"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-016.r3",
+          "text": "Dividend was $0.15 per share, to be paid April 15th, in the March 18, 2026 presentation.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-9c0becf5",
+              "chunk_id": "node_83b92385-d00f-57cb-87f1-214aef3f8024",
+              "quotes": [
+                "March 18, 2026",
+                "Dividends\nDividend of $0.15 per share will be paid on \nApril 15th"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "held-017",
+      "split": "held_out",
+      "cluster_id": "micron/tax-and-opex-outlook",
+      "doc_keys": [
+        "financial-micron-report-530bd7ed",
+        "financial-micron-report-9c0becf5"
+      ],
+      "query": "Compare the fiscal 2026 tax-rate outlooks in Micron’s December 2025 and March 2026 presentations, and explain the fiscal Q4 operating-expense calendar effect they flag.",
+      "answerability": "answerable",
+      "gold_notes": "",
+      "requirements": [
+        {
+          "id": "held-017.r1",
+          "text": "December forecast approximately 15.5% for fiscal Q2 and fiscal year 2026.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-530bd7ed",
+              "chunk_id": "node_59abf10b-9634-5741-9ade-bb7717a47f1e",
+              "quotes": [
+                "We expect a fiscal Q2 and fiscal year 2026 tax rate of \naround 15.5%."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-017.r2",
+          "text": "March forecast approximately 15.1% for fiscal Q3 and fiscal year 2026.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-9c0becf5",
+              "chunk_id": "node_f59ba17f-cb34-52ce-9dda-b92a3001397b",
+              "quotes": [
+                "We expect a fiscal Q3 and fiscal year 2026 tax rate of \naround 15.1%."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-017.r3",
+          "text": "Fiscal Q4 2026 opex would reflect an additional workweek in a 53-week fiscal year.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-530bd7ed",
+              "chunk_id": "node_59abf10b-9634-5741-9ade-bb7717a47f1e",
+              "quotes": [
+                "As mentioned last quarter, Micron’s fiscal Q4 2026 opex \nwill also reflect the effect of an additional workweek in \nthis 53-week fiscal year."
+              ]
+            },
+            {
+              "doc_key": "financial-micron-report-9c0becf5",
+              "chunk_id": "node_f59ba17f-cb34-52ce-9dda-b92a3001397b",
+              "quotes": [
+                "As mentioned last quarter, Micron’s fiscal Q4 2026 opex \nwill also reflect the effect of an additional work week in \nthis 53-week fiscal year."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "held-018",
+      "split": "held_out",
+      "cluster_id": "micron/data-center-nand",
+      "doc_keys": [
+        "financial-micron-report-9c0becf5"
+      ],
+      "query": "What did Micron’s March 2026 report say about the production status of its G9 PCIe Gen6 SSD, the 122TB SSD’s efficiency relative to HDDs, and sequential data-center NAND revenue growth?",
+      "answerability": "answerable",
+      "gold_notes": "",
+      "requirements": [
+        {
+          "id": "held-018.r1",
+          "text": "G9 NAND-based PCIe Gen6 performance SSDs were in high-volume production; the 122TB SSD delivered 16 times sequential read throughput per watt versus a capacity-matched HDD configuration.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-9c0becf5",
+              "chunk_id": "node_d9d59ad0-b76a-574c-96f1-e2bfac00d1da",
+              "quotes": [
+                "We are now in high-volume production of our G9 NAND-based PCIe® Gen6 high-\nperformance data center SSDs. Our 122TB high-capacity SSD is seeing strong adoption \nand delivers 16 times the sequential read throughput per watt of a capacity-matched \nHDD configuration."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-018.r2",
+          "text": "Fiscal Q2 data-center NAND revenues more than doubled sequentially, reaching a new record.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-9c0becf5",
+              "chunk_id": "node_d9d59ad0-b76a-574c-96f1-e2bfac00d1da",
+              "quotes": [
+                "In fiscal Q2, \ndata center NAND revenues more than doubled sequentially, reaching a substantial new \nrecord, and we expect further growth in the quarter ahead."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "held-019",
+      "split": "held_out",
+      "cluster_id": "micron/automotive-memory",
+      "doc_keys": [
+        "financial-micron-report-9c0becf5"
+      ],
+      "query": "In March 2026, how did Micron compare DRAM content in the average car with an L4 autonomous vehicle, and which automotive DRAM and NAND technology products did it highlight?",
+      "answerability": "answerable",
+      "gold_notes": "",
+      "requirements": [
+        {
+          "id": "held-019.r1",
+          "text": "The average car has less than L2 ADAS and approximately 16GB DRAM; L4 vehicles require over 300GB.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-9c0becf5",
+              "chunk_id": "node_36c9dee3-c679-5cec-99aa-46f5f6978789",
+              "quotes": [
+                "The average car today has less than L2 ADAS capability, containing approximately \n16GB of DRAM, while vehicles with L4 autonomy require over 300GB."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-019.r2",
+          "text": "It had shipped automotive-grade 1-gamma LPDDR5 samples and highlighted a G9-based UFS 4.1 automotive NAND solution.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-9c0becf5",
+              "chunk_id": "node_36c9dee3-c679-5cec-99aa-46f5f6978789",
+              "quotes": [
+                "We have shipped samples of the industry's first automotive grade 1γ LPDDR5 \nDRAM, and in NAND, we were first in the industry with a G9-based UFS 4.1 \nautomotive solution, further reinforcing our technology leadership in this market."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "held-020",
+      "split": "held_out",
+      "cluster_id": "micron/internal-ai-use",
+      "doc_keys": [
+        "financial-micron-report-530bd7ed"
+      ],
+      "query": "What workforce adoption, usage growth, manufacturing root-cause benefit, and coding productivity gains are stated on the “AI use at Micron” slide in the December 2025 presentation?",
+      "answerability": "answerable",
+      "gold_notes": "The slide appears inside the December presentation but its extracted footer also contains September 23, 2025. The query intentionally identifies the containing presentation, not a claimed measurement date.",
+      "requirements": [
+        {
+          "id": "held-020.r1",
+          "text": "Over 80% of the professional workforce actively uses GenAI, with total usage up tenfold since the prior year.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-530bd7ed",
+              "chunk_id": "node_ae2bce52-a129-5c35-9e9a-752e43c569ce",
+              "quotes": [
+                "Over 80% of our professional workforce actively \nuses GenAI, with total usage up tenfold since last \nyear."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-020.r2",
+          "text": "AI has cut manufacturing root-cause identification time by half in cases.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-530bd7ed",
+              "chunk_id": "node_ae2bce52-a129-5c35-9e9a-752e43c569ce",
+              "quotes": [
+                "In manufacturing, integrating AI into yield and \nquality management has cut root cause \nidentification time by half in cases."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-020.r3",
+          "text": "Coding teams realize productivity gains of 30% or more using agentic AI.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-530bd7ed",
+              "chunk_id": "node_ae2bce52-a129-5c35-9e9a-752e43c569ce",
+              "quotes": [
+                "Our coding teams are realizing productivity gains \nof 30% or more using agentic AI."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "held-021",
+      "split": "held_out",
+      "cluster_id": "micron/pc-outlook",
+      "doc_keys": [
+        "financial-micron-report-530bd7ed"
+      ],
+      "query": "What revision to calendar-2025 PC unit-sales growth did Micron make in December 2025, what demand drivers did it name, and what constraint did it foresee for 2026 shipments?",
+      "answerability": "answerable",
+      "gold_notes": "",
+      "requirements": [
+        {
+          "id": "held-021.r1",
+          "text": "Calendar-2025 growth was revised to high-single-digit from the prior mid-single-digit expectation.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-530bd7ed",
+              "chunk_id": "node_c41d0eca-73d7-547b-b6e1-9bca7885dca6",
+              "quotes": [
+                "We forecast PC unit sales to grow high-single-digit percentage \nrange in calendar 2025, above our prior expectations provided in \nour last earnings call of mid-single digits."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-021.r2",
+          "text": "Drivers were Windows 10 end of life and AI PCs; memory supply constraints might affect 2026 unit shipments.",
+          "proofs": [
+            {
+              "doc_key": "financial-micron-report-530bd7ed",
+              "chunk_id": "node_c41d0eca-73d7-547b-b6e1-9bca7885dca6",
+              "quotes": [
+                "PC demand continues to be driven by Windows 10 end of life and \nAI PCs.",
+                "As we look ahead into 2026, we expect these demand drivers to \ncontinue, while memory supply constraints may affect some PC \nunit shipments."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "held-022",
+      "split": "held_out",
+      "cluster_id": "micron/undisclosed-contract-terms",
+      "doc_keys": [
+        "financial-micron-report-530bd7ed",
+        "financial-micron-report-9c0becf5"
+      ],
+      "query": "What exact per-customer prices and contracted HBM4 shipment volumes for NVIDIA and each other customer did Micron disclose for calendar 2026?",
+      "answerability": "unanswerable",
+      "gold_notes": "December states price/volume agreements for the entire 2026 HBM supply, and March identifies NVIDIA Vera Rubin, but neither text supplies customer contract unit prices or customer shipment-volume allocations. Aggregate market forecasts and product capacities are not contract quantities.",
+      "requirements": [
+        {
+          "id": "held-022.r1",
+          "text": "An exact customer-by-customer HBM4 price and volume schedule is required; it is not disclosed.",
+          "proofs": []
+        }
+      ]
+    },
+    {
+      "id": "held-023",
+      "split": "held_out",
+      "cluster_id": "micron/future-actual-results",
+      "doc_keys": [
+        "financial-micron-report-9c0becf5"
+      ],
+      "query": "What were Micron’s final actual non-GAAP FQ3-26 revenue and diluted EPS, as distinct from the outlook announced on March 18, 2026?",
+      "answerability": "unanswerable",
+      "gold_notes": "The latest Micron source is the March 18, 2026 FQ2 results presentation. $33.5 billion and $19.15 are guidance midpoints, not realized FQ3 results. No later results presentation is present.",
+      "requirements": [
+        {
+          "id": "held-023.r1",
+          "text": "Final actual non-GAAP FQ3-26 revenue and diluted EPS are required; the corpus contains only FQ3 guidance, not those actual results.",
+          "proofs": []
+        }
+      ]
+    },
+    {
+      "id": "held-024",
+      "split": "held_out",
+      "cluster_id": "micron/undisclosed-capex-allocation",
+      "doc_keys": [
+        "financial-micron-report-9c0becf5"
+      ],
+      "query": "Of the March 2026 increase in Micron’s fiscal-2026 capex plan, what exact dollar amount was allocated to Tongluo and what exact dollar amount to U.S. fab construction?",
+      "answerability": "unanswerable",
+      "gold_notes": "The report says most of the increase was cleanroom-related, with Tongluo largest followed by U.S. fab projects, and gives a total plan above $25 billion. Those facts cannot determine exact facility-specific allocations.",
+      "requirements": [
+        {
+          "id": "held-024.r1",
+          "text": "An exact dollar allocation for Tongluo and U.S. fab construction is required; the report gives only a qualitative ranking of the increase.",
+          "proofs": []
+        }
+      ]
+    },
+    {
+      "id": "held-025",
+      "split": "held_out",
+      "cluster_id": "micron/undisclosed-market-prices",
+      "doc_keys": [
+        "financial-micron-report-530bd7ed",
+        "financial-micron-report-9c0becf5"
+      ],
+      "query": "According to the available Micron reports, what were Micron’s closing share price and market capitalization on July 6, 2026?",
+      "answerability": "unanswerable",
+      "gold_notes": "Both Micron presentations predate the requested trading date and contain operating results and guidance, not that date’s market-price observations. SpaceX and the tutorial also supply no such observations.",
+      "requirements": [
+        {
+          "id": "held-025.r1",
+          "text": "The closing share price and market capitalization on July 6, 2026 are required; neither is in the corpus.",
+          "proofs": []
+        }
+      ]
+    },
+    {
+      "id": "held-026",
+      "split": "held_out",
+      "cluster_id": "spacex/corporate-history",
+      "doc_keys": [
+        "spacex-s1"
+      ],
+      "query": "According to the SpaceX S-1 in the corpus, on what date was it filed with the SEC, and when and in which states was SpaceX originally incorporated and later reincorporated?",
+      "answerability": "answerable",
+      "gold_notes": "",
+      "requirements": [
+        {
+          "id": "held-026.r1",
+          "text": "The S-1 was filed with the SEC on May 20, 2026.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "As filed with the U.S. Securities and Exchange Commission on May 20, 2026"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-026.r2",
+          "text": "SpaceX was originally incorporated in Delaware on March 14, 2002, and reincorporated in Texas on February 14, 2024.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "incorporated as Space Exploration Technologies Corp., a Delaware corporation, on March 14, \n2002 and reincorporated as a Texas corporation on February 14, 2024."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "held-027",
+      "split": "held_out",
+      "cluster_id": "spacex/offering-and-control",
+      "doc_keys": [
+        "spacex-s1"
+      ],
+      "query": "What stock symbol and listing venues did the SpaceX S-1 propose, and how do Class A and Class B voting rights differ?",
+      "answerability": "answerable",
+      "gold_notes": "",
+      "requirements": [
+        {
+          "id": "held-027.r1",
+          "text": "The proposed symbol was SPCX on Nasdaq and Nasdaq Texas.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "We have applied to list our Class A common stock on The Nasdaq Stock Market LLC (“Nasdaq”) and Nasdaq Texas, \nInc. (“Nasdaq Texas”) under the symbol “SPCX.”"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-027.r2",
+          "text": "Class A has one vote per share and Class B has ten; Class B can elect a majority of the board.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "Each share of Class A common stock will entitle its holder to one vote per share. Each share of Class B \ncommon stock will entitle its holder to 10 votes per share. Class A shareholders and Class B shareholders will vote together as a \nsingle class on all matters to be voted on by shareholders, except Class B shareholders will be entitled to elect a majority of our board \nof directors in addition to having certain other class votes as described under “Description of Capital Stock.”"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "held-028",
+      "split": "held_out",
+      "cluster_id": "spacex/operating-algorithm",
+      "doc_keys": [
+        "spacex-s1"
+      ],
+      "query": "What are the five steps in SpaceX’s “The Algorithm,” and what restriction does the filing place on the automation step?",
+      "answerability": "answerable",
+      "gold_notes": "Control: a single complete definition contains every required element.",
+      "requirements": [
+        {
+          "id": "held-028.r1",
+          "text": "The ordered steps are making requirements less dumb, deleting unnecessary processes or parts, optimizing necessary processes or parts, accelerating cycle timesteps, and automating.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "“The Algorithm” refers to our five-step iterative process that we use to rapidly innovate and optimize, \nemphasizing making the requirements less dumb, deleting unnecessary processes or parts, optimizing the \nnecessary processes or parts, accelerating cycle timesteps, and automating only proven processes after the first \nfour steps are completed."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-028.r2",
+          "text": "Automation applies only to proven processes after the first four steps are completed.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "automating only proven processes after the first \nfour steps are completed."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "held-029",
+      "split": "held_out",
+      "cluster_id": "spacex/launch-vehicles",
+      "doc_keys": [
+        "spacex-s1"
+      ],
+      "query": "Compare Falcon 9 and Falcon Heavy in the SpaceX S-1: first-launch year, stated LEO payload capacity, and reported mission success rate as of March 31, 2026.",
+      "answerability": "answerable",
+      "gold_notes": "",
+      "requirements": [
+        {
+          "id": "held-029.r1",
+          "text": "Falcon 9 first launched in 2010, has approximately 23 metric tons LEO capacity when fully expendable, and an over 99% mission success rate.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "Falcon 9. As the world’s first orbital-class rapidly reusable rocket, Falcon 9 was first launched in 2010 and has \na payload capacity to LEO of approximately 23 metric tons when fully expendable. Falcon 9 has completed \napproximately 620 orbital space launches as of March 31, 2026, and an over 99% mission success rate."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-029.r2",
+          "text": "Falcon Heavy first launched in 2018, has approximately 64 metric tons LEO capacity, and a 100% mission success rate from 11 launches as of March 31, 2026.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "Falcon Heavy. Falcon Heavy first launched in 2018 when it put a Tesla all-electric sports car (“Tesla \nRoadster”) and its mannequin passenger, known as Starman, into orbit around the Sun. With a payload capacity \nto LEO of approximately 64 metric tons, Falcon Heavy is a partially reusable super heavy-lift launch vehicle \ndesigned to deliver large payloads to orbit. Falcon Heavy is one of the most powerful operational rockets in the \nworld measured by liftoff thrust, with 11 launches as of March 31, 2026 and a 100% mission success rate."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "held-030",
+      "split": "held_out",
+      "cluster_id": "spacex/dragon",
+      "doc_keys": [
+        "spacex-s1"
+      ],
+      "query": "What commercial cargo and human-spaceflight milestones does the S-1 attribute to Dragon, and how many crewmembers from how many countries had it flown since 2020?",
+      "answerability": "answerable",
+      "gold_notes": "",
+      "requirements": [
+        {
+          "id": "held-030.r1",
+          "text": "Dragon became the first commercial spacecraft to deliver cargo to and from the ISS in 2012, and eight years later the first privately built vehicle to fly humans there.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "Dragon. Launched by Falcon 9 in 2012, our Dragon spacecraft became the first commercial spacecraft to \ndeliver cargo to and from the International Space Station, an orbiting laboratory that serves as a research facility \nand destination for human spaceflight, and, eight years later, the first privately built vehicle to fly humans to the \norbiting laboratory."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-030.r2",
+          "text": "Since 2020 it had safely flown 78 crewmembers from 20 countries.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "Since 2020, our Dragon spacecraft has safely flown 78 crewmembers from 20 countries."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "held-031",
+      "split": "held_out",
+      "cluster_id": "spacex/starship-roadmap",
+      "doc_keys": [
+        "spacex-s1"
+      ],
+      "query": "What did the S-1 say about Starship V3’s planned payload capacity, completed and scheduled flight tests, and the expected start of orbital payload delivery?",
+      "answerability": "answerable",
+      "gold_notes": "These are the filing’s forward-looking design and schedule claims, not demonstrated future outcomes.",
+      "requirements": [
+        {
+          "id": "held-031.r1",
+          "text": "Starship V3 was designed for 100 metric tons to Earth orbit in a fully reusable configuration, with future generations designed to double it.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "Starship V3 is designed to deliver 100 metric tons to Earth’s orbit in a fully reusable configuration while \nenabling rapid turnaround times akin to commercial aviation. Future generations of Starship are being designed \nto double this payload capacity."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-031.r2",
+          "text": "Eleven Starship flight tests had been executed and a twelfth was scheduled with a new vehicle, booster, Raptor evolution, and Starbase pad.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "To date, we have executed 11 Starship flight tests. We have also scheduled a \n12th flight test, which will debut the next generation Starship vehicle and Super Heavy booster, powered by the \nnext evolution of our Raptor engine and launching from a newly designed pad at Starbase."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-031.r3",
+          "text": "Payload delivery to orbit was expected to begin in the second half of 2026.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "We expect Starship \nto commence payload delivery to orbit in the second half of 2026."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "held-032",
+      "split": "held_out",
+      "cluster_id": "spacex/revenue-recognition",
+      "doc_keys": [
+        "spacex-s1"
+      ],
+      "query": "Under what conditions does SpaceX recognize the described contract revenue over time, and how does its cost-to-cost input method measure progress?",
+      "answerability": "answerable",
+      "gold_notes": "",
+      "requirements": [
+        {
+          "id": "held-032.r1",
+          "text": "Revenue is recognized over time when performance creates an asset with no alternative use and the company has an enforceable right to payment for performance to date.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "The Company recognizes revenue over time when the Company’s performance on the contract creates an asset with \nno alternative use and when the Company has an enforceable right to payment for performance to date."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-032.r2",
+          "text": "The method records revenue based on costs incurred to date, such as materials and labor hours, relative to total estimated cost at completion.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "Under the cost-to-cost \ninput method, the Company records revenue based upon costs (such as materials and labor hours) incurred to date \nrelative to the total estimated cost at completion."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "held-033",
+      "split": "held_out",
+      "cluster_id": "spacex/connectivity-metrics",
+      "doc_keys": [
+        "spacex-s1"
+      ],
+      "query": "Using the S-1’s segment operating metrics, compare Starlink subscribers and monthly ARPU for Q1 2026, Q1 2025, and full-year 2025.",
+      "answerability": "answerable",
+      "gold_notes": "The table has five columns. Preserve its period headings with labeled rows; numeric-only matching is insufficient.",
+      "requirements": [
+        {
+          "id": "held-033.r1",
+          "text": "Subscribers were 10.3 million for Q1 2026, 5.0 million for Q1 2025, and 8.9 million for full-year 2025.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "Connectivity: \nThree Months Ended March 31,\nYear Ended December 31,\n2026\n2025\n2025\n2024\n2023",
+                "Starlink Subscribers (in millions) (1)\n \n ...\n10.3\n5.0\n8.9\n4.4\n2.3"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-033.r2",
+          "text": "Monthly ARPU was $66, $86, and $81 for those respective periods.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "Connectivity: \nThree Months Ended March 31,\nYear Ended December 31,\n2026\n2025\n2025\n2024\n2023",
+                "Starlink ARPU (dollars per month) (1)\n \n   $\n66\n$\n86\n$\n81\n$\n91\n$\n99"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "held-034",
+      "split": "held_out",
+      "cluster_id": "spacex/segment-profitability",
+      "doc_keys": [
+        "spacex-s1"
+      ],
+      "query": "For 2025, compare SpaceX’s Connectivity and AI segments on revenue, income or loss from operations, and Segment Adjusted EBITDA.",
+      "answerability": "answerable",
+      "gold_notes": "Income versus loss signs matter. The three metrics are distinct.",
+      "requirements": [
+        {
+          "id": "held-034.r1",
+          "text": "Connectivity: revenue $11,387 million, operating income $4,423 million, Segment Adjusted EBITDA $7,168 million.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "Our Connectivity \nsegment, primarily driven by Starlink, generated revenue of $11,387 million, income from operations of $4,423 \nmillion, and Segment Adjusted EBITDA of $7,168 million in 2025"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-034.r2",
+          "text": "AI: revenue $3,201 million, operating loss $(6,355) million, Segment Adjusted EBITDA $(1,237) million.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "In 2025, our AI segment generated revenue of $3,201 million, loss from operations \nof $(6,355) million, and Segment Adjusted EBITDA of $(1,237) million"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "held-035",
+      "split": "held_out",
+      "cluster_id": "spacex/segment-capex",
+      "doc_keys": [
+        "spacex-s1"
+      ],
+      "query": "What were SpaceX’s capital expenditures for the Space, Connectivity, and AI segments in Q1 2026 and in full-year 2025?",
+      "answerability": "answerable",
+      "gold_notes": "",
+      "requirements": [
+        {
+          "id": "held-035.r1",
+          "text": "Q1 2026 capex: Space $1,052 million, Connectivity $1,332 million, AI $7,723 million.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "For the three months ended March 31, 2026, capital expenditures for our Space segment was $1,052 million, for \nour Connectivity segment was $1,332 million and for our AI segment was $7,723 million."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-035.r2",
+          "text": "Full-year 2025 capex: Space $3,832 million, Connectivity $4,178 million, AI $12,727 million.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "In 2025, capital \nexpenditures for our Space segment was $3,832 million, for our Connectivity segment was $4,178 million and \nfor our AI segment was $12,727 million."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "held-036",
+      "split": "held_out",
+      "cluster_id": "spacex/falcon-launch-mix",
+      "doc_keys": [
+        "spacex-s1"
+      ],
+      "query": "How many Falcon launches and flight-proven booster launches did SpaceX report for Q1 2026 and 2025, and what does “flight-proven booster launch” mean?",
+      "answerability": "answerable",
+      "gold_notes": "",
+      "requirements": [
+        {
+          "id": "held-036.r1",
+          "text": "Q1 2026: 40 Falcon launches, 39 using flight-proven boosters; 2025: 165 Falcon 9 launches, 157 using flight-proven boosters.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "During the three months ended March 31, 2026, we launched 40 Falcon rockets, of \nwhich 39 were flight-proven booster launches, and in 2025, we launched 165 Falcon 9 rockets, of which 157 were \nflight-proven booster launches."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-036.r2",
+          "text": "A flight-proven booster launch uses a booster with at least one prior successful launch and recovery.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "“flight-proven booster launches” refers to a mission utilizing a booster that has previously completed at least \none successful launch and recovery."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "held-037",
+      "split": "held_out",
+      "cluster_id": "spacex/space-segment-year-change",
+      "doc_keys": [
+        "spacex-s1"
+      ],
+      "query": "What were the 2025 year-over-year changes in Space segment revenue and cost of revenue, and what main drivers does the S-1 give for each?",
+      "answerability": "answerable",
+      "gold_notes": "The source spells depreciation as “deprecation” in this paragraph; proof preserves the exact source spelling.",
+      "requirements": [
+        {
+          "id": "held-037.r1",
+          "text": "Space revenue increased $290 million (7.6%); launch services were relatively flat, while launch and development rose $298 million, mainly from additional NASA CRS and a U.S. Department of War contract.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "Revenue for the year ended December 31, 2025 increased by $290 million, or 7.6%, compared to the prior year \nended December 31, 2024.  Launch Services revenue remained relatively flat year over year, while Launch and \nDevelopment revenue increased by $298 million.  The Launch and Development revenue increase was primarily \ndriven by increased revenue for an extended contract with NASA for additional Cargo Resupply Services (CRS) \nmissions to the International Space Station and increased revenue from a U.S. Department of War contract."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-037.r2",
+          "text": "Cost of revenue fell $189 million (12.2%), principally reflecting reusability and $240 million lower depreciation, with $11 million lower overhead.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "Cost of revenue for the year ended December 31, 2025 decreased by $189 million, or 12.2%, compared to the prior \nyear ended December 31, 2024. This decrease was primarily due increased reusability of our Falcon launch vehicles \nresulting in lower deprecation of $240 million, lowering the cost of each launch, and lower overhead costs of $11 \nmillion."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-037.r3",
+          "text": "More internal Starlink launches (89 to 122) moved $14 million of launch operations and overhead into Connectivity capitalization; a $51 million inventory reserve increase partly offset the cost reduction.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "The decrease is also due to the relative increase in Starlink satellite launches from 89 launches in 2024 to \n122 launches in 2025, resulting in relatively more of our launch operations and overhead costs capitalized in our \nConnectivity segment of $14 million.  This decrease was partially offset by an increase in inventory excess and \nobsolescence reserves of $51 million mainly due to less demand on rocket vehicle and spacecraft parts as reusability \nhas increased."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "held-038",
+      "split": "held_out",
+      "cluster_id": "spacex/subscriber-definition",
+      "doc_keys": [
+        "spacex-s1"
+      ],
+      "query": "How does the S-1 define a Starlink Subscriber, which customers are excluded from that metric, and how is Starlink Subscriber ARPU computed?",
+      "answerability": "answerable",
+      "gold_notes": "",
+      "requirements": [
+        {
+          "id": "held-038.r1",
+          "text": "A subscriber is a unique Service Line assigned directly to a Starlink.com account without a directly negotiated agreement; it is not a count of individual people or devices.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "Starlink Subscribers: We define a Starlink Subscriber as a unique Service Line that is directly assigned to a \nStarlink.com account registered to a person or entity that does not have a direct, negotiated agreement with the \nStarlink sales team. A Service Line is an individual instance of Starlink broadband internet service provisioned \nunder a subscription plan, generally associated with a specific Starlink terminal or group of terminals, and billed \naccording to Starlink’s service plans and terms of service. The number of Service Lines is distinct from the number \nof unique devices, account holders, end users or physical persons."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-038.r2",
+          "text": "Managed enterprise and government customers with negotiated contracts are excluded, including aviation, maritime, land mobility, fixed sites and government entities.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "Starlink Subscribers includes both Personal (e.g., Residential and Roam) and Business (e.g., Local \nPriority and Global Priority) subscription plans, but does not include managed enterprise and government customers \nwith contracts in domains including aviation, maritime, land mobility, fixed sites and government entities."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-038.r3",
+          "text": "ARPU equals service revenue from subscribers divided by average subscribers in the period and then by months in the period.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "Starlink Subscriber ARPU: We calculate ARPU as service revenue generated from Starlink Subscribers during the \nperiod divided by (i) the average number of Starlink Subscribers during the period and by (ii) the number of months \nin the period."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "held-039",
+      "split": "held_out",
+      "cluster_id": "spacex/ai-user-metrics",
+      "doc_keys": [
+        "spacex-s1"
+      ],
+      "query": "For Grok and X, what eligibility window and deduplication method does the S-1 use for MAU, and what was the March 31, 2026 paid-subscriber total and product breakdown?",
+      "answerability": "answerable",
+      "gold_notes": "",
+      "requirements": [
+        {
+          "id": "held-039.r1",
+          "text": "MAU uses activity at least once during the last 30 days and includes registered X/Grok accounts only.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "“MAU” (or monthly active users) refers to the total number of users who have interacted with Grok or X \nthrough web browsers or mobile applications at least once during the 30-day period ending on the date of \nmeasurement (“active users”).",
+                "only users who have registered for an X or Grok account are included."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-039.r2",
+          "text": "Combined MAU attempts to deduplicate Grok/X users via sign-in traffic; the method is an estimate and may miss duplication.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "In presenting combined MAUs across the two platforms, we seek to identify and \naccount for users who access both Grok and X based on sign-in traffic so that such users are not double-counted",
+                "they may not fully capture all instances of duplication, and our reported MAU should be viewed \nas an estimate of unique users across our Grok and X platforms for the applicable period."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-039.r3",
+          "text": "March 31, 2026: approximately 6.3 million active paid subscribers, including 4.4 million X Premium/Premium+ and 1.9 million SuperGrok/Heavy/Lite.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "As of March 31, 2026, we reached approximately 6.3 million active paid subscribers, which was \ncomprised of approximately 4.4 million X Premium and Premium+ paid subscribers and approximately 1.9 \nmillion SuperGrok, SuperGrok Heavy and SuperGrok Lite paid subscribers."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "held-040",
+      "split": "held_out",
+      "cluster_id": "spacex/starlink-v3-roadmap",
+      "doc_keys": [
+        "spacex-s1"
+      ],
+      "query": "What per-satellite downlink capacity and deployment timing did SpaceX project for Starlink V3, and what capacity-per-launch improvement did it expect from using Starship?",
+      "answerability": "answerable",
+      "gold_notes": "",
+      "requirements": [
+        {
+          "id": "held-040.r1",
+          "text": "V3 was designed for one Tbps downlink per satellite, with deployment on Starship expected in the second half of 2026.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "We expect to commence deploying our next-generation \nV3 satellites, designed to offer one Tbps of downlink capacity per satellite, using Starship in the second half of \n2026."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-040.r2",
+          "text": "A Starship launch was expected to deploy up to 60 V3 satellites to LEO, potentially twenty times the downlink capacity deployed on a Falcon 9 launch.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "We expect that a single Starship launch will be capable of deploying up to 60 V3 satellites to LEO, \nrepresenting a potential twenty-fold increase in Starlink downlink capacity deployed relative to a Falcon 9 \nlaunch."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "held-041",
+      "split": "held_out",
+      "cluster_id": "spacex/backlog",
+      "doc_keys": [
+        "spacex-s1"
+      ],
+      "query": "What does SpaceX’s backlog represent, how large was it at December 31, 2025, how much was deferred revenue, and what recognition schedule was disclosed?",
+      "answerability": "answerable",
+      "gold_notes": "",
+      "requirements": [
+        {
+          "id": "held-041.r1",
+          "text": "Backlog is the transaction price of customer performance obligations for which work remains; contracts enter after an enforceable agreement.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "The Company’s backlog represents the transaction price of performance obligations to customers for which work \nremains to be performed. The amount of backlog increases with new contracts or additions to existing contracts and \ndecreases as revenue is recognized on existing contracts. Contracts are included in backlog when an enforceable \nagreement has been reached."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-041.r2",
+          "text": "Backlog totaled $28,377 million, including $12,116 million recognized as deferred revenue at December 31, 2025.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "Backlog totaled $28,377 million as of December 31, \n2025, of which $12,116 million was recognized as deferred revenue at December 31, 2025."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-041.r3",
+          "text": "Approximately 32% was expected within one year, 53% in 2027 and 2028, and 15% thereafter.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "Approximately 32% is \nexpected to be recognized within one year, and approximately 53%  to be recognized in 2027 and 2028, with the \nremaining 15% to be recognized thereafter."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "held-042",
+      "split": "held_out",
+      "cluster_id": "spacex/acquisition-accounting",
+      "doc_keys": [
+        "spacex-s1"
+      ],
+      "query": "When did SpaceX complete the xAI acquisition, and why do its financial statements include xAI and X historical results for periods before the acquisition?",
+      "answerability": "answerable",
+      "gold_notes": "",
+      "requirements": [
+        {
+          "id": "held-042.r1",
+          "text": "The xAI acquisition completed February 2, 2026, making xAI a wholly-owned subsidiary.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "On February 2, 2026, the Company completed its acquisition of X.AI Holdings Corp. (“xAI”), pursuant to which \nxAI became a wholly-owned subsidiary of the Company (“xAI Merger”)."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-042.r2",
+          "text": "The mergers were common-control reorganizations under Elon Musk and statements retrospectively combine net assets at historical carrying amounts for all periods; no new goodwill or other intangibles were recorded.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "The Mergers have been accounted for as reorganizations of entities under common control as Mr. Elon Musk had a \ncontrolling financial interest in the Company, xAI and X through his majority voting interest in each such entity \nduring the years presented in these consolidated financial statements. The Company’s consolidated financial \nstatements have been prepared to reflect the retrospective combination of the net assets of the entities at their \nhistorical carrying amounts for all periods presented. No new goodwill or other intangible assets have been recorded \nand all historical related party transactions between the entities have been eliminated in consolidation."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "held-043",
+      "split": "held_out",
+      "cluster_id": "spacex/human-capital",
+      "doc_keys": [
+        "spacex-s1"
+      ],
+      "query": "How many full-time employees worldwide did SpaceX report as of March 31, 2026, and were any subject to collective bargaining agreements?",
+      "answerability": "answerable",
+      "gold_notes": "Control: a single short sentence contains the complete answer.",
+      "requirements": [
+        {
+          "id": "held-043.r1",
+          "text": "Over 22,000 full-time employees worldwide were reported as of March 31, 2026.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "As of March 31, 2026, we employed over 22,000 full-time employees worldwide"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-043.r2",
+          "text": "None of these employees was subject to a collective bargaining agreement.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "As of March 31, 2026, we employed over 22,000 full-time employees worldwide, none of whom are subject to any \ncollective bargaining agreement."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "held-044",
+      "split": "held_out",
+      "cluster_id": "spacex/consolidated-financial-table",
+      "doc_keys": [
+        "spacex-s1"
+      ],
+      "query": "Using the S-1 summary statements of operations, compare consolidated revenue and net income or loss for the years ended December 31, 2025 and 2024, in millions.",
+      "answerability": "answerable",
+      "gold_notes": "The summary table also has interim periods and 2023. Both the complete relevant header and labeled row are required to disambiguate columns and signs.",
+      "requirements": [
+        {
+          "id": "held-044.r1",
+          "text": "Consolidated revenue was $18,674 million in 2025 and $14,015 million in 2024.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "Statements of Operations Data: \nThree Months Ended March 31,\nYear Ended December 31,\n2026\n2025\n2025\n2024\n2023\n(in millions, except per share data)\n(unaudited)",
+                "Revenue  \n    ............................................. $\n4,694\n$\n4,067\n$\n18,674\n$\n14,015\n$\n10,387"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-044.r2",
+          "text": "Net loss was $4,937 million in 2025, versus net income of $791 million in 2024.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "Statements of Operations Data: \nThree Months Ended March 31,\nYear Ended December 31,\n2026\n2025\n2025\n2024\n2023\n(in millions, except per share data)\n(unaudited)",
+                "Net income (loss)    \n   .............................. $\n(4,276) $\n(528) $\n(4,937) $\n791\n$\n(4,628)"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "held-045",
+      "split": "held_out",
+      "cluster_id": "spacex/booster-useful-life",
+      "doc_keys": [
+        "spacex-s1"
+      ],
+      "query": "Why does the SpaceX filing distinguish Falcon 9’s engineering flight capability from its maximum accounting useful life, and what are the two flight limits?",
+      "answerability": "answerable",
+      "gold_notes": "",
+      "requirements": [
+        {
+          "id": "held-045.r1",
+          "text": "Boosters are engineered and demonstrated for up to 40 flights, while maximum accounting useful life is 25 flights based on forecast utilization.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "Although our Falcon 9 boosters have been engineered and demonstrated to support up to 40 flights, we \nhave established a maximum accounting useful life of 25 flights as an estimate based on forecasted utilization."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-045.r2",
+          "text": "The accounting estimate reflects an expected shift to Starship and government contracts forbidding boosters used more than five times.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "This estimate reflects: (i) our strategic transition to Starship, which is expected to materially reduce future \nFalcon 9 flight demand; and (ii) restrictions under certain government contracts that prohibit the use of boosters \nflown more than five times on their missions."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "held-046",
+      "split": "held_out",
+      "cluster_id": "spacex/balance-sheet-table",
+      "doc_keys": [
+        "spacex-s1"
+      ],
+      "query": "Compare SpaceX cash and cash equivalents and net property, plant, and equipment at March 31, 2026 versus December 31, 2025 using the S-1 summary balance sheet. State amounts in millions.",
+      "answerability": "answerable",
+      "gold_notes": "The table also contains a December 31, 2024 column; it must not be confused with the requested dates.",
+      "requirements": [
+        {
+          "id": "held-046.r1",
+          "text": "Cash and equivalents were $15,852 million at March 31, 2026 and $24,747 million at December 31, 2025.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "Balance Sheet Data: \nMarch 31,\nDecember 31, \n2026\n2025\n2024\n(in millions)\n(unaudited)",
+                "Cash and cash equivalents  \n .............................................................. $\n15,852\n$\n24,747\n$\n11,385"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "held-046.r2",
+          "text": "Net property, plant and equipment was $53,879 million and $42,602 million at those respective dates.",
+          "proofs": [
+            {
+              "doc_key": "spacex-s1",
+              "chunk_id": "node_52f86f1a-37f6-5151-ada4-7df30d50ceed",
+              "quotes": [
+                "Balance Sheet Data: \nMarch 31,\nDecember 31, \n2026\n2025\n2024\n(in millions)\n(unaudited)",
+                "Property, plant, and equipment, net\n \n   ................................................\n53,879\n42,602\n21,147"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "held-047",
+      "split": "held_out",
+      "cluster_id": "spacex/blank-offering-price",
+      "doc_keys": [
+        "spacex-s1"
+      ],
+      "query": "What final IPO price per Class A share and total IPO proceeds does the SpaceX S-1 in this corpus disclose?",
+      "answerability": "unanswerable",
+      "gold_notes": "The prospectus cover and offering assumptions contain blank dollar placeholders for price and proceeds. Proposed exchange symbol and historical private valuations cannot answer these requested final offering terms.",
+      "requirements": [
+        {
+          "id": "held-047.r1",
+          "text": "A final per-share IPO price and total IPO proceeds are required; they are not filled in in this filing.",
+          "proofs": []
+        }
+      ]
+    },
+    {
+      "id": "held-048",
+      "split": "held_out",
+      "cluster_id": "spacex/blank-post-offering-control",
+      "doc_keys": [
+        "spacex-s1"
+      ],
+      "query": "Exactly what percentage of total voting power would Elon Musk hold immediately after the SpaceX IPO, both without and with full exercise of the underwriters’ option?",
+      "answerability": "unanswerable",
+      "gold_notes": "The cover explicitly uses blank percentage placeholders for both scenarios. General control rights and pre-offering ownership do not determine the requested percentages because final offering terms are absent.",
+      "requirements": [
+        {
+          "id": "held-048.r1",
+          "text": "Both exact post-offering voting-power percentages are required; this S-1 leaves them blank.",
+          "proofs": []
+        }
+      ]
+    },
+    {
+      "id": "held-049",
+      "split": "held_out",
+      "cluster_id": "spacex/undisclosed-churn",
+      "doc_keys": [
+        "spacex-s1"
+      ],
+      "query": "What was Starlink’s subscriber churn rate in each month from January through December 2025, according to the SpaceX S-1?",
+      "answerability": "unanswerable",
+      "gold_notes": "The source text contains subscriber counts and ARPU for selected quarter/year periods, but no occurrence of churn and no monthly cancellation-rate series. Counts and net subscriber growth cannot identify gross churn.",
+      "requirements": [
+        {
+          "id": "held-049.r1",
+          "text": "A twelve-month 2025 Starlink subscriber churn-rate series is required; no churn rate or monthly churn series is disclosed.",
+          "proofs": []
+        }
+      ]
+    },
+    {
+      "id": "held-050",
+      "split": "held_out",
+      "cluster_id": "spacex/future-actual-results",
+      "doc_keys": [
+        "spacex-s1"
+      ],
+      "query": "What were SpaceX’s audited consolidated revenue and net income for the full year ended December 31, 2027?",
+      "answerability": "unanswerable",
+      "gold_notes": "The S-1 is filed May 20, 2026 and contains audited historical results through 2025 and interim March 2026 results. Future operating aspirations or backlog recognition schedules are not audited actual 2027 results.",
+      "requirements": [
+        {
+          "id": "held-050.r1",
+          "text": "Audited actual 2027 annual revenue and net income are required; the source corpus has no such future-period financial statements.",
+          "proofs": []
+        }
+      ]
+    }
+  ]
+}
