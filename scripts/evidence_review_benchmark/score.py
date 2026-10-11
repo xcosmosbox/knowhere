@@ -54,6 +54,53 @@ claimed relation. supported and conflicting require at least one citation; missi
 may have no citations or may cite related text explaining what is absent. Cite only
 supplied evidence_ids. Include no overall verdict and no additional JSON keys.
 """
+SOURCE_SPAN_PROMPT = SYSTEM_PROMPT.replace(
+    '"citations": [{"evidence_id": "...", "quote": "..."}]}]}',
+    '"citations": [{"evidence_id": "...", "first_span": "...", "last_span": "..."}]}]}'
+).replace(
+    "Each quote must be an exact, nonempty contiguous substring of that evidence item's\ntext. Preserve whitespace and punctuation. Quote enough context to establish the\nclaimed relation.",
+    "Each evidence item provides a lossless ordered source_spans list instead of text.\nSelect an inclusive contiguous range with first_span and last_span from that same\nevidence item. The evaluator, not the model, reconstructs the exact quote. Select\nenough surrounding spans to establish the claimed relation; never rewrite a quote."
+)
+
+
+def source_spans(text: str) -> list[dict[str, str]]:
+    """Independent scorer locator: lossless lines, split at 256 Unicode code points.
+
+    This does not import the production reviewer or its verdict/validator. Repeated
+    strings keep distinct positional IDs; no whitespace or punctuation is normalized.
+    """
+    pieces = [line[start:start + 256] for line in text.splitlines(keepends=True)
+              for start in range(0, len(line), 256)]
+    return [{"span_id": f"L{index:04d}", "text": piece} for index, piece in enumerate(pieces, 1)]
+
+
+def resolve_source_spans(result: Any, items: Sequence[Mapping[str, Any]]) -> Any:
+    """Resolve only valid ranges against visible text, then run exact-quote validation."""
+    if not isinstance(result, dict) or set(result) != {"requirements"} or not isinstance(result["requirements"], list):
+        raise ValueError("invalid_span_assessment_shape")
+    evidence = {item["evidence_id"]: item for item in items}
+    if len(evidence) != len(items):
+        raise ValueError("duplicate_evidence_id")
+    resolved = []
+    for judgment in result["requirements"]:
+        if not isinstance(judgment, dict) or set(judgment) != {"id", "status", "reason", "citations"} or not isinstance(judgment["citations"], list):
+            raise ValueError("invalid_span_requirement_shape")
+        citations = []
+        for citation in judgment["citations"]:
+            if not isinstance(citation, dict) or set(citation) != {"evidence_id", "first_span", "last_span"}:
+                raise ValueError("invalid_span_citation_shape")
+            identity = citation["evidence_id"]
+            if not isinstance(identity, str) or identity not in evidence:
+                raise ValueError("unknown_evidence_id")
+            spans = source_spans(evidence[identity]["text"])
+            positions = {span["span_id"]: index for index, span in enumerate(spans)}
+            first, last = citation["first_span"], citation["last_span"]
+            if not isinstance(first, str) or not isinstance(last, str) or first not in positions or last not in positions or positions[first] > positions[last]:
+                raise ValueError("invalid_source_span_range")
+            quote = "".join(span["text"] for span in spans[positions[first]:positions[last] + 1])
+            citations.append({"evidence_id": identity, "quote": quote})
+        resolved.append({**judgment, "citations": citations})
+    return {"requirements": resolved}
 
 
 def _digest(value: Any) -> str:
@@ -543,6 +590,7 @@ def _unique_json_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
 async def semantic_assess(
     query: str, gold_requirements: Sequence[Mapping[str, Any]],
     evidence_items: Sequence[Mapping[str, Any]], client: Any,
+    *, citation_mode: str = "exact-quotes",
 ) -> dict[str, Any]:
     """One offline blind judge call; caller owns credentials, transport and observation.
 
@@ -555,8 +603,12 @@ async def semantic_assess(
         "evidence_id", "document_id", "chunk_id", "original_chunk_id", "revision",
         "source_file_name", "section_path", "text",
     ) if key in item} for item in evidence_items]
-    payload = {"query": query, "gold_requirements": requirements, "evidence_items": items}
-    messages = [{"role": "system", "content": SYSTEM_PROMPT},
+    if citation_mode not in {"exact-quotes", "source-spans"}:
+        raise ValueError("unknown_citation_mode")
+    sent_items = [{**{key: value for key, value in item.items() if key != "text"},
+                   "source_spans": source_spans(item["text"])} for item in items] if citation_mode == "source-spans" else items
+    payload = {"query": query, "gold_requirements": requirements, "evidence_items": sent_items}
+    messages = [{"role": "system", "content": SOURCE_SPAN_PROMPT if citation_mode == "source-spans" else SYSTEM_PROMPT},
                 {"role": "user", "content": json.dumps(payload, ensure_ascii=False)}]
     metadata: dict[str, Any] = {
         "requested_model": MODEL, "request_sha256": _digest(messages),
@@ -587,12 +639,21 @@ async def semantic_assess(
         if not isinstance(content, str):
             raise ValueError("missing_response_content")
         metadata["response_sha256"] = hashlib.sha256(content.encode("utf-8")).hexdigest()
+        if citation_mode == "source-spans":
+            metadata.update(citation_mode=citation_mode, raw_response_content=content)
         parsed = json.loads(content, object_pairs_hook=_unique_json_object)
     except Exception as exc:
         return {"schema_version": SEMANTIC_SCHEMA, "status": "error",
                 "reason_code": "assessor_call_or_response_error", "error_type": type(exc).__name__,
                 "requirements": [], "semantic_coverage": None, "all_supported": None,
                 **metadata}
+    if citation_mode == "source-spans":
+        try:
+            parsed = resolve_source_spans(parsed, items)
+        except (ValueError, KeyError, TypeError) as exc:
+            return {"schema_version": SEMANTIC_SCHEMA, "status": "invalid",
+                    "reason_code": str(exc) if isinstance(exc, ValueError) else "invalid_span_payload",
+                    "requirements": [], "semantic_coverage": None, "all_supported": None, **metadata}
     return {**validate_semantic_assessment(parsed, requirements, items), **metadata}
 
 

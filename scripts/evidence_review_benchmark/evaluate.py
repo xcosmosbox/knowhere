@@ -37,13 +37,18 @@ async def run(args: argparse.Namespace) -> None:
     questions = {question["id"]: question for question in gold["questions"]}
     args.output.mkdir(parents=True, exist_ok=True)
     protocol = json.loads(args.protocol.read_text()) if args.protocol else None
+    citation_mode = args.citation_mode or (protocol or {}).get("evaluation", {}).get("citation_mode", "exact-quotes")
     if protocol and (protocol["gold_sha256"] != hashlib.sha256(gold_path.read_bytes()).hexdigest()
                      or protocol["resources"] != resource_spec(args.resource_profile)
                      or protocol["corpus_digest"] != manifest["corpus_digest"]):
         raise ValueError("Scoring inventory/resources differ from frozen retrieval protocol")
+    if protocol and (protocol.get("evaluation", {}).get("citation_mode", "exact-quotes") != citation_mode
+                     or protocol["runtime_source_sha256"]["scripts/evidence_review_benchmark/score.py"] != hashlib.sha256((ROOT / 'scripts/evidence_review_benchmark/score.py').read_bytes()).hexdigest()):
+        raise ValueError("Scorer mode/source differ from the frozen retrieval protocol")
     evaluation_spec = {"gold_sha256": hashlib.sha256(gold_path.read_bytes()).hexdigest(),
                        "resources": resource_spec(args.resource_profile),
                        "retrieval_protocol_digest": digest(protocol) if protocol else None,
+                       "citation_mode": citation_mode,
                        "scorer_sha256": hashlib.sha256((ROOT / 'scripts/evidence_review_benchmark/score.py').read_bytes()).hexdigest()}
     spec_path = args.output / 'evaluation-protocol.json'
     if spec_path.exists() and json.loads(spec_path.read_text()) != evaluation_spec:
@@ -97,7 +102,7 @@ async def run(args: argparse.Namespace) -> None:
             started = {"id": identity, "input_digest": digest(packet), "started_at": utc_now(), "negative_control": control}
             append_line(started_path, started)
             begin = time.perf_counter()
-            semantic = await semantic_assess(packet["query"], packet["gold_requirements"], packet["evidence_items"], client)
+            semantic = await semantic_assess(packet["query"], packet["gold_requirements"], packet["evidence_items"], client, citation_mode=citation_mode)
             calls = [record for record in observer.records if record["trial_id"] == identity]
             result = {**started, "semantic": semantic, "provider_calls": calls,
                       "provider_usage": usage_summary(calls), "ended_at": utc_now(),
@@ -133,6 +138,7 @@ if __name__ == "__main__":
     parser.add_argument("--gold", type=Path, default=ROOT / "scripts/fixtures/evidence_review_live_gold.json")
     parser.add_argument("--protocol", type=Path)
     parser.add_argument("--resource-profile", choices=PROFILES, default="production")
+    parser.add_argument("--citation-mode", choices=("exact-quotes", "source-spans"))
     parser.add_argument("--trials", type=Path, nargs="+", required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--concurrency", type=int, default=4)

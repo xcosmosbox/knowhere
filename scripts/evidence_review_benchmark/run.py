@@ -68,6 +68,9 @@ def freeze(gold: dict[str, Any], manifest: dict[str, Any], *, gold_path: Path = 
         "held_out_execution": {"logical_shards": shards, "max_concurrent_workers": workers,
                                "isolation": "one database and durable output directory per worker"},
         "gold_sha256": hashlib.sha256(gold_path.read_bytes()).hexdigest(),
+        "evaluation": {"citation_mode": "exact-quotes" if resource_profile == "production" else "source-spans",
+                       "negative_controls": 3,
+                       "interpretation": "Separate arm-blinded prompt with frozen requirements and caller-visible evidence only; automated same-family model judgment, not human truth."},
         "corpus_digest": manifest["corpus_digest"], "index_input_digest": manifest["index_input_digest"],
         "runtime_source_sha256": {path: hashlib.sha256((ROOT / path).read_bytes()).hexdigest() for path in runtime_sources()},
         "revision_pins": manifest["revision_pins"], "schedule": schedule,
@@ -265,7 +268,7 @@ async def run(args: argparse.Namespace) -> None:
                           "corpus_digest": manifest["corpus_digest"], "scheduled_pairs": len(protocol["schedule"])}))
         return
     protocol = json.loads(args.protocol.read_text())
-    for field in ("gold_sha256", "corpus_digest", "index_input_digest", "runtime_source_sha256", "schedule", "revision_pins", "python_version", "library_versions", "resources", "tokenizer", "held_out_execution", "model"):
+    for field in ("gold_sha256", "corpus_digest", "index_input_digest", "runtime_source_sha256", "schedule", "revision_pins", "python_version", "library_versions", "resources", "tokenizer", "held_out_execution", "model", "evaluation"):
         if protocol[field] != current[field]:
             raise ValueError(f"Frozen protocol mismatch: {field}")
     protocol_digest = digest(protocol)

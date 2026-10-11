@@ -1,0 +1,1303 @@
+{
+  "schema_version": "knowhere-live-gold/1",
+  "scope": "New manual RFC inventory, frozen before model outputs: 6 development questions from RFC2119; 24 held-out questions from JSON (8259/7493) and QUIC (9000/9001), 12 per family. Four held-out questions deliberately request absent measurements. Full official source bytes including copyright notices are preserved. Semantic requirements and answerability are independent of the production reviewer. Known-topic public normative documents may have appeared in model training; this is unseen-in-this-experiment, not guaranteed unseen-to-model data. Text tables, conditions, comparisons, normative strength, units and related-but-non-entailing facts are covered; visual PDF/HTML-table parsing and production generalization are not tested. Literal quote recall requires all quotes in a proof; semantic correctness is separately judged.",
+  "documents": [
+    {
+      "doc_key": "rfc2119",
+      "source_path": "scripts/fixtures/evidence_review_rfc_20261011/rfc2119/chunks.json",
+      "source_sha256": "b5162b91ef41a2d912d1a2cebb08b36a70efbbf3fdcbefde1ce25c65720474e6",
+      "source_file_name": "RFC2119.txt",
+      "original_url": "https://www.rfc-editor.org/rfc/rfc2119.txt",
+      "original_sha256": "3c2ceb7bfc84cd34720f4a5271338ab9d8280d34bdd1eb250c64306202f2ed8b"
+    },
+    {
+      "doc_key": "rfc8259",
+      "source_path": "scripts/fixtures/evidence_review_rfc_20261011/rfc8259/chunks.json",
+      "source_sha256": "a0cb651e6e7d126f4c44a7cca53a5a6e4507882593b08604d2107f2f00329e44",
+      "source_file_name": "RFC8259.txt",
+      "original_url": "https://www.rfc-editor.org/rfc/rfc8259.txt",
+      "original_sha256": "61a5378f4255c720beb2a4b4a63b29540147c140f36988bf086291989b4cd2d7"
+    },
+    {
+      "doc_key": "rfc7493",
+      "source_path": "scripts/fixtures/evidence_review_rfc_20261011/rfc7493/chunks.json",
+      "source_sha256": "54d6a74a8080993decd19f71b84b0f328387b96a25850c71368430c1733dffe4",
+      "source_file_name": "RFC7493.txt",
+      "original_url": "https://www.rfc-editor.org/rfc/rfc7493.txt",
+      "original_sha256": "a44ccf1451a7bf4f4bbb78b39e10ed0e9a27ff2ee5b639c6458042b5a7197062"
+    },
+    {
+      "doc_key": "rfc9000",
+      "source_path": "scripts/fixtures/evidence_review_rfc_20261011/rfc9000/chunks.json",
+      "source_sha256": "630ad8de8e8b6a33ef19ad85807eecbc4576189f7ed320fd784c02f42be4cf9f",
+      "source_file_name": "RFC9000.txt",
+      "original_url": "https://www.rfc-editor.org/rfc/rfc9000.txt",
+      "original_sha256": "f88aae47f8b18e102024916e975e919201d8dde689cba79b01079eaedd402e22"
+    },
+    {
+      "doc_key": "rfc9001",
+      "source_path": "scripts/fixtures/evidence_review_rfc_20261011/rfc9001/chunks.json",
+      "source_sha256": "aa4401426e3dd08d4a18d5f5c3bae2d248349f35fa24307f6b0d8c0284272908",
+      "source_file_name": "RFC9001.txt",
+      "original_url": "https://www.rfc-editor.org/rfc/rfc9001.txt",
+      "original_sha256": "3bbaecdf5afd278052a2c48348ce118c4ff8d0cf6b9915549858171b3f98a591"
+    }
+  ],
+  "questions": [
+    {
+      "id": "rfc-dev-001",
+      "split": "development",
+      "cluster_id": "bcp14/absolute",
+      "doc_keys": [
+        "rfc2119"
+      ],
+      "query": "In RFC 2119, compare MUST and MUST NOT and give their synonymous terms.",
+      "answerability": "answerable",
+      "gold_notes": "Only the supplied full RFC texts count. Preserve normative strength and conditions; no external facts.",
+      "requirements": [
+        {
+          "id": "rfc-dev-001.r1",
+          "text": "MUST/REQUIRED/SHALL is an absolute requirement.",
+          "proofs": [
+            {
+              "doc_key": "rfc2119",
+              "chunk_id": "rfc2119-fulltext",
+              "quotes": [
+                "1. MUST   This word, or the terms \"REQUIRED\" or \"SHALL\", mean that the\n   definition is an absolute requirement of the specification."
+              ]
+            }
+          ],
+          "gold_notes": ""
+        },
+        {
+          "id": "rfc-dev-001.r2",
+          "text": "MUST NOT/SHALL NOT is an absolute prohibition.",
+          "proofs": [
+            {
+              "doc_key": "rfc2119",
+              "chunk_id": "rfc2119-fulltext",
+              "quotes": [
+                "2. MUST NOT   This phrase, or the phrase \"SHALL NOT\", mean that the\n   definition is an absolute prohibition of the specification."
+              ]
+            }
+          ],
+          "gold_notes": ""
+        }
+      ]
+    },
+    {
+      "id": "rfc-dev-002",
+      "split": "development",
+      "cluster_id": "bcp14/recommendations",
+      "doc_keys": [
+        "rfc2119"
+      ],
+      "query": "How do RFC 2119 SHOULD and SHOULD NOT allow exceptions, and what must implementors consider before deviating?",
+      "answerability": "answerable",
+      "gold_notes": "Only the supplied full RFC texts count. Preserve normative strength and conditions; no external facts.",
+      "requirements": [
+        {
+          "id": "rfc-dev-002.r1",
+          "text": "SHOULD allows valid exceptions only after understanding and weighing full implications.",
+          "proofs": [
+            {
+              "doc_key": "rfc2119",
+              "chunk_id": "rfc2119-fulltext",
+              "quotes": [
+                "may exist valid reasons in particular circumstances to ignore a\n   particular item, but the full implications must be understood and\n   carefully weighed before choosing a different course."
+              ]
+            }
+          ],
+          "gold_notes": ""
+        },
+        {
+          "id": "rfc-dev-002.r2",
+          "text": "SHOULD NOT permits acceptable/useful exceptions after understanding and weighing full implications.",
+          "proofs": [
+            {
+              "doc_key": "rfc2119",
+              "chunk_id": "rfc2119-fulltext",
+              "quotes": [
+                "particular behavior is acceptable or even useful, but the full\n   implications should be understood and the case carefully weighed\n   before implementing any behavior described with this label."
+              ]
+            }
+          ],
+          "gold_notes": ""
+        }
+      ]
+    },
+    {
+      "id": "rfc-dev-003",
+      "split": "development",
+      "cluster_id": "bcp14/optional",
+      "doc_keys": [
+        "rfc2119"
+      ],
+      "query": "Under RFC 2119 MAY/OPTIONAL, what obligations apply both to implementors who include an option and those who omit it?",
+      "answerability": "answerable",
+      "gold_notes": "Only the supplied full RFC texts count. Preserve normative strength and conditions; no external facts.",
+      "requirements": [
+        {
+          "id": "rfc-dev-003.r1",
+          "text": "MAY/OPTIONAL is truly optional.",
+          "proofs": [
+            {
+              "doc_key": "rfc2119",
+              "chunk_id": "rfc2119-fulltext",
+              "quotes": [
+                "5. MAY   This word, or the adjective \"OPTIONAL\", mean that an item is\n   truly optional."
+              ]
+            }
+          ],
+          "gold_notes": ""
+        },
+        {
+          "id": "rfc-dev-003.r2",
+          "text": "Both including and omitting implementations must interoperate, potentially without the optional functionality.",
+          "proofs": [
+            {
+              "doc_key": "rfc2119",
+              "chunk_id": "rfc2119-fulltext",
+              "quotes": [
+                "An implementation which does not include a particular option MUST be\n   prepared to interoperate with another implementation which does\n   include the option, though perhaps with reduced functionality.",
+                "MUST be prepared to interoperate with another implementation which\n   does not include the option"
+              ]
+            }
+          ],
+          "gold_notes": ""
+        }
+      ]
+    },
+    {
+      "id": "rfc-dev-004",
+      "split": "development",
+      "cluster_id": "bcp14/imperatives",
+      "doc_keys": [
+        "rfc2119"
+      ],
+      "query": "Where does RFC 2119 permit the use of these imperatives, and can they impose an implementation method unnecessary for interoperability?",
+      "answerability": "answerable",
+      "gold_notes": "Only the supplied full RFC texts count. Preserve normative strength and conditions; no external facts.",
+      "requirements": [
+        {
+          "id": "rfc-dev-004.r1",
+          "text": "Use imperatives sparingly only for interoperability or limiting potentially harmful behavior.",
+          "proofs": [
+            {
+              "doc_key": "rfc2119",
+              "chunk_id": "rfc2119-fulltext",
+              "quotes": [
+                "they MUST only be used where it is\n   actually required for interoperation or to limit behavior which has\n   potential for causing harm"
+              ]
+            }
+          ],
+          "gold_notes": ""
+        },
+        {
+          "id": "rfc-dev-004.r2",
+          "text": "Do not impose a method unnecessary for interoperability.",
+          "proofs": [
+            {
+              "doc_key": "rfc2119",
+              "chunk_id": "rfc2119-fulltext",
+              "quotes": [
+                "they must not be used to try to impose a particular method\n   on implementors where the method is not required for\n   interoperability."
+              ]
+            }
+          ],
+          "gold_notes": ""
+        }
+      ]
+    },
+    {
+      "id": "rfc-dev-005",
+      "split": "development",
+      "cluster_id": "bcp14/security",
+      "doc_keys": [
+        "rfc2119"
+      ],
+      "query": "What does RFC 2119 ask authors to explain about security implications of noncompliance, and why?",
+      "answerability": "answerable",
+      "gold_notes": "Only the supplied full RFC texts count. Preserve normative strength and conditions; no external facts.",
+      "requirements": [
+        {
+          "id": "rfc-dev-005.r1",
+          "text": "Security effects of failing MUST/SHOULD or violating prohibitions may be subtle.",
+          "proofs": [
+            {
+              "doc_key": "rfc2119",
+              "chunk_id": "rfc2119-fulltext",
+              "quotes": [
+                "The effects on security of not implementing a MUST or\n   SHOULD, or doing something the specification says MUST NOT or SHOULD\n   NOT be done may be very subtle."
+              ]
+            }
+          ],
+          "gold_notes": ""
+        },
+        {
+          "id": "rfc-dev-005.r2",
+          "text": "Explain implications because implementors may lack the authors' experience and discussion.",
+          "proofs": [
+            {
+              "doc_key": "rfc2119",
+              "chunk_id": "rfc2119-fulltext",
+              "quotes": [
+                "elaborate the security implications of not following\n   recommendations or requirements as most implementors will not have\n   had the benefit of the experience and discussion that produced the\n   specification."
+              ]
+            }
+          ],
+          "gold_notes": ""
+        }
+      ]
+    },
+    {
+      "id": "rfc-dev-006",
+      "split": "development",
+      "cluster_id": "bcp14/missing-observation",
+      "doc_keys": [
+        "rfc2119"
+      ],
+      "query": "What is the RFC 2119 meaning of MUST, and what measured percentage of deployed products complied with MUST requirements in 2025?",
+      "answerability": "unanswerable",
+      "gold_notes": "Only the supplied full RFC texts count. Preserve normative strength and conditions; no external facts.",
+      "requirements": [
+        {
+          "id": "rfc-dev-006.r1",
+          "text": "MUST is an absolute requirement.",
+          "proofs": [
+            {
+              "doc_key": "rfc2119",
+              "chunk_id": "rfc2119-fulltext",
+              "quotes": [
+                "definition is an absolute requirement of the specification."
+              ]
+            }
+          ],
+          "gold_notes": ""
+        },
+        {
+          "id": "rfc-dev-006.r2",
+          "text": "Give the measured 2025 deployed-product compliance percentage.",
+          "proofs": [],
+          "gold_notes": "Unavailable: a requirements-language definition is not a deployed-product compliance study."
+        }
+      ]
+    },
+    {
+      "id": "rfc-held-001",
+      "split": "held_out",
+      "cluster_id": "json/duplicate-names",
+      "doc_keys": [
+        "rfc8259",
+        "rfc7493"
+      ],
+      "query": "Compare RFC 8259 and RFC 7493 on duplicate object member names, including the normative strength and I-JSON's definition of duplicate.",
+      "answerability": "answerable",
+      "gold_notes": "Only the supplied full RFC texts count. Preserve normative strength and conditions; no external facts.",
+      "requirements": [
+        {
+          "id": "rfc-held-001.r1",
+          "text": "RFC 8259 says names SHOULD be unique, not MUST.",
+          "proofs": [
+            {
+              "doc_key": "rfc8259",
+              "chunk_id": "rfc8259-fulltext",
+              "quotes": [
+                "The names within an object SHOULD be unique."
+              ]
+            }
+          ],
+          "gold_notes": ""
+        },
+        {
+          "id": "rfc-held-001.r2",
+          "text": "I-JSON MUST NOT have duplicates; compare Unicode sequences after processing escapes.",
+          "proofs": [
+            {
+              "doc_key": "rfc7493",
+              "chunk_id": "rfc7493-fulltext",
+              "quotes": [
+                "Objects in I-JSON messages MUST NOT have members with duplicate\n   names.  In this context, \"duplicate\" means that the names, after\n   processing any escaped characters, are identical sequences of Unicode\n   characters."
+              ]
+            }
+          ],
+          "gold_notes": ""
+        }
+      ]
+    },
+    {
+      "id": "rfc-held-002",
+      "split": "held_out",
+      "cluster_id": "json/encoding-bom",
+      "doc_keys": [
+        "rfc8259",
+        "rfc7493"
+      ],
+      "query": "Compare the UTF-8 encoding scope in RFC 8259 and I-JSON RFC 7493; also state how RFC 8259 handles a networked byte order mark.",
+      "answerability": "answerable",
+      "gold_notes": "Only the supplied full RFC texts count. Preserve normative strength and conditions; no external facts.",
+      "requirements": [
+        {
+          "id": "rfc-held-002.r1",
+          "text": "Open-ecosystem exchange MUST use UTF-8; generators MUST NOT add BOM and parsers MAY ignore it.",
+          "proofs": [
+            {
+              "doc_key": "rfc8259",
+              "chunk_id": "rfc8259-fulltext",
+              "quotes": [
+                "JSON text exchanged between systems that are not part of a closed\n   ecosystem MUST be encoded using UTF-8",
+                "Implementations MUST NOT add a byte order mark (U+FEFF)",
+                "implementations that parse JSON texts MAY ignore\n   the presence of a byte order mark"
+              ]
+            }
+          ],
+          "gold_notes": ""
+        },
+        {
+          "id": "rfc-held-002.r2",
+          "text": "All I-JSON messages MUST be UTF-8.",
+          "proofs": [
+            {
+              "doc_key": "rfc7493",
+              "chunk_id": "rfc7493-fulltext",
+              "quotes": [
+                "I-JSON messages MUST be encoded using UTF-8"
+              ]
+            }
+          ],
+          "gold_notes": ""
+        }
+      ]
+    },
+    {
+      "id": "rfc-held-003",
+      "split": "held_out",
+      "cluster_id": "json/numeric-precision",
+      "doc_keys": [
+        "rfc8259",
+        "rfc7493"
+      ],
+      "query": "What exact integer range is interoperable under RFC 8259, what numeric capabilities may I-JSON assume, and how does RFC 7493 recommend conveying larger exact numbers?",
+      "answerability": "answerable",
+      "gold_notes": "Only the supplied full RFC texts count. Preserve normative strength and conditions; no external facts.",
+      "requirements": [
+        {
+          "id": "rfc-held-003.r1",
+          "text": "Exact interoperable integers lie in [-(2**53)+1, (2**53)-1].",
+          "proofs": [
+            {
+              "doc_key": "rfc8259",
+              "chunk_id": "rfc8259-fulltext",
+              "quotes": [
+                "numbers that are integers and\n   are in the range [-(2**53)+1, (2**53)-1] are interoperable"
+              ]
+            }
+          ],
+          "gold_notes": ""
+        },
+        {
+          "id": "rfc-held-003.r2",
+          "text": "Do not assume magnitude/precision beyond binary64; SHOULD NOT exceed it; strings are RECOMMENDED for larger exact numbers.",
+          "proofs": [
+            {
+              "doc_key": "rfc7493",
+              "chunk_id": "rfc7493-fulltext",
+              "quotes": [
+                "Implementations that generate I-JSON messages cannot assume that\n   receiving implementations can process numeric values with greater\n   magnitude or precision than provided by those numbers.",
+                "messages SHOULD NOT include numbers that express greater magnitude or\n   precision than an IEEE 754 double precision number provides,",
+                "it is RECOMMENDED to encode them in\n   JSON string values."
+              ]
+            }
+          ],
+          "gold_notes": ""
+        }
+      ]
+    },
+    {
+      "id": "rfc-held-004",
+      "split": "held_out",
+      "cluster_id": "json/top-level",
+      "doc_keys": [
+        "rfc8259",
+        "rfc7493"
+      ],
+      "query": "Can RFC 8259 JSON and RFC 7493 I-JSON have top-level scalar values, and what does I-JSON recommend for older receivers?",
+      "answerability": "answerable",
+      "gold_notes": "Only the supplied full RFC texts count. Preserve normative strength and conditions; no external facts.",
+      "requirements": [
+        {
+          "id": "rfc-held-004.r1",
+          "text": "A JSON text is any serialized value, not limited to object/array.",
+          "proofs": [
+            {
+              "doc_key": "rfc8259",
+              "chunk_id": "rfc8259-fulltext",
+              "quotes": [
+                "A JSON text is a serialized value."
+              ]
+            }
+          ],
+          "gold_notes": ""
+        },
+        {
+          "id": "rfc-held-004.r2",
+          "text": "I-JSON permits any value but SHOULD NOT use non-object/non-array top-level values for maximum compatibility with old receivers.",
+          "proofs": [
+            {
+              "doc_key": "rfc7493",
+              "chunk_id": "rfc7493-fulltext",
+              "quotes": [
+                "An I-JSON message can be any JSON value.",
+                "protocol designers SHOULD NOT use top-level JSON texts that are\n   neither objects nor arrays."
+              ]
+            }
+          ],
+          "gold_notes": ""
+        }
+      ]
+    },
+    {
+      "id": "rfc-held-005",
+      "split": "held_out",
+      "cluster_id": "json/surrogates",
+      "doc_keys": [
+        "rfc8259",
+        "rfc7493"
+      ],
+      "query": "Contrast RFC 8259's grammar allowance and behavior for unpaired UTF-16 surrogates with RFC 7493's character restrictions, including escaped characters.",
+      "answerability": "answerable",
+      "gold_notes": "Only the supplied full RFC texts count. Preserve normative strength and conditions; no external facts.",
+      "requirements": [
+        {
+          "id": "rfc-held-005.r1",
+          "text": "JSON ABNF permits unpaired surrogate bit sequences, with unpredictable receiver behavior.",
+          "proofs": [
+            {
+              "doc_key": "rfc8259",
+              "chunk_id": "rfc8259-fulltext",
+              "quotes": [
+                "ABNF in this specification allows member names and\n   string values to contain bit sequences that cannot encode Unicode\n   characters;",
+                "The behavior of software that\n   receives JSON texts containing such values is unpredictable;"
+              ]
+            }
+          ],
+          "gold_notes": ""
+        },
+        {
+          "id": "rfc-held-005.r2",
+          "text": "I-JSON forbids surrogate/noncharacter code points in names/strings, whether direct or escaped; unpaired \\uDEAD is invalid but a valid pair is legal.",
+          "proofs": [
+            {
+              "doc_key": "rfc7493",
+              "chunk_id": "rfc7493-fulltext",
+              "quotes": [
+                "MUST NOT include code points that identify Surrogates or\n   Noncharacters",
+                "This applies both to characters encoded directly in UTF-8 and to\n   those which are escaped; thus, \"\\uDEAD\" is invalid because it is an\n   unpaired surrogate, while \"\\uD800\\uDEAD\" would be legal."
+              ]
+            }
+          ],
+          "gold_notes": ""
+        }
+      ]
+    },
+    {
+      "id": "rfc-held-006",
+      "split": "held_out",
+      "cluster_id": "json/parser-generator",
+      "doc_keys": [
+        "rfc8259",
+        "rfc7493"
+      ],
+      "query": "Under RFC 8259, distinguish a parser's required acceptance, optional extensions, and implementation limits from a generator's conformance obligation.",
+      "answerability": "answerable",
+      "gold_notes": "Only the supplied full RFC texts count. Preserve normative strength and conditions; no external facts.",
+      "requirements": [
+        {
+          "id": "rfc-held-006.r1",
+          "text": "Parser MUST accept conforming texts and MAY accept extensions.",
+          "proofs": [
+            {
+              "doc_key": "rfc8259",
+              "chunk_id": "rfc8259-fulltext",
+              "quotes": [
+                "JSON parser MUST accept all texts that conform to the JSON grammar.",
+                "A JSON parser MAY accept non-JSON forms or extensions."
+              ]
+            }
+          ],
+          "gold_notes": ""
+        },
+        {
+          "id": "rfc-held-006.r2",
+          "text": "Limits on size/depth/numeric range/strings are allowed; generated text MUST strictly conform.",
+          "proofs": [
+            {
+              "doc_key": "rfc8259",
+              "chunk_id": "rfc8259-fulltext",
+              "quotes": [
+                "An implementation may set limits on the size of texts",
+                "An implementation may set limits on the maximum depth of\n   nesting.",
+                "An implementation may set limits on the range and precision\n   of numbers.  An implementation may set limits on the length and\n   character contents of strings.",
+                "The resulting text MUST\n   strictly conform to the JSON grammar."
+              ]
+            }
+          ],
+          "gold_notes": ""
+        }
+      ]
+    },
+    {
+      "id": "rfc-held-007",
+      "split": "held_out",
+      "cluster_id": "json/string-comparison",
+      "doc_keys": [
+        "rfc8259",
+        "rfc7493"
+      ],
+      "query": "How does RFC 8259 recommend interoperable string equality checks, why can escaped-string comparison be wrong, and which characters must be escaped?",
+      "answerability": "answerable",
+      "gold_notes": "Only the supplied full RFC texts count. Preserve normative strength and conditions; no external facts.",
+      "requirements": [
+        {
+          "id": "rfc-held-007.r1",
+          "text": "Convert representation to Unicode code units and compare numerically; unconverted escapes can incorrectly distinguish equal strings.",
+          "proofs": [
+            {
+              "doc_key": "rfc8259",
+              "chunk_id": "rfc8259-fulltext",
+              "quotes": [
+                "textual representation into sequences of Unicode code units and then\n   perform the comparison numerically, code unit by code unit",
+                "implementations that compare strings with escaped characters\n   unconverted may incorrectly find that \"a\\\\b\" and \"a\\u005Cb\" are not\n   equal."
+              ]
+            }
+          ],
+          "gold_notes": ""
+        },
+        {
+          "id": "rfc-held-007.r2",
+          "text": "Escape quotation mark, reverse solidus, and controls U+0000 through U+001F.",
+          "proofs": [
+            {
+              "doc_key": "rfc8259",
+              "chunk_id": "rfc8259-fulltext",
+              "quotes": [
+                "characters that MUST be escaped:\n   quotation mark, reverse solidus, and the control characters (U+0000\n   through U+001F)."
+              ]
+            }
+          ],
+          "gold_notes": ""
+        }
+      ]
+    },
+    {
+      "id": "rfc-held-008",
+      "split": "held_out",
+      "cluster_id": "json/values-arrays",
+      "doc_keys": [
+        "rfc8259",
+        "rfc7493"
+      ],
+      "query": "According to RFC 8259, enumerate the allowed literal names and their case, and say whether array elements must all share a type.",
+      "answerability": "answerable",
+      "gold_notes": "Only the supplied full RFC texts count. Preserve normative strength and conditions; no external facts.",
+      "requirements": [
+        {
+          "id": "rfc-held-008.r1",
+          "text": "false, null and true are the only literal names and MUST be lowercase.",
+          "proofs": [
+            {
+              "doc_key": "rfc8259",
+              "chunk_id": "rfc8259-fulltext",
+              "quotes": [
+                "false\n      null\n      true",
+                "The literal names MUST be lowercase.  No other literal names are\n   allowed."
+              ]
+            }
+          ],
+          "gold_notes": ""
+        },
+        {
+          "id": "rfc-held-008.r2",
+          "text": "Array values need not share one type.",
+          "proofs": [
+            {
+              "doc_key": "rfc8259",
+              "chunk_id": "rfc8259-fulltext",
+              "quotes": [
+                "There is no requirement that the values in an array be of the same\n   type."
+              ]
+            }
+          ],
+          "gold_notes": ""
+        }
+      ]
+    },
+    {
+      "id": "rfc-held-009",
+      "split": "held_out",
+      "cluster_id": "json/timestamps-binary",
+      "doc_keys": [
+        "rfc8259",
+        "rfc7493"
+      ],
+      "query": "What representation and additional formatting restrictions does RFC 7493 recommend for timestamps and durations, and what encoding for arbitrary binary data?",
+      "answerability": "answerable",
+      "gold_notes": "Only the supplied full RFC texts count. Preserve normative strength and conditions; no external facts.",
+      "requirements": [
+        {
+          "id": "rfc-held-009.r1",
+          "text": "ISO8601/RFC3339 strings with uppercase letters, explicit timezone and seconds even 00; durations use Appendix A production with same restrictions.",
+          "proofs": [
+            {
+              "doc_key": "rfc7493",
+              "chunk_id": "rfc7493-fulltext",
+              "quotes": [
+                "data\n   items be expressed as string values in ISO 8601 format",
+                "uppercase rather\n   than lowercase letters be used, that the timezone be included not\n   defaulted, and that optional trailing seconds be included even when\n   their value is \"00\".",
+                "containing time durations conform to the \"duration\" production in\n   Appendix A of RFC 3339, with the same additional restrictions."
+              ]
+            }
+          ],
+          "gold_notes": ""
+        },
+        {
+          "id": "rfc-held-009.r2",
+          "text": "Binary data is RECOMMENDED as a base64url string.",
+          "proofs": [
+            {
+              "doc_key": "rfc7493",
+              "chunk_id": "rfc7493-fulltext",
+              "quotes": [
+                "it is RECOMMENDED that this data be encoded in a string\n   value in base64url;"
+              ]
+            }
+          ],
+          "gold_notes": ""
+        }
+      ]
+    },
+    {
+      "id": "rfc-held-010",
+      "split": "held_out",
+      "cluster_id": "json/must-ignore",
+      "doc_keys": [
+        "rfc8259",
+        "rfc7493"
+      ],
+      "query": "In RFC 7493, how should a Must-Ignore protocol process an unknown element, and what top-level/member design supports it?",
+      "answerability": "answerable",
+      "gold_notes": "Only the supplied full RFC texts count. Preserve normative strength and conditions; no external facts.",
+      "requirements": [
+        {
+          "id": "rfc-held-010.r1",
+          "text": "Treat transaction as though unknown element absent; MUST NOT make it an error.",
+          "proofs": [
+            {
+              "doc_key": "rfc7493",
+              "chunk_id": "rfc7493-fulltext",
+              "quotes": [
+                "it should treat the rest of the protocol transaction as if\n   the new element simply did not appear, and in particular, the\n   implementation MUST NOT treat this as an error condition."
+              ]
+            }
+          ],
+          "gold_notes": ""
+        },
+        {
+          "id": "rfc-held-010.r2",
+          "text": "Require object top level and specify unknown member names MUST be ignored.",
+          "proofs": [
+            {
+              "doc_key": "rfc7493",
+              "chunk_id": "rfc7493-fulltext",
+              "quotes": [
+                "require that top-level protocol elements must be JSON\n   objects, and to specify that members whose names are unrecognized\n   MUST be ignored."
+              ]
+            }
+          ],
+          "gold_notes": ""
+        }
+      ]
+    },
+    {
+      "id": "rfc-held-011",
+      "split": "held_out",
+      "cluster_id": "json/missing-adoption",
+      "doc_keys": [
+        "rfc8259",
+        "rfc7493"
+      ],
+      "query": "What normative strength does RFC 8259 use for unique object names, and what measured percentage of production JSON parsers adopted I-JSON in 2025 do these RFCs report?",
+      "answerability": "unanswerable",
+      "gold_notes": "Only the supplied full RFC texts count. Preserve normative strength and conditions; no external facts.",
+      "requirements": [
+        {
+          "id": "rfc-held-011.r1",
+          "text": "RFC 8259 uses SHOULD for unique names.",
+          "proofs": [
+            {
+              "doc_key": "rfc8259",
+              "chunk_id": "rfc8259-fulltext",
+              "quotes": [
+                "The names within an object SHOULD be unique."
+              ]
+            }
+          ],
+          "gold_notes": ""
+        },
+        {
+          "id": "rfc-held-011.r2",
+          "text": "Provide measured 2025 production-parser I-JSON adoption percentage.",
+          "proofs": [],
+          "gold_notes": "Unavailable: normative interoperability guidance is not an adoption survey."
+        }
+      ]
+    },
+    {
+      "id": "rfc-held-012",
+      "split": "held_out",
+      "cluster_id": "json/missing-latency",
+      "doc_keys": [
+        "rfc8259",
+        "rfc7493"
+      ],
+      "query": "What is RFC 7493's exact-integer interoperability threshold, and what measured median parsing latency in milliseconds for 1-megabyte I-JSON messages is reported?",
+      "answerability": "unanswerable",
+      "gold_notes": "Only the supplied full RFC texts count. Preserve normative strength and conditions; no external facts.",
+      "requirements": [
+        {
+          "id": "rfc-held-012.r1",
+          "text": "Integers with absolute value greater than 9007199254740991 cannot be expected to be exact.",
+          "proofs": [
+            {
+              "doc_key": "rfc7493",
+              "chunk_id": "rfc7493-fulltext",
+              "quotes": [
+                "absolute value is greater than 9007199254740991",
+                "as an exact value."
+              ]
+            }
+          ],
+          "gold_notes": ""
+        },
+        {
+          "id": "rfc-held-012.r2",
+          "text": "Provide measured median 1MB-message parsing latency in milliseconds.",
+          "proofs": [],
+          "gold_notes": "Unavailable: a numeric precision threshold is not a timing benchmark."
+        }
+      ]
+    },
+    {
+      "id": "rfc-held-013",
+      "split": "held_out",
+      "cluster_id": "quic/stream-table",
+      "doc_keys": [
+        "rfc9000",
+        "rfc9001"
+      ],
+      "query": "From RFC 9000 Table 1, give the four stream-ID bit patterns with initiator/direction, then state the stream-ID width and whether reuse within a connection is allowed.",
+      "answerability": "answerable",
+      "gold_notes": "Only the supplied full RFC texts count. Preserve normative strength and conditions; no external facts.",
+      "requirements": [
+        {
+          "id": "rfc-held-013.r1",
+          "text": "Map 0x00 client-bidi, 0x01 server-bidi, 0x02 client-uni, 0x03 server-uni without dropping table columns.",
+          "proofs": [
+            {
+              "doc_key": "rfc9000",
+              "chunk_id": "rfc9000-fulltext",
+              "quotes": [
+                "| 0x00 | Client-Initiated, Bidirectional  |",
+                "| 0x01 | Server-Initiated, Bidirectional  |",
+                "| 0x02 | Client-Initiated, Unidirectional |",
+                "| 0x03 | Server-Initiated, Unidirectional |"
+              ]
+            }
+          ],
+          "gold_notes": ""
+        },
+        {
+          "id": "rfc-held-013.r2",
+          "text": "Stream ID is 62-bit 0..2^62-1 and MUST NOT be reused within a connection.",
+          "proofs": [
+            {
+              "doc_key": "rfc9000",
+              "chunk_id": "rfc9000-fulltext",
+              "quotes": [
+                "A stream ID is a 62-bit integer (0 to\n   2^62-1)",
+                "endpoint MUST NOT reuse a stream ID within a connection."
+              ]
+            }
+          ],
+          "gold_notes": ""
+        }
+      ]
+    },
+    {
+      "id": "rfc-held-014",
+      "split": "held_out",
+      "cluster_id": "quic/integer-table",
+      "doc_keys": [
+        "rfc9000",
+        "rfc9001"
+      ],
+      "query": "Reproduce the length, usable bits and range for each QUIC variable-length integer prefix in RFC 9000 Table 4, and identify the minimum-length exception and integer fields not using this encoding.",
+      "answerability": "answerable",
+      "gold_notes": "Only the supplied full RFC texts count. Preserve normative strength and conditions; no external facts.",
+      "requirements": [
+        {
+          "id": "rfc-held-014.r1",
+          "text": "Map prefixes 00/01/10/11 to 1/2/4/8 bytes, 6/14/30/62 bits and exact ranges from Table 4.",
+          "proofs": [
+            {
+              "doc_key": "rfc9000",
+              "chunk_id": "rfc9000-fulltext",
+              "quotes": [
+                "| 00   | 1      | 6           | 0-63                  |",
+                "| 01   | 2      | 14          | 0-16383               |",
+                "| 10   | 4      | 30          | 0-1073741823          |",
+                "| 11   | 8      | 62          | 0-4611686018427387903 |"
+              ]
+            }
+          ],
+          "gold_notes": ""
+        },
+        {
+          "id": "rfc-held-014.r2",
+          "text": "Minimal encoding is not required except Frame Type; versions, header packet numbers and long-header connection-ID lengths do not use it.",
+          "proofs": [
+            {
+              "doc_key": "rfc9000",
+              "chunk_id": "rfc9000-fulltext",
+              "quotes": [
+                "Values do not need to be encoded on the minimum number of bytes\n   necessary, with the sole exception of the Frame Type field;",
+                "Versions (Section 15), packet numbers sent in the header\n   (Section 17.1), and the length of connection IDs in long header\n   packets (Section 17.2) are described using integers but do not use\n   this encoding."
+              ]
+            }
+          ],
+          "gold_notes": ""
+        }
+      ]
+    },
+    {
+      "id": "rfc-held-015",
+      "split": "held_out",
+      "cluster_id": "quic/anti-amplification",
+      "doc_keys": [
+        "rfc9000",
+        "rfc9001"
+      ],
+      "query": "Combine RFC 9000's pre-validation byte limit with RFC 9001's explanation of certificate-chain size, and state the client Initial UDP-payload minimum.",
+      "answerability": "answerable",
+      "gold_notes": "Only the supplied full RFC texts count. Preserve normative strength and conditions; no external facts.",
+      "requirements": [
+        {
+          "id": "rfc-held-015.r1",
+          "text": "Before validation server MUST NOT send over 3 times received bytes; client Initial UDP payload MUST be >=1200 bytes with padding.",
+          "proofs": [
+            {
+              "doc_key": "rfc9000",
+              "chunk_id": "rfc9000-fulltext",
+              "quotes": [
+                "servers MUST NOT send more\n   than three times as many bytes as the number of bytes they have\n   received.",
+                "Clients MUST ensure that UDP datagrams containing Initial packets\n   have UDP payloads of at least 1200 bytes, adding PADDING frames as\n   necessary."
+              ]
+            }
+          ],
+          "gold_notes": ""
+        },
+        {
+          "id": "rfc-held-015.r2",
+          "text": "Certificate chains consume bytes and size control is critical because server is limited to 3 bytes per received byte before validation.",
+          "proofs": [
+            {
+              "doc_key": "rfc9001",
+              "chunk_id": "rfc9001-fulltext",
+              "quotes": [
+                "the size of the certificate chain can consume a large number of\n      |  bytes.",
+                "servers are limited to sending 3\n      |  bytes for every byte received prior to validating the client\n      |  address;"
+              ]
+            }
+          ],
+          "gold_notes": ""
+        }
+      ]
+    },
+    {
+      "id": "rfc-held-016",
+      "split": "held_out",
+      "cluster_id": "quic/idle-timeout",
+      "doc_keys": [
+        "rfc9000",
+        "rfc9001"
+      ],
+      "query": "According to RFC 9000, give max_idle_timeout's unit, how two advertised values or a sole nonzero value determine the effective timeout, the PTO floor, and the both-zero/omitted case.",
+      "answerability": "answerable",
+      "gold_notes": "Only the supplied full RFC texts count. Preserve normative strength and conditions; no external facts.",
+      "requirements": [
+        {
+          "id": "rfc-held-016.r1",
+          "text": "max_idle_timeout is in milliseconds; disabled if both omit or set zero.",
+          "proofs": [
+            {
+              "doc_key": "rfc9000",
+              "chunk_id": "rfc9000-fulltext",
+              "quotes": [
+                "The maximum idle timeout is a value in\n      milliseconds",
+                "Idle timeout is disabled when both endpoints omit this transport\n      parameter or specify a value of 0."
+              ]
+            }
+          ],
+          "gold_notes": ""
+        },
+        {
+          "id": "rfc-held-016.r2",
+          "text": "Use minimum of two advertised values or sole nonzero value, with period >=3 times current PTO.",
+          "proofs": [
+            {
+              "doc_key": "rfc9000",
+              "chunk_id": "rfc9000-fulltext",
+              "quotes": [
+                "minimum of the two advertised\n   values (or the sole advertised value, if only one endpoint advertises\n   a non-zero value).",
+                "increase the idle timeout period to be at least three times the\n   current Probe Timeout (PTO)."
+              ]
+            }
+          ],
+          "gold_notes": ""
+        }
+      ]
+    },
+    {
+      "id": "rfc-held-017",
+      "split": "held_out",
+      "cluster_id": "quic/ack-delay",
+      "doc_keys": [
+        "rfc9000",
+        "rfc9001"
+      ],
+      "query": "Compare RFC 9000 ack_delay_exponent and max_ack_delay: defaults, meaning/unit, and invalid values.",
+      "answerability": "answerable",
+      "gold_notes": "Only the supplied full RFC texts count. Preserve normative strength and conditions; no external facts.",
+      "requirements": [
+        {
+          "id": "rfc-held-017.r1",
+          "text": "Exponent defaults to 3 (multiplier8); values above20 invalid.",
+          "proofs": [
+            {
+              "doc_key": "rfc9000",
+              "chunk_id": "rfc9000-fulltext",
+              "quotes": [
+                "default value of 3 is assumed (indicating a multiplier of 8).\n      Values above 20 are invalid."
+              ]
+            }
+          ],
+          "gold_notes": ""
+        },
+        {
+          "id": "rfc-held-017.r2",
+          "text": "Max ACK delay is milliseconds, default25ms, >=2^14 invalid.",
+          "proofs": [
+            {
+              "doc_key": "rfc9000",
+              "chunk_id": "rfc9000-fulltext",
+              "quotes": [
+                "maximum amount of time in milliseconds",
+                "default of 25 milliseconds is\n      assumed.  Values of 2^14 or greater are invalid."
+              ]
+            }
+          ],
+          "gold_notes": ""
+        }
+      ]
+    },
+    {
+      "id": "rfc-held-018",
+      "split": "held_out",
+      "cluster_id": "quic/tls-versions",
+      "doc_keys": [
+        "rfc9000",
+        "rfc9001"
+      ],
+      "query": "According to RFC 9001, which older TLS versions may QUIC clients offer, what if an older version is negotiated, and under what condition may a newer version be used?",
+      "answerability": "answerable",
+      "gold_notes": "Only the supplied full RFC texts count. Preserve normative strength and conditions; no external facts.",
+      "requirements": [
+        {
+          "id": "rfc-held-018.r1",
+          "text": "Client MUST NOT offer TLS<1.3; endpoint MUST terminate if older version negotiated.",
+          "proofs": [
+            {
+              "doc_key": "rfc9001",
+              "chunk_id": "rfc9001-fulltext",
+              "quotes": [
+                "Clients MUST NOT offer TLS versions older than 1.3.",
+                "An endpoint MUST terminate the connection if a\n   version of TLS older than 1.3 is negotiated."
+              ]
+            }
+          ],
+          "gold_notes": ""
+        },
+        {
+          "id": "rfc-held-018.r2",
+          "text": "Newer TLS acceptable if it supports the TLS1.3 features QUIC uses.",
+          "proofs": [
+            {
+              "doc_key": "rfc9001",
+              "chunk_id": "rfc9001-fulltext",
+              "quotes": [
+                "acceptable provided that the features of TLS 1.3 that are used by\n   QUIC are supported by the newer version."
+              ]
+            }
+          ],
+          "gold_notes": ""
+        }
+      ]
+    },
+    {
+      "id": "rfc-held-019",
+      "split": "held_out",
+      "cluster_id": "quic/early-data-limit",
+      "doc_keys": [
+        "rfc9000",
+        "rfc9001"
+      ],
+      "query": "Using RFC 9001 and RFC 9000, explain the NewSessionTicket max_early_data_size sentinel, what actually bounds QUIC 0-RTT data, and what initial_max_data means.",
+      "answerability": "answerable",
+      "gold_notes": "Only the supplied full RFC texts count. Preserve normative strength and conditions; no external facts.",
+      "requirements": [
+        {
+          "id": "rfc-held-019.r1",
+          "text": "Sentinel is 0xffffffff, not a byte budget; initial_max_data controls QUIC 0RTT amount; absent early_data means no acceptance.",
+          "proofs": [
+            {
+              "doc_key": "rfc9001",
+              "chunk_id": "rfc9001-fulltext",
+              "quotes": [
+                "sentinel value 0xffffffff",
+                "To indicate that the server does not accept\n   0-RTT data, the early_data extension is omitted",
+                "QUIC 0-RTT is controlled by the initial_max_data transport parameter"
+              ]
+            }
+          ],
+          "gold_notes": ""
+        },
+        {
+          "id": "rfc-held-019.r2",
+          "text": "initial_max_data is initial maximum total connection data, equivalent to immediately sending MAX_DATA after handshake.",
+          "proofs": [
+            {
+              "doc_key": "rfc9000",
+              "chunk_id": "rfc9000-fulltext",
+              "quotes": [
+                "initial value for the maximum\n      amount of data that can be sent on the connection.",
+                "equivalent to sending a MAX_DATA"
+              ]
+            }
+          ],
+          "gold_notes": ""
+        }
+      ]
+    },
+    {
+      "id": "rfc-held-020",
+      "split": "held_out",
+      "cluster_id": "quic/retry-not-hrr",
+      "doc_keys": [
+        "rfc9000",
+        "rfc9001"
+      ],
+      "query": "In RFC 9001 distinguish TLS HelloRetryRequest from QUIC Retry/Version Negotiation regarding 0-RTT rejection, and state server/client obligations after rejection.",
+      "answerability": "answerable",
+      "gold_notes": "Only the supplied full RFC texts count. Preserve normative strength and conditions; no external facts.",
+      "requirements": [
+        {
+          "id": "rfc-held-020.r1",
+          "text": "HelloRetryRequest always rejects0RTT; rejecting server MUST NOT process0RTT packets.",
+          "proofs": [
+            {
+              "doc_key": "rfc9001",
+              "chunk_id": "rfc9001-fulltext",
+              "quotes": [
+                "A server will always reject 0-RTT if it sends\n   a TLS HelloRetryRequest.",
+                "When rejecting 0-RTT, a server MUST NOT\n   process any 0-RTT packets"
+              ]
+            }
+          ],
+          "gold_notes": ""
+        },
+        {
+          "id": "rfc-held-020.r2",
+          "text": "Client MUST reset streams/application-bound state after rejection; Retry/Version Negotiation do not signify rejection and client MAY reattempt.",
+          "proofs": [
+            {
+              "doc_key": "rfc9001",
+              "chunk_id": "rfc9001-fulltext",
+              "quotes": [
+                "client therefore MUST reset the state of all\n   streams, including application state bound to those streams.",
+                "A client MAY reattempt 0-RTT if it receives a Retry or Version\n   Negotiation packet.  These packets do not signify rejection of 0-RTT."
+              ]
+            }
+          ],
+          "gold_notes": ""
+        }
+      ]
+    },
+    {
+      "id": "rfc-held-021",
+      "split": "held_out",
+      "cluster_id": "quic/authentication",
+      "doc_keys": [
+        "rfc9000",
+        "rfc9001"
+      ],
+      "query": "From RFC 9001, compare client authentication of the server, server requests for client authentication during the handshake, and post-handshake client authentication.",
+      "answerability": "answerable",
+      "gold_notes": "Only the supplied full RFC texts count. Preserve normative strength and conditions; no external facts.",
+      "requirements": [
+        {
+          "id": "rfc-held-021.r1",
+          "text": "Client MUST authenticate server identity; server MAY request client authentication during handshake and refuse if unable.",
+          "proofs": [
+            {
+              "doc_key": "rfc9001",
+              "chunk_id": "rfc9001-fulltext",
+              "quotes": [
+                "A client MUST authenticate the identity of the server.",
+                "A server MAY request that the client authenticate during the\n   handshake.  A server MAY refuse a connection if the client is unable\n   to authenticate when requested."
+              ]
+            }
+          ],
+          "gold_notes": ""
+        },
+        {
+          "id": "rfc-held-021.r2",
+          "text": "Server MUST NOT use post-handshake client authentication/CertificateRequest; client treats such messages as PROTOCOL_VIOLATION.",
+          "proofs": [
+            {
+              "doc_key": "rfc9001",
+              "chunk_id": "rfc9001-fulltext",
+              "quotes": [
+                "A server MUST NOT use post-handshake client authentication",
+                "servers MUST NOT send post-\n   handshake TLS CertificateRequest messages, and clients MUST treat\n   receipt of such messages as a connection error of type\n   PROTOCOL_VIOLATION."
+              ]
+            }
+          ],
+          "gold_notes": ""
+        }
+      ]
+    },
+    {
+      "id": "rfc-held-022",
+      "split": "held_out",
+      "cluster_id": "quic/replay-entailment",
+      "doc_keys": [
+        "rfc9000",
+        "rfc9001"
+      ],
+      "query": "Why does RFC 9001's idempotent QUIC-frame processing not prove application 0-RTT is replay-safe, and what must application protocols describe?",
+      "answerability": "answerable",
+      "gold_notes": "Only the supplied full RFC texts count. Preserve normative strength and conditions; no external facts.",
+      "requirements": [
+        {
+          "id": "rfc-held-022.r1",
+          "text": "Protocol-state frame processing is idempotent, but application information may be replay-vulnerable and TLS replay protections imperfect.",
+          "proofs": [
+            {
+              "doc_key": "rfc9001",
+              "chunk_id": "rfc9001-fulltext",
+              "quotes": [
+                "QUIC is not vulnerable to replay attack, except via the application\n   protocol information it might carry.",
+                "Processing of QUIC frames is idempotent",
+                "these protections are\n   imperfect."
+              ]
+            }
+          ],
+          "gold_notes": ""
+        },
+        {
+          "id": "rfc-held-022.r2",
+          "text": "Application protocol MUST describe 0RTT use and replay-protection measures; disabling0RTT is most effective defense.",
+          "proofs": [
+            {
+              "doc_key": "rfc9001",
+              "chunk_id": "rfc9001-fulltext",
+              "quotes": [
+                "protocol that uses QUIC MUST describe how the protocol uses 0-RTT and\n   the measures that are employed to protect against replay attack.",
+                "Disabling 0-RTT entirely is the most effective defense against replay\n   attack."
+              ]
+            }
+          ],
+          "gold_notes": ""
+        }
+      ]
+    },
+    {
+      "id": "rfc-held-023",
+      "split": "held_out",
+      "cluster_id": "quic/missing-path-latency",
+      "doc_keys": [
+        "rfc9000",
+        "rfc9001"
+      ],
+      "query": "What client Initial UDP-payload minimum does RFC 9000 require, and what measured median QUIC handshake latency in milliseconds on a Shanghai-to-Beijing production path is reported by RFCs 9000/9001?",
+      "answerability": "unanswerable",
+      "gold_notes": "Only the supplied full RFC texts count. Preserve normative strength and conditions; no external facts.",
+      "requirements": [
+        {
+          "id": "rfc-held-023.r1",
+          "text": "Client Initial datagrams must have UDP payload at least1200 bytes.",
+          "proofs": [
+            {
+              "doc_key": "rfc9000",
+              "chunk_id": "rfc9000-fulltext",
+              "quotes": [
+                "Clients MUST ensure that UDP datagrams containing Initial packets\n   have UDP payloads of at least 1200 bytes"
+              ]
+            }
+          ],
+          "gold_notes": ""
+        },
+        {
+          "id": "rfc-held-023.r2",
+          "text": "Give measured median Shanghai-to-Beijing production handshake latency in milliseconds.",
+          "proofs": [],
+          "gold_notes": "Unavailable: packet-size requirements and handshake diagrams are not measurements on that path."
+        }
+      ]
+    },
+    {
+      "id": "rfc-held-024",
+      "split": "held_out",
+      "cluster_id": "quic/missing-growth",
+      "doc_keys": [
+        "rfc9000",
+        "rfc9001"
+      ],
+      "query": "What are RFC 9000's default max_udp_payload_size and minimum-valid value, and what measured year-over-year percentage growth in production QUIC throughput do RFCs 9000/9001 disclose?",
+      "answerability": "unanswerable",
+      "gold_notes": "Only the supplied full RFC texts count. Preserve normative strength and conditions; no external facts.",
+      "requirements": [
+        {
+          "id": "rfc-held-024.r1",
+          "text": "Default max_udp_payload_size is65527 bytes; values below1200 invalid.",
+          "proofs": [
+            {
+              "doc_key": "rfc9000",
+              "chunk_id": "rfc9000-fulltext",
+              "quotes": [
+                "default for this parameter is the maximum permitted UDP\n      payload of 65527.  Values below 1200 are invalid."
+              ]
+            }
+          ],
+          "gold_notes": ""
+        },
+        {
+          "id": "rfc-held-024.r2",
+          "text": "Give observed year-over-year production QUIC throughput growth percentage.",
+          "proofs": [],
+          "gold_notes": "Unavailable: byte limits and latency motivation cannot establish throughput growth."
+        }
+      ]
+    }
+  ]
+}

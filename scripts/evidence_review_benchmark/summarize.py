@@ -30,6 +30,15 @@ PRICING = {
                                "completion_tokens": 0.6},
     "interpretation": "Official daily list-rate estimate, not an invoice; all other dates are unknown.",
 }
+PRICING_VERSIONS = {
+    "2026-10-10": PRICING,
+    "2026-10-11": {
+        **PRICING, "valid_utc_date": "2026-10-11", "schedule": "Sunday, all-day off-peak",
+        "source": "https://api-docs.deepseek.com/quick_start/pricing/",
+        "verified_at": "2026-10-11",
+        "interpretation": "Official Sunday list-rate estimate, not an invoice; other dates are unknown. Independently rechecked before the new experiment; the historical price record is unchanged.",
+    },
+}
 
 
 def read_lines(path: Path) -> list[dict[str, Any]]:
@@ -80,7 +89,10 @@ def distribution(values: list[Any]) -> dict[str, Any]:
 
 def validate_schedule(
     trials: list[dict[str, Any]], gold: dict[str, Any], *, expected_questions: int = 50,
+    protocol: dict[str, Any] | None = None, split: str = "held_out",
 ) -> tuple[dict[str, dict[str, Any]], list[dict[str, Any]], list[dict[str, Any]]]:
+    if protocol is not None:
+        return validate_frozen_schedule(trials, gold, protocol, split=split)
     questions = unique_index(gold["questions"], "id", "gold question")
     held_out = {identity: question for identity, question in questions.items()
                 if question["split"] == "held_out"}
@@ -114,6 +126,50 @@ def validate_schedule(
     return held_out, selected, excluded
 
 
+def validate_frozen_schedule(trials, gold, protocol, *, split="held_out"):
+    """Use the frozen inventory, never infer a denominator from delivered trials."""
+    from runtime import digest
+    if split not in {"held_out", "development"}:
+        raise ValueError("Unknown summary split")
+    questions = unique_index(gold["questions"], "id", "gold question")
+    expected, scheduled_pairs = {}, set()
+    repeats_by_question: dict[str, set[int]] = {identity: set() for identity in questions}
+    for pair in protocol["schedule"]:
+        identity, repeat = pair["question_id"], pair["repeat"]
+        question = questions.get(identity)
+        if (question is None or question["split"] != pair["split"] or type(repeat) is not int
+                or repeat < 0 or (identity, repeat) in scheduled_pairs
+                or not isinstance(pair["order"], list) or len(pair["order"]) != 2
+                or set(pair["order"]) != set(ARMS)):
+            raise ValueError("Invalid or duplicate frozen schedule pair")
+        scheduled_pairs.add((identity, repeat))
+        repeats_by_question[identity].add(repeat)
+        for arm in pair["order"]:
+            expected[f"{identity}:{repeat}:{arm}"] = (identity, repeat, arm, pair["split"])
+    for inventory_split in {question["split"] for question in questions.values()}:
+        inventories = [repeats_by_question[identity] for identity, question in questions.items()
+                       if question["split"] == inventory_split]
+        if any(not repeats or repeats != set(range(len(repeats))) for repeats in inventories) or any(
+                repeats != inventories[0] for repeats in inventories):
+            raise ValueError("Frozen schedule must cover every inventory question with uniform contiguous repeats")
+    unique_index(trials, "id", "trial")
+    selected, excluded = [], []
+    protocol_digest = digest(protocol)
+    for trial in trials:
+        planned = expected.get(trial.get("id"))
+        actual = (trial.get("question_id"), trial.get("repeat"), trial.get("arm"), trial.get("split"))
+        if (planned is None or planned != actual or type(trial.get("repeat")) is not int
+                or trial.get("protocol_digest") != protocol_digest):
+            raise ValueError("Trial does not match the frozen inventory and protocol")
+        (selected if trial["split"] == split else excluded).append(trial)
+    expected_ids = {identity for identity, planned in expected.items() if planned[3] == split}
+    actual_ids = {trial["id"] for trial in selected}
+    if not expected_ids or actual_ids != expected_ids:
+        raise ValueError(f"Incomplete or unexpected {split} schedule: missing={len(expected_ids - actual_ids)}, extra={len(actual_ids - expected_ids)}")
+    return ({identity: question for identity, question in questions.items() if question["split"] == split},
+            selected, excluded)
+
+
 def _complete_usage(call: dict[str, Any]) -> bool:
     usage = call.get("usage")
     return (isinstance(usage, dict)
@@ -122,20 +178,20 @@ def _complete_usage(call: dict[str, Any]) -> bool:
             and usage["prompt_cache_hit_tokens"] + usage["prompt_cache_miss_tokens"] == usage["prompt_tokens"])
 
 
-def _call_cost(call: dict[str, Any]) -> float | None:
-    if not _complete_usage(call) or call.get("returned_model") != PRICING["model"]:
+def _call_cost(call: dict[str, Any], pricing: dict[str, Any] = PRICING) -> float | None:
+    if not _complete_usage(call) or call.get("returned_model") != pricing["model"]:
         return None
     try:
         started = datetime.fromisoformat(call["started_at"].replace("Z", "+00:00"))
-        if started.tzinfo is None or started.astimezone(timezone.utc).date().isoformat() != PRICING["valid_utc_date"]:
+        if started.tzinfo is None or started.astimezone(timezone.utc).date().isoformat() != pricing["valid_utc_date"]:
             return None
     except (KeyError, TypeError, ValueError, AttributeError):
         return None
     return sum(call["usage"][field] * rate / 1_000_000
-               for field, rate in PRICING["usd_per_million_tokens"].items())
+               for field, rate in pricing["usd_per_million_tokens"].items())
 
 
-def provider_metrics(records: list[dict[str, Any]]) -> dict[str, Any]:
+def provider_metrics(records: list[dict[str, Any]], pricing: dict[str, Any] = PRICING) -> dict[str, Any]:
     """Count every captured request, including retries; missing usage is not zero."""
     calls = [call for record in records for call in record.get("provider_calls", [])]
     flags = [record.get("provider_usage", {}).get("usage_complete") is True for record in records]
@@ -149,7 +205,7 @@ def provider_metrics(records: list[dict[str, Any]]) -> dict[str, Any]:
                for field in TOKEN_FIELDS}
     complete_calls = sum(_complete_usage(call) for call in calls)
     complete = all(flags) and complete_calls == len(calls)
-    costs = [_call_cost(call) for call in calls]
+    costs = [_call_cost(call, pricing) for call in calls]
     cost_complete = complete and all(cost is not None for cost in costs)
     return {
         "record_count": len(records), "calls": len(calls),
@@ -168,7 +224,7 @@ def provider_metrics(records: list[dict[str, Any]]) -> dict[str, Any]:
         "unknown_cost_calls": sum(cost is None for cost in costs),
         "cost_complete": cost_complete,
         "list_rate_estimate_usd": sum(costs) if cost_complete else None,
-        "pricing": PRICING,
+        "pricing": pricing,
     }
 
 
@@ -354,7 +410,7 @@ def _rescues(rows: list[dict[str, Any]]) -> dict[str, Any] | None:
     }
 
 
-def arm_summary(rows: list[dict[str, Any]]) -> dict[str, Any]:
+def arm_summary(rows: list[dict[str, Any]], pricing: dict[str, Any] = PRICING) -> dict[str, Any]:
     answerable = [row for row in rows if row["answerability"] == "answerable"]
     finished = [row for row in rows if row["stop_reason"] == "finished" and not row["delivery_error"]]
     return {
@@ -374,7 +430,7 @@ def arm_summary(rows: list[dict[str, Any]]) -> dict[str, Any]:
         "latency_ms": distribution([row["duration_ms"] for row in rows]),
         "episodes_over_180_seconds": sum(number(row["duration_ms"]) and row["duration_ms"] > 180_000 for row in rows),
         "episodes_over_210_seconds": sum(number(row["duration_ms"]) and row["duration_ms"] > 210_000 for row in rows),
-        "provider": provider_metrics([row["trial"] for row in rows]),
+        "provider": provider_metrics([row["trial"] for row in rows], pricing),
     }
 
 
@@ -409,8 +465,8 @@ def paired_metrics(rows: list[dict[str, Any]]) -> dict[str, Any]:
     return result
 
 
-def group_summary(rows: list[dict[str, Any]]) -> dict[str, Any]:
-    arms = {arm: arm_summary([row for row in rows if row["arm"] == arm]) for arm in ARMS}
+def group_summary(rows: list[dict[str, Any]], pricing: dict[str, Any] = PRICING) -> dict[str, Any]:
+    arms = {arm: arm_summary([row for row in rows if row["arm"] == arm], pricing) for arm in ARMS}
     base, reviewed = (arms[arm]["all_scheduled"] for arm in ARMS)
     gain = (reviewed["confirmed_delivered_sufficient"] - base["confirmed_delivered_sufficient"]
             if not base["unknown_delivered_sufficiency"] and not reviewed["unknown_delivered_sufficiency"] else None)
@@ -458,19 +514,93 @@ def markdown(summary: dict[str, Any]) -> str:
               "Costs are list-rate estimates, not bills. Only calls dated 2026-10-10 UTC use the Saturday off-peak rates: USD 0.003 per million cached input tokens, 0.15 per million uncached input tokens, and 0.6 per million output tokens. Missing usage or other dates leave total cost unknown; observed cache hits and misses are retained separately in summary.json.", "",
               "The corpus is deterministic text derived from four checked-in documents. Both arms receive the known document scope. This tests the production retrieval core and tools on PGlite; it does not measure PDF/image understanding, document discovery, HTTP/API workers, native PostgreSQL concurrency or production traffic. The judge uses a separate blind prompt and frozen gold, but shares the DeepSeek model family with the agent, so correlated errors remain possible. Literal quote coverage is not semantic correctness.", "",
               "Equal initial production budgets do not imply identical hard execution ceilings: legacy baseline forced finishes/retries and actual overruns are retained. Development infrastructure failures and synthetic calibration are excluded from held-out benefit metrics. Detailed stops, errors, steps, latency, unknowns, source-mapping limitations, question-level paired deltas and provider accounting are in summary.json.", ""]
+    if summary["schema_version"].endswith("/2"):
+        validation = summary["validation"]
+        split = validation["split"]
+        lines[0] = f"# Frozen {split} evidence-review results"
+        lines[2] = (f"Descriptive results for {validation['expected_questions']} frozen {split} questions, "
+                    f"{validation['repeats']} repeats and two arms ({validation['expected_episodes']} episodes). "
+                    f"Repeats are averaged within questions. There are {summary['inference']['held_out_document_families']} "
+                    "document families; no population significance claim or p-value is made.")
+        for index, line in enumerate(lines):
+            if line.startswith("Costs are list-rate"):
+                pricing = summary["overall"]["arms"]["baseline"]["provider"]["pricing"]
+                lines[index] = (f"Costs are list-rate estimates, not bills. The separately versioned {pricing['valid_utc_date']} UTC "
+                                f"price record ({pricing['schedule']}) applies only to matching dated calls. "
+                                "Missing usage or other dates leave the total cost unknown. Offline scoring is separate.")
+            elif line.startswith("The corpus is deterministic"):
+                lines[index] = ("The corpus mechanically covers the full frozen source documents; it is not selected by gold answers. "
+                                "Both arms receive the same known document scope. This tests the production retrieval core on PGlite, "
+                                "not visual parsing, HTTP workers, native PostgreSQL concurrency or production traffic. The separate "
+                                "blind judge shares the DeepSeek model family, so correlated errors remain possible. Literal span recall "
+                                "is not semantic correctness; normative text is not a production-traffic sample.")
+            elif line.startswith("Equal initial production"):
+                lines[index] = ("Both arms use the frozen resource intervention: " + summary["resources"]["interpretation"] +
+                                " This is not directly comparable with historical 15-step/non-thinking results. "
+                                "Development and infrastructure failures are retained separately from held-out benefit metrics.")
+        lines = [line.replace("All held-out", "All " + split) for line in lines]
     return "\n".join(lines)
 
 
 def summarize(args: argparse.Namespace) -> dict[str, Any]:
     from score import negative_control_passed
     gold = json.loads(args.gold.read_text())
+    protocol_path = getattr(args, "protocol", None)
+    protocol = json.loads(protocol_path.read_text()) if protocol_path else None
+    split = getattr(args, "split", "held_out")
+    pricing = PRICING_VERSIONS[getattr(args, "pricing_date", "2026-10-10")]
+    if protocol and protocol["gold_sha256"] != hashlib.sha256(args.gold.read_bytes()).hexdigest():
+        raise ValueError("Summary gold differs from the frozen protocol")
     raw_trials = [trial for path in args.trials for trial in read_lines(path)]
-    questions, trials, excluded = validate_schedule(raw_trials, gold)
+    questions, trials, excluded = validate_schedule(raw_trials, gold, protocol=protocol, split=split)
     paths = {name: args.assessments / name for name in
              ("trial-packets.jsonl", "blind-packets.jsonl", "assessments.jsonl")}
     mappings = unique_index(read_lines(paths["trial-packets.jsonl"]), "trial_id", "packet mapping")
     packets = unique_index(read_lines(paths["blind-packets.jsonl"]), "packet_sha256", "blind packet")
     assessments = unique_index(read_lines(paths["assessments.jsonl"]), "id", "assessment")
+    if protocol:
+        from corpus import prepare_corpus
+        from runtime import digest
+        from score import build_blinded_packet, build_snapshot_packet, validate_semantic_assessment
+        evaluation_path = args.assessments / "evaluation-protocol.json"
+        evaluation = json.loads(evaluation_path.read_text())
+        manifest = prepare_corpus(ROOT, args.gold)
+        if (manifest["corpus_digest"] != protocol["corpus_digest"]
+                or evaluation["gold_sha256"] != protocol["gold_sha256"]
+                or evaluation["retrieval_protocol_digest"] != digest(protocol)
+                or evaluation["resources"] != protocol["resources"]
+                or evaluation["scorer_sha256"] != protocol["runtime_source_sha256"]["scripts/evidence_review_benchmark/score.py"]
+                or evaluation.get("citation_mode", "exact-quotes") != protocol.get("evaluation", {}).get("citation_mode", "exact-quotes")):
+            raise ValueError("Scoring protocol, source, or inventory differs from the frozen experiment")
+        for identity, packet in packets.items():
+            unhashed = {key: value for key, value in packet.items() if key != "packet_sha256"}
+            encoded = json.dumps(unhashed, sort_keys=True, ensure_ascii=False, separators=(",", ":")).encode()
+            if identity != hashlib.sha256(encoded).hexdigest():
+                raise ValueError("Blind packet digest mismatch")
+        for identity, assessment in assessments.items():
+            if identity in packets and assessment.get("input_digest") != digest(packets[identity]):
+                raise ValueError("Assessment input digest does not match the blinded packet")
+        for trial in trials:
+            question = questions[trial["question_id"]]
+            mapping = mappings.get(trial["id"], {})
+            final = build_blinded_packet(trial, question, manifest)
+            if packets.get(mapping.get("final_packet")) != final:
+                raise ValueError("Final blind packet differs from the actual returned evidence")
+            if mapping.get("first_packet"):
+                first = build_snapshot_packet(trial["snapshots"][0], question, manifest)
+                if packets.get(mapping["first_packet"]) != first:
+                    raise ValueError("First-finish packet differs from the recorded snapshot")
+        for identity, packet in packets.items():
+            semantic = assessments.get(identity, {}).get("semantic", {})
+            if semantic.get("status") == "valid":
+                judgments = [{key: requirement.get(key) for key in ("id", "status", "reason", "citations")}
+                             for requirement in semantic.get("requirements", [])]
+                for judgment in judgments:
+                    judgment["citations"] = [{key: citation.get(key) for key in ("evidence_id", "quote")}
+                                              for citation in judgment["citations"]]
+                checked = validate_semantic_assessment({"requirements": judgments}, packet["gold_requirements"], packet["evidence_items"])
+                if checked["status"] != "valid" or checked["all_supported"] != semantic.get("all_supported") or checked["semantic_coverage"] != semantic.get("semantic_coverage"):
+                    raise ValueError("Saved valid semantic score failed source/schema revalidation")
     controls = [assessments.get(f"negative-control-{index}") for index in range(3)]
     if any(record is None or record.get("negative_control") is not True
            or record.get("negative_control_passed") is not True
@@ -496,18 +626,30 @@ def summarize(args: argparse.Namespace) -> dict[str, Any]:
                       "population_significance_claim": False, "p_value": None,
                       "confidence_interval": None,
                       "interpretation": "Descriptive within-corpus paired results only; two document families cannot establish production generalization."},
-        "overall": group_summary(observations),
-        "families": {family: group_summary([row for row in observations if row["family"] == family])
+        "overall": group_summary(observations, pricing),
+        "families": {family: group_summary([row for row in observations if row["family"] == family], pricing)
                      for family in sorted({row["family"] for row in observations})},
         "offline_semantic_evaluation": {
-            "all_assessments": provider_metrics(list(assessments.values())),
-            "held_out_unique_packet_assessments": provider_metrics([assessments[identity] for identity in sorted(held_out_ids)]),
-            "negative_controls": provider_metrics([assessments[identity] for identity in sorted(control_ids)]),
-            "other_assessments": provider_metrics([record for identity, record in assessments.items() if identity not in held_out_ids | control_ids]),
+            "all_assessments": provider_metrics(list(assessments.values()), pricing),
+            "held_out_unique_packet_assessments": provider_metrics([assessments[identity] for identity in sorted(held_out_ids)], pricing),
+            "negative_controls": provider_metrics([assessments[identity] for identity in sorted(control_ids)], pricing),
+            "other_assessments": provider_metrics([record for identity, record in assessments.items() if identity not in held_out_ids | control_ids], pricing),
             "separate_from_retrieval_cost": True,
         },
         "case_audit": [{key: value for key, value in row.items() if key != "trial"} for row in observations],
     }
+    if protocol:
+        repeat_count = len({trial["repeat"] for trial in trials})
+        summary["schema_version"] = "knowhere-held-out-benefit-summary/2"
+        summary["resources"] = protocol["resources"]
+        summary["validation"].update(expected_questions=len(questions), repeats=repeat_count,
+                                     expected_episodes=len(trials), split=split,
+                                     input_sha256={str(path): hashlib.sha256(path.read_bytes()).hexdigest()
+                                                   for path in [*input_paths, protocol_path, evaluation_path]})
+        families = len(summary["families"])
+        summary["inference"].update(unit=f"Question, averaging its {repeat_count} repeats before pairing arms",
+                                   held_out_document_families=families,
+                                   interpretation=f"Descriptive within-corpus paired {split} results only; {families} document families cannot establish production generalization.")
     args.output.mkdir(parents=True, exist_ok=True)
     (args.output / "summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n")
     (args.output / "RESULTS.md").write_text(markdown(summary))
@@ -572,6 +714,9 @@ if __name__ == "__main__":
     parser.add_argument("--trials", type=Path, nargs="+")
     parser.add_argument("--assessments", type=Path)
     parser.add_argument("--gold", type=Path, default=GOLD)
+    parser.add_argument("--protocol", type=Path)
+    parser.add_argument("--split", choices=("development", "held_out"), default="held_out")
+    parser.add_argument("--pricing-date", choices=tuple(PRICING_VERSIONS), default="2026-10-10")
     parser.add_argument("--output", type=Path)
     parser.add_argument("--self-test", action="store_true")
     arguments = parser.parse_args()
