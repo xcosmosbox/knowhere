@@ -1,0 +1,145 @@
+{
+  "status": "all_prepublication_checks_passed",
+  "observed_at": "2026-10-11T21:53:08.578279+00:00",
+  "original_input_hashes_unchanged": 9,
+  "archives": [
+    {
+      "archive": "mac-development-records.tar.gz",
+      "manifest": "mac-development-records.manifest.json",
+      "manifest_sha256": "96740332b9c6c15ccfdc0d0f1b1c4e511fd6bd318d57ecb1debb86bfa942bf72",
+      "sha256": "a2b8dbde80d9a62df2ac07bfe255b4365854c7ed776a042f7e7cfa8d52cdc827",
+      "bytes": 313170,
+      "entries": 34,
+      "verified": true,
+      "private_material_checks_passed": true
+    },
+    {
+      "archive": "mac-heldout-records.tar.gz",
+      "manifest": "mac-heldout-records.manifest.json",
+      "manifest_sha256": "9e9dfbb03f4ecc95966d31cac0fa3f68c872b6449fa0b75a334755d2250063ec",
+      "sha256": "2d41a923707a48e5a0b66115f0af4b72de61a6b16a3941874fee15ba62507f5b",
+      "bytes": 9453657,
+      "entries": 31,
+      "verified": true,
+      "private_material_checks_passed": true
+    },
+    {
+      "archive": "mac-native-tokenizer.tar.gz",
+      "manifest": "mac-native-tokenizer.manifest.json",
+      "manifest_sha256": "17ebcc4f0c2d6e191c1f3321171f3dac6ce1ce13f2b79d5831f6e996a1416b02",
+      "sha256": "7a8681814274e26c09d3a33bc7e1de170dee55e5e4d5d30fec0d1cba7943963a",
+      "bytes": 98061,
+      "entries": 4,
+      "verified": true,
+      "private_material_checks_passed": true
+    },
+    {
+      "archive": "mac-release-evidence.tar.gz",
+      "manifest": "mac-release-evidence.manifest.json",
+      "manifest_sha256": "1fd0ae201bfc31db833f2c20572bede2b0eb0efb6ac8c934458b66325ce37b72",
+      "sha256": "a0a031ccbf35f2761d8bb97c00aa95964549fd561340f78e180a195ec7794b51",
+      "bytes": 82011,
+      "entries": 31,
+      "verified": true,
+      "private_material_checks_passed": true
+    },
+    {
+      "archive": "mac-restoration-records.tar.gz",
+      "manifest": "mac-restoration-records.manifest.json",
+      "manifest_sha256": "4d36cf6ea130560b2738bbcbfb4973d1c4b00c013847e7e5658d1e1e9ac5acff",
+      "sha256": "8622585e34586d09b26df61dc3d0650c55424d2a7a83278ee7e95af180e165b9",
+      "bytes": 164511,
+      "entries": 28,
+      "verified": true,
+      "private_material_checks_passed": true
+    },
+    {
+      "archive": "mac-validation-records.tar.gz",
+      "manifest": "mac-validation-records.manifest.json",
+      "manifest_sha256": "952ff1625e0fe96d70e11f96f1da96ba832e738316a90cc3abac162325d02bec",
+      "sha256": "95c2c1b7efa01de4449a34f36915f1bc51ee240428eb395e05def08b330ea1f8",
+      "bytes": 83802,
+      "entries": 26,
+      "verified": true,
+      "private_material_checks_passed": true
+    }
+  ],
+  "archive_members_verified": 154,
+  "public_documents_and_sidecars": [
+    {
+      "file": "BENEFIT_REPORT.md",
+      "sha256": "222b9d7bdbf8efcb2a9ed23d25c702b9ae9803a8fc83b4455cf3c4c71ebb8805"
+    },
+    {
+      "file": "EXPERIMENT_CONTRACT.md",
+      "sha256": "7482b67bc5bb87d8a66938b4d974c9729fbd9b727282025627e05a931f432732"
+    },
+    {
+      "file": "MAC_TAKEOVER.md",
+      "sha256": "f27cdcc543554151ddc3d92b2a4977e9383ebbb4a9db05b4d1324013dd9c534a"
+    },
+    {
+      "file": "PR_BODY.md",
+      "sha256": "b8ee0d997e16b22c1e1577263ea882d782320e71857ce7067420536474b18712"
+    },
+    {
+      "file": "RELEASE_VERIFICATION.md",
+      "sha256": "fea955c66e6ce31a1dfd6bc2fb3f525bba6818949d9fbb20637493c6ce3dba66"
+    },
+    {
+      "file": "REPRODUCE.md",
+      "sha256": "4e318551a9f2b4ededcf470f59c0156e27526e14b0b908fb68bb3ce855992e6f"
+    },
+    {
+      "file": "mac-development-records.manifest.json",
+      "sha256": "96740332b9c6c15ccfdc0d0f1b1c4e511fd6bd318d57ecb1debb86bfa942bf72"
+    },
+    {
+      "file": "mac-heldout-records.manifest.json",
+      "sha256": "9e9dfbb03f4ecc95966d31cac0fa3f68c872b6449fa0b75a334755d2250063ec"
+    },
+    {
+      "file": "mac-native-tokenizer.manifest.json",
+      "sha256": "17ebcc4f0c2d6e191c1f3321171f3dac6ce1ce13f2b79d5831f6e996a1416b02"
+    },
+    {
+      "file": "mac-publication-scan-classification.json",
+      "sha256": "580dd7ce67c1e79c45ae665b7b1cd009bef8208dd9f9cadbdad05e370c8f19ff"
+    },
+    {
+      "file": "mac-publication-scan.json",
+      "sha256": "772cdf83eaf424ff37e108d8036212b21c14ecbb7758ac62c4c097a8e283bcde"
+    },
+    {
+      "file": "mac-release-evidence.manifest.json",
+      "sha256": "1fd0ae201bfc31db833f2c20572bede2b0eb0efb6ac8c934458b66325ce37b72"
+    },
+    {
+      "file": "mac-release-member-verification.json",
+      "sha256": "d8dcbdcdbe61dd9f360476863ac5b38c8f8f918a55f75edb34a533694dc79164"
+    },
+    {
+      "file": "mac-release-scan-classification.json",
+      "sha256": "7516cb391232452328c3fee76b3fd760a6763f981334178ef6df162c1c64cc06"
+    },
+    {
+      "file": "mac-release-scan.json",
+      "sha256": "50db6db8b7e2ad70af5ce4b27033ae465431070ab54c1843ec7831ca85e9ae65"
+    },
+    {
+      "file": "mac-restoration-records.manifest.json",
+      "sha256": "4d36cf6ea130560b2738bbcbfb4973d1c4b00c013847e7e5658d1e1e9ac5acff"
+    },
+    {
+      "file": "mac-validation-records.manifest.json",
+      "sha256": "952ff1625e0fe96d70e11f96f1da96ba832e738316a90cc3abac162325d02bec"
+    }
+  ],
+  "public_material_checks_passed": true,
+  "frozen_sources_and_production_unchanged": true,
+  "pr_response_body_matches_saved_final": true,
+  "raw_scanner_exit_code": 1,
+  "exact_source_hash_findings": 132,
+  "unresolved_findings": 0,
+  "scope": "Offline checks of original measurement, immutable archives and generated public sidecars; no model calls or scanner/history changes."
+}

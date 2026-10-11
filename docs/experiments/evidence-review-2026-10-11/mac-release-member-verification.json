@@ -1,0 +1,76 @@
+{
+  "status": "passed",
+  "observed_at": "2026-10-11T21:48:49.336694+00:00",
+  "archives": [
+    {
+      "archive": "mac-development-records.tar.gz",
+      "manifest": "mac-development-records.manifest.json",
+      "manifest_sha256": "96740332b9c6c15ccfdc0d0f1b1c4e511fd6bd318d57ecb1debb86bfa942bf72",
+      "sha256": "a2b8dbde80d9a62df2ac07bfe255b4365854c7ed776a042f7e7cfa8d52cdc827",
+      "bytes": 313170,
+      "entries": 34,
+      "verified": true,
+      "private_material_checks_passed": true
+    },
+    {
+      "archive": "mac-heldout-records.tar.gz",
+      "manifest": "mac-heldout-records.manifest.json",
+      "manifest_sha256": "9e9dfbb03f4ecc95966d31cac0fa3f68c872b6449fa0b75a334755d2250063ec",
+      "sha256": "2d41a923707a48e5a0b66115f0af4b72de61a6b16a3941874fee15ba62507f5b",
+      "bytes": 9453657,
+      "entries": 31,
+      "verified": true,
+      "private_material_checks_passed": true
+    },
+    {
+      "archive": "mac-native-tokenizer.tar.gz",
+      "manifest": "mac-native-tokenizer.manifest.json",
+      "manifest_sha256": "17ebcc4f0c2d6e191c1f3321171f3dac6ce1ce13f2b79d5831f6e996a1416b02",
+      "sha256": "7a8681814274e26c09d3a33bc7e1de170dee55e5e4d5d30fec0d1cba7943963a",
+      "bytes": 98061,
+      "entries": 4,
+      "verified": true,
+      "private_material_checks_passed": true
+    },
+    {
+      "archive": "mac-release-evidence.tar.gz",
+      "manifest": "mac-release-evidence.manifest.json",
+      "manifest_sha256": "1fd0ae201bfc31db833f2c20572bede2b0eb0efb6ac8c934458b66325ce37b72",
+      "sha256": "a0a031ccbf35f2761d8bb97c00aa95964549fd561340f78e180a195ec7794b51",
+      "bytes": 82011,
+      "entries": 31,
+      "verified": true,
+      "private_material_checks_passed": true
+    },
+    {
+      "archive": "mac-restoration-records.tar.gz",
+      "manifest": "mac-restoration-records.manifest.json",
+      "manifest_sha256": "4d36cf6ea130560b2738bbcbfb4973d1c4b00c013847e7e5658d1e1e9ac5acff",
+      "sha256": "8622585e34586d09b26df61dc3d0650c55424d2a7a83278ee7e95af180e165b9",
+      "bytes": 164511,
+      "entries": 28,
+      "verified": true,
+      "private_material_checks_passed": true
+    },
+    {
+      "archive": "mac-validation-records.tar.gz",
+      "manifest": "mac-validation-records.manifest.json",
+      "manifest_sha256": "952ff1625e0fe96d70e11f96f1da96ba832e738316a90cc3abac162325d02bec",
+      "sha256": "95c2c1b7efa01de4449a34f36915f1bc51ee240428eb395e05def08b330ea1f8",
+      "bytes": 83802,
+      "entries": 26,
+      "verified": true,
+      "private_material_checks_passed": true
+    }
+  ],
+  "total_entries": 154,
+  "checks": [
+    "archive size/hash",
+    "every regular member size/hash and exact manifest order",
+    "unique safe relative paths, no links/devices",
+    "no database/dependency checkout/private directory",
+    "exact existing private credential and PEM material absent",
+    "no protected private-reasoning/header fields in JSON/JSONL"
+  ],
+  "scope": "No extraction, model request, source/result mutation, scanner exemption or history change."
+}

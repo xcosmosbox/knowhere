@@ -1,0 +1,164 @@
+{
+  "archive": "mac-release-evidence.tar.gz",
+  "bytes": 82011,
+  "sha256": "a0a031ccbf35f2761d8bb97c00aa95964549fd561340f78e180a195ec7794b51",
+  "entries": [
+    {
+      "path": "mac-takeover-20261011/CONTINUATION.md",
+      "bytes": 16187,
+      "sha256": "ed17fd25d8df4e8cbd877ed06dadaa3e60d3f89f3431d71735fd20d09fb70c90"
+    },
+    {
+      "path": "mac-takeover-20261011/archive-guard-and-accounting.xml",
+      "bytes": 4670,
+      "sha256": "9850f5b4b023230efd1fa00ff2ad22d9048409159d8081fc7d84193c1fc2fda9"
+    },
+    {
+      "path": "mac-takeover-20261011/archive-helper-original-failure.log",
+      "bytes": 817,
+      "sha256": "fdeb5b5cabe6a61f79ab57efaa843d4d448b1e9b24835114dc2141814602409a"
+    },
+    {
+      "path": "mac-takeover-20261011/archive-helper-repair-observation.json",
+      "bytes": 2474,
+      "sha256": "5dedd72a8419e3af1486216096be2a9d049b8081938113bc499c155572cc9f54"
+    },
+    {
+      "path": "mac-takeover-20261011/archive-repair-checks.json",
+      "bytes": 1200,
+      "sha256": "3ebf93a7bce4e88019db1ceb5d3244c6807e445bc961e1141c3c9ae7d8f0f7a8"
+    },
+    {
+      "path": "mac-takeover-20261011/archive-scan-final-classification.json",
+      "bytes": 108806,
+      "sha256": "580dd7ce67c1e79c45ae665b7b1cd009bef8208dd9f9cadbdad05e370c8f19ff"
+    },
+    {
+      "path": "mac-takeover-20261011/archive-scan-final-documents-classification.json",
+      "bytes": 108806,
+      "sha256": "7516cb391232452328c3fee76b3fd760a6763f981334178ef6df162c1c64cc06"
+    },
+    {
+      "path": "mac-takeover-20261011/archive-scan-final-documents.json",
+      "bytes": 114937,
+      "sha256": "50db6db8b7e2ad70af5ce4b27033ae465431070ab54c1843ec7831ca85e9ae65"
+    },
+    {
+      "path": "mac-takeover-20261011/archive-scan-final.json",
+      "bytes": 114937,
+      "sha256": "772cdf83eaf424ff37e108d8036212b21c14ecbb7758ac62c4c097a8e283bcde"
+    },
+    {
+      "path": "mac-takeover-20261011/archive_records.py",
+      "bytes": 8601,
+      "sha256": "44c219f0f392afeaaa22eb1de237bdb7e340af7438c5050e7c7c993a9194c6a3"
+    },
+    {
+      "path": "mac-takeover-20261011/await_and_prepare_report.py",
+      "bytes": 4438,
+      "sha256": "0626e2dde44c3be84335cc1544dfc45edabf545152ae3c58f18375eab3beef03"
+    },
+    {
+      "path": "mac-takeover-20261011/evidence-release-observation.json",
+      "bytes": 1518,
+      "sha256": "ae2c9365828dc9e0f8eaa892524b0e84b2e1bbaf52508fd045c4e19fe05a4d31"
+    },
+    {
+      "path": "mac-takeover-20261011/failed-review-activity-observation.json",
+      "bytes": 1457,
+      "sha256": "40c668c85344d9ded627568d90e50b972c3faa15191c560d272b34d7964c466b"
+    },
+    {
+      "path": "mac-takeover-20261011/final-archive-member-verification.json",
+      "bytes": 2620,
+      "sha256": "4930bf3e3445d53bb36cab87d81351db931f509d87ad3961fbd4fc04355103d4"
+    },
+    {
+      "path": "mac-takeover-20261011/final-pr-body-verification.json",
+      "bytes": 1086,
+      "sha256": "d52299665cf4366b39942e51914cbe8b46b2f1b0eddd43bce199e9053f97454f"
+    },
+    {
+      "path": "mac-takeover-20261011/github_project_checks.py",
+      "bytes": 3954,
+      "sha256": "7af7036d9f63af5a3aaf8bf3f7cfd0b58f592be67d5de28c3ff10f4186c04466"
+    },
+    {
+      "path": "mac-takeover-20261011/heldout-report-draft/BENEFIT_REPORT.md",
+      "bytes": 6760,
+      "sha256": "2ca8165d1c8e64e3d799cdb641c5c0f6b6ce9c56c037fa836bfd24082467c74b"
+    },
+    {
+      "path": "mac-takeover-20261011/heldout-report-draft/independent-accounting.json",
+      "bytes": 111659,
+      "sha256": "8164fa67aad0d6ec217cc3f7607338231e03b5c00d229a4244c856987f2d59a0"
+    },
+    {
+      "path": "mac-takeover-20261011/heldout-source-audit.json",
+      "bytes": 43602,
+      "sha256": "fb8280b1c70d4ad9f76348de6059928a0bbff79c66b3c2888915e9ba72900de9"
+    },
+    {
+      "path": "mac-takeover-20261011/host-sleep-observation.json",
+      "bytes": 1796,
+      "sha256": "1a74c956e05febeb227e57eebdd15a369db7bf62dc7bcba67b24fe0d2c67fb9e"
+    },
+    {
+      "path": "mac-takeover-20261011/late-connection-failure-023-observation.json",
+      "bytes": 3016,
+      "sha256": "f09618db7b863a01e3d610e6027f7cadb7d5229628a80f2f02690d72044db94b"
+    },
+    {
+      "path": "mac-takeover-20261011/late-connection-failures-observation.json",
+      "bytes": 5245,
+      "sha256": "12e83721985af246f39436817b66bd8984847560cb21df3092aefb893829b0ec"
+    },
+    {
+      "path": "mac-takeover-20261011/package_release_evidence.py",
+      "bytes": 3104,
+      "sha256": "c600c9e98eec6d65da40c2e7b288b43a8bab19bbbc4989a3b45a3802f210cce7"
+    },
+    {
+      "path": "mac-takeover-20261011/pr-update-final.json",
+      "bytes": 75377,
+      "sha256": "6e948daf2e0446bfd873da94d3dc29b2ce45f98154b8f22ea3456a79eef5a3fd"
+    },
+    {
+      "path": "mac-takeover-20261011/prepare_benefit_report.py",
+      "bytes": 33590,
+      "sha256": "01a98a3e77d5ffe51b7a7d53d3208dd37ef050d3e7859fc433db845d21ee6de9"
+    },
+    {
+      "path": "mac-takeover-20261011/primary-report-review-observation.json",
+      "bytes": 2141,
+      "sha256": "8bc6f0f87d36f8d043504fb0c207aab62944c89bf6207617bed18180a8f10a1f"
+    },
+    {
+      "path": "mac-takeover-20261011/release-documents-push-observation.json",
+      "bytes": 1167,
+      "sha256": "41f91eaab3e87ac58e6b21ad99da0fb01443f844745ab095a23bef1d553a1064"
+    },
+    {
+      "path": "mac-takeover-20261011/report-preparation-events.jsonl",
+      "bytes": 252,
+      "sha256": "a74f6dbee3d2fd3edfb751e090e9d5119136607ce66ea1a8c1b8bd3a711860e9"
+    },
+    {
+      "path": "mac-takeover-20261011/test_archive_records_guard.py",
+      "bytes": 3041,
+      "sha256": "667e782bd12a36b18b61709e1aaba5e7cc55aaff6f8844265dc7ac76380bceeb"
+    },
+    {
+      "path": "mac-takeover-20261011/test_prepare_benefit_report.py",
+      "bytes": 6030,
+      "sha256": "874172f4e75e9df7fdc3beed12f75a01b437792f93796cee9fb0b6185d8d8527"
+    },
+    {
+      "path": "mac-takeover-20261011/verify_archive_members.py",
+      "bytes": 4139,
+      "sha256": "f1eb6594e78d98af264d552b86b988fdc9b77dc0ee95a11b8103db58d02662b8"
+    }
+  ],
+  "scope": "Explicit file allowlist; failed/unknown records retained; no database, dependencies, key, headers or reasoning_content.",
+  "deterministic_archive": "gzip mtime=0; sorted regular members; uid/gid/mtime=0; mode=0644; no symlinks."
+}
