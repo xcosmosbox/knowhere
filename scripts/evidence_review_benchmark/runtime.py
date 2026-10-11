@@ -96,6 +96,10 @@ class ProviderObserver:
             "transport_timeout": request.extensions.get("timeout"),
             "status": "no_response", "usage": None,
         }
+        from resources import ACTIVE_SCOPE
+        scope = ACTIVE_SCOPE.get()
+        if scope is not None and not reviewer and not semantic:
+            record["source_scope_accounting"] = scope.report()
         if reviewer:
             # Contains only the exact evidence sent to the production reviewer.
             record["review_input"] = json.loads(messages[-1]["content"])
@@ -181,6 +185,10 @@ class EpisodeObserver:
                                         pool=[asdict(candidate) for candidate in result.pool])
                 return result
             finally:
+                from resources import ACTIVE_SCOPE
+                scope = ACTIVE_SCOPE.get()
+                if scope is not None and unrestricted == "provider-max-scoped-thinking":
+                    observer.episode["source_scope_accounting"] = scope.report()
                 observer.episode.update(steps_used=budget.steps_used, tokens_used=budget.tokens_used,
                                         usage_complete=budget.usage_complete,
                                         final_max_steps=None if unrestricted else budget.max_steps,

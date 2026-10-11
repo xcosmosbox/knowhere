@@ -18,7 +18,7 @@ from dataclasses import replace
 from pathlib import Path
 from typing import Any
 
-from resources import PROFILES, resource_spec, tokenizer_identity
+from resources import PROFILES, bind_scope, resource_spec, tokenizer_identity
 
 from runtime import (MODEL, ROOT, EpisodeObserver, ProviderObserver, digest,
                      prepare_environment, provider_override, usage_summary, utc_now)
@@ -104,7 +104,7 @@ async def retrieve(question: dict[str, Any], manifest: dict[str, Any], enabled: 
             include_document_ids=scoped, use_agentic=True, review_evidence=enabled,
         )
         context = request.build_route_context()
-        with CorpusRevisionContext.bind(pins):
+        with CorpusRevisionContext.bind(pins), bind_scope(manifest, scoped):
             outcome = await run_retrieval_route(replace(context, revision_pins=pins))
         return await project_public_retrieval_response(outcome.response)
 
@@ -190,6 +190,28 @@ def production_budget_within_bounds(
     return False
 
 
+def scope_receipts_valid(scope: Any, units: dict[tuple[str, str], str]) -> bool:
+    """Validate recorded read ownership, exact frozen hashes and completeness."""
+    if not isinstance(scope, dict) or not units:
+        return False
+    receipts = scope.get("read_units")
+    count = scope.get("exact_full_reads")
+    if (type(scope.get("source_units")) is not int or scope["source_units"] != len(units)
+            or type(count) is not int or not 0 <= count <= len(units)
+            or not isinstance(receipts, list) or count != len(receipts)):
+        return False
+    read = set()
+    for row in receipts:
+        if not isinstance(row, dict):
+            return False
+        key = (row.get("document_id"), row.get("chunk_id"))
+        if (not all(isinstance(value, str) for value in key) or key not in units or key in read
+                or row.get("content_sha256") != units[key]):
+            return False
+        read.add(key)
+    return scope.get("all_scoped_text_read") is (read == units.keys())
+
+
 async def run_trial(question: dict[str, Any], manifest: dict[str, Any], scheduled: dict[str, Any],
                     arm: str, provider: ProviderObserver, protocol_digest: str,
                     resource_profile: str = "production") -> dict[str, Any]:
@@ -248,6 +270,12 @@ async def run_trial(question: dict[str, Any], manifest: dict[str, Any], schedule
                     and all(value is None for value in call["transport_timeout"].values())
                     for call in result["provider_calls"])
         )
+        if spec["closed_source_scope_feedback"]:
+            units = {(doc["document_id"], chunk["chunk_id"]): hashlib.sha256(chunk["content"].encode()).hexdigest()
+                     for doc in manifest["documents"] if doc["doc_key"] in question["doc_keys"]
+                     for chunk in doc["chunks"] if chunk["type"] == "text"}
+            result["gates"]["closed_source_scope_verified"] = scope_receipts_valid(
+                episode.get("source_scope_accounting"), units)
     return result
 
 

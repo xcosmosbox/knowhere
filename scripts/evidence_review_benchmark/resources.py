@@ -8,10 +8,13 @@ not a strategy of retrying until a desired verdict. Source/schema checks remain.
 from __future__ import annotations
 
 import hashlib
+import json
 import math
 import os
 import sys
-from contextlib import ExitStack
+from contextlib import ExitStack, contextmanager
+from contextvars import ContextVar
+from dataclasses import dataclass, field
 from pathlib import Path
 from types import SimpleNamespace
 from typing import Any
@@ -19,8 +22,77 @@ from unittest.mock import patch
 
 from runtime import BASE_URL, MODEL
 
-PROFILES = ("production", "provider-max-thinking", "provider-max-nonthinking")
+PROFILES = ("production", "provider-max-thinking", "provider-max-nonthinking", "provider-max-scoped-thinking")
 PROVIDER_MAX_TOKENS = 393216
+
+
+@dataclass
+class ScopeProgress:
+    """Closed request scope and verified full reads, never gold or sufficiency."""
+    documents: list[dict[str, Any]]
+    expected: dict[tuple[str, str], str]
+    read: set[tuple[str, str]] = field(default_factory=set)
+
+    def observe_read(self, result: Any) -> None:
+        if result.error or not isinstance(result.payload, dict):
+            return
+        rows = result.payload.get("chunks", [])
+        if not isinstance(rows, list) or not isinstance(result.text, str):
+            return
+        for row in rows:
+            if not isinstance(row, dict):
+                continue
+            key = (row.get("document_id"), row.get("chunk_id"))
+            if not all(isinstance(value, str) for value in key):
+                continue
+            if (key in self.expected and row.get("content") == self.expected[key]
+                    and self.expected[key] in result.text):
+                self.read.add(key)
+
+    def report(self) -> dict[str, Any]:
+        return {"source_units": len(self.expected), "exact_full_reads": len(self.read),
+                "all_scoped_text_read": bool(self.expected) and self.read == self.expected.keys(),
+                "read_units": [{"document_id": doc, "chunk_id": chunk,
+                                "content_sha256": hashlib.sha256(self.expected[(doc, chunk)].encode()).hexdigest()}
+                               for doc, chunk in sorted(self.read)],
+                "scope": "Published text units in the existing include_document_ids scope; no gold fields, search snippets or picked-evidence sufficiency used."}
+
+    def instruction(self) -> str:
+        report = self.report()
+        content = ("Experimental closed source scope (tools enforce the same scope): " + json.dumps(self.documents) +
+                   f"\nExact full source units successfully read: {len(self.read)}/{len(self.expected)}. "
+                   "There is no preset step, time or token-saving budget. A requested fact may be unavailable; "
+                   "collect the actual supporting evidence and leave gaps unresolved, rather than assuming every requested fact exists. "
+                   "If relevant searches cannot resolve a requirement, use the real outline/read tools to inspect remaining scoped text instead of repeating the same searches. "
+                   "Only your picked evidence is delivered. Read completeness is not picked evidence or semantic sufficiency.")
+        if report["all_scoped_text_read"]:
+            content += ("\nSOURCE_SCOPE_EXHAUSTED: every text unit in the entire permitted source scope has been fully read. "
+                        "After the mandatory pick phase, call finish with the existing picked evidence even if a requested fact remains missing. "
+                        "There is no unread permitted text to discover; repeating searches cannot create a missing fact. "
+                        "This is source exhaustion, not a claim that every query requirement is satisfied.")
+        return content
+
+
+ACTIVE_SCOPE: ContextVar[ScopeProgress | None] = ContextVar("benchmark_closed_scope", default=None)
+
+
+@contextmanager
+def bind_scope(manifest: dict[str, Any], document_ids: list[str]):
+    if not document_ids or len(document_ids) != len(set(document_ids)):
+        raise ValueError("Scope must contain unique frozen document IDs")
+    documents = [doc for doc in manifest["documents"] if doc["document_id"] in document_ids]
+    if len(documents) != len(set(document_ids)):
+        raise ValueError("Scope is not an exact subset of the frozen manifest")
+    progress = ScopeProgress(
+        [{"document_id": doc["document_id"], "source_file_name": doc["source_file_name"],
+          "published_text_units": sum(chunk["type"] == "text" for chunk in doc["chunks"])} for doc in documents],
+        {(doc["document_id"], chunk["chunk_id"]): chunk["content"] for doc in documents
+         for chunk in doc["chunks"] if chunk["type"] == "text"})
+    token = ACTIVE_SCOPE.set(progress)
+    try:
+        yield progress
+    finally:
+        ACTIVE_SCOPE.reset(token)
 
 
 def resource_spec(profile: str) -> dict[str, Any]:
@@ -38,9 +110,11 @@ def resource_spec(profile: str) -> dict[str, Any]:
             "completion_tokens": PROVIDER_MAX_TOKENS,
             "scorer_completion_tokens": PROVIDER_MAX_TOKENS, "review_seconds": None,
             "correction_steps": None, "monetary_budget": None,
+            "review_input_bytes": None, "review_assessment_bytes": None, "resolved_citation_bytes": None,
+            "closed_source_scope_feedback": profile == "provider-max-scoped-thinking",
             "thinking_tool_choice_policy": "Thinking mode rejects named/required choices. A sole named pick tool uses auto; production pick validation and read/pick permissions remain unchanged. Non-thinking keeps the native named choice.",
             "source": "https://api-docs.deepseek.com/api/create-chat-completion",
-            "interpretation": "Explicit experimental resource intervention; not production defaults or historical 15-step results. null means no local limit. Natural finish/error/cancellation ends an episode; failed or invalid calls are not retried."}
+            "interpretation": "Explicit experimental resource intervention; not production defaults or historical 15-step results. null means no local resource limit. Scoped profile additionally reports the full permitted document inventory and exact full-read completeness to both arms; no gold facts, forced verdict, step/time limit or synthetic tool response. Natural finish/error/cancellation ends an episode; failed or invalid calls are not retried."}
 
 
 def tokenizer_identity() -> dict[str, Any]:
@@ -149,6 +223,28 @@ def install(profile: str) -> ExitStack:
     stack.enter_context(patch.object(review, "MAX_CORRECTION_STEPS", sys.maxsize))
     stack.enter_context(patch.object(review, "MAX_REVIEW_OUTPUT_TOKENS", PROVIDER_MAX_TOKENS))
     stack.enter_context(patch.object(review, "MAX_REVIEW_INPUT_BYTES", sys.maxsize))
+    stack.enter_context(patch.object(review, "MAX_REVIEW_ASSESSMENT_BYTES", sys.maxsize))
+    stack.enter_context(patch.object(review, "MAX_REVIEW_CITATION_BYTES", sys.maxsize))
     stack.enter_context(patch.object(review, "_SYSTEM_PROMPT", review._SYSTEM_PROMPT.replace(
-        "Keep the response within 1024 tokens.", "Return the complete required JSON schema.")))
+        "Keep the response within 1024 tokens.", "Return the complete required JSON schema.").replace(
+        "The total reconstructed citation text must not exceed 16384 UTF-8 bytes; select concise supporting ranges and avoid repeating long passages. ", "")))
+    if profile == "provider-max-scoped-thinking":
+        original_dispatch = harness.dispatch_tool_call
+        original_compose = harness._compose_user_content
+
+        async def observe_dispatch(name, args, **kwargs):
+            result = await original_dispatch(name, args, **kwargs)
+            scope = ACTIVE_SCOPE.get()
+            if scope is not None and name == "corpus.read":
+                scope.observe_read(result)
+            return result
+
+        def compose(**kwargs):
+            scope = ACTIVE_SCOPE.get()
+            if scope is None:
+                raise ValueError("Scoped resource profile requires a frozen request scope")
+            return original_compose(**kwargs) + "\n\n" + scope.instruction()
+
+        stack.enter_context(patch.object(harness, "dispatch_tool_call", observe_dispatch))
+        stack.enter_context(patch.object(harness, "_compose_user_content", compose))
     return stack

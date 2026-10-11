@@ -13,7 +13,7 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from run import production_budget_within_bounds  # noqa: E402
+from run import production_budget_within_bounds, scope_receipts_valid  # noqa: E402
 from runtime import ProviderObserver, usage_summary  # noqa: E402
 
 
@@ -58,6 +58,56 @@ def test_observation_never_serializes_authorization_headers(tmp_path: Path) -> N
 def test_missing_or_partial_usage_cannot_be_reported_as_complete_zero_cost() -> None:
     assert usage_summary([{"usage": None}])["complete_tokens"] is None
     assert usage_summary([{"usage": {"total_tokens": 10}}])["usage_complete"] is False
+
+
+def test_verified_scope_read_receipts_survive_the_provider_start_journal(tmp_path: Path) -> None:
+    from resources import bind_scope
+    from shared.services.retrieval.agent_tools import ToolResult
+    manifest = {"documents": [{"document_id": "D", "source_file_name": "source.txt",
+                              "chunks": [{"chunk_id": "C", "type": "text", "content": "complete body"}]}]}
+    observer = ProviderObserver(tmp_path / "events.jsonl")
+    with bind_scope(manifest, ["D"]) as scope:
+        scope.observe_read(ToolResult(text="complete body", payload={"chunks": [
+            {"document_id": "D", "chunk_id": "C", "content": "complete body"}]}))
+        observer.request(request())
+    receipt = json.loads((tmp_path / "events.jsonl").read_text())["source_scope_accounting"]
+    assert receipt["source_units"] == receipt["exact_full_reads"] == 1
+    assert receipt["all_scoped_text_read"] is True
+    assert receipt["read_units"][0]["document_id"] == "D"
+    assert len(receipt["read_units"][0]["content_sha256"]) == 64
+    assert "complete body" not in (tmp_path / "events.jsonl").read_text()
+
+
+@pytest.mark.parametrize("receipts,complete", [([], False),
+    ([{"document_id": "D", "chunk_id": "C", "content_sha256": "sha"}], True)])
+def test_scope_gate_accepts_exact_frozen_receipts_including_partial_scope(receipts, complete):
+    scope = {"source_units": 1, "exact_full_reads": len(receipts), "read_units": receipts,
+             "all_scoped_text_read": complete}
+    assert scope_receipts_valid(scope, {("D", "C"): "sha"})
+
+
+@pytest.mark.parametrize("field,value", [
+    ("source_units", True), ("source_units", 2), ("exact_full_reads", True),
+    ("exact_full_reads", -1), ("exact_full_reads", 2), ("all_scoped_text_read", False),
+    ("all_scoped_text_read", 1), ("read_units", None), ("read_units", [None]),
+    ("read_units", [{"document_id": "unknown", "chunk_id": "C"}]),
+    ("read_units", [{"document_id": [], "chunk_id": "C", "content_sha256": "sha"}]),
+    ("read_units", [{"document_id": "D", "chunk_id": "C", "content_sha256": "wrong"}]),
+])
+def test_scope_gate_rejects_bad_counts_invisible_sources_and_mutated_receipts(field, value):
+    scope = {"source_units": 1, "exact_full_reads": 1, "all_scoped_text_read": True,
+             "read_units": [{"document_id": "D", "chunk_id": "C", "content_sha256": "sha"}]}
+    scope[field] = value
+    assert not scope_receipts_valid(scope, {("D", "C"): "sha"})
+
+
+def test_scope_gate_never_claims_empty_missing_or_duplicate_receipts_verified():
+    assert not scope_receipts_valid(None, {("D", "C"): "sha"})
+    assert not scope_receipts_valid({}, {})
+    duplicate = {"document_id": "D", "chunk_id": "C", "content_sha256": "sha"}
+    assert not scope_receipts_valid({"source_units": 2, "exact_full_reads": 2,
+        "all_scoped_text_read": True, "read_units": [duplicate, duplicate]},
+        {("D", "C"): "sha", ("D", "other"): "sha"})
 
 
 # Budget-relevant projections of the four original recorded gate failures.

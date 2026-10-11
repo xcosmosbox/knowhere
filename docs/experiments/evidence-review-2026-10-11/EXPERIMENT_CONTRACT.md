@@ -1,12 +1,20 @@
 # Mac continuation: frozen experiment contract
 
-This is a new resource intervention, not a rerun or replacement of the historical 300 episodes. It tests the v2 lossless citation locator under DeepSeek Flash thinking/max with provider-maximum output and no local step, time, input-size or money ceiling. Both arms use the same intervention; only `review_evidence` differs. One correction and two reviews remain the finite workflow, not a cost-saving policy. Source, permission, schema and final-fingerprint checks remain mandatory. Production defaults remain unchanged and review remains default-off.
+This is a new resource intervention, not a rerun or replacement of the historical 300 episodes. It tests the v2 lossless citation locator under DeepSeek Flash thinking/max with provider-maximum output and no local step, time, review-input/output-byte, resolved-citation-byte or money ceiling. Both arms use the same intervention; only `review_evidence` differs. One correction and two reviews remain the finite workflow, not a cost-saving policy. Source, permission, schema and final-fingerprint checks remain mandatory. Production defaults (including the quote-amplification guard) remain unchanged and review remains default-off.
 
 ## Prior evidence and attribution
 
 The old primary score was baseline 121/150 versus review 118/150, with 9/10 unknown scores. Separate posthoc sensitivity analysis produced 124/150 in both arms. Review's 84/150 `unverified` episodes comprised 48 non-exact citations, 5 reasons over 400 characters, 27 exploration step exhaustion and 4 incomplete second reviews. All 123 reviewer calls stopped normally with 176–911 output tokens: no observed 1,024-token truncation. Disabling thinking is an experimental model setting, not automatic invalidation; its causal effect is not established by those records.
 
-The new experiment changes thinking, resources and citation prompts relative to history, so a historical difference cannot isolate any one change. The within-new-run paired difference tests enabling the revised review workflow under the new configuration. It does not establish the separate benefit of thinking or compare v1 and v2 at identical resources.
+The new experiment changes thinking, resources, citation prompts and closed-scope feedback relative to history, so a historical difference cannot isolate any one change. The within-new-run paired difference tests enabling the revised review workflow under the new configuration. It does not establish the separate benefit of thinking, scope feedback or citation locators, or compare v1 and v2 at identical resources.
+
+## Explicit closed-scope development intervention
+
+The first `provider-max-thinking` development run (separate immutable directory and worktree) completed the first ten episodes, but its partly unanswerable question continued searching already-read RFC 2119 text without reaching a natural finish. It is not silently converted into a timeout, discarded, or substituted with the new run. Provider start/response records remain durable; any still-pending usage remains unknown. No held-out calls had begun when this additional intervention was selected.
+
+The new `provider-max-scoped-thinking` profile tells **both arms** the complete document IDs, filenames and text-unit counts of their existing `include_document_ids` request scope. A passive observer records a unit only after a successful real `corpus.read` returns its full frozen exact content and that content is present in the actual rendered tool text. Failed, altered, truncated, unknown-source or snippet-only results cannot count. Context-local receipts with source hashes enter the durable provider journal; read completeness is not picked-evidence sufficiency or semantic truth.
+
+If searches leave a requirement unresolved, the instruction directs the explorer to inspect remaining scoped text using the existing real tools. Only once every scoped text unit has actually been fully read does the feedback state source exhaustion and instruct the explorer to perform the mandatory pick phase and then call the existing `finish`, even if facts remain missing. It does not send a synthetic tool result, force a tool call, add unseen text, provide gold requirements/answers, relax permissions, change the user's query or manufacture a review verdict. A partial read does not trigger exhaustion. This is an explicit termination-guidance factor, not a step/time/financial budget, and must be included in any interpretation of the results.
 
 ## Inventory and fixed schedule
 
