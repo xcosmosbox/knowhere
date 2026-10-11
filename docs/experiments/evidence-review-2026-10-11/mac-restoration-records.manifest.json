@@ -1,0 +1,149 @@
+{
+  "archive": "mac-restoration-records.tar.gz",
+  "bytes": 164511,
+  "sha256": "8622585e34586d09b26df61dc3d0650c55424d2a7a83278ee7e95af180e165b9",
+  "entries": [
+    {
+      "path": "mac-takeover-20261011/audit-replay.log",
+      "bytes": 2148,
+      "sha256": "58f76e9d311538b5ba857ee9c41793caad99a3fcdc451c7477a2324d3f889023"
+    },
+    {
+      "path": "mac-takeover-20261011/blingfire-build/CMakeCache.txt",
+      "bytes": 15210,
+      "sha256": "22d1b52819cba59e0a38390d971770ef6647457bd36f88c5ad3bc533c886ca14"
+    },
+    {
+      "path": "mac-takeover-20261011/contract-contrib-environment.json",
+      "bytes": 508,
+      "sha256": "1cad0a1f057eaf372f16b125b5db40672f8ab2ef1137d550ed005837d69854bf"
+    },
+    {
+      "path": "mac-takeover-20261011/environment.json",
+      "bytes": 374,
+      "sha256": "a8ae8bb10387ff071f7e91d86a1f9cee82e5ada1a992b6f82059bb66a952e703"
+    },
+    {
+      "path": "mac-takeover-20261011/fetch_sources.py",
+      "bytes": 776,
+      "sha256": "ac6a5ad127319e97c42cee33b3731428ff9e07701c624c5eb6d9c5e5537c25cd"
+    },
+    {
+      "path": "mac-takeover-20261011/preflight-observed.json",
+      "bytes": 2516,
+      "sha256": "10a19c37aa1e8999d285b832c305e4a7fe86a80513a2028fea12ac0fc7a76b02"
+    },
+    {
+      "path": "mac-takeover-20261011/preflight.json",
+      "bytes": 2552,
+      "sha256": "e846de09daacda0acd9b09a5e5734b3a19e9689f55045848e91ea8fde4094a1c"
+    },
+    {
+      "path": "mac-takeover-20261011/prepare_contract_contrib.py",
+      "bytes": 2142,
+      "sha256": "b6a1f4340e932ac3002a8d152b9181f32c8cdec8e50b35ade3b9308d966ebab0"
+    },
+    {
+      "path": "mac-takeover-20261011/primary-recomputed/RESULTS.md",
+      "bytes": 3287,
+      "sha256": "cc959398fcea54f1d4d469a9c7826e2afad769120e1ceed7835ed0b7fcc3d152"
+    },
+    {
+      "path": "mac-takeover-20261011/primary-recomputed/summary.json",
+      "bytes": 898485,
+      "sha256": "97f52d1716e3c5f90281ba7b59d486d17c56cf8c131dabecc5c9ade793044cc9"
+    },
+    {
+      "path": "mac-takeover-20261011/primary-recomputed-dynamic-tools/RESULTS.md",
+      "bytes": 3287,
+      "sha256": "cc959398fcea54f1d4d469a9c7826e2afad769120e1ceed7835ed0b7fcc3d152"
+    },
+    {
+      "path": "mac-takeover-20261011/primary-recomputed-dynamic-tools/summary.json",
+      "bytes": 898485,
+      "sha256": "97f52d1716e3c5f90281ba7b59d486d17c56cf8c131dabecc5c9ade793044cc9"
+    },
+    {
+      "path": "mac-takeover-20261011/primary-replay.log",
+      "bytes": 168,
+      "sha256": "e18f66b91a08dde3b651d5afd8a59b65162774b0629d1aaabe988d17ecfe022f"
+    },
+    {
+      "path": "mac-takeover-20261011/provider-probe.json",
+      "bytes": 284,
+      "sha256": "ec3dd49d503bf2cd254e2e23aca35a0aebfd00fec9af082a82189cd7d49f30da"
+    },
+    {
+      "path": "mac-takeover-20261011/provider_probe.py",
+      "bytes": 1315,
+      "sha256": "ad973500e896a47502fa3aed0f769f0d675aecec4ff3188849579f96bb7c26c4"
+    },
+    {
+      "path": "mac-takeover-20261011/replay-verification.json",
+      "bytes": 6436,
+      "sha256": "f9c4b494dcc63d86da8b584f4b2159bc7fcf6530ff3f23bcee4b8b923c2bf555"
+    },
+    {
+      "path": "mac-takeover-20261011/restore.py",
+      "bytes": 7114,
+      "sha256": "3fc0f8fbe732d0a776d757d94d5549716d0222c7f0a3554cb4c9d67f5990fe2f"
+    },
+    {
+      "path": "mac-takeover-20261011/smoke/protocol.json",
+      "bytes": 88434,
+      "sha256": "0454f88359ef3e9202e806a12db64bafaea540b83879308ee249f654ea91e16c"
+    },
+    {
+      "path": "mac-takeover-20261011/smoke-provider-max/development/index-verification.json",
+      "bytes": 2314,
+      "sha256": "4c018197f64d8458971097b909c3e12cc4308a4cd9a70ada396e31a024322afc"
+    },
+    {
+      "path": "mac-takeover-20261011/smoke-provider-max/development/provider-events.jsonl",
+      "bytes": 5961,
+      "sha256": "4af3e7c0de36327b64ca004f0ec7f269af1e447c4d9f9dded0ff46b93a3ce98b"
+    },
+    {
+      "path": "mac-takeover-20261011/smoke-provider-max/development/started.jsonl",
+      "bytes": 248,
+      "sha256": "e3dbbfe8641311909a742d70d5ad99819391b627e6c74910c11675a5dbe713bc"
+    },
+    {
+      "path": "mac-takeover-20261011/smoke-provider-max/development/trials.jsonl",
+      "bytes": 5702,
+      "sha256": "6d3ce99b4a4f300379b325e8482a33843f0e138b285ed520253cc7c0e9dc49e4"
+    },
+    {
+      "path": "mac-takeover-20261011/smoke-provider-max/protocol.json",
+      "bytes": 89794,
+      "sha256": "46c5d48e067838ff029718ae472c3845ab6a430bd4ecae6eb79d3395ca20f408"
+    },
+    {
+      "path": "mac-takeover-20261011/smoke-provider-max-v2/development/index-verification.json",
+      "bytes": 2314,
+      "sha256": "4c018197f64d8458971097b909c3e12cc4308a4cd9a70ada396e31a024322afc"
+    },
+    {
+      "path": "mac-takeover-20261011/smoke-provider-max-v2/development/provider-events.jsonl",
+      "bytes": 18470,
+      "sha256": "d81998fcca48c9606716e4ae982252a9aeb1c0c5bf3cc2049ab75df115de775c"
+    },
+    {
+      "path": "mac-takeover-20261011/smoke-provider-max-v2/development/started.jsonl",
+      "bytes": 492,
+      "sha256": "2db5e9c990df15396bf2727095eb8a4ce8cfa698c1024f8425ba699cd191481b"
+    },
+    {
+      "path": "mac-takeover-20261011/smoke-provider-max-v2/development/trials.jsonl",
+      "bytes": 137311,
+      "sha256": "19943359ada7f81ffee3422d9aaae8eb44758f4971929c817a23504ac93dda7e"
+    },
+    {
+      "path": "mac-takeover-20261011/smoke-provider-max-v2/protocol.json",
+      "bytes": 89744,
+      "sha256": "fc3de03f5780fdfde7f96ce6e42879f76d0fdec68815e7bfd55e9a61c301da34"
+    }
+  ],
+  "scope": "Explicit file allowlist; failed/unknown records retained; no database, dependencies, key, headers or reasoning_content.",
+  "deterministic_archive": "gzip mtime=0; sorted regular members; uid/gid/mtime=0; mode=0644; no symlinks."
+}

@@ -1,0 +1,179 @@
+{
+  "archive": "mac-development-records.tar.gz",
+  "bytes": 313170,
+  "sha256": "a2b8dbde80d9a62df2ac07bfe255b4365854c7ed776a042f7e7cfa8d52cdc827",
+  "entries": [
+    {
+      "path": "mac-takeover-20261011/development-scoped-source-audit-v1.json",
+      "bytes": 4196,
+      "sha256": "269bf982509c8dd53d7e1e059ae87ba844631ccf9fb6574d183ec5f8d95c2143"
+    },
+    {
+      "path": "mac-takeover-20261011/development-unscoped-source-audit-v1.json",
+      "bytes": 4336,
+      "sha256": "cd024180d99cf21e490dc8d5f1a41b65b078a8719187168c7006d9dccf892a93"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-development-scoped-v2/assessments/assessments.jsonl",
+      "bytes": 105490,
+      "sha256": "a499be19466415409e6450327012bc3b6e5f5eb141a57c889b1816b448e019cd"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-development-scoped-v2/assessments/blind-packets.jsonl",
+      "bytes": 114829,
+      "sha256": "7b843f799f6f3e1db1784cfbcf9c3fcacbf90a5ed3ce1e17dde064c4dc0506a6"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-development-scoped-v2/assessments/evaluation-protocol.json",
+      "bytes": 1582,
+      "sha256": "62b9b1fa6e19f21b94a37d61f9040923ca9d81f654a89723682d5a60ee03b3a4"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-development-scoped-v2/assessments/started.jsonl",
+      "bytes": 4107,
+      "sha256": "f7a82ef0b9ee1b98d5504668232be118486fe9a56e1b44856aadc9d0ce8a589a"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-development-scoped-v2/assessments/summary.json",
+      "bytes": 909,
+      "sha256": "6bd0385485ba0a2a12da9e3d0e49e1eecc9de832415b93faf936d0b192a93b94"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-development-scoped-v2/assessments/trial-packets.jsonl",
+      "bytes": 2388,
+      "sha256": "12256331cd887bb028179aafaa97d4c401dcb71bfa33970d20771aeb795d9f10"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-development-scoped-v2/development/index-verification.json",
+      "bytes": 2688,
+      "sha256": "303cf2596ba4b477eb145f08e47e75931f1f141c2ee2a6394bb5af632b83d74e"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-development-scoped-v2/development/provider-events.jsonl",
+      "bytes": 198038,
+      "sha256": "eeea8db3b6e81c1ff8cb12741c9b09d2f9bab240ce0708ad566bb28ded601fc8"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-development-scoped-v2/development/started.jsonl",
+      "bytes": 3048,
+      "sha256": "14716ee560efca4151c911159b89ffebd8b9cc0682eb25f1d4d01a084a463d3a"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-development-scoped-v2/development/trials.jsonl",
+      "bytes": 815792,
+      "sha256": "8649536eef74fda169a134652abf57d3cab87ce4dea6aa8e8d499c516ad0b463"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-development-scoped-v2/protocol.json",
+      "bytes": 76297,
+      "sha256": "e798d45354be0252e0bddfb4664234df5b9f851b63cc7c6d254d60c39705ac2f"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-development-scoped-v2/summary/RESULTS.md",
+      "bytes": 3304,
+      "sha256": "f27e6d944e9d487d0ca55c8c3e70b018168240f07916016680c0970b6136e2f1"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-development-scoped-v2/summary/summary.json",
+      "bytes": 127132,
+      "sha256": "d459bd2867ede14258a9f2517d71baf6ea14fa550e4304b19f421639587102b2"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-development-v1/assessments/assessments.jsonl",
+      "bytes": 99711,
+      "sha256": "2026c96afd737878b65c112c1636edf2086cba35291dd6a765815bf031008b27"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-development-v1/assessments/blind-packets.jsonl",
+      "bytes": 97747,
+      "sha256": "ab1673f0f77c6c8f8186e50a0a64c07a793d60f9be631cfb4a5baba94623628a"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-development-v1/assessments/evaluation-protocol.json",
+      "bytes": 1222,
+      "sha256": "2821baacf2d197ae3621524010503bc8d449019600bbe4ea180339afd891fa5b"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-development-v1/assessments/started.jsonl",
+      "bytes": 3871,
+      "sha256": "2d4d55e619b89e888f302b89f7da414e2200a3abd03cf899b30e420c46e32012"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-development-v1/assessments/summary.json",
+      "bytes": 909,
+      "sha256": "af64e5de453c796709a452f1cc875e471d955f030df452b30ee1a4f08a394bc9"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-development-v1/assessments/trial-packets.jsonl",
+      "bytes": 2388,
+      "sha256": "838ee60318bf3ba11f4b1195937cfe5eee532d55238327f23e9087f14f1cae05"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-development-v1/development/index-verification.json",
+      "bytes": 2688,
+      "sha256": "303cf2596ba4b477eb145f08e47e75931f1f141c2ee2a6394bb5af632b83d74e"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-development-v1/development/provider-events.jsonl",
+      "bytes": 196157,
+      "sha256": "9b7fb0dc22755e951206b6cc29860d34d9be83d1c195f0c84238d0f2e679e85d"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-development-v1/development/started.jsonl",
+      "bytes": 3048,
+      "sha256": "a40f61b5bd21bad6a6c27648f3220e33a9d7950d4421e80eba19d76065bcc2b1"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-development-v1/development/trials.jsonl",
+      "bytes": 913748,
+      "sha256": "da4a337782532e9f7cbebf2a7762e58e88b8af36435b8c2ef48bd454f30231b9"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-development-v1/protocol.json",
+      "bytes": 75732,
+      "sha256": "c8b0837d5f30ff25c581552cc45bf76b9e1c75e3eaf5e1c0d878e892f54a0065"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-development-v1/scorer-negative-control/assessments.jsonl",
+      "bytes": 16203,
+      "sha256": "07acb0521f973d2731ad1d1b77ca9ffdda4ab06223c1bd7064cea05480f886ed"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-development-v1/scorer-negative-control/blind-packets.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-development-v1/scorer-negative-control/evaluation-protocol.json",
+      "bytes": 1222,
+      "sha256": "2821baacf2d197ae3621524010503bc8d449019600bbe4ea180339afd891fa5b"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-development-v1/scorer-negative-control/started.jsonl",
+      "bytes": 567,
+      "sha256": "c5680e61c64dba9b6b5aef859c7032df78294b27dfa4b86ce21f7036bdbad23f"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-development-v1/scorer-negative-control/summary.json",
+      "bytes": 892,
+      "sha256": "b4a039a0a6825e8f0ac70afe12509dcb5a54f4a699d6bd2fc605cd718b9c580b"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-development-v1/scorer-negative-control/trial-packets.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-development-v1/summary/RESULTS.md",
+      "bytes": 3103,
+      "sha256": "b999bcbfa1be4253ef782125592e3169e6401d8425153336e9e9e63328522f92"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-development-v1/summary/summary.json",
+      "bytes": 126764,
+      "sha256": "60b64d288d98e4334e71c3bc45784eb854839b11e96af6ac6f02b9059fa4bba7"
+    }
+  ],
+  "scope": "Explicit file allowlist; failed/unknown records retained; no database, dependencies, key, headers or reasoning_content.",
+  "deterministic_archive": "gzip mtime=0; sorted regular members; uid/gid/mtime=0; mode=0644; no symlinks."
+}

@@ -1,0 +1,139 @@
+{
+  "archive": "mac-validation-records.tar.gz",
+  "bytes": 83802,
+  "sha256": "95c2c1b7efa01de4449a34f36915f1bc51ee240428eb395e05def08b330ea1f8",
+  "entries": [
+    {
+      "path": "mac-takeover-20261011/PR_BODY_PENDING.md",
+      "bytes": 9150,
+      "sha256": "b8ee6b6d70af651e5222db7dde0834cd2d8b34a85065a6224b28ff3c3e2243e8"
+    },
+    {
+      "path": "mac-takeover-20261011/api-dns-baseline.xml",
+      "bytes": 3056,
+      "sha256": "e8694c0199c9da8aeb1cc17c746e19eea855bc1389c742db46d92365156d8b02"
+    },
+    {
+      "path": "mac-takeover-20261011/api-failure-isolation.xml",
+      "bytes": 3353,
+      "sha256": "82cb25672e1d4e7d98f814f5dc6b559fc74857a2532e3a8f4d2561a70daefe7d"
+    },
+    {
+      "path": "mac-takeover-20261011/api-sequential.xml",
+      "bytes": 80483,
+      "sha256": "909faccad319ab2c59d5abf37e0d9477754a62c26e13534d5d0b5625b6028254"
+    },
+    {
+      "path": "mac-takeover-20261011/benchmark-source-scoped-v3-configured.xml",
+      "bytes": 24277,
+      "sha256": "954fbe8f0a5c99a44dff820acd4b5b0ba6ee4d15c9e96fed6f837b95d0c1c717"
+    },
+    {
+      "path": "mac-takeover-20261011/benchmark-source-scoped-v3.xml",
+      "bytes": 24033,
+      "sha256": "1ecaeea357f80b3bcf84f95c3a6527c411cad0a1813ff4fbba80ce2364a2676d"
+    },
+    {
+      "path": "mac-takeover-20261011/classify_fork_history_findings.py",
+      "bytes": 2317,
+      "sha256": "b65e10fabf4e2a0e6ee0c60e5970463d0b14fa2b3566240acee753ad59228fc5"
+    },
+    {
+      "path": "mac-takeover-20261011/controlled-source-v2-adapter-fixed.json",
+      "bytes": 177549,
+      "sha256": "75196f3f979bbb7541aa7a2d9b28b4f6c7259b2a1e182c1c5fc290742a9dc665"
+    },
+    {
+      "path": "mac-takeover-20261011/controlled-source-v2.json",
+      "bytes": 155114,
+      "sha256": "fc9396538489e97768602727c44e63f7f5ab0f36b57c8207b74bcc074360df36"
+    },
+    {
+      "path": "mac-takeover-20261011/fork-gitleaks-diagnosis.json",
+      "bytes": 4771,
+      "sha256": "83a8a3ba45713f91af10b9680c021a028d21b7c6e5c00fc5545a9eadbb94a71c"
+    },
+    {
+      "path": "mac-takeover-20261011/fork-gitleaks-fingerprint-classification.json",
+      "bytes": 40315,
+      "sha256": "d1ff5a8f3deff50e474d4ce8cba0779679ec3340f868b4377275c3db9b3f88e4"
+    },
+    {
+      "path": "mac-takeover-20261011/fork-gitleaks-history-metadata.json",
+      "bytes": 29774,
+      "sha256": "cceca5092d90226fa891e8de41d9151ef8bc4407993f30836c0b866645d82091"
+    },
+    {
+      "path": "mac-takeover-20261011/github_fork_check_diagnosis.py",
+      "bytes": 4188,
+      "sha256": "1de4529c3e3b2c08e276930fd49963cbfe32abf788ee134886b8d753a45273e3"
+    },
+    {
+      "path": "mac-takeover-20261011/github_fork_history_findings.py",
+      "bytes": 5072,
+      "sha256": "02ad6d1d530b6d6d1cf168214cddf863b36918f53f4cb48e194f4abc1b2a3e38"
+    },
+    {
+      "path": "mac-takeover-20261011/github_project_checks.py",
+      "bytes": 3954,
+      "sha256": "7af7036d9f63af5a3aaf8bf3f7cfd0b58f592be67d5de28c3ff10f4186c04466"
+    },
+    {
+      "path": "mac-takeover-20261011/independent-code-review-guard-followup.events.jsonl",
+      "bytes": 1601,
+      "sha256": "2e279259641a9e9d241eac70bcc08ad3eaf36c128a96c12e7d73173749cb788e"
+    },
+    {
+      "path": "mac-takeover-20261011/independent-code-review-guard-followup.json",
+      "bytes": 9621,
+      "sha256": "219e3dd0d1a44e7ff0cc3cdfc01fe476a646dc3dfd82cdfa2dd22cc1907dcf81"
+    },
+    {
+      "path": "mac-takeover-20261011/independent-code-review-guard-followup.started.json",
+      "bytes": 892,
+      "sha256": "442928f54000009a7ddf1a8b31eec595cb605fc380a18c69fd9e6578b5590e01"
+    },
+    {
+      "path": "mac-takeover-20261011/independent-code-review.json",
+      "bytes": 8397,
+      "sha256": "8544b7a183635e6e9f9df2002f3127b0a155ea2276a55010938794f456fa7c85"
+    },
+    {
+      "path": "mac-takeover-20261011/independent_code_review.py",
+      "bytes": 5760,
+      "sha256": "6692537e54499ecbf91adfd11aeae036297462e8abb969e70e85e399540dd420"
+    },
+    {
+      "path": "mac-takeover-20261011/independent_guard_followup.py",
+      "bytes": 6874,
+      "sha256": "f32f890f4a081eef052cff3e22242e0a5c4f9294a8cba16f78ec65af8483a3ef"
+    },
+    {
+      "path": "mac-takeover-20261011/local-check-invocation-errors.json",
+      "bytes": 1410,
+      "sha256": "8f63befc58c7ec3199504fe9524b0a8d5731cdf8af4ac97966faf9f7728fa64d"
+    },
+    {
+      "path": "mac-takeover-20261011/pr-update-in-progress.json",
+      "bytes": 61113,
+      "sha256": "6b704fc65654a186230376942ed711422d058a3fb3ca130a76f3e1188ec38ad8"
+    },
+    {
+      "path": "mac-takeover-20261011/remote-checks-after-push.json",
+      "bytes": 156532,
+      "sha256": "d361cabac2ee2d88afc0478f5f9148a6d4a4a4ab2d8e42e5be5b0b472dfd795a"
+    },
+    {
+      "path": "mac-takeover-20261011/shared-source-v2.xml",
+      "bytes": 40225,
+      "sha256": "0bfca08b0b9f80a2d90c2ae513c32d211610f93ebab644a48569d77f9b44e942"
+    },
+    {
+      "path": "mac-takeover-20261011/worker-source-v2.xml",
+      "bytes": 51017,
+      "sha256": "282fcf3ad6755eaf2d10a1c75d1647ecd85aab30df3d6127df8aaec33cfe65c6"
+    }
+  ],
+  "scope": "Explicit file allowlist; failed/unknown records retained; no database, dependencies, key, headers or reasoning_content.",
+  "deterministic_archive": "gzip mtime=0; sorted regular members; uid/gid/mtime=0; mode=0644; no symlinks."
+}

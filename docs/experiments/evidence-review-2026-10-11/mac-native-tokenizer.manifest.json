@@ -1,0 +1,29 @@
+{
+  "archive": "mac-native-tokenizer.tar.gz",
+  "bytes": 98061,
+  "sha256": "7a8681814274e26c09d3a33bc7e1de170dee55e5e4d5d30fec0d1cba7943963a",
+  "entries": [
+    {
+      "path": "mac-takeover-20261011/native-tokenizer/BUILD.md",
+      "bytes": 1968,
+      "sha256": "859866d6df8439c29904492bd153b9f0e6c20552b07804c145af96e5537d9e05"
+    },
+    {
+      "path": "mac-takeover-20261011/native-tokenizer/LICENSE",
+      "bytes": 1183,
+      "sha256": "dea9265341829002e2c23a7372393eb2ed6e26085fb623f38a4ba0af833f30a6"
+    },
+    {
+      "path": "mac-takeover-20261011/native-tokenizer/build.json",
+      "bytes": 496,
+      "sha256": "2bc3c8044dd3ee766dfab0e788833923858268e7a33516d2bb1ddf0205515834"
+    },
+    {
+      "path": "mac-takeover-20261011/native-tokenizer/libblingfiretokdll.dylib",
+      "bytes": 1483240,
+      "sha256": "86444de096909758773cf48561b74bdeec1806d68d08bf228e25303419aa24d9"
+    }
+  ],
+  "scope": "Explicit file allowlist; failed/unknown records retained; no database, dependencies, key, headers or reasoning_content.",
+  "deterministic_archive": "gzip mtime=0; sorted regular members; uid/gid/mtime=0; mode=0644; no symlinks."
+}

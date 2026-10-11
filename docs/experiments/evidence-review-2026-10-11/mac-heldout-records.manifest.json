@@ -1,0 +1,164 @@
+{
+  "archive": "mac-heldout-records.tar.gz",
+  "bytes": 9453657,
+  "sha256": "2d41a923707a48e5a0b66115f0af4b72de61a6b16a3941874fee15ba62507f5b",
+  "entries": [
+    {
+      "path": "mac-takeover-20261011/archive_records.py",
+      "bytes": 8601,
+      "sha256": "44c219f0f392afeaaa22eb1de237bdb7e340af7438c5050e7c7c993a9194c6a3"
+    },
+    {
+      "path": "mac-takeover-20261011/audit_frozen_results.py",
+      "bytes": 16010,
+      "sha256": "9046ec4cdc0ff53ad48b0c3c360791089eb479d420e745a9d2b7c8a2047c48d0"
+    },
+    {
+      "path": "mac-takeover-20261011/classify_archive_scan.py",
+      "bytes": 3565,
+      "sha256": "64ee82221ce130ecae6d3b7d46466662dae59d250a8c957cdd82027df41aa84f"
+    },
+    {
+      "path": "mac-takeover-20261011/finalize_heldout.py",
+      "bytes": 5222,
+      "sha256": "3b12a7013e741399eebe3d063d8e2c1fd9368e2ffeb6bc5c9f2fd830b1478196"
+    },
+    {
+      "path": "mac-takeover-20261011/finish_evidence_archive.py",
+      "bytes": 4435,
+      "sha256": "387da3e50ace9ca0e33d848be986057b2cf7cd57f4313c8c0886f8cc514b31f0"
+    },
+    {
+      "path": "mac-takeover-20261011/heldout-source-audit.json",
+      "bytes": 43602,
+      "sha256": "fb8280b1c70d4ad9f76348de6059928a0bbff79c66b3c2888915e9ba72900de9"
+    },
+    {
+      "path": "mac-takeover-20261011/heldout_progress.py",
+      "bytes": 3629,
+      "sha256": "f02b3e54e77933c938b903690a1a288705a7e2e8a2a810e38ae175d2726f2a95"
+    },
+    {
+      "path": "mac-takeover-20261011/host-sleep-observation.json",
+      "bytes": 1796,
+      "sha256": "1a74c956e05febeb227e57eebdd15a369db7bf62dc7bcba67b24fe0d2c67fb9e"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-heldout-scoped-v3/assessments/assessments.jsonl",
+      "bytes": 989025,
+      "sha256": "6ea5f8144b26b61799b59af122bf6c26804869130868dc57558926f1cb9463ba"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-heldout-scoped-v3/assessments/blind-packets.jsonl",
+      "bytes": 3691691,
+      "sha256": "fd9270f219b6a6d6333d54494d73f993c93b8e8454de6e2971c2dc29fc8b8997"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-heldout-scoped-v3/assessments/evaluation-protocol.json",
+      "bytes": 1582,
+      "sha256": "af46e88b148204c1ec5077650f90bfed204e0bc5dbefbc7911355c4f3ccaff41"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-heldout-scoped-v3/assessments/started.jsonl",
+      "bytes": 36439,
+      "sha256": "9752a3d4903af08c8ce58beb82a4f79ee8f8c89046b345f4f45466daa9bb5327"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-heldout-scoped-v3/assessments/summary.json",
+      "bytes": 930,
+      "sha256": "8b158dea9c32bdd6983a2a9692bebec565850a60ca141226938657dc595b6334"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-heldout-scoped-v3/assessments/trial-packets.jsonl",
+      "bytes": 28124,
+      "sha256": "d5b6f6e1b6da7ff077e93eebf90504f37a40460e7d6ff636939d18a29d55873c"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-heldout-scoped-v3/evaluation.log",
+      "bytes": 17448,
+      "sha256": "57991923cd5682f4485669315cd839a0a9f5a79598ffaeec45acc915fdab1693"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-heldout-scoped-v3/protocol.json",
+      "bytes": 76297,
+      "sha256": "3579d3c0c6281b1332944ed6b931248b6abd2c2b9aba875dbaeac4357f27e40e"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-heldout-scoped-v3/shard-0/index-verification.json",
+      "bytes": 2688,
+      "sha256": "303cf2596ba4b477eb145f08e47e75931f1f141c2ee2a6394bb5af632b83d74e"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-heldout-scoped-v3/shard-0/provider-events.jsonl",
+      "bytes": 1227049,
+      "sha256": "33b2aa773eca82fa16fc6a97877cf95b93aceff7b76e7c786ab776920e470da9"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-heldout-scoped-v3/shard-0/started.jsonl",
+      "bytes": 12144,
+      "sha256": "1c41e7162ee0f484206db52d5d74dbc9052750dec180ced777fc0561acdf8374"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-heldout-scoped-v3/shard-0/trials.jsonl",
+      "bytes": 7966792,
+      "sha256": "f89493259ac2a18ce7e4aa993dc54956096fcddc194c73ad675c258583000278"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-heldout-scoped-v3/shard-1/index-verification.json",
+      "bytes": 2688,
+      "sha256": "303cf2596ba4b477eb145f08e47e75931f1f141c2ee2a6394bb5af632b83d74e"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-heldout-scoped-v3/shard-1/provider-events.jsonl",
+      "bytes": 5988596,
+      "sha256": "700de25da48e674076786d90e3f51752036bac3263c7dff732943323eb052c24"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-heldout-scoped-v3/shard-1/started.jsonl",
+      "bytes": 12144,
+      "sha256": "65060a5e4f7f7429770e4b35fa2074cb204555268bbd1222fefb5870443bcb88"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-heldout-scoped-v3/shard-1/trials.jsonl",
+      "bytes": 18491608,
+      "sha256": "f80a76b374e777c643346f97e03d4a4c8fd2fa837a4a37f7e27352dd3ead219d"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-heldout-scoped-v3/shard-2/index-verification.json",
+      "bytes": 2688,
+      "sha256": "303cf2596ba4b477eb145f08e47e75931f1f141c2ee2a6394bb5af632b83d74e"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-heldout-scoped-v3/shard-2/provider-events.jsonl",
+      "bytes": 4014582,
+      "sha256": "71357f70dbcd7395bace5d6299982c18be81e69b6387f2edd74d0a1c5213f39b"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-heldout-scoped-v3/shard-2/started.jsonl",
+      "bytes": 12144,
+      "sha256": "1375950c5f9a48a1c0dbbddae5da9e9a2beabbb54a3089144c484d27967e63a4"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-heldout-scoped-v3/shard-2/trials.jsonl",
+      "bytes": 9301653,
+      "sha256": "69403f5de35e3f4eb6b646c73b84521ce749174ec5cad98024fb3d2b8d5ca9ff"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-heldout-scoped-v3/summary/RESULTS.md",
+      "bytes": 3381,
+      "sha256": "07d4e5af4ca9db7f2166e502baac553640fff1e081f84dd27d2e2591bbab34a2"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-heldout-scoped-v3/summary/summary.json",
+      "bytes": 483328,
+      "sha256": "d294618f8f7b10e9c4fcd720aacfce291604cdb8b2bf3ecc4e4c9cbbbe4a5a37"
+    },
+    {
+      "path": "mac-takeover-20261011/rfc-heldout-scoped-v3/summary.log",
+      "bytes": 175,
+      "sha256": "bdab5df601dff27f4b1688d73b161c50f13949dedeb81a0cb8a2fae5a798cfa5"
+    }
+  ],
+  "scope": "Explicit file allowlist; failed/unknown records retained; no database, dependencies, key, headers or reasoning_content.",
+  "deterministic_archive": "gzip mtime=0; sorted regular members; uid/gid/mtime=0; mode=0644; no symlinks."
+}
