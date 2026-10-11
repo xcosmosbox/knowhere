@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import asyncio
+import hashlib
 import json
 import os
 import time
@@ -10,6 +11,7 @@ from pathlib import Path
 from typing import Any
 
 from runtime import BASE_URL, ROOT, ProviderObserver, digest, prepare_environment, usage_summary, utc_now
+from resources import PROFILES, resource_spec, scorer_client
 
 
 def read_lines(path: Path) -> list[dict[str, Any]]:
@@ -29,15 +31,30 @@ async def run(args: argparse.Namespace) -> None:
     from corpus import prepare_corpus
     from score import (build_blinded_packet, build_snapshot_packet, negative_control_passed,
                        semantic_assess, semantic_negative_control, span_assess)
-    gold_path = ROOT / "scripts/fixtures/evidence_review_live_gold.json"
+    gold_path = args.gold
     gold = json.loads(gold_path.read_text())
     manifest = prepare_corpus(ROOT, gold_path)
     questions = {question["id"]: question for question in gold["questions"]}
     args.output.mkdir(parents=True, exist_ok=True)
+    protocol = json.loads(args.protocol.read_text()) if args.protocol else None
+    if protocol and (protocol["gold_sha256"] != hashlib.sha256(gold_path.read_bytes()).hexdigest()
+                     or protocol["resources"] != resource_spec(args.resource_profile)
+                     or protocol["corpus_digest"] != manifest["corpus_digest"]):
+        raise ValueError("Scoring inventory/resources differ from frozen retrieval protocol")
+    evaluation_spec = {"gold_sha256": hashlib.sha256(gold_path.read_bytes()).hexdigest(),
+                       "resources": resource_spec(args.resource_profile),
+                       "retrieval_protocol_digest": digest(protocol) if protocol else None,
+                       "scorer_sha256": hashlib.sha256((ROOT / 'scripts/evidence_review_benchmark/score.py').read_bytes()).hexdigest()}
+    spec_path = args.output / 'evaluation-protocol.json'
+    if spec_path.exists() and json.loads(spec_path.read_text()) != evaluation_spec:
+        raise ValueError("Frozen scoring protocol mismatch")
+    spec_path.write_text(json.dumps(evaluation_spec, indent=2) + '\n')
     packets: dict[str, dict[str, Any]] = {}
     mappings = []
     for path in args.trials:
         for trial in read_lines(path):
+            if protocol and trial["protocol_digest"] != digest(protocol):
+                raise ValueError("Trial does not belong to the frozen retrieval protocol")
             question = questions[trial["question_id"]]
             packet = build_blinded_packet(trial, question, manifest)
             identity = packet["packet_sha256"]
@@ -60,6 +77,7 @@ async def run(args: argparse.Namespace) -> None:
     observer.install()
     client = AsyncOpenAI(api_key=os.environ["DS_KEY"], base_url=BASE_URL, max_retries=0,
                          timeout=30, http_client=get_async_client())
+    client = scorer_client(client, args.resource_profile)
     results_path, started_path = args.output / "assessments.jsonl", args.output / "started.jsonl"
     results = {record["id"]: record for record in read_lines(results_path)}
     for record in read_lines(started_path):
@@ -112,6 +130,9 @@ async def run(args: argparse.Namespace) -> None:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--key-file", type=Path)
+    parser.add_argument("--gold", type=Path, default=ROOT / "scripts/fixtures/evidence_review_live_gold.json")
+    parser.add_argument("--protocol", type=Path)
+    parser.add_argument("--resource-profile", choices=PROFILES, default="production")
     parser.add_argument("--trials", type=Path, nargs="+", required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--concurrency", type=int, default=4)

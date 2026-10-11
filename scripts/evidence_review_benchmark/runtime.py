@@ -92,6 +92,8 @@ class ProviderObserver:
             "prompt_sha256": digest(messages), "request_sha256": digest(payload),
             "temperature": payload.get("temperature"), "max_tokens": payload.get("max_tokens"),
             "thinking": payload.get("thinking"), "tool_choice": payload.get("tool_choice"),
+            "reasoning_effort": payload.get("reasoning_effort"),
+            "transport_timeout": request.extensions.get("timeout"),
             "status": "no_response", "usage": None,
         }
         if reviewer:
@@ -166,8 +168,11 @@ class EpisodeObserver:
 
         async def run_episode(instance: Any, **kwargs: Any) -> Any:
             budget = kwargs["budget"]
-            observer.episode = {"initial_max_steps": budget.max_steps,
-                                "initial_wall_clock_seconds": budget.wall_clock_seconds}
+            unrestricted = getattr(budget, "benchmark_resource_profile", None)
+            observer.episode = {"initial_max_steps": None if unrestricted else budget.max_steps,
+                                "initial_wall_clock_seconds": None if unrestricted else budget.wall_clock_seconds}
+            if unrestricted:
+                observer.episode["resource_profile"] = unrestricted
             started = time.perf_counter()
             try:
                 result = await observer.original_episode(instance, **kwargs)
@@ -178,7 +183,7 @@ class EpisodeObserver:
             finally:
                 observer.episode.update(steps_used=budget.steps_used, tokens_used=budget.tokens_used,
                                         usage_complete=budget.usage_complete,
-                                        final_max_steps=budget.max_steps,
+                                        final_max_steps=None if unrestricted else budget.max_steps,
                                         duration_ms=round((time.perf_counter() - started) * 1000, 3))
 
         def build_snapshot(**kwargs: Any) -> Any:
